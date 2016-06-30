@@ -5,15 +5,15 @@
 Network Working Group                                           S. Azoum
 Internet-Draft                                                  E. Jones
 Intended status: Standards Track                                  L. Sun
-Expires: November 18, 2016                                       US Navy
+Expires: January 1, 2017                   SPAWAR Systems Center Pacific
                                                                 M. Irani
                                                                   J. Sun
-                                                         NKI Engineering
+                                                      Nathan Kunes, Inc.
                                                                R. Purvis
                                                    The MITRE Corporation
                                                                S. Turner
                                                                    sn3rd
-                                                            May 17, 2016
+                                                           June 30, 2016
 
 
                     Common Cryptographic MIB (CCMIB)
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 18, 2016.
+   This Internet-Draft will expire on January 1, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Azoum, et al.           Expires November 18, 2016               [Page 1]
+Azoum, et al.            Expires January 1, 2017                [Page 1]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Azoum, et al.           Expires November 18, 2016               [Page 2]
+Azoum, et al.            Expires January 1, 2017                [Page 2]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
 3.  The Internet-Standard Management Framework
@@ -165,9 +165,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016               [Page 3]
+Azoum, et al.            Expires January 1, 2017                [Page 3]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             Mike Irani
@@ -221,9 +221,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016               [Page 4]
+Azoum, et al.            Expires January 1, 2017                [Page 4]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
 5.2.  CC Feature Hierarchy
@@ -277,9 +277,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016               [Page 5]
+Azoum, et al.            Expires January 1, 2017                [Page 5]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             identified as authors of the code.  All rights reserved.
@@ -333,9 +333,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016               [Page 6]
+Azoum, et al.            Expires January 1, 2017                [Page 6]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     ccTextualConventionMIB MODULE-IDENTITY
@@ -389,9 +389,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016               [Page 7]
+Azoum, et al.            Expires January 1, 2017                [Page 7]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
@@ -445,9 +445,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016               [Page 8]
+Azoum, et al.            Expires January 1, 2017                [Page 8]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             See the IPv4Address and IPv6Address textual conventions for
@@ -501,9 +501,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016               [Page 9]
+Azoum, et al.            Expires January 1, 2017                [Page 9]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             bit setting scheme shown below. Note that the bit setting
@@ -557,9 +557,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 10]
+Azoum, et al.            Expires January 1, 2017               [Page 10]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS       current
@@ -613,9 +613,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 11]
+Azoum, et al.            Expires January 1, 2017               [Page 11]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             US Navy
@@ -669,9 +669,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 12]
+Azoum, et al.            Expires January 1, 2017               [Page 12]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     -- *****************************************************************
@@ -725,9 +725,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 13]
+Azoum, et al.            Expires January 1, 2017               [Page 13]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             parameter) supplied to the load device when requesting the
@@ -781,9 +781,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 14]
+Azoum, et al.            Expires January 1, 2017               [Page 14]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         DESCRIPTION
@@ -837,9 +837,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 15]
+Azoum, et al.            Expires January 1, 2017               [Page 15]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS      current
@@ -893,9 +893,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 16]
+Azoum, et al.            Expires January 1, 2017               [Page 16]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         ::= { cDeviceInfoNotify 2 }
@@ -949,9 +949,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 17]
+Azoum, et al.            Expires January 1, 2017               [Page 17]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
                     }
@@ -1005,9 +1005,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 18]
+Azoum, et al.            Expires January 1, 2017               [Page 18]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     -- CC MIB cDeviceComponentVersTable
@@ -1061,9 +1061,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 19]
+Azoum, et al.            Expires January 1, 2017               [Page 19]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         cDeviceComponentName        SnmpAdminString,
@@ -1117,9 +1117,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 20]
+Azoum, et al.            Expires January 1, 2017               [Page 20]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             various versions of a component to be activated. Devices may
@@ -1173,9 +1173,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 21]
+Azoum, et al.            Expires January 1, 2017               [Page 21]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cBatteryInfoTable  OBJECT-TYPE
@@ -1229,9 +1229,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 22]
+Azoum, et al.            Expires January 1, 2017               [Page 22]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             source. Clock(3) is used to describe batteries which cannot
@@ -1285,9 +1285,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 23]
+Azoum, et al.            Expires January 1, 2017               [Page 23]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         MAX-ACCESS  read-only
@@ -1341,9 +1341,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 24]
+Azoum, et al.            Expires January 1, 2017               [Page 24]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             "Unique identifier provided in the firmware package."
@@ -1397,9 +1397,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 25]
+Azoum, et al.            Expires January 1, 2017               [Page 25]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             destroy management functions. Support for active and
@@ -1453,9 +1453,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 26]
+Azoum, et al.            Expires January 1, 2017               [Page 26]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             "Compliance levels for component information."
@@ -1509,9 +1509,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 27]
+Azoum, et al.            Expires January 1, 2017               [Page 27]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
                     cVendorName,
@@ -1565,9 +1565,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 28]
+Azoum, et al.            Expires January 1, 2017               [Page 28]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
                 }
@@ -1621,9 +1621,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 29]
+Azoum, et al.            Expires January 1, 2017               [Page 29]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS current
@@ -1677,9 +1677,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 30]
+Azoum, et al.            Expires January 1, 2017               [Page 30]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             NKI Engineering
@@ -1733,9 +1733,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 31]
+Azoum, et al.            Expires January 1, 2017               [Page 31]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cCDMStoreInfo  OBJECT IDENTIFIER
@@ -1789,9 +1789,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 32]
+Azoum, et al.            Expires January 1, 2017               [Page 32]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             materials. This operation must not modify any other
@@ -1845,9 +1845,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 33]
+Azoum, et al.            Expires January 1, 2017               [Page 33]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         SYNTAX      TruthValue
@@ -1901,9 +1901,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 34]
+Azoum, et al.            Expires January 1, 2017               [Page 34]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             The value in this object is only used if no value exists for
@@ -1957,9 +1957,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 35]
+Azoum, et al.            Expires January 1, 2017               [Page 35]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     -- *****************************************************************
@@ -2013,9 +2013,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 36]
+Azoum, et al.            Expires January 1, 2017               [Page 36]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         DESCRIPTION
@@ -2069,9 +2069,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 37]
+Azoum, et al.            Expires January 1, 2017               [Page 37]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             succeeded."
@@ -2125,9 +2125,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 38]
+Azoum, et al.            Expires January 1, 2017               [Page 38]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         OBJECTS     {
@@ -2181,9 +2181,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 39]
+Azoum, et al.            Expires January 1, 2017               [Page 39]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
@@ -2237,9 +2237,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 40]
+Azoum, et al.            Expires January 1, 2017               [Page 40]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             security of the key material."
@@ -2293,9 +2293,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 41]
+Azoum, et al.            Expires January 1, 2017               [Page 41]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             Shared Secret: The key is used as a shared secret between
@@ -2349,9 +2349,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 42]
+Azoum, et al.            Expires January 1, 2017               [Page 42]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cSymKeyExpirationDate  OBJECT-TYPE
@@ -2405,9 +2405,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 43]
+Azoum, et al.            Expires January 1, 2017               [Page 43]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cSymKeyClassification  OBJECT-TYPE
@@ -2461,9 +2461,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 44]
+Azoum, et al.            Expires January 1, 2017               [Page 44]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             At a minimum, implementations must support active and
@@ -2517,9 +2517,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 45]
+Azoum, et al.            Expires January 1, 2017               [Page 45]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         DESCRIPTION
@@ -2573,9 +2573,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 46]
+Azoum, et al.            Expires January 1, 2017               [Page 46]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         MAX-ACCESS  read-only
@@ -2629,9 +2629,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 47]
+Azoum, et al.            Expires January 1, 2017               [Page 47]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
              Certificate)).
@@ -2685,9 +2685,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 48]
+Azoum, et al.            Expires January 1, 2017               [Page 48]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         MAX-ACCESS  read-only
@@ -2741,9 +2741,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 49]
+Azoum, et al.            Expires January 1, 2017               [Page 49]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         SYNTAX      BITS { other(0), digitalSignature(1),
@@ -2797,9 +2797,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 50]
+Azoum, et al.            Expires January 1, 2017               [Page 50]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         ::= { cAsymKeyEntry 14 }
@@ -2853,9 +2853,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 51]
+Azoum, et al.            Expires January 1, 2017               [Page 51]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cAsymKeyRekey  OBJECT-TYPE
@@ -2909,9 +2909,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 52]
+Azoum, et al.            Expires January 1, 2017               [Page 52]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             that no changes to configuration of this table have happened
@@ -2965,9 +2965,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 53]
+Azoum, et al.            Expires January 1, 2017               [Page 53]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
                               tbsCertificate(3) }
@@ -3021,9 +3021,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 54]
+Azoum, et al.            Expires January 1, 2017               [Page 54]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS      current
@@ -3077,9 +3077,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 55]
+Azoum, et al.            Expires January 1, 2017               [Page 55]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         MAX-ACCESS  read-only
@@ -3133,9 +3133,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 56]
+Azoum, et al.            Expires January 1, 2017               [Page 56]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         cCKLNextUpdate      DateAndTime,
@@ -3189,9 +3189,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 57]
+Azoum, et al.            Expires January 1, 2017               [Page 57]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS      current
@@ -3245,9 +3245,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 58]
+Azoum, et al.            Expires January 1, 2017               [Page 58]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         SYNTAX      DateAndTime
@@ -3301,9 +3301,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 59]
+Azoum, et al.            Expires January 1, 2017               [Page 59]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         SYNTAX      CCDMStoreEntry
@@ -3357,9 +3357,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 60]
+Azoum, et al.            Expires January 1, 2017               [Page 60]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             (6) firmware - This row contains information about stored
@@ -3413,9 +3413,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 61]
+Azoum, et al.            Expires January 1, 2017               [Page 61]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
              Material (CDM) stored in this table.
@@ -3469,9 +3469,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 62]
+Azoum, et al.            Expires January 1, 2017               [Page 62]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             that no changes to configuration of this table have happened
@@ -3525,9 +3525,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 63]
+Azoum, et al.            Expires January 1, 2017               [Page 63]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cCertSubAltNameListIndex OBJECT-TYPE
@@ -3581,9 +3581,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 64]
+Azoum, et al.            Expires January 1, 2017               [Page 64]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         MAX-ACCESS read-only
@@ -3637,9 +3637,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 65]
+Azoum, et al.            Expires January 1, 2017               [Page 65]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cCertPathCtrlsTableLastChanged OBJECT-TYPE
@@ -3693,9 +3693,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 66]
+Azoum, et al.            Expires January 1, 2017               [Page 66]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS      current
@@ -3749,9 +3749,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 67]
+Azoum, et al.            Expires January 1, 2017               [Page 67]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
                            requireExplicitPolicy(1),
@@ -3805,9 +3805,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 68]
+Azoum, et al.            Expires January 1, 2017               [Page 68]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             value of this column corresponds to the
@@ -3861,9 +3861,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 69]
+Azoum, et al.            Expires January 1, 2017               [Page 69]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS      current
@@ -3917,9 +3917,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 70]
+Azoum, et al.            Expires January 1, 2017               [Page 70]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             in conjunction with cCertPolicyInformation, a unique policy
@@ -3973,9 +3973,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 71]
+Azoum, et al.            Expires January 1, 2017               [Page 71]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         MAX-ACCESS  read-only
@@ -4029,9 +4029,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 72]
+Azoum, et al.            Expires January 1, 2017               [Page 72]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             "Identifies a grouping of policy mappings that are
@@ -4085,9 +4085,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 73]
+Azoum, et al.            Expires January 1, 2017               [Page 73]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         MAX-ACCESS  read-only
@@ -4141,9 +4141,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 74]
+Azoum, et al.            Expires January 1, 2017               [Page 74]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cNameConstraintSubtreeIndex  OBJECT-TYPE
@@ -4197,9 +4197,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 75]
+Azoum, et al.            Expires January 1, 2017               [Page 75]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         DESCRIPTION
@@ -4253,9 +4253,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 76]
+Azoum, et al.            Expires January 1, 2017               [Page 76]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         OBJECT cCertPathCtrlsPolicyFlags
@@ -4309,9 +4309,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 77]
+Azoum, et al.            Expires January 1, 2017               [Page 77]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         OBJECT cCertPathCtrlsMaxPathLength
@@ -4365,9 +4365,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 78]
+Azoum, et al.            Expires January 1, 2017               [Page 78]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS current
@@ -4421,9 +4421,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 79]
+Azoum, et al.            Expires January 1, 2017               [Page 79]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         DESCRIPTION
@@ -4477,9 +4477,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 80]
+Azoum, et al.            Expires January 1, 2017               [Page 80]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cKeyManNameConstraintGroup OBJECT-GROUP
@@ -4533,9 +4533,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 81]
+Azoum, et al.            Expires January 1, 2017               [Page 81]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS current
@@ -4589,9 +4589,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 82]
+Azoum, et al.            Expires January 1, 2017               [Page 82]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         ::= { cKeyManagementGroups 12 }
@@ -4645,9 +4645,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 83]
+Azoum, et al.            Expires January 1, 2017               [Page 83]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
                       }
@@ -4701,9 +4701,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 84]
+Azoum, et al.            Expires January 1, 2017               [Page 84]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             US Navy
@@ -4757,9 +4757,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 85]
+Azoum, et al.            Expires January 1, 2017               [Page 85]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cKeyTransferPullConformance  OBJECT IDENTIFIER
@@ -4813,9 +4813,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 86]
+Azoum, et al.            Expires January 1, 2017               [Page 86]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             value identifies an upper bound. A value of '5' for example,
@@ -4869,9 +4869,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 87]
+Azoum, et al.            Expires January 1, 2017               [Page 87]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             download).
@@ -4925,9 +4925,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 88]
+Azoum, et al.            Expires January 1, 2017               [Page 88]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
  --------------------+-----------+----------+--------------+------------
@@ -4981,9 +4981,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 89]
+Azoum, et al.            Expires January 1, 2017               [Page 89]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         OBJECTS     {
@@ -5037,9 +5037,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 90]
+Azoum, et al.            Expires January 1, 2017               [Page 90]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             location for obtainment."
@@ -5093,9 +5093,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 91]
+Azoum, et al.            Expires January 1, 2017               [Page 91]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         ::= { cCDMServerEntry 2 }
@@ -5149,9 +5149,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 92]
+Azoum, et al.            Expires January 1, 2017               [Page 92]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             or deleted by either SNMP, agent, or other management method
@@ -5205,9 +5205,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 93]
+Azoum, et al.            Expires January 1, 2017               [Page 93]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         MAX-ACCESS  read-only
@@ -5261,9 +5261,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 94]
+Azoum, et al.            Expires January 1, 2017               [Page 94]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         SYNTAX      SnmpAdminString
@@ -5317,9 +5317,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 95]
+Azoum, et al.            Expires January 1, 2017               [Page 95]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         SYNTAX     INTEGER { downloadAndInstall(1), downloadAndStore(2),
@@ -5373,9 +5373,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 96]
+Azoum, et al.            Expires January 1, 2017               [Page 96]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
                              downloadFailed(3), installFailed(4),
@@ -5429,9 +5429,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 97]
+Azoum, et al.            Expires January 1, 2017               [Page 97]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             createAndWait, notInService, and notReady management
@@ -5485,9 +5485,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 98]
+Azoum, et al.            Expires January 1, 2017               [Page 98]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
                   cCDMServerAdditionalInfo,
@@ -5541,9 +5541,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016              [Page 99]
+Azoum, et al.            Expires January 1, 2017               [Page 99]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
 5.7.  Key Transfer Push
@@ -5597,9 +5597,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 100]
+Azoum, et al.            Expires January 1, 2017              [Page 100]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             sn3rd
@@ -5653,9 +5653,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 101]
+Azoum, et al.            Expires January 1, 2017              [Page 101]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS      current
@@ -5709,9 +5709,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 102]
+Azoum, et al.            Expires January 1, 2017              [Page 102]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         OBJECTS     {
@@ -5765,9 +5765,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 103]
+Azoum, et al.            Expires January 1, 2017              [Page 103]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
@@ -5821,9 +5821,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 104]
+Azoum, et al.            Expires January 1, 2017              [Page 104]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             "The transfer mechanism or protocol used by the sender to
@@ -5877,9 +5877,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 105]
+Azoum, et al.            Expires January 1, 2017              [Page 105]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             "A reference string that points to the key material(s) to
@@ -5933,9 +5933,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 106]
+Azoum, et al.            Expires January 1, 2017              [Page 106]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
@@ -5989,9 +5989,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 107]
+Azoum, et al.            Expires January 1, 2017              [Page 107]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             table. This value shows the position of a given item within
@@ -6045,9 +6045,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 108]
+Azoum, et al.            Expires January 1, 2017              [Page 108]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     cCDMPushSrcTableLastChanged  OBJECT-TYPE
@@ -6101,9 +6101,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 109]
+Azoum, et al.            Expires January 1, 2017              [Page 109]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS      current
@@ -6157,9 +6157,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 110]
+Azoum, et al.            Expires January 1, 2017              [Page 110]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             Entries created within this table may not become active
@@ -6213,9 +6213,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 111]
+Azoum, et al.            Expires January 1, 2017              [Page 111]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         GROUP cKeyTransferPushReceiverNotifyGroup
@@ -6269,9 +6269,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 112]
+Azoum, et al.            Expires January 1, 2017              [Page 112]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         STATUS current
@@ -6325,9 +6325,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 113]
+Azoum, et al.            Expires January 1, 2017              [Page 113]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
            US Navy
@@ -6381,9 +6381,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 114]
+Azoum, et al.            Expires January 1, 2017              [Page 114]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
    -- *****************************************************************
@@ -6437,9 +6437,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 115]
+Azoum, et al.            Expires January 1, 2017              [Page 115]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
        DESCRIPTION
@@ -6493,9 +6493,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 116]
+Azoum, et al.            Expires January 1, 2017              [Page 116]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
            this Security Policy rule is applied. Lower values have a
@@ -6549,9 +6549,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 117]
+Azoum, et al.            Expires January 1, 2017              [Page 117]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
            matching a data traffic flow against a filter (as defined by
@@ -6605,9 +6605,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 118]
+Azoum, et al.            Expires January 1, 2017              [Page 118]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
            active, notInService, and notReady management functions is
@@ -6661,9 +6661,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 119]
+Azoum, et al.            Expires January 1, 2017              [Page 119]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
            "This group is composed of notifications related to secure
@@ -6717,9 +6717,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 120]
+Azoum, et al.            Expires January 1, 2017              [Page 120]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
             Jeffrey Sun
@@ -6773,9 +6773,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 121]
+Azoum, et al.            Expires January 1, 2017              [Page 121]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
     -- *****************************************************************
@@ -6829,9 +6829,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 122]
+Azoum, et al.            Expires January 1, 2017              [Page 122]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         ::= { cSecureConnectionInfo 2 }
@@ -6885,9 +6885,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 123]
+Azoum, et al.            Expires January 1, 2017              [Page 123]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         DESCRIPTION
@@ -6941,9 +6941,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 124]
+Azoum, et al.            Expires January 1, 2017              [Page 124]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         SYNTAX      OCTET STRING (SIZE(0..255))
@@ -6997,9 +6997,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 125]
+Azoum, et al.            Expires January 1, 2017              [Page 125]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         SYNTAX      OCTET STRING
@@ -7053,9 +7053,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 126]
+Azoum, et al.            Expires January 1, 2017              [Page 126]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
         MODULE
@@ -7109,9 +7109,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 127]
+Azoum, et al.            Expires January 1, 2017              [Page 127]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
 6.  IANA Considerations
@@ -7165,9 +7165,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 128]
+Azoum, et al.            Expires January 1, 2017              [Page 128]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
    [RFC2579]  McCloghrie, K., Ed., Perkins, D., Ed., and J.
@@ -7221,9 +7221,9 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 129]
+Azoum, et al.            Expires January 1, 2017              [Page 129]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
    [RFC6030]  Hoyer, P., Pei, M., and S. Machani, "Portable Symmetric
@@ -7266,7 +7266,7 @@ Internet-Draft                    CCMIB                         May 2016
 Authors' Addresses
 
    Shadi Azoum
-   US Navy
+   SPAWAR Systems Center Pacific
 
    Email: shadi.azoum@navy.mil
 
@@ -7277,31 +7277,31 @@ Authors' Addresses
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 130]
+Azoum, et al.            Expires January 1, 2017              [Page 130]
 
-Internet-Draft                    CCMIB                         May 2016
+Internet-Draft                    CCMIB                        June 2016
 
 
    Elliott Jones
-   US Navy
+   SPAWAR Systems Center Pacific
 
    Email: elliott.jones@navy.mil
 
 
    Lily Sun
-   US Navy
+   SPAWAR Systems Center Pacific
 
    Email: lily.sun@navy.mil
 
 
    Mike Irani
-   NKI Engineering
+   Nathan Kunes, Inc.
 
    Email: irani@nkiengineering.com
 
 
    Jeffrey Sun
-   NKI Engineering
+   Nathan Kunes, Inc.
 
    Email: sunjeff@nkiengineering.com
 
@@ -7333,4 +7333,4 @@ Internet-Draft                    CCMIB                         May 2016
 
 
 
-Azoum, et al.           Expires November 18, 2016             [Page 131]
+Azoum, et al.            Expires January 1, 2017              [Page 131]
