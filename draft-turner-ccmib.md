@@ -2,7 +2,7 @@
 title: Common Cryptographic MIB (CCMIB)
 abbrev: CCMIB
 docname: draft-turner-ccmib-latest
-date: 2016-05-17
+date: 2016-06-30
 category: std
 
 ipr: trust200902
@@ -17,27 +17,27 @@ author:
  -
     ins: S. Azoum
     name: Shadi Azoum
-    org: US Navy
+    org: SPAWAR Systems Center Pacific
     email: shadi.azoum@navy.mil
  -
     ins: E. Jones
     name: Elliott Jones
-    org: US Navy
+    org: SPAWAR Systems Center Pacific
     email: elliott.jones@navy.mil
  -
     ins: L. Sun
     name: Lily Sun
-    org: US Navy
+    org: SPAWAR Systems Center Pacific
     email: lily.sun@navy.mil
  -
     ins: M. Irani
     name: Mike Irani
-    org: NKI Engineering
+    org: Nathan Kunes, Inc.
     email: irani@nkiengineering.com
  -
     ins: J. Sun
     name: Jeffrey Sun
-    org: NKI Engineering
+    org: Nathan Kunes, Inc.
     email: sunjeff@nkiengineering.com
  -
     ins: R. Purvis
