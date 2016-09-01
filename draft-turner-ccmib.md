@@ -517,7 +517,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime, TruthValue,
-        TimeStamp
+        TEXTUAL-CONVENTION, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
