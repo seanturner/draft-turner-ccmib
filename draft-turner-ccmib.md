@@ -248,6 +248,8 @@ This MIB module makes reference to the following document: {{RFC2578}}.
         ::= { ccFeatureHierarchyMIB 1 }
     ccDeviceInfo  OBJECT IDENTIFIER
         ::= { ccFeatureHierarchyMIB 2 }
+    ccFirmwareInfo  OBJECT IDENTIFIER
+        ::= { ccFeatureHiearchyMIB X }
     ccKeyManagement  OBJECT IDENTIFIER
         ::= { ccFeatureHierarchyMIB 3 }
     ccKeyTransferPull  OBJECT IDENTIFIER
@@ -515,7 +517,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime, TruthValue,
-        TEXTUAL-CONVENTION, TimeStamp
+        TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
@@ -578,8 +580,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         ::= { ccDeviceInfoMIB 2}
     cBatteryInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 3}
-    cFirmwareInfo  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 4}
     cDeviceInfoScalars  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 5}
     cDeviceInfoNotify  OBJECT IDENTIFIER
@@ -742,25 +742,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
     -- *****************************************************************
     -- Device Info Notifications
     -- *****************************************************************
-
-    cFirmwareInstallFailed  NOTIFICATION-TYPE
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a firmware install failed."
-        ::= { cDeviceInfoNotify 1 }
-
-    cFirmwareInstallSuccess  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cFirmwareName,
-                        cFirmwareVersion,
-                        cFirmwareSource
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a firmware install succeeded."
-        ::= { cDeviceInfoNotify 2 }
 
     cResetDeviceInitialized  NOTIFICATION-TYPE
         STATUS      current
@@ -1083,6 +1064,268 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         ::= { cBatteryInfoEntry 4 }
 
     -- *****************************************************************
+    -- Module Conformance Information
+    -- *****************************************************************
+
+    cDeviceInfoCompliances  OBJECT IDENTIFIER
+        ::= { cDeviceInfoConformance 1}
+    cDeviceInfoGroups  OBJECT IDENTIFIER
+        ::= { cDeviceInfoConformance 2}
+
+    cDeviceInfoSystemCompliance MODULE-COMPLIANCE
+        STATUS    current
+        DESCRIPTION
+            "Compliance levels for system information."
+        MODULE
+        MANDATORY-GROUPS { cDeviceInfoSystemGroup }
+    
+        GROUP cDeviceInfoSystemNotifyGroup
+        DESCRIPTION
+            "This notification group is optional for implementation."
+
+        OBJECT cSystemInitialLoadParameters
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+            "Implementation of this object is optional."
+    
+        OBJECT cSecurityLevel
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+        "Implementation of this object is optional."
+
+        cSanitizeDevice
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+            "Implementation of this object is optional."
+    
+        OBJECT cRenderInoperable
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+            "Implementation of this object is optional."
+        ::= { cDeviceInfoCompliances 1 }
+
+    cDeviceInfoComponentCompliance MODULE-COMPLIANCE
+        STATUS    current
+        DESCRIPTION
+            "Compliance levels for component information."
+        MODULE
+        MANDATORY-GROUPS { cDeviceInfoComponentGroup }
+    
+        GROUP cDeviceInfoComponentNotifyGroup
+        DESCRIPTION
+            "This notification group is optional for implementation."
+        ::= { cDeviceInfoCompliances 2 }
+
+    cDeviceInfoBatteryCompliance MODULE-COMPLIANCE
+        STATUS    current
+        DESCRIPTION
+            "Compliance levels for battery information."
+        MODULE
+        MANDATORY-GROUPS { cDeviceInfoBatteryGroup }
+    
+        GROUP cDeviceInfoBatteryNotifyGroup
+        DESCRIPTION
+            "This notification group is optional for implementation."
+    
+        OBJECT cBatteryLowThreshold
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+            "Implementation of this object is optional."
+        ::= { cDeviceInfoCompliances 3 }
+
+    cDeviceInfoSystemGroup OBJECT-GROUP
+        OBJECTS {
+                    cSystemDate,
+                    cSystemUpTime,
+                    cSystemInitialLoadParameters,
+                    cSecurityLevel,
+                    cElectronicSerialNumber,
+                    cLastChanged,
+                    cResetDevice,
+                    cSanitizeDevice,
+                    cRenderInoperable,
+                    cVendorName,
+                    cModelIdentifier,
+                    cHardwareVersionNumber
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to system
+            information."
+        ::= { cDeviceInfoGroups 1 }
+
+    cDeviceInfoComponentGroup OBJECT-GROUP
+        OBJECTS {
+                    cDeviceComponentVersTableCount,
+                    cDeviceComponentVersTableLastChanged,
+                    cDeviceComponentName,
+                    cDeviceComponentVersion,
+                    cDeviceComponentOpStatus,
+                    cDeviceComponentDescription
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to component
+            information."
+        ::= { cDeviceInfoGroups 2 }
+
+    cDeviceInfoBatteryGroup OBJECT-GROUP
+        OBJECTS {
+                    cBatteryInfoTableCount,
+                    cBatteryInfoTableLastChanged,
+                    cBatteryType,
+                    cBatteryOpStatus,
+                    cBatteryLowThreshold
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to battery
+            information."
+        ::= { cDeviceInfoGroups 3 }
+
+    cDeviceInfoSystemNotifyGroup NOTIFICATION-GROUP
+        NOTIFICATIONS {
+                        cResetDeviceInitialized,
+                        cSanitizeDeviceInitialized,
+                        cTamperEventIndicated,
+                        cSanitizeDeviceInitialized
+                      }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of notifications related to system
+            information."
+        ::= { cDeviceInfoGroups 5 }
+
+    cDeviceInfoComponentNotifyGroup NOTIFICATION-GROUP
+        NOTIFICATIONS {
+                        cDeviceComponentDisabled,
+                        cDeviceComponentEnabled
+                      }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of notifications related to
+            component information."
+        ::= { cDeviceInfoGroups 6 }
+
+    cDeviceInfoBatteryNotifyGroup NOTIFICATION-GROUP
+        NOTIFICATIONS {
+                        cBatteryLow,
+                        cBatteryRequiresReplacement,
+                        cDeviceOnBattery
+                      }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of notifications related to battery
+            information."
+        ::= { cDeviceInfoGroups 7 }
+
+    END
+~~~~
+
+Firmware Info
+-------------
+
+    CC-FIRMWARE-INFO-MIB  DEFINITIONS  ::=  BEGIN
+
+    IMPORTS
+        ccFirmwareInfo
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+        MODULE-COMPLIANCE, OBJECT-GROUP,
+        NOTIFICATION-GROUP
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
+        OBJECT-TYPE, Unsigned32,
+        NOTIFICATION-TYPE, MODULE-IDENTITY
+            FROM SNMPv2-SMI                            -- FROM RFC 2578
+        SnmpAdminString
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+        RowStatus, TruthValue, TimeStamp
+            FROM SNMPv2-TC;                            -- FROM RFC 2579
+
+    ccFirmwareInfoMIB  MODULE-IDENTITY
+            "Shadi Azoum
+            US Navy
+            email: shadi.azoum@navy.mil
+ 
+            Elliott Jones
+            US Navy
+            elliott.jones@navy.mil
+
+            Lily Sun
+            US Navy
+            lily.sun@navy.mil
+
+            Mike Irani
+            NKI Engineering
+            irani@nkiengineering.com
+
+            Jeffrey Sun
+            NKI Engineering
+            sunjeff@nkiengineering.com
+
+            Ray Purvis
+            MITRE
+            Email:rpurvis@mitre.org
+
+            Sean Turner
+            sn3rd
+            Email:sean@sn3rd.com"
+        DESCRIPTION
+            "This MIB defines the CC MIB tree hierarchical assignments
+            below it and acts as a reservation mechanism.
+
+            Copyright (c) 2016 IETF Trust and the persons
+            identified as authors of the code.  All rights reserved.
+
+            Redistribution and use in source and binary forms, with
+            or without modification, is permitted pursuant to, and
+            subject to the license terms contained in, the Simplified
+            BSD License set forth in Section 4.c of the IETF Trust's
+            Legal Provisions Relating to IETF Documents
+            (http://trustee.ietf.org/license-info).
+
+            This version of this MIB module is part of RFC xxxx;
+            see the RFC itself for full legal notices."
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+        ::= { ccFirmwareInfo 1 }
+
+    -- *****************************************************************
+    -- Firmware Info Information Segments
+    -- *****************************************************************
+
+    cFirmwareInfoConformance  OBJECT IDENTIFIER
+        ::= { ccFirmwareInfoMIB 1 }  
+    cFirmwareInfo  OBJECT IDENTIFIER
+        ::= { ccFirmwareInfoMIB 2 }
+    cFirmwareInfoNotify  OBJECT IDENTIFIER
+        ::= { ccFirmwareInfoMIB 3 }
+
+    -- *****************************************************************
+    -- Firmware Info Notifications
+    -- *****************************************************************
+
+   cFirmwareInstallFailed  NOTIFICATION-TYPE
+        STATUS      current
+        DESCRIPTION
+            "A notification from the device to the management station
+            indicating a firmware install failed."
+        ::= { cFirmwareInfoNotify 1 }
+
+    cFirmwareInstallSuccess  NOTIFICATION-TYPE
+        OBJECTS     {
+                        cFirmwareName,
+                        cFirmwareVersion,
+                        cFirmwareSource
+                    }
+        STATUS      current
+        DESCRIPTION
+            "A notification from the device to the management station
+            indicating a firmware install succeeded."
+        ::= { cFirmwareInfoNotify 2 }
+
+    -- *****************************************************************
     -- CC MIB cFirmwareInformationTable
     -- *****************************************************************
 
@@ -1200,134 +1443,18 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
     -- Module Conformance Information
     -- *****************************************************************
 
-    cDeviceInfoCompliances  OBJECT IDENTIFIER
-        ::= { cDeviceInfoConformance 1}
-    cDeviceInfoGroups  OBJECT IDENTIFIER
-        ::= { cDeviceInfoConformance 2}
-
-    cDeviceInfoSystemCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for system information."
-        MODULE
-        MANDATORY-GROUPS { cDeviceInfoSystemGroup }
-    
-        GROUP cDeviceInfoSystemNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-
-        OBJECT cSystemInitialLoadParameters
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-    
-        OBJECT cSecurityLevel
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-        "Implementation of this object is optional."
-
-        cSanitizeDevice
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-    
-        OBJECT cRenderInoperable
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-        ::= { cDeviceInfoCompliances 1 }
-
-    cDeviceInfoComponentCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for component information."
-        MODULE
-        MANDATORY-GROUPS { cDeviceInfoComponentGroup }
-    
-        GROUP cDeviceInfoComponentNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-        ::= { cDeviceInfoCompliances 2 }
-
-    cDeviceInfoBatteryCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for battery information."
-        MODULE
-        MANDATORY-GROUPS { cDeviceInfoBatteryGroup }
-    
-        GROUP cDeviceInfoBatteryNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-    
-        OBJECT cBatteryLowThreshold
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-        ::= { cDeviceInfoCompliances 3 }
-
-    cDeviceInfoFirmwareCompliance MODULE-COMPLIANCE
+    cFirmwareInfoFirmwareCompliance MODULE-COMPLIANCE
         STATUS    current
         DESCRIPTION
             "Compliance levels for firmware information."
         MODULE
         MANDATORY-GROUPS { cDeviceInfoFirmwareGroup }
-        GROUP cDeviceInfoFirmwareNotifyGroup
+        GROUP cFirmwareInfoFirmwareNotifyGroup
         DESCRIPTION
             "This notification group is optional for implementation."
-        ::= { cDeviceInfoCompliances 4 }
+        ::= { cFirmwareInfoCompliances 1 }
 
-    cDeviceInfoSystemGroup OBJECT-GROUP
-        OBJECTS {
-                    cSystemDate,
-                    cSystemUpTime,
-                    cSystemInitialLoadParameters,
-                    cSecurityLevel,
-                    cElectronicSerialNumber,
-                    cLastChanged,
-                    cResetDevice,
-                    cSanitizeDevice,
-                    cRenderInoperable,
-                    cVendorName,
-                    cModelIdentifier,
-                    cHardwareVersionNumber
-                }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of objects related to system
-            information."
-        ::= { cDeviceInfoGroups 1 }
-
-    cDeviceInfoComponentGroup OBJECT-GROUP
-        OBJECTS {
-                    cDeviceComponentVersTableCount,
-                    cDeviceComponentVersTableLastChanged,
-                    cDeviceComponentName,
-                    cDeviceComponentVersion,
-                    cDeviceComponentOpStatus,
-                    cDeviceComponentDescription
-                }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of objects related to component
-            information."
-        ::= { cDeviceInfoGroups 2 }
-
-    cDeviceInfoBatteryGroup OBJECT-GROUP
-        OBJECTS {
-                    cBatteryInfoTableCount,
-                    cBatteryInfoTableLastChanged,
-                    cBatteryType,
-                    cBatteryOpStatus,
-                    cBatteryLowThreshold
-                }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of objects related to battery
-            information."
-        ::= { cDeviceInfoGroups 3 }
-
-    cDeviceInfoFirmwareGroup OBJECT-GROUP
+    cFirmwareInfoFirmwareGroup OBJECT-GROUP
         OBJECTS {
                     cFirmwareInformationTableCount,
                     cFirmwareInformationTableLastChanged,
@@ -1341,45 +1468,9 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         DESCRIPTION
             "This group is composed of objects related to firmware
             information."
-        ::= { cDeviceInfoGroups 4 }
+        ::= { cFirmwareInfoGroups 1 }
 
-    cDeviceInfoSystemNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
-                        cResetDeviceInitialized,
-                        cSanitizeDeviceInitialized,
-                        cTamperEventIndicated,
-                        cSanitizeDeviceInitialized
-                      }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of notifications related to system
-            information."
-        ::= { cDeviceInfoGroups 5 }
-
-    cDeviceInfoComponentNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
-                        cDeviceComponentDisabled,
-                        cDeviceComponentEnabled
-                      }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of notifications related to
-            component information."
-        ::= { cDeviceInfoGroups 6 }
-
-    cDeviceInfoBatteryNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
-                        cBatteryLow,
-                        cBatteryRequiresReplacement,
-                        cDeviceOnBattery
-                      }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of notifications related to battery
-            information."
-        ::= { cDeviceInfoGroups 7 }
-
-    cDeviceInfoFirmwareNotifyGroup NOTIFICATION-GROUP
+    cFirmwareInfoFirmwareNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cFirmwareInstallFailed,
                         cFirmwareInstallSuccess
@@ -1388,10 +1479,9 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         DESCRIPTION
             "This group is composed of notifications related to firmware
             information."
-        ::= { cDeviceInfoGroups 8 }
+        ::= { cFirmwareInfoGroups 2 }
 
     END
-~~~~
 
 Key Management Info
 -------------------
