@@ -1482,6 +1482,7 @@ Firmware Info
         ::= { cFirmwareInfoGroups 2 }
 
     END
+~~~~
 
 Key Management Info
 -------------------
