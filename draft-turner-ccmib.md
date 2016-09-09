@@ -71,7 +71,6 @@ informative:
   RFC1907:
   RFC3410:
   RFC4303:
-  RFC5225:
 
 --- abstract
 
@@ -415,58 +414,6 @@ This MIB module makes reference to following documents: {{cc-fh}}, {{RFC2578}}, 
             regards to a filter or rule, this means that any port number
             satisfies the filter or rule."
         SYNTAX       Unsigned32 (0..65535)
-
-    ROHCCompressionProfiles ::= TEXTUAL-CONVENTION
-        STATUS      current
-        DESCRIPTION
-            "A 16-bit field that conveys the compression profiles the
-            local or peer decompressor supports. Only ROHCv2 compression
-            profiles are used and they are defined using the following
-            bit setting scheme shown below. Note that the bit setting
-            scheme does not correspond to the compression profile values
-            defined in RFC 5225. It is purely used in the MIB to convey
-            the compression profiles the local or peer decompressor
-            supports.
-
-                 (0)     compressionProfile1: IP/UDP/RTP
-                 (1)     compressionProfile2: IP/UDP
-                 (2)     compressionProfile3: IP/ESP
-                 (3)     compressionProfile4: IP
-                 (4)     compressionProfile5: IP/UDP-Lite/RTP
-                 (5)     compressionProfile6: IP/UDP-Lite
-                 (6-15)  RESERVED"
-
-        SYNTAX    BITS { compressionProfile1(0), compressionProfile2(1),
-                         compressionProfile3(2), compressionProfile4(3),
-                         compressionProfile5(4), compressionProfile6(5) }
-
-    ROHCModes ::= TEXTUAL-CONVENTION
-        STATUS          current
-        DESCRIPTION
-            "An indication of whether RObust Header Compression (ROHC)
-            will be used in a Generic INE Secure Connection and how it
-            is being used. This textual convention is only applicable to
-            dynamic Secure Connections, where negotiation is required
-            for establishment.
-
-            [noROHC] = ROHC will not be used
-            [useROHCWithoutFeedback] = ROHC will be used and feedback
-                will not be sent on the Secure Connection
-            [useROHCWithFeedback] = ROHC will be used and feedback will
-                be sent on the Secure Connection
-            [rohcAcceptableWithoutFeedback] = ROHC will not be signaled
-                for use by this device as an initiator of the Secure
-                Connection; feedback will also not be sent on the Secure
-                Connection.
-            [rohcAcceptableWithFeedback] = ROHC will not be signaled for
-                use by this device as an initiator of the Secure
-                Connection; feedback will be sent on the Secure
-                Connection."
-        SYNTAX     INTEGER { noROHC(1), useROHCWithoutFeedback(2),
-                             useROHCWithFeedback(3),
-                             rohcAcceptableWithoutFeedback(4),
-                             rohcAcceptableWithFeedback(5) }
-
 
     KeyFingerprint ::= TEXTUAL-CONVENTION
         DISPLAY-HINT "1x:1x"
