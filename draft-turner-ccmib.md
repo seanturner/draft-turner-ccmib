@@ -82,6 +82,10 @@ This document defines a portion of the Management Information Base (MIB) for use
 Introduction
 ============
 
+RFC EDITOR: PLEASE REMOVE THE FOLLOWING PARAGRAPH PRIOR TO PUBLICATION
+
+The source for this draft is maintained in GitHub. Suggested changes should be submitted as pull requests at https://github.com/seanturner/draft-turner-ccmib. Instructions are on that page as well. Editorial changes can be managed in GitHub. 
+
 This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.
 
 Terminology
@@ -104,7 +108,7 @@ Structure of the MIB module
 Definition of the CC MIB module
 ===============================
 
-CC Assignments  [assign]
+CC Assignments {#cc-assign}
 --------------
 
 This MIB module makes reference to the following document: {{RFC2578}}.
@@ -187,7 +191,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
 
     IMPORTS
         ccAssignmentsMIB
-            FROM CC-ASSIGNMENTS-MIB                     -- FROM [assign]
+            FROM CC-ASSIGNMENTS-MIB                     -- FROM {{cc-assign}}
         MODULE-IDENTITY
             FROM SNMPv2-SMI;                            -- FROM RFC 2578
 
@@ -223,8 +227,9 @@ This MIB module makes reference to the following document: {{RFC2578}}.
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB features in hierarchical MIB
+            tree assignments.  It acts as a reservation mechanism for
+            other MIB sets to be anchored below it.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -494,8 +499,8 @@ This MIB module makes reference to following documents: {{cc-fh}}, {{RFC2578}}, 
     END
 ~~~~
 
-CC Device Info
---------------
+CC Device Information
+---------------------
 
 This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC1907}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
 
@@ -519,6 +524,9 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -547,8 +555,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Device Information objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -569,7 +576,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         ::= { ccDeviceInfo 1 }
 
     -- *****************************************************************
-    -- Device Info Information Segments
+    -- Device Information Segments
     -- *****************************************************************
 
     cDeviceInfoConformance  OBJECT IDENTIFIER
@@ -586,7 +593,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         ::= { ccDeviceInfoMIB 6}
 
     -- *****************************************************************
-    -- General Device Info Scalars
+    -- General Device Information Scalars
     -- *****************************************************************
 
     cSystemDate  OBJECT-TYPE
@@ -740,7 +747,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         ::= { cDeviceInfoScalars 12 }
 
     -- *****************************************************************
-    -- Device Info Notifications
+    -- Device Information Notifications
     -- *****************************************************************
 
     cFirmwareInstallFailed  NOTIFICATION-TYPE
@@ -1393,8 +1400,8 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
     END
 ~~~~
 
-Key Management Info
--------------------
+Key Management Information
+--------------------------
 
 This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{RFC5280}}, {{RFC5914}}, {{RFC6030}}, and {{RFC6353}}.
 
@@ -1420,6 +1427,9 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             FROM SNMP-TLS-TM-MIB;                      -- FROM RFC 6353
 
     ccKeyManagementMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -1448,8 +1458,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Managment objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -1501,7 +1510,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
         ::= { ccKeyManagementMIB 13 }
 
     -- *****************************************************************
-    -- Key Management Scalars
+    -- Key Management Information Scalars
     -- *****************************************************************
 
     cZeroizeAllKeys  OBJECT-TYPE
@@ -2449,7 +2458,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
         MAX-ACCESS read-create
         STATUS     current
         DESCRIPTION
-            "Setting this object to 'true' imitates a rekey operation
+            "Setting this object to 'true' initates a rekey operation
             for the asymmetric key material. Note, additional
             configurations will likely be required based on the
             supported key management protocol.
@@ -4020,7 +4029,7 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
-            ROM SNMPv2-CONF                            -- FROM RFC 2580
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         Counter64, MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -4031,6 +4040,9 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -4059,8 +4071,7 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Transfer Pull objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -4182,7 +4193,7 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
             value except 'discard' (which will cancel the current
             download).
 
-            If the CDML download succeeded, the cCDMLDeliveryStatusvalue
+            If the CDML download succeeded, the cCDMLDeliveryStatus value
             remains inProgress and the device attempts to parse the
             download immediately. During the parsing of the CDML, all
             new values will return inconsistentValue error (i.e. the
@@ -4781,6 +4792,9 @@ This MIB module makes reference to following documents: {{RFC2571}}, {{RFC2578}}
             FROM SNMPv2-CONF;                          -- FROM RFC 2580
 
     ccKeyTransferPushMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -4809,8 +4823,7 @@ This MIB module makes reference to following documents: {{RFC2571}}, {{RFC2578}}
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Transfer Push object.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5408,7 +5421,7 @@ Security Policy Information
 
 This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
 
-    ~~~~
+~~~~
     CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
@@ -5431,6 +5444,9 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccSecurePolicyInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -5459,8 +5475,8 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Security Policy Information
+            objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5754,6 +5770,9 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
     ccSecureConnectionInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -5782,8 +5801,8 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Secure Connection Information
+            objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -6105,10 +6124,10 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
     END
 ~~~~
 
-IANA Considerations  {#IANA}
+IANA Considerations  {#iana}
 ===================
 
-Security Considerations  {#Security}
+Security Considerations  {#security}
 =======================
 
 SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.
