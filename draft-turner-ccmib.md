@@ -271,7 +271,7 @@ This MIB module makes reference to following documents: {{cc-fh}}, {{RFC2578}}, 
     IMPORTS
         ccTextualConventions
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-        MODULE-IDENTITY, Integer32, Unsigned32
+        MODULE-IDENTITY, Unsigned32
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         TEXTUAL-CONVENTION
             FROM SNMPv2-TC;                            -- FROM RFC 2579
@@ -506,14 +506,12 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
-        OBJECT-TYPE, Unsigned32, Integer32,
-        NOTIFICATION-TYPE, Counter64, MODULE-IDENTITY,
-        TimeTicks
+        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
+        MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime, TruthValue,
-        TEXTUAL-CONVENTION, TimeStamp
+        DateAndTime, TruthValue, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
@@ -1209,15 +1207,14 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
 
     IMPORTS
         ccKeyManagement
-
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime,
-        TruthValue,TEXTUAL-CONVENTION, TimeStamp
+        TruthValue, TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
@@ -3828,12 +3825,12 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
         NOTIFICATION-GROUP
             ROM SNMPv2-CONF                            -- FROM RFC 2580
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
@@ -5221,19 +5218,15 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
         ccSecurePolicyInfo
 
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-        IPAddressType, IPAddress, PortNumber,
-        ROHCModes
-            FROM CC-TEXTUAL-CONVENTIONS-MIB            -- FROM {{cc-txt}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        RowStatus, DateAndTime, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccSecurePolicyInfoMIB  MODULE-IDENTITY
@@ -5544,19 +5537,15 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
     IMPORTS
         ccSecureConnectionInfo
             FROM CC-FEATURE-HIERARCHY-MIB             -- FROM {{cc-fh}}
-        IPAddressType, IPAddress, PortNumber,
-        ROHCCompressionProfiles
-            FROM CC-TEXTUAL-CONVENTIONS-MIB           -- FROM {{cc-txt}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                           -- FROM RFC 2578
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                          -- FROM RFC 2580
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        RowStatus, DateAndTime, TimeStamp
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
     ccSecureConnectionInfoMIB  MODULE-IDENTITY
