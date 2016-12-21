@@ -71,7 +71,6 @@ informative:
   RFC1907:
   RFC3410:
   RFC4303:
-  RFC5225:
 
 --- abstract
 
@@ -81,6 +80,10 @@ This document defines a portion of the Management Information Base (MIB) for use
 
 Introduction
 ============
+
+RFC EDITOR: PLEASE REMOVE THE FOLLOWING PARAGRAPH PRIOR TO PUBLICATION
+
+The source for this draft is maintained in GitHub. Suggested changes should be submitted as pull requests at https://github.com/seanturner/draft-turner-ccmib. Instructions are on that page as well. Editorial changes can be managed in GitHub. 
 
 This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.
 
@@ -94,9 +97,7 @@ The Internet-Standard Management Framework
 
 For a detailed overview of the documents that describe the current Internet-Standard Management Framework, please refer to section 7 of {{RFC3410}}.
 
-Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
-
-As with all MIB modules, an attempt to SET or CREATE an object to value that is not supported by the implementation will result in a failure using a return code that indicates that the value is not supported.
+Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in RFC 2578 {{RFC2578}}, STD 58, RFC 2579 {{RFC2579}}, and STD 58, RFC 2580 {{RFC2580}}.
 
 Structure of the MIB module
 ===========================
@@ -104,7 +105,7 @@ Structure of the MIB module
 Definition of the CC MIB module
 ===============================
 
-CC Assignments  [assign]
+CC Assignments {#cc-assign}
 --------------
 
 This MIB module makes reference to the following document: {{RFC2578}}.
@@ -187,7 +188,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
 
     IMPORTS
         ccAssignmentsMIB
-            FROM CC-ASSIGNMENTS-MIB                     -- FROM [assign]
+            FROM CC-ASSIGNMENTS-MIB                     -- FROM {{cc-assign}}
         MODULE-IDENTITY
             FROM SNMPv2-SMI;                            -- FROM RFC 2578
 
@@ -223,8 +224,9 @@ This MIB module makes reference to the following document: {{RFC2578}}.
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB features in hierarchical MIB
+            tree assignments.  It acts as a reservation mechanism for
+            other MIB sets to be anchored below it.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -263,6 +265,104 @@ This MIB module makes reference to the following document: {{RFC2578}}.
 CC Device Info
 --------------
 
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+        ::= { ccTextualConventions 1 }
+
+    -- *****************************************************************
+    -- IP Address Textual Conventions
+    -- *****************************************************************
+
+    IPAddressType ::= TEXTUAL-CONVENTION
+        STATUS      current
+        DESCRIPTION
+            "A value that represents a type of Internet address.
+            ipv4(1)     An IPv4 address as defined by the
+                        IPv4Address textual convention.
+
+            ipv6(2)     An IPv6 address as defined by the
+                        IPv6Address textual convention.
+
+            Implementations must ensure that IPAddressType objects
+            and any dependent objects (e.g. IPv4Address and IPv6Address
+            objects) are consistent. An inconsistentValue error must
+            be generated if an attempt to change an IPv4Address or
+            IPv6Address object would, for example, lead to an undefined
+            value. IPAddressType/IPv4Address and
+            IPAddressType/IPv6Address pairs must be changed together if
+            IPAddressType changes."
+        SYNTAX      INTEGER { ipv4(1), ipv6(2) }
+
+    IPAddress ::= TEXTUAL-CONVENTION
+        STATUS      current
+        DESCRIPTION
+            "Denotes a generic Internet address that is either IPv4 or
+            IPv6.
+
+            Every usage of the IPAddress textual convention is required
+            to specify the IPAddressType object which provides the
+            context. It is suggested that the IPAddressType object is
+            logically registered before the object(s) which use the
+            IPAddress textual convention if they appear in the same
+            logical row.
+
+            The value of an IPAddress object must always be consistent
+            with the value of the associated IPAddressType object.
+            Attempts to set an IPAddress object to a value which is
+            inconsistent with the associated IPAddressType must
+            fail with an inconsistentValue error.
+
+            See the IPv4Address and IPv6Address textual conventions for
+            more details."
+        SYNTAX       OCTET STRING (SIZE(4|16))
+
+    IPv4Address ::= TEXTUAL-CONVENTION
+        DISPLAY-HINT "1d.1d.1d.1d"
+        STATUS       current
+        DESCRIPTION
+            "Represents an IPv4 network address:
+
+               octets   contents         encoding
+                1-4     IPv4 address     network-byte order
+
+             The corresponding IPAddressType value is ipv4(1)."
+        SYNTAX       OCTET STRING (SIZE(4))
+
+    IPv6Address ::= TEXTUAL-CONVENTION
+        DISPLAY-HINT "2x:2x:2x:2x:2x:2x:2x:2x"
+        STATUS       current
+        DESCRIPTION
+            "Represents an IPv6 network address:
+
+               octets   contents         encoding
+                1-16    IPv6 address     network-byte order
+
+            The corresponding InetAddressType value is ipv6(2)."
+        SYNTAX      OCTET STRING (SIZE(16))
+
+    PortNumber ::= TEXTUAL-CONVENTION
+        DISPLAY-HINT "d"
+        STATUS       current
+        DESCRIPTION
+            "Represents a 16 bit port number of an Internet transport
+            layer protocol. Port numbers are assigned by IANA. A current
+            list of all assignments is available from
+            <http://www.iana.org/>.
+
+            The value zero represents the ANY (wildcard) value. In
+            regards to a filter or rule, this means that any port number
+            satisfies the filter or rule."
+        SYNTAX       Unsigned32 (0..65535)
+
+    KeyFingerprint ::= TEXTUAL-CONVENTION
+        DISPLAY-HINT "1x:1x"
+        STATUS       current
+        DESCRIPTION
+           "A fingerprint value that can be used to uniquely reference
+           key materials of potentially arbitrary length.
+
 This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC1907}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
 
 ~~~~
@@ -274,17 +374,18 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
-        OBJECT-TYPE, Unsigned32, Integer32,
-        NOTIFICATION-TYPE, Counter64, MODULE-IDENTITY,
-        TimeTicks
+        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
+        MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime, TruthValue,
-        TEXTUAL-CONVENTION, TimeStamp
+        DateAndTime, TruthValue, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -313,8 +414,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Device Information objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -335,15 +435,13 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         ::= { ccDeviceInfo 1 }
 
     -- *****************************************************************
-    -- Device Info Information Segments
+    -- Device Information Segments
     -- *****************************************************************
 
     cDeviceInfoConformance  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 1}
     cDeviceComponentVersInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 2}
-    cBatteryInfo  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 3}
     cFirmwareInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 4}
     cDeviceInfoScalars  OBJECT IDENTIFIER
@@ -352,7 +450,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         ::= { ccDeviceInfoMIB 6}
 
     -- *****************************************************************
-    -- General Device Info Scalars
+    -- General Device Information Scalars
     -- *****************************************************************
 
     cSystemDate  OBJECT-TYPE
@@ -506,7 +604,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         ::= { cDeviceInfoScalars 12 }
 
     -- *****************************************************************
-    -- Device Info Notifications
+    -- Device Information Notifications
     -- *****************************************************************
 
     cFirmwareInstallFailed  NOTIFICATION-TYPE
@@ -556,45 +654,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             notification should be sent before the device performs any
             operations (such as shutting down interfaces, etc.)"
         ::= { cDeviceInfoNotify 5 }
-
-    cBatteryLow  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus,
-                        cBatteryLowThreshold
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a battery has reached the threshold at which a
-            battery warning is indicated."
-        ::= { cDeviceInfoNotify 6 }
-
-    cBatteryRequiresReplacement  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a battery should be charged or changed
-            immediately."
-        ::= { cDeviceInfoNotify 7 }
-
-    cDeviceOnBattery  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating the device is on battery power. This notification
-            is sent when the device is no longer connected to an
-            external power source and is operating using a battery for
-            main power."
-        ::= { cDeviceInfoNotify 8 }
 
     cDeviceComponentDisabled  NOTIFICATION-TYPE
         OBJECTS     {
@@ -739,114 +798,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             changing this object certain rows. In this event, the agent
             should return an inconsistentValue error."
         ::= { cDeviceComponentVersEntry 4 }
-
-    -- *****************************************************************
-    -- CC MIB cBatteryInfoTable
-    -- *****************************************************************
-
-    cBatteryInfoTableCount  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The number of rows in the cBatteryInfoTable."
-        ::= { cBatteryInfo 1 }
-
-    cBatteryInfoTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The last time any entry in the table was modified, created,
-            or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
-            that no changes to configuration of this table have happened
-            since the last time it examined the table. A value of 0
-            indicates that no entry CC-DEVICE-INFO-MIB cSystemUpTime
-            should be used to populate this column."
-        ::= { cBatteryInfo 2 }
-
-    cBatteryInfoTable  OBJECT-TYPE
-        SYNTAX      SEQUENCE OF CBatteryInfoEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "The table containing information on each of the batteries
-            installed in the device."
-        ::= { cBatteryInfo 3 }
-
-    cBatteryInfoEntry  OBJECT-TYPE
-        SYNTAX      CBatteryInfoEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A row continuing information on a specific battery. If a
-            device cannot return status of a battery it should not
-            create a row in this table for that battery."
-        INDEX      { cBatteryIndex }
-        ::= { cBatteryInfoTable 1 }
-    
-    CBatteryInfoEntry  ::= SEQUENCE {
-        cBatteryIndex           Unsigned32,
-        cBatteryType            INTEGER,
-        cBatteryOpStatus        INTEGER,
-        cBatteryLowThreshold    Integer32
-    }
-
-    cBatteryIndex  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A numerical index used to identify the battery. This value
-            uniquely identifies a battery on this device. The value
-            should be persistent for a given battery, but management
-            stations should not depend on it as it may not be possible
-            for some devices to retain identical indexes (especially
-            across reboots)."
-        ::= { cBatteryInfoEntry 1 }
-
-    cBatteryType  OBJECT-TYPE
-        SYNTAX      INTEGER { other(1), main(2), clock(3), security(4) }
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The type of battery. Other(1) describes a battery which is
-            not otherwise defined here. Main(2) batteries are used for
-            operation of the device when not connected to a power
-            source. Clock(3) is used to describe batteries which cannot
-            provide main power to the device but maintain clock or other
-            persistent data. Security(4) is used for batteries which
-            perform specific security functions or which may render the
-            device inoperable when the battery is depleted. If a battery
-            is used for both clock and security, Security should be
-            returned."
-        ::= { cBatteryInfoEntry 2 }
-
-    cBatteryOpStatus  OBJECT-TYPE
-        SYNTAX      INTEGER { unknown(1), batteryNormal(2),
-                              batteryLow(3), batteryDepleted(4),
-                              batteryMissing(5) }
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "Indication of the status of the battery."
-        ::= {cBatteryInfoEntry 3}
-
-    cBatteryLowThreshold  OBJECT-TYPE
-        SYNTAX      Integer32 (0..100)
-        MAX-ACCESS  read-write
-        STATUS      current
-        DESCRIPTION
-            "The percentage of capacity at which the cBatteryLow
-            notification will be generated. A value of zero indicates
-            that the notification should never be sent for this battery.
-            This object should not be implemented if the device will
-            detect a low battery, but the actual percentage is not
-            measurable. This object only needs be writable for
-            implementations that support modification of the warning
-            level percentage."
-        ::= { cBatteryInfoEntry 4 }
 
     -- *****************************************************************
     -- CC MIB cFirmwareInformationTable
@@ -1015,23 +966,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             "This notification group is optional for implementation."
         ::= { cDeviceInfoCompliances 2 }
 
-    cDeviceInfoBatteryCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for battery information."
-        MODULE
-        MANDATORY-GROUPS { cDeviceInfoBatteryGroup }
-    
-        GROUP cDeviceInfoBatteryNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-    
-        OBJECT cBatteryLowThreshold
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-        ::= { cDeviceInfoCompliances 3 }
-
     cDeviceInfoFirmwareCompliance MODULE-COMPLIANCE
         STATUS    current
         DESCRIPTION
@@ -1079,20 +1013,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             information."
         ::= { cDeviceInfoGroups 2 }
 
-    cDeviceInfoBatteryGroup OBJECT-GROUP
-        OBJECTS {
-                    cBatteryInfoTableCount,
-                    cBatteryInfoTableLastChanged,
-                    cBatteryType,
-                    cBatteryOpStatus,
-                    cBatteryLowThreshold
-                }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of objects related to battery
-            information."
-        ::= { cDeviceInfoGroups 3 }
-
     cDeviceInfoFirmwareGroup OBJECT-GROUP
         OBJECTS {
                     cFirmwareInformationTableCount,
@@ -1133,18 +1053,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             component information."
         ::= { cDeviceInfoGroups 6 }
 
-    cDeviceInfoBatteryNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
-                        cBatteryLow,
-                        cBatteryRequiresReplacement,
-                        cDeviceOnBattery
-                      }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of notifications related to battery
-            information."
-        ::= { cDeviceInfoGroups 7 }
-
     cDeviceInfoFirmwareNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cFirmwareInstallFailed,
@@ -1159,8 +1067,8 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
     END
 ~~~~
 
-Key Management Info
--------------------
+Key Management Information
+--------------------------
 
 This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{RFC5280}}, {{RFC5914}}, {{RFC6030}}, and {{RFC6353}}.
 
@@ -1169,15 +1077,14 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
 
     IMPORTS
         ccKeyManagement
-
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime,
-        TruthValue,TEXTUAL-CONVENTION, TimeStamp
+        TruthValue, TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
@@ -1186,6 +1093,9 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             FROM SNMP-TLS-TM-MIB;                      -- FROM RFC 6353
 
     ccKeyManagementMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -1214,8 +1124,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Managment objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -1267,7 +1176,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
         ::= { ccKeyManagementMIB 13 }
 
     -- *****************************************************************
-    -- Key Management Scalars
+    -- Key Management Information Scalars
     -- *****************************************************************
 
     cZeroizeAllKeys  OBJECT-TYPE
@@ -2215,7 +2124,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
         MAX-ACCESS read-create
         STATUS     current
         DESCRIPTION
-            "Setting this object to 'true' imitates a rekey operation
+            "Setting this object to 'true' initates a rekey operation
             for the asymmetric key material. Note, additional
             configurations will likely be required based on the
             supported key management protocol.
@@ -3786,17 +3695,20 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
-            ROM SNMPv2-CONF                            -- FROM RFC 2580
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -3825,8 +3737,7 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Transfer Pull objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -3948,7 +3859,7 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
             value except 'discard' (which will cancel the current
             download).
 
-            If the CDML download succeeded, the cCDMLDeliveryStatusvalue
+            If the CDML download succeeded, the cCDMLDeliveryStatus value
             remains inProgress and the device attempts to parse the
             download immediately. During the parsing of the CDML, all
             new values will return inconsistentValue error (i.e. the
@@ -4547,6 +4458,9 @@ This MIB module makes reference to following documents: {{RFC2571}}, {{RFC2578}}
             FROM SNMPv2-CONF;                          -- FROM RFC 2580
 
     ccKeyTransferPushMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -4575,8 +4489,7 @@ This MIB module makes reference to following documents: {{RFC2571}}, {{RFC2578}}
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Transfer Push object.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5174,29 +5087,28 @@ Security Policy Information
 
 This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
 
-    ~~~~
+~~~~
     CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
         ccSecurePolicyInfo
 
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-        IPAddressType, IPAddress, PortNumber,
-        ROHCModes
-            FROM CC-TEXTUAL-CONVENTIONS-MIB            -- FROM {{cc-txt}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        RowStatus, DateAndTime, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccSecurePolicyInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -5225,8 +5137,8 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Security Policy Information
+            objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5504,22 +5416,21 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
     IMPORTS
         ccSecureConnectionInfo
             FROM CC-FEATURE-HIERARCHY-MIB             -- FROM {{cc-fh}}
-        IPAddressType, IPAddress, PortNumber,
-        ROHCCompressionProfiles
-            FROM CC-TEXTUAL-CONVENTIONS-MIB           -- FROM {{cc-txt}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                           -- FROM RFC 2578
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                          -- FROM RFC 2580
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        RowStatus, DateAndTime, TimeStamp
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
     ccSecureConnectionInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -5548,8 +5459,8 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Secure Connection Information
+            objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5871,10 +5782,10 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
     END
 ~~~~
 
-IANA Considerations  {#IANA}
+IANA Considerations  {#iana}
 ===================
 
-Security Considerations  {#Security}
+Security Considerations  {#security}
 =======================
 
 SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.
