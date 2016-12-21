@@ -246,8 +246,6 @@ This MIB module makes reference to the following document: {{RFC2578}}.
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccAssignmentsMIB 1 }
 
-    ccTextualConventions  OBJECT IDENTIFIER
-        ::= { ccFeatureHierarchyMIB 1 }
     ccDeviceInfo  OBJECT IDENTIFIER
         ::= { ccFeatureHierarchyMIB 2 }
     ccKeyManagement  OBJECT IDENTIFIER
@@ -264,69 +262,9 @@ This MIB module makes reference to the following document: {{RFC2578}}.
     END
 ~~~~
 
-CC Textual Conventions {#cc-txt}
-----------------------
+CC Device Info
+--------------
 
-This MIB module makes reference to following documents: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC5225}}, and {{RFC5246}}.
-
-~~~~
-    CC-TEXTUAL-CONVENTIONS-MIB  DEFINITIONS  ::= BEGIN
-
-    IMPORTS
-        ccTextualConventions
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-        MODULE-IDENTITY, Unsigned32
-            FROM SNMPv2-SMI                            -- FROM RFC 2578
-        TEXTUAL-CONVENTION
-            FROM SNMPv2-TC;                            -- FROM RFC 2579
-
-    ccTextualConventionMIB MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
-        CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
-        DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
-
-            Copyright (c) 2016 IETF Trust and the persons
-            identified as authors of the code.  All rights reserved.
-
-            Redistribution and use in source and binary forms, with
-            or without modification, is permitted pursuant to, and
-            subject to the license terms contained in, the Simplified
-            BSD License set forth in Section 4.c of the IETF Trust's
-            Legal Provisions Relating to IETF Documents
-            (http://trustee.ietf.org/license-info).
-
-            This version of this MIB module is part of RFC xxxx;
-            see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
         DESCRIPTION   "Initial Version. Published as RFC xxxx."
@@ -424,28 +362,6 @@ This MIB module makes reference to following documents: {{cc-fh}}, {{RFC2578}}, 
         DESCRIPTION
            "A fingerprint value that can be used to uniquely reference
            key materials of potentially arbitrary length.
-
-           A KeyFingerprint value is composed of a 1-octet hashing
-           algorithm identifier followed by the fingerprint value. The
-           octet value encoded is taken from the IANA TLS HashAlgorithm
-           Registry RFC 5246. The remaining 19 octets are filled using
-           the results of the hashing algorithm on the raw key material
-           and inherent tagging information, truncated to 19 octets.
-           With public key certificates, for example, a hash of the
-           entire structure truncated to 19 octets is used.
-
-           If no tagging information is available, the text 'NO_TAG'
-           (without quotes) will be used as input."
-        REFERENCE "RFC 5246: The Transport Layer
-                   Security (TLS) Protocol Version 1.2
-                   http://www.iana.org/assignments/tls-parameters/"
-        SYNTAX OCTET STRING (SIZE(20))
-
-    END
-~~~~
-
-CC Device Information
----------------------
 
 This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC1907}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
 
