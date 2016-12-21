@@ -574,8 +574,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         ::= { ccDeviceInfoMIB 1}
     cDeviceComponentVersInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 2}
-    cBatteryInfo  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 3}
     cFirmwareInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 4}
     cDeviceInfoScalars  OBJECT IDENTIFIER
@@ -789,45 +787,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             operations (such as shutting down interfaces, etc.)"
         ::= { cDeviceInfoNotify 5 }
 
-    cBatteryLow  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus,
-                        cBatteryLowThreshold
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a battery has reached the threshold at which a
-            battery warning is indicated."
-        ::= { cDeviceInfoNotify 6 }
-
-    cBatteryRequiresReplacement  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a battery should be charged or changed
-            immediately."
-        ::= { cDeviceInfoNotify 7 }
-
-    cDeviceOnBattery  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating the device is on battery power. This notification
-            is sent when the device is no longer connected to an
-            external power source and is operating using a battery for
-            main power."
-        ::= { cDeviceInfoNotify 8 }
-
     cDeviceComponentDisabled  NOTIFICATION-TYPE
         OBJECTS     {
                         cDeviceComponentName,
@@ -971,114 +930,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             changing this object certain rows. In this event, the agent
             should return an inconsistentValue error."
         ::= { cDeviceComponentVersEntry 4 }
-
-    -- *****************************************************************
-    -- CC MIB cBatteryInfoTable
-    -- *****************************************************************
-
-    cBatteryInfoTableCount  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The number of rows in the cBatteryInfoTable."
-        ::= { cBatteryInfo 1 }
-
-    cBatteryInfoTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The last time any entry in the table was modified, created,
-            or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
-            that no changes to configuration of this table have happened
-            since the last time it examined the table. A value of 0
-            indicates that no entry CC-DEVICE-INFO-MIB cSystemUpTime
-            should be used to populate this column."
-        ::= { cBatteryInfo 2 }
-
-    cBatteryInfoTable  OBJECT-TYPE
-        SYNTAX      SEQUENCE OF CBatteryInfoEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "The table containing information on each of the batteries
-            installed in the device."
-        ::= { cBatteryInfo 3 }
-
-    cBatteryInfoEntry  OBJECT-TYPE
-        SYNTAX      CBatteryInfoEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A row continuing information on a specific battery. If a
-            device cannot return status of a battery it should not
-            create a row in this table for that battery."
-        INDEX      { cBatteryIndex }
-        ::= { cBatteryInfoTable 1 }
-    
-    CBatteryInfoEntry  ::= SEQUENCE {
-        cBatteryIndex           Unsigned32,
-        cBatteryType            INTEGER,
-        cBatteryOpStatus        INTEGER,
-        cBatteryLowThreshold    Integer32
-    }
-
-    cBatteryIndex  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A numerical index used to identify the battery. This value
-            uniquely identifies a battery on this device. The value
-            should be persistent for a given battery, but management
-            stations should not depend on it as it may not be possible
-            for some devices to retain identical indexes (especially
-            across reboots)."
-        ::= { cBatteryInfoEntry 1 }
-
-    cBatteryType  OBJECT-TYPE
-        SYNTAX      INTEGER { other(1), main(2), clock(3), security(4) }
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The type of battery. Other(1) describes a battery which is
-            not otherwise defined here. Main(2) batteries are used for
-            operation of the device when not connected to a power
-            source. Clock(3) is used to describe batteries which cannot
-            provide main power to the device but maintain clock or other
-            persistent data. Security(4) is used for batteries which
-            perform specific security functions or which may render the
-            device inoperable when the battery is depleted. If a battery
-            is used for both clock and security, Security should be
-            returned."
-        ::= { cBatteryInfoEntry 2 }
-
-    cBatteryOpStatus  OBJECT-TYPE
-        SYNTAX      INTEGER { unknown(1), batteryNormal(2),
-                              batteryLow(3), batteryDepleted(4),
-                              batteryMissing(5) }
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "Indication of the status of the battery."
-        ::= {cBatteryInfoEntry 3}
-
-    cBatteryLowThreshold  OBJECT-TYPE
-        SYNTAX      Integer32 (0..100)
-        MAX-ACCESS  read-write
-        STATUS      current
-        DESCRIPTION
-            "The percentage of capacity at which the cBatteryLow
-            notification will be generated. A value of zero indicates
-            that the notification should never be sent for this battery.
-            This object should not be implemented if the device will
-            detect a low battery, but the actual percentage is not
-            measurable. This object only needs be writable for
-            implementations that support modification of the warning
-            level percentage."
-        ::= { cBatteryInfoEntry 4 }
 
     -- *****************************************************************
     -- CC MIB cFirmwareInformationTable
@@ -1247,23 +1098,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             "This notification group is optional for implementation."
         ::= { cDeviceInfoCompliances 2 }
 
-    cDeviceInfoBatteryCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for battery information."
-        MODULE
-        MANDATORY-GROUPS { cDeviceInfoBatteryGroup }
-    
-        GROUP cDeviceInfoBatteryNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-    
-        OBJECT cBatteryLowThreshold
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-        ::= { cDeviceInfoCompliances 3 }
-
     cDeviceInfoFirmwareCompliance MODULE-COMPLIANCE
         STATUS    current
         DESCRIPTION
@@ -1311,20 +1145,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             information."
         ::= { cDeviceInfoGroups 2 }
 
-    cDeviceInfoBatteryGroup OBJECT-GROUP
-        OBJECTS {
-                    cBatteryInfoTableCount,
-                    cBatteryInfoTableLastChanged,
-                    cBatteryType,
-                    cBatteryOpStatus,
-                    cBatteryLowThreshold
-                }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of objects related to battery
-            information."
-        ::= { cDeviceInfoGroups 3 }
-
     cDeviceInfoFirmwareGroup OBJECT-GROUP
         OBJECTS {
                     cFirmwareInformationTableCount,
@@ -1364,18 +1184,6 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
             "This group is composed of notifications related to
             component information."
         ::= { cDeviceInfoGroups 6 }
-
-    cDeviceInfoBatteryNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
-                        cBatteryLow,
-                        cBatteryRequiresReplacement,
-                        cDeviceOnBattery
-                      }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of notifications related to battery
-            information."
-        ::= { cDeviceInfoGroups 7 }
 
     cDeviceInfoFirmwareNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
