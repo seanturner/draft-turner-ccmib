@@ -94,9 +94,7 @@ The Internet-Standard Management Framework
 
 For a detailed overview of the documents that describe the current Internet-Standard Management Framework, please refer to section 7 of {{RFC3410}}.
 
-Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
-
-As with all MIB modules, an attempt to SET or CREATE an object to value that is not supported by the implementation will result in a failure using a return code that indicates that the value is not supported.
+Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in RFC 2578 {{RFC2578}}, STD 58, RFC 2579 {{RFC2579}}, and STD 58, RFC 2580 {{RFC2580}}.
 
 Structure of the MIB module
 ===========================
