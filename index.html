@@ -273,15 +273,14 @@ li, p {
 <link href="#rfc.section.3" rel="Chapter" title="3 The Internet-Standard Management Framework"/>
 <link href="#rfc.section.4" rel="Chapter" title="4 Structure of the MIB module"/>
 <link href="#rfc.section.5" rel="Chapter" title="5 Definition of the CC MIB module"/>
-<link href="#rfc.section.5.1" rel="Chapter" title="5.1 CC Assignments  [assign]"/>
+<link href="#rfc.section.5.1" rel="Chapter" title="5.1 CC Assignments"/>
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 CC Feature Hierarchy"/>
-<link href="#rfc.section.5.3" rel="Chapter" title="5.3 CC Textual Conventions"/>
-<link href="#rfc.section.5.4" rel="Chapter" title="5.4 CC Device Info"/>
-<link href="#rfc.section.5.5" rel="Chapter" title="5.5 Key Management Info"/>
-<link href="#rfc.section.5.6" rel="Chapter" title="5.6 Key Transfer Pull"/>
-<link href="#rfc.section.5.7" rel="Chapter" title="5.7 Key Transfer Push"/>
-<link href="#rfc.section.5.8" rel="Chapter" title="5.8 Security Policy Information"/>
-<link href="#rfc.section.5.9" rel="Chapter" title="5.9 Secure Connection Information"/>
+<link href="#rfc.section.5.3" rel="Chapter" title="5.3 CC Device Info"/>
+<link href="#rfc.section.5.4" rel="Chapter" title="5.4 Key Management Information"/>
+<link href="#rfc.section.5.5" rel="Chapter" title="5.5 Key Transfer Pull"/>
+<link href="#rfc.section.5.6" rel="Chapter" title="5.6 Key Transfer Push"/>
+<link href="#rfc.section.5.7" rel="Chapter" title="5.7 Security Policy Information"/>
+<link href="#rfc.section.5.8" rel="Chapter" title="5.8 Secure Connection Information"/>
 <link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations"/>
 <link href="#rfc.references" rel="Chapter" title="8 References"/>
@@ -290,7 +289,7 @@ li, p {
 <link href="#rfc.authors" rel="Chapter"/>
 
 
-  <meta name="generator" content="xml2rfc version 2.5.1 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.5.2 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Azoum, S., Jones, E., Sun, L., Irani, M., Sun, J., Purvis, R., and S. Turner" />
@@ -389,15 +388,14 @@ li, p {
 <li>3.   <a href="#rfc.section.3">The Internet-Standard Management Framework</a></li>
 <li>4.   <a href="#rfc.section.4">Structure of the MIB module</a></li>
 <li>5.   <a href="#rfc.section.5">Definition of the CC MIB module</a></li>
-<ul><li>5.1.   <a href="#rfc.section.5.1">CC Assignments  [assign]</a></li>
+<ul><li>5.1.   <a href="#rfc.section.5.1">CC Assignments</a></li>
 <li>5.2.   <a href="#rfc.section.5.2">CC Feature Hierarchy</a></li>
-<li>5.3.   <a href="#rfc.section.5.3">CC Textual Conventions</a></li>
-<li>5.4.   <a href="#rfc.section.5.4">CC Device Info</a></li>
-<li>5.5.   <a href="#rfc.section.5.5">Key Management Info</a></li>
-<li>5.6.   <a href="#rfc.section.5.6">Key Transfer Pull</a></li>
-<li>5.7.   <a href="#rfc.section.5.7">Key Transfer Push</a></li>
-<li>5.8.   <a href="#rfc.section.5.8">Security Policy Information</a></li>
-<li>5.9.   <a href="#rfc.section.5.9">Secure Connection Information</a></li>
+<li>5.3.   <a href="#rfc.section.5.3">CC Device Info</a></li>
+<li>5.4.   <a href="#rfc.section.5.4">Key Management Information</a></li>
+<li>5.5.   <a href="#rfc.section.5.5">Key Transfer Pull</a></li>
+<li>5.6.   <a href="#rfc.section.5.6">Key Transfer Push</a></li>
+<li>5.7.   <a href="#rfc.section.5.7">Security Policy Information</a></li>
+<li>5.8.   <a href="#rfc.section.5.8">Secure Connection Information</a></li>
 </ul><li>6.   <a href="#rfc.section.6">IANA Considerations</a></li>
 <li>7.   <a href="#rfc.section.7">Security Considerations</a></li>
 <li>8.   <a href="#rfc.references">References</a></li>
@@ -409,16 +407,17 @@ li, p {
   </ul>
 
   <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a></h1>
-<p id="rfc.section.1.p.1">This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.</p>
+<p id="rfc.section.1.p.1">RFC EDITOR: PLEASE REMOVE THE FOLLOWING PARAGRAPH PRIOR TO PUBLICATION</p>
+<p id="rfc.section.1.p.2">The source for this draft is maintained in GitHub. Suggested changes should be submitted as pull requests at https://github.com/seanturner/draft-turner-ccmib. Instructions are on that page as well. Editorial changes can be managed in GitHub.</p>
+<p id="rfc.section.1.p.3">This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#terminology" id="terminology">Terminology</a></h1>
 <p id="rfc.section.2.p.1">The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;NOT RECOMMENDED&#8221;,  &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in this document are to be interpreted as described in <a href="#RFC2119">[RFC2119]</a>.</p>
 <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#the-internet-standard-management-framework" id="the-internet-standard-management-framework">The Internet-Standard Management Framework</a></h1>
 <p id="rfc.section.3.p.1">For a detailed overview of the documents that describe the current Internet-Standard Management Framework, please refer to section 7 of <a href="#RFC3410">[RFC3410]</a>.</p>
-<p id="rfc.section.3.p.2">Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
-<p id="rfc.section.3.p.3">As with all MIB modules, an attempt to SET or CREATE an object to value that is not supported by the implementation will result in a failure using a return code that indicates that the value is not supported.</p>
+<p id="rfc.section.3.p.2">Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in RFC 2578 <a href="#RFC2578">[RFC2578]</a>, STD 58, RFC 2579 <a href="#RFC2579">[RFC2579]</a>, and STD 58, RFC 2580 <a href="#RFC2580">[RFC2580]</a>.</p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#structure-of-the-mib-module" id="structure-of-the-mib-module">Structure of the MIB module</a></h1>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#definition-of-the-cc-mib-module" id="definition-of-the-cc-mib-module">Definition of the CC MIB module</a></h1>
-<h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#cc-assignments-assign" id="cc-assignments-assign">CC Assignments  [assign]</a></h1>
+<h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#cc-assign" id="cc-assign">CC Assignments</a></h1>
 <p id="rfc.section.5.1.p.1">This MIB module makes reference to the following document: <a href="#RFC2578">[RFC2578]</a>.</p>
 <pre>
     CC-ASSIGNMENTS-MIB  DEFINITIONS  ::= BEGIN
@@ -494,7 +493,7 @@ li, p {
 
     IMPORTS
         ccAssignmentsMIB
-            FROM CC-ASSIGNMENTS-MIB                     -- FROM [assign]
+            FROM CC-ASSIGNMENTS-MIB                     -- FROM {{cc-assign}}
         MODULE-IDENTITY
             FROM SNMPv2-SMI;                            -- FROM RFC 2578
 
@@ -530,8 +529,9 @@ li, p {
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB features in hierarchical MIB
+            tree assignments.  It acts as a reservation mechanism for
+            other MIB sets to be anchored below it.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -551,8 +551,6 @@ li, p {
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccAssignmentsMIB 1 }
 
-    ccTextualConventions  OBJECT IDENTIFIER
-        ::= { ccFeatureHierarchyMIB 1 }
     ccDeviceInfo  OBJECT IDENTIFIER
         ::= { ccFeatureHierarchyMIB 2 }
     ccKeyManagement  OBJECT IDENTIFIER
@@ -568,20 +566,26 @@ li, p {
 
     END
 </pre>
-<h1 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3.</a> <a href="#cc-txt" id="cc-txt">CC Textual Conventions</a></h1>
-<p id="rfc.section.5.3.p.1">This MIB module makes reference to following documents: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC5225">[RFC5225]</a>, and <a href="#RFC5246">[RFC5246]</a>.</p>
+<h1 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3.</a> <a href="#cc-device-info" id="cc-device-info">CC Device Info</a></h1>
+<p id="rfc.section.5.3.p.1">This MIB module makes reference to the following documents: <a href="#RFC1213">[RFC1213]</a>, <a href="#RFC1907">[RFC1907]</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
 <pre>
-    CC-TEXTUAL-CONVENTIONS-MIB  DEFINITIONS  ::= BEGIN
+    CC-DEVICE-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
-        ccTextualConventions
+        ccDeviceInfo
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-        MODULE-IDENTITY, Integer32, Unsigned32
+        MODULE-COMPLIANCE, OBJECT-GROUP,
+        NOTIFICATION-GROUP
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
+        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
+        MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                            -- FROM RFC 2578
-        TEXTUAL-CONVENTION
+        SnmpAdminString
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+        DateAndTime, TruthValue, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
-    ccTextualConventionMIB MODULE-IDENTITY
+    ccDeviceInfoMIB  MODULE-IDENTITY
         LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
         ORGANIZATION  "IETF"
         CONTACT-INFO
@@ -613,241 +617,7 @@ li, p {
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
-
-            Copyright (c) 2016 IETF Trust and the persons
-            identified as authors of the code.  All rights reserved.
-
-            Redistribution and use in source and binary forms, with
-            or without modification, is permitted pursuant to, and
-            subject to the license terms contained in, the Simplified
-            BSD License set forth in Section 4.c of the IETF Trust's
-            Legal Provisions Relating to IETF Documents
-            (http://trustee.ietf.org/license-info).
-
-            This version of this MIB module is part of RFC xxxx;
-            see the RFC itself for full legal notices."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
-        ::= { ccTextualConventions 1 }
-
-    -- *****************************************************************
-    -- IP Address Textual Conventions
-    -- *****************************************************************
-
-    IPAddressType ::= TEXTUAL-CONVENTION
-        STATUS      current
-        DESCRIPTION
-            "A value that represents a type of Internet address.
-            ipv4(1)     An IPv4 address as defined by the
-                        IPv4Address textual convention.
-
-            ipv6(2)     An IPv6 address as defined by the
-                        IPv6Address textual convention.
-
-            Implementations must ensure that IPAddressType objects
-            and any dependent objects (e.g. IPv4Address and IPv6Address
-            objects) are consistent. An inconsistentValue error must
-            be generated if an attempt to change an IPv4Address or
-            IPv6Address object would, for example, lead to an undefined
-            value. IPAddressType/IPv4Address and
-            IPAddressType/IPv6Address pairs must be changed together if
-            IPAddressType changes."
-        SYNTAX      INTEGER { ipv4(1), ipv6(2) }
-
-    IPAddress ::= TEXTUAL-CONVENTION
-        STATUS      current
-        DESCRIPTION
-            "Denotes a generic Internet address that is either IPv4 or
-            IPv6.
-
-            Every usage of the IPAddress textual convention is required
-            to specify the IPAddressType object which provides the
-            context. It is suggested that the IPAddressType object is
-            logically registered before the object(s) which use the
-            IPAddress textual convention if they appear in the same
-            logical row.
-
-            The value of an IPAddress object must always be consistent
-            with the value of the associated IPAddressType object.
-            Attempts to set an IPAddress object to a value which is
-            inconsistent with the associated IPAddressType must
-            fail with an inconsistentValue error.
-
-            See the IPv4Address and IPv6Address textual conventions for
-            more details."
-        SYNTAX       OCTET STRING (SIZE(4|16))
-
-    IPv4Address ::= TEXTUAL-CONVENTION
-        DISPLAY-HINT "1d.1d.1d.1d"
-        STATUS       current
-        DESCRIPTION
-            "Represents an IPv4 network address:
-
-               octets   contents         encoding
-                1-4     IPv4 address     network-byte order
-
-             The corresponding IPAddressType value is ipv4(1)."
-        SYNTAX       OCTET STRING (SIZE(4))
-
-    IPv6Address ::= TEXTUAL-CONVENTION
-        DISPLAY-HINT "2x:2x:2x:2x:2x:2x:2x:2x"
-        STATUS       current
-        DESCRIPTION
-            "Represents an IPv6 network address:
-
-               octets   contents         encoding
-                1-16    IPv6 address     network-byte order
-
-            The corresponding InetAddressType value is ipv6(2)."
-        SYNTAX      OCTET STRING (SIZE(16))
-
-    PortNumber ::= TEXTUAL-CONVENTION
-        DISPLAY-HINT "d"
-        STATUS       current
-        DESCRIPTION
-            "Represents a 16 bit port number of an Internet transport
-            layer protocol. Port numbers are assigned by IANA. A current
-            list of all assignments is available from
-            &lt;http://www.iana.org/&gt;.
-
-            The value zero represents the ANY (wildcard) value. In
-            regards to a filter or rule, this means that any port number
-            satisfies the filter or rule."
-        SYNTAX       Unsigned32 (0..65535)
-
-    ROHCCompressionProfiles ::= TEXTUAL-CONVENTION
-        STATUS      current
-        DESCRIPTION
-            "A 16-bit field that conveys the compression profiles the
-            local or peer decompressor supports. Only ROHCv2 compression
-            profiles are used and they are defined using the following
-            bit setting scheme shown below. Note that the bit setting
-            scheme does not correspond to the compression profile values
-            defined in RFC 5225. It is purely used in the MIB to convey
-            the compression profiles the local or peer decompressor
-            supports.
-
-                 (0)     compressionProfile1: IP/UDP/RTP
-                 (1)     compressionProfile2: IP/UDP
-                 (2)     compressionProfile3: IP/ESP
-                 (3)     compressionProfile4: IP
-                 (4)     compressionProfile5: IP/UDP-Lite/RTP
-                 (5)     compressionProfile6: IP/UDP-Lite
-                 (6-15)  RESERVED"
-
-        SYNTAX    BITS { compressionProfile1(0), compressionProfile2(1),
-                         compressionProfile3(2), compressionProfile4(3),
-                         compressionProfile5(4), compressionProfile6(5) }
-
-    ROHCModes ::= TEXTUAL-CONVENTION
-        STATUS          current
-        DESCRIPTION
-            "An indication of whether RObust Header Compression (ROHC)
-            will be used in a Generic INE Secure Connection and how it
-            is being used. This textual convention is only applicable to
-            dynamic Secure Connections, where negotiation is required
-            for establishment.
-
-            [noROHC] = ROHC will not be used
-            [useROHCWithoutFeedback] = ROHC will be used and feedback
-                will not be sent on the Secure Connection
-            [useROHCWithFeedback] = ROHC will be used and feedback will
-                be sent on the Secure Connection
-            [rohcAcceptableWithoutFeedback] = ROHC will not be signaled
-                for use by this device as an initiator of the Secure
-                Connection; feedback will also not be sent on the Secure
-                Connection.
-            [rohcAcceptableWithFeedback] = ROHC will not be signaled for
-                use by this device as an initiator of the Secure
-                Connection; feedback will be sent on the Secure
-                Connection."
-        SYNTAX     INTEGER { noROHC(1), useROHCWithoutFeedback(2),
-                             useROHCWithFeedback(3),
-                             rohcAcceptableWithoutFeedback(4),
-                             rohcAcceptableWithFeedback(5) }
-
-
-    KeyFingerprint ::= TEXTUAL-CONVENTION
-        DISPLAY-HINT "1x:1x"
-        STATUS       current
-        DESCRIPTION
-           "A fingerprint value that can be used to uniquely reference
-           key materials of potentially arbitrary length.
-
-           A KeyFingerprint value is composed of a 1-octet hashing
-           algorithm identifier followed by the fingerprint value. The
-           octet value encoded is taken from the IANA TLS HashAlgorithm
-           Registry RFC 5246. The remaining 19 octets are filled using
-           the results of the hashing algorithm on the raw key material
-           and inherent tagging information, truncated to 19 octets.
-           With public key certificates, for example, a hash of the
-           entire structure truncated to 19 octets is used.
-
-           If no tagging information is available, the text 'NO_TAG'
-           (without quotes) will be used as input."
-        REFERENCE "RFC 5246: The Transport Layer
-                   Security (TLS) Protocol Version 1.2
-                   http://www.iana.org/assignments/tls-parameters/"
-        SYNTAX OCTET STRING (SIZE(20))
-
-    END
-</pre>
-<h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#cc-device-info" id="cc-device-info">CC Device Info</a></h1>
-<p id="rfc.section.5.4.p.1">This MIB module makes reference to the following documents: <a href="#RFC1213">[RFC1213]</a>, <a href="#RFC1907">[RFC1907]</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
-<pre>
-    CC-DEVICE-INFO-MIB  DEFINITIONS  ::=  BEGIN
-
-    IMPORTS
-        ccDeviceInfo
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-        MODULE-COMPLIANCE, OBJECT-GROUP,
-        NOTIFICATION-GROUP
-            FROM SNMPv2-CONF                           -- FROM RFC 2580
-        OBJECT-TYPE, Unsigned32, Integer32,
-        NOTIFICATION-TYPE, Counter64, MODULE-IDENTITY,
-        TimeTicks
-            FROM SNMPv2-SMI                            -- FROM RFC 2578
-        SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime, TruthValue,
-        TEXTUAL-CONVENTION, TimeStamp
-            FROM SNMPv2-TC;                            -- FROM RFC 2579
-
-    ccDeviceInfoMIB  MODULE-IDENTITY
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
-        DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Device Information objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -868,15 +638,13 @@ li, p {
         ::= { ccDeviceInfo 1 }
 
     -- *****************************************************************
-    -- Device Info Information Segments
+    -- Device Information Segments
     -- *****************************************************************
 
     cDeviceInfoConformance  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 1}
     cDeviceComponentVersInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 2}
-    cBatteryInfo  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 3}
     cFirmwareInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 4}
     cDeviceInfoScalars  OBJECT IDENTIFIER
@@ -885,7 +653,7 @@ li, p {
         ::= { ccDeviceInfoMIB 6}
 
     -- *****************************************************************
-    -- General Device Info Scalars
+    -- General Device Information Scalars
     -- *****************************************************************
 
     cSystemDate  OBJECT-TYPE
@@ -1039,7 +807,7 @@ li, p {
         ::= { cDeviceInfoScalars 12 }
 
     -- *****************************************************************
-    -- Device Info Notifications
+    -- Device Information Notifications
     -- *****************************************************************
 
     cFirmwareInstallFailed  NOTIFICATION-TYPE
@@ -1089,45 +857,6 @@ li, p {
             notification should be sent before the device performs any
             operations (such as shutting down interfaces, etc.)"
         ::= { cDeviceInfoNotify 5 }
-
-    cBatteryLow  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus,
-                        cBatteryLowThreshold
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a battery has reached the threshold at which a
-            battery warning is indicated."
-        ::= { cDeviceInfoNotify 6 }
-
-    cBatteryRequiresReplacement  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a battery should be charged or changed
-            immediately."
-        ::= { cDeviceInfoNotify 7 }
-
-    cDeviceOnBattery  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating the device is on battery power. This notification
-            is sent when the device is no longer connected to an
-            external power source and is operating using a battery for
-            main power."
-        ::= { cDeviceInfoNotify 8 }
 
     cDeviceComponentDisabled  NOTIFICATION-TYPE
         OBJECTS     {
@@ -1272,114 +1001,6 @@ li, p {
             changing this object certain rows. In this event, the agent
             should return an inconsistentValue error."
         ::= { cDeviceComponentVersEntry 4 }
-
-    -- *****************************************************************
-    -- CC MIB cBatteryInfoTable
-    -- *****************************************************************
-
-    cBatteryInfoTableCount  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The number of rows in the cBatteryInfoTable."
-        ::= { cBatteryInfo 1 }
-
-    cBatteryInfoTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The last time any entry in the table was modified, created,
-            or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
-            that no changes to configuration of this table have happened
-            since the last time it examined the table. A value of 0
-            indicates that no entry CC-DEVICE-INFO-MIB cSystemUpTime
-            should be used to populate this column."
-        ::= { cBatteryInfo 2 }
-
-    cBatteryInfoTable  OBJECT-TYPE
-        SYNTAX      SEQUENCE OF CBatteryInfoEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "The table containing information on each of the batteries
-            installed in the device."
-        ::= { cBatteryInfo 3 }
-
-    cBatteryInfoEntry  OBJECT-TYPE
-        SYNTAX      CBatteryInfoEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A row continuing information on a specific battery. If a
-            device cannot return status of a battery it should not
-            create a row in this table for that battery."
-        INDEX      { cBatteryIndex }
-        ::= { cBatteryInfoTable 1 }
-    
-    CBatteryInfoEntry  ::= SEQUENCE {
-        cBatteryIndex           Unsigned32,
-        cBatteryType            INTEGER,
-        cBatteryOpStatus        INTEGER,
-        cBatteryLowThreshold    Integer32
-    }
-
-    cBatteryIndex  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A numerical index used to identify the battery. This value
-            uniquely identifies a battery on this device. The value
-            should be persistent for a given battery, but management
-            stations should not depend on it as it may not be possible
-            for some devices to retain identical indexes (especially
-            across reboots)."
-        ::= { cBatteryInfoEntry 1 }
-
-    cBatteryType  OBJECT-TYPE
-        SYNTAX      INTEGER { other(1), main(2), clock(3), security(4) }
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The type of battery. Other(1) describes a battery which is
-            not otherwise defined here. Main(2) batteries are used for
-            operation of the device when not connected to a power
-            source. Clock(3) is used to describe batteries which cannot
-            provide main power to the device but maintain clock or other
-            persistent data. Security(4) is used for batteries which
-            perform specific security functions or which may render the
-            device inoperable when the battery is depleted. If a battery
-            is used for both clock and security, Security should be
-            returned."
-        ::= { cBatteryInfoEntry 2 }
-
-    cBatteryOpStatus  OBJECT-TYPE
-        SYNTAX      INTEGER { unknown(1), batteryNormal(2),
-                              batteryLow(3), batteryDepleted(4),
-                              batteryMissing(5) }
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "Indication of the status of the battery."
-        ::= {cBatteryInfoEntry 3}
-
-    cBatteryLowThreshold  OBJECT-TYPE
-        SYNTAX      Integer32 (0..100)
-        MAX-ACCESS  read-write
-        STATUS      current
-        DESCRIPTION
-            "The percentage of capacity at which the cBatteryLow
-            notification will be generated. A value of zero indicates
-            that the notification should never be sent for this battery.
-            This object should not be implemented if the device will
-            detect a low battery, but the actual percentage is not
-            measurable. This object only needs be writable for
-            implementations that support modification of the warning
-            level percentage."
-        ::= { cBatteryInfoEntry 4 }
 
     -- *****************************************************************
     -- CC MIB cFirmwareInformationTable
@@ -1548,23 +1169,6 @@ li, p {
             "This notification group is optional for implementation."
         ::= { cDeviceInfoCompliances 2 }
 
-    cDeviceInfoBatteryCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for battery information."
-        MODULE
-        MANDATORY-GROUPS { cDeviceInfoBatteryGroup }
-    
-        GROUP cDeviceInfoBatteryNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-    
-        OBJECT cBatteryLowThreshold
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-        ::= { cDeviceInfoCompliances 3 }
-
     cDeviceInfoFirmwareCompliance MODULE-COMPLIANCE
         STATUS    current
         DESCRIPTION
@@ -1612,20 +1216,6 @@ li, p {
             information."
         ::= { cDeviceInfoGroups 2 }
 
-    cDeviceInfoBatteryGroup OBJECT-GROUP
-        OBJECTS {
-                    cBatteryInfoTableCount,
-                    cBatteryInfoTableLastChanged,
-                    cBatteryType,
-                    cBatteryOpStatus,
-                    cBatteryLowThreshold
-                }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of objects related to battery
-            information."
-        ::= { cDeviceInfoGroups 3 }
-
     cDeviceInfoFirmwareGroup OBJECT-GROUP
         OBJECTS {
                     cFirmwareInformationTableCount,
@@ -1666,18 +1256,6 @@ li, p {
             component information."
         ::= { cDeviceInfoGroups 6 }
 
-    cDeviceInfoBatteryNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
-                        cBatteryLow,
-                        cBatteryRequiresReplacement,
-                        cDeviceOnBattery
-                      }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of notifications related to battery
-            information."
-        ::= { cDeviceInfoGroups 7 }
-
     cDeviceInfoFirmwareNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cFirmwareInstallFailed,
@@ -1691,22 +1269,21 @@ li, p {
 
     END
 </pre>
-<h1 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5.</a> <a href="#key-management-info" id="key-management-info">Key Management Info</a></h1>
-<p id="rfc.section.5.5.p.1">This MIB module makes references to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC5280">[RFC5280]</a>, <a href="#RFC5914">[RFC5914]</a>, <a href="#RFC6030">[RFC6030]</a>, and <a href="#RFC6353">[RFC6353]</a>.</p>
+<h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#key-management-information" id="key-management-information">Key Management Information</a></h1>
+<p id="rfc.section.5.4.p.1">This MIB module makes references to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC5280">[RFC5280]</a>, <a href="#RFC5914">[RFC5914]</a>, <a href="#RFC6030">[RFC6030]</a>, and <a href="#RFC6353">[RFC6353]</a>.</p>
 <pre>
     CC-KEY-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
 
     IMPORTS
         ccKeyManagement
-
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime,
-        TruthValue,TEXTUAL-CONVENTION, TimeStamp
+        TruthValue, TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
@@ -1715,6 +1292,9 @@ li, p {
             FROM SNMP-TLS-TM-MIB;                      -- FROM RFC 6353
 
     ccKeyManagementMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -1743,8 +1323,7 @@ li, p {
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Managment objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -1796,7 +1375,7 @@ li, p {
         ::= { ccKeyManagementMIB 13 }
 
     -- *****************************************************************
-    -- Key Management Scalars
+    -- Key Management Information Scalars
     -- *****************************************************************
 
     cZeroizeAllKeys  OBJECT-TYPE
@@ -2744,7 +2323,7 @@ li, p {
         MAX-ACCESS read-create
         STATUS     current
         DESCRIPTION
-            "Setting this object to 'true' imitates a rekey operation
+            "Setting this object to 'true' initates a rekey operation
             for the asymmetric key material. Note, additional
             configurations will likely be required based on the
             supported key management protocol.
@@ -4301,8 +3880,8 @@ li, p {
     
     END
 </pre>
-<h1 id="rfc.section.5.6"><a href="#rfc.section.5.6">5.6.</a> <a href="#key-transfer-pull" id="key-transfer-pull">Key Transfer Pull</a></h1>
-<p id="rfc.section.5.6.p.1">This MIB module makes reference to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
+<h1 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5.</a> <a href="#key-transfer-pull" id="key-transfer-pull">Key Transfer Pull</a></h1>
+<p id="rfc.section.5.5.p.1">This MIB module makes reference to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
 <pre>
     CC-KEY-TRANSFER-PULL-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -4311,17 +3890,24 @@ li, p {
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
-            ROM SNMPv2-CONF                            -- FROM RFC 2580
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+        RowStatus, TimeStamp
+=======
         RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        TimeStamp
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -4350,8 +3936,7 @@ li, p {
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Transfer Pull objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -4473,7 +4058,7 @@ li, p {
             value except 'discard' (which will cancel the current
             download).
 
-            If the CDML download succeeded, the cCDMLDeliveryStatusvalue
+            If the CDML download succeeded, the cCDMLDeliveryStatus value
             remains inProgress and the device attempts to parse the
             download immediately. During the parsing of the CDML, all
             new values will return inconsistentValue error (i.e. the
@@ -5047,8 +4632,8 @@ li, p {
     
     END
 </pre>
-<h1 id="rfc.section.5.7"><a href="#rfc.section.5.7">5.7.</a> <a href="#key-transfer-push" id="key-transfer-push">Key Transfer Push</a></h1>
-<p id="rfc.section.5.7.p.1">This MIB module makes reference to following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>.</p>
+<h1 id="rfc.section.5.6"><a href="#rfc.section.5.6">5.6.</a> <a href="#key-transfer-push" id="key-transfer-push">Key Transfer Push</a></h1>
+<p id="rfc.section.5.6.p.1">This MIB module makes reference to following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>.</p>
 <pre>
     CC-KEY-TRANSFER-PUSH-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -5056,18 +4641,21 @@ li, p {
         ccKeyTransferPush
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF;                          -- FROM RFC 2580
 
     ccKeyTransferPushMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -5096,8 +4684,7 @@ li, p {
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Transfer Push object.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5689,351 +5276,32 @@ li, p {
     
     END
 </pre>
-<h1 id="rfc.section.5.8"><a href="#rfc.section.5.8">5.8.</a> <a href="#security-policy-information" id="security-policy-information">Security Policy Information</a></h1>
-<p id="rfc.section.5.8.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#cc-txt">Section 5.3</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
+<h1 id="rfc.section.5.7"><a href="#rfc.section.5.7">5.7.</a> <a href="#security-policy-information" id="security-policy-information">Security Policy Information</a></h1>
+<p id="rfc.section.5.7.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
 <pre>
-~~~~
-CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
-
-IMPORTS
-    ccSecurePolicyInfo
-
-        FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-    IPAddressType, IPAddress, PortNumber,
-    ROHCModes
-        FROM CC-TEXTUAL-CONVENTIONS-MIB            -- FROM {{cc-txt}}
-    OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-    Counter64, MODULE-IDENTITY
-        FROM SNMPv2-SMI                            -- FROM RFC 2578
-    MODULE-COMPLIANCE, OBJECT-GROUP,
-    NOTIFICATION-GROUP
-        FROM SNMPv2-CONF                           -- FROM RFC 2580
-    SnmpAdminString
-        FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-    RowPointer, RowStatus, DateAndTime,
-    TruthValue, TEXTUAL-CONVENTION, TimeStamp
-        FROM SNMPv2-TC;                            -- FROM RFC 2579
-
-ccSecurePolicyInfoMIB  MODULE-IDENTITY
-        "Shadi Azoum
-        US Navy
-        email: shadi.azoum@navy.mil
- 
-        Elliott Jones
-        US Navy
-        elliott.jones@navy.mil
-
-        Lily Sun
-        US Navy
-        lily.sun@navy.mil
-
-        Mike Irani
-        NKI Engineering
-        irani@nkiengineering.com
-
-        Jeffrey Sun
-        NKI Engineering
-        sunjeff@nkiengineering.com
-
-        Ray Purvis
-        MITRE
-        Email:rpurvis@mitre.org
-
-        Sean Turner
-        sn3rd
-        Email:sean@sn3rd.com"
-    DESCRIPTION
-        "This MIB defines the CC MIB tree hierarchical assignments
-        below it and acts as a reservation mechanism.
-
-        Copyright (c) 2016 IETF Trust and the persons
-        identified as authors of the code.  All rights reserved.
-
-        Redistribution and use in source and binary forms, with
-        or without modification, is permitted pursuant to, and
-        subject to the license terms contained in, the Simplified
-        BSD License set forth in Section 4.c of the IETF Trust's
-        Legal Provisions Relating to IETF Documents
-        (http://trustee.ietf.org/license-info).
-
-        This version of this MIB module is part of RFC xxxx;
-        see the RFC itself for full legal notices."
--- RFC Ed.: RFC-editor please fill in xxxx.
-    REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-    DESCRIPTION   "Initial Version. Published as RFC xxxx."
--- RFC Ed.: RFC-editor please fill in xxxx.
-    ::= { ccSecurePolicyInfo 1 }
-
--- *****************************************************************
--- Secure Policy Info Information Segments
--- *****************************************************************
-
-cSecurePolicyConformance  OBJECT IDENTIFIER
-    ::= { ccSecurePolicyInfoMIB 1 }
-cSecPolicyRuleInfo  OBJECT IDENTIFIER
-    ::= { ccSecurePolicyInfoMIB 2 }
-cSecurePolicyInfoScalars  OBJECT IDENTIFIER
-    ::= { ccSecurePolicyInfoMIB 3 }
-cSecurePolicyInfoNotify OBJECT IDENTIFIER
-    ::= { ccSecurePolicyInfoMIB 4 }
-
--- *****************************************************************
--- Secure Policy Info Scalars
--- *****************************************************************
-
--- *****************************************************************
--- Secure Policy Info Notifications
--- *****************************************************************
-
-cSecPolicyChanged  NOTIFICATION-TYPE
-    OBJECTS     {
-                    cSecPolicyRulePriorityID,
-                    cSecPolicyRuleDescription
-                }
-    STATUS      current
-    DESCRIPTION
-        "A notification indicating that an existent Security Policy
-        entry in the cSecPolicyRuleTable in has changed."
-    ::= { cSecurePolicyInfoNotify 1 }
-
--- *****************************************************************
--- CC MIB cSecPolicyRuleTable
--- *****************************************************************
-
-cSecPolicyRuleTableCount  OBJECT-TYPE
-    SYNTAX      Unsigned32
-    MAX-ACCESS  read-only
-    STATUS      current
-    DESCRIPTION
-        "The number of rows in the cSecPolicyRuleTable."
-    ::= { cSecPolicyRuleInfo 1 }
-
-cSecPolicyRuleTableLastChanged  OBJECT-TYPE
-    SYNTAX      TimeStamp
-    MAX-ACCESS  read-only
-    STATUS      current
-    DESCRIPTION
-        "The last time any entry in the table was modified, created,
-        or deleted by either SNMP, agent, or other management method
-        (e.g. via an HMI). Managers can use this object to ensure
-        that no changes to configuration of this table have happened
-        since the last time it examined the table. A value of 0
-        indicates that no entry has been changed since the agent
-        initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
-        should be used to populate this column."
-    ::= { cSecPolicyRuleInfo 2 }
-
-cSecPolicyRuleTable  OBJECT-TYPE
-    SYNTAX      SEQUENCE OF CSecPolicyRuleEntry
-    MAX-ACCESS  not-accessible
-    STATUS      current
-    DESCRIPTION
-        "The cSecPolicyRuleTable stores the Security Policy Rules
-        that are compared against inbound and outbound data traffic
-        flow. These Security Policy Rules define the actions (e.g.
-        protect, bypass, discard) on how the data traffic flow should
-        be treated."
-    ::= { cSecPolicyRuleInfo 3 }
-
-cSecPolicyRuleEntry  OBJECT-TYPE
-    SYNTAX      CSecPolicyRuleEntry
-    MAX-ACCESS  not-accessible
-    STATUS      current
-    DESCRIPTION
-         "A row containing general information about a Security
-         Policy rule."
-    INDEX      { cSecPolicyRulePriorityID }
-    ::= { cSecPolicyRuleTable 1 }
-
-CSecPolicyRuleEntry  ::= SEQUENCE {
-    cSecPolicyRulePriorityID        Unsigned32,
-    cSecPolicyRuleDescription       OCTET STRING,
-    cSecPolicyRuleType              INTEGER,
-    cSecPolicyRuleFilterReference   SnmpAdminString,
-    cSecPolicyRuleAction            INTEGER,
-    cSecPolicyRuleRowStatus         RowStatus
-}
-
-cSecPolicyRulePriorityID  OBJECT-TYPE
-    SYNTAX      Unsigned32
-    MAX-ACCESS  read-only
-    STATUS      current
-    DESCRIPTION
-        "Local unique index that identifies the priority at which
-        this Security Policy rule is applied. Lower values have a
-        higher priority (e.g. a value of 1 will be processed before
-        a value of 2). This column is the primary index to the
-        cSecPolicyRuleTable."
-    ::= { cSecPolicyRuleEntry 1 }
-
-cSecPolicyRuleDescription  OBJECT-TYPE
-    SYNTAX      OCTET STRING
-    MAX-ACCESS  read-create
-    STATUS      current
-    DESCRIPTION
-        "An administrative string describing the Security Policy
-        rule. Note, this is a free form OCTET STRING that provides
-        the user a store for any form of description/documentation
-        for the given entry."
-    ::= { cSecPolicyRuleEntry 2 }
-
-cSecPolicyRuleType  OBJECT-TYPE
-    SYNTAX      INTEGER { ipsec(1), tls(2) }
-    MAX-ACCESS  read-create
-    STATUS      current
-    DESCRIPTION
-        "Optional column that defines the related protocol type of
-        the Security Policy rule. Depending on this column's set
-        value, entries will vary in respect to which other
-        columns/tables (if at all) must be populated to fully
-        configure the Security Policy rule."
-    ::= { cSecPolicyRuleEntry 3 }
-
-cSecPolicyRuleFilterReference  OBJECT-TYPE
-    SYNTAX      SnmpAdminString
-    MAX-ACCESS  read-create
-    STATUS      current
-    DESCRIPTION
-        "A string that references the associated filter for the
-        Security Policy rule. Data traffic flow (inbound/outbound)
-        comparison against the associated filter provide the basis
-        in which a Security Policy rule is applied to the given data
-        traffic flow."
-    ::= { cSecPolicyRuleEntry 4 }
-
-cSecPolicyRuleAction  OBJECT-TYPE
-    SYNTAX      INTEGER { protect(1), bypass(10), discard(20),
-                          discardInbound(21), discardOutbound(22) }
-    MAX-ACCESS  read-create
-    STATUS      current
-    DESCRIPTION
-        "This object indicates what action the ECU should take on
-        matching a data traffic flow against a filter (as defined by
-        cSecPolicyRuleFilterReference). The value of this column can
-        take one of four enumeration values.
-
-        [1] protect: The 'protect' enumeration value indicates that
-        the data traffic flow should be protected by a Secure
-        Connection with attributes defined  by the associated filter
-        (cSecPolicyRuleFilterReference).
-
-        [10] bypass: The 'bypass' enumeration value indicates that
-        the data traffic flow should be bypassed with no
-        cryptographic protection/services provided.
-
-        [20] discard: The 'discard enumeration value indicates that
-        the data traffic flow, agnostic of their direction, should
-        be discarded.
-
-        [21] discardInbound: The 'discardInbound' enumeration value
-        indicates that an inbound data traffic flow should be
-        discarded.
-
-        [22] discardOutbound: The 'discardOutbound' enumeration
-        value indicates that an outbound data traffic flow should be
-        discarded.
-
-        Implementations that do not support the 'discardInbound' and
-        'discardOutbound' enumeration values should return a
-        wrongValue exception during a SET to the cSecPolicyRuleAction
-        object.
-
-        A valid enumeration value must be specified in order for
-        cSecPolicyRuleRowStatus to be 'active'."
-    ::= { cSecPolicyRuleEntry 5 }
-
-cSecPolicyRuleRowStatus  OBJECT-TYPE
-    SYNTAX      RowStatus
-    MAX-ACCESS  read-create
-    STATUS      current
-    DESCRIPTION
-        "The status of the row, by which new entries may be created,
-        or old entries deleted from this table.
-
-        Entries created within this table may not become active
-        unless all read-create columns in this table have valid
-        values, as detailed by each individual column's description.
-
-        At a minimum, implementations must support createAndGo and
-        destroy management functions. Support for createAndWait,
-        active, notInService, and notReady management functions is
-        optional."
-    ::= { cSecPolicyRuleEntry 6 }
-
--- *****************************************************************
--- Module Conformance Information
--- *****************************************************************
-
-cSecurePolicyCompliances  OBJECT IDENTIFIER
-    ::= { cSecurePolicyConformance 1 }
-cSecurePolicyGroups  OBJECT IDENTIFIER
-    ::= { cSecurePolicyConformance 2 }
-
-cSecurePolicyCompliance MODULE-COMPLIANCE
-    STATUS    current
-    DESCRIPTION
-        "Compliance levels for secure policy information."
-    MODULE
-    MANDATORY-GROUPS { cSecurePolicyGroup }
-
-    GROUP cSecurePolicyNotifyGroup
-    DESCRIPTION
-        "This notification group is optional for implementation."
-    ::= { cSecurePolicyCompliances  1 }
-
-cSecurePolicyGroup OBJECT-GROUP
-    OBJECTS {
-                cSecPolicyRuleTableCount,
-                cSecPolicyRuleTableLastChanged,
-                cSecPolicyRulePriorityID,
-                cSecPolicyRuleDescription,
-                cSecPolicyRuleType,
-                cSecPolicyRuleFilterReference,
-                cSecPolicyRuleAction,
-                cSecPolicyRuleRowStatus
-            }
-    STATUS current
-    DESCRIPTION
-        "This group is composed of objects related to secure policy
-        information."
-    ::= { cSecurePolicyGroups 1 }
-
-cSecurePolicyNotifyGroup NOTIFICATION-GROUP
-    NOTIFICATIONS {
-                    cSecPolicyChanged
-                  }
-    STATUS current
-    DESCRIPTION
-        "This group is composed of notifications related to secure
-        policy information."
-    ::= { cSecurePolicyGroups 2 }
-
-END ~~~~
-</pre>
-<h1 id="rfc.section.5.9"><a href="#rfc.section.5.9">5.9.</a> <a href="#secure-connection-information" id="secure-connection-information">Secure Connection Information</a></h1>
-<p id="rfc.section.5.9.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#cc-txt">Section 5.3</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC4303">[RFC4303]</a>.</p>
-<pre>
-    CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
+    CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
-        ccSecureConnectionInfo
-            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM {{cc-fh}}
-        IPAddressType, IPAddress, PortNumber,
-        ROHCCompressionProfiles
-            FROM CC-TEXTUAL-CONVENTIONS-MIB           -- FROM {{cc-txt}}
+        ccSecurePolicyInfo
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
-            FROM SNMPv2-SMI                           -- FROM RFC 2578
+        MODULE-IDENTITY
+            FROM SNMPv2-SMI                            -- FROM RFC 2578
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
-            FROM SNMPv2-CONF                          -- FROM RFC 2580
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+=======
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
-            FROM SNMPv2-TC;                           -- FROM RFC 2579
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
+        RowStatus, DateAndTime, TimeStamp
+            FROM SNMPv2-TC;                            -- FROM RFC 2579
 
-    ccSecureConnectionInfoMIB  MODULE-IDENTITY
+    ccSecurePolicyInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -6062,8 +5330,326 @@ END ~~~~
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Security Policy Information
+            objects.
+
+            Copyright (c) 2016 IETF Trust and the persons
+            identified as authors of the code.  All rights reserved.
+
+            Redistribution and use in source and binary forms, with
+            or without modification, is permitted pursuant to, and
+            subject to the license terms contained in, the Simplified
+            BSD License set forth in Section 4.c of the IETF Trust's
+            Legal Provisions Relating to IETF Documents
+            (http://trustee.ietf.org/license-info).
+
+            This version of this MIB module is part of RFC xxxx;
+            see the RFC itself for full legal notices."
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+        ::= { ccSecurePolicyInfo 1 }
+
+    -- *****************************************************************
+    -- Secure Policy Info Information Segments
+    -- *****************************************************************
+    
+    cSecurePolicyConformance  OBJECT IDENTIFIER
+        ::= { ccSecurePolicyInfoMIB 1 }
+    cSecPolicyRuleInfo  OBJECT IDENTIFIER
+        ::= { ccSecurePolicyInfoMIB 2 }
+    cSecurePolicyInfoScalars  OBJECT IDENTIFIER
+        ::= { ccSecurePolicyInfoMIB 3 }
+    cSecurePolicyInfoNotify OBJECT IDENTIFIER
+        ::= { ccSecurePolicyInfoMIB 4 }
+
+    -- *****************************************************************
+    -- Secure Policy Info Scalars
+    -- *****************************************************************
+    
+    -- *****************************************************************
+    -- Secure Policy Info Notifications
+    -- *****************************************************************
+
+    cSecPolicyChanged  NOTIFICATION-TYPE
+        OBJECTS     {
+                        cSecPolicyRulePriorityID,
+                        cSecPolicyRuleDescription
+                    }
+        STATUS      current
+        DESCRIPTION
+            "A notification indicating that an existent Security Policy
+            entry in the cSecPolicyRuleTable in has changed."
+        ::= { cSecurePolicyInfoNotify 1 }
+
+    -- *****************************************************************
+    -- CC MIB cSecPolicyRuleTable
+    -- *****************************************************************
+
+    cSecPolicyRuleTableCount  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The number of rows in the cSecPolicyRuleTable."
+        ::= { cSecPolicyRuleInfo 1 }
+
+    cSecPolicyRuleTableLastChanged  OBJECT-TYPE
+        SYNTAX      TimeStamp
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The last time any entry in the table was modified, created,
+            or deleted by either SNMP, agent, or other management method
+            (e.g. via an HMI). Managers can use this object to ensure
+            that no changes to configuration of this table have happened
+            since the last time it examined the table. A value of 0
+            indicates that no entry has been changed since the agent
+            initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
+            should be used to populate this column."
+        ::= { cSecPolicyRuleInfo 2 }
+
+    cSecPolicyRuleTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF CSecPolicyRuleEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The cSecPolicyRuleTable stores the Security Policy Rules
+            that are compared against inbound and outbound data traffic
+            flow. These Security Policy Rules define the actions (e.g.
+            protect, bypass, discard) on how the data traffic flow should
+            be treated."
+        ::= { cSecPolicyRuleInfo 3 }
+
+    cSecPolicyRuleEntry  OBJECT-TYPE
+        SYNTAX      CSecPolicyRuleEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+             "A row containing general information about a Security
+             Policy rule."
+        INDEX      { cSecPolicyRulePriorityID }
+        ::= { cSecPolicyRuleTable 1 }
+
+    CSecPolicyRuleEntry  ::= SEQUENCE {
+        cSecPolicyRulePriorityID        Unsigned32,
+        cSecPolicyRuleDescription       OCTET STRING,
+        cSecPolicyRuleType              INTEGER,
+        cSecPolicyRuleFilterReference   SnmpAdminString,
+        cSecPolicyRuleAction            INTEGER,
+        cSecPolicyRuleRowStatus         RowStatus
+    }
+
+    cSecPolicyRulePriorityID  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Local unique index that identifies the priority at which
+            this Security Policy rule is applied. Lower values have a
+            higher priority (e.g. a value of 1 will be processed before
+            a value of 2). This column is the primary index to the
+            cSecPolicyRuleTable."
+        ::= { cSecPolicyRuleEntry 1 }
+
+    cSecPolicyRuleDescription  OBJECT-TYPE
+        SYNTAX      OCTET STRING
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "An administrative string describing the Security Policy
+            rule. Note, this is a free form OCTET STRING that provides
+            the user a store for any form of description/documentation
+            for the given entry."
+        ::= { cSecPolicyRuleEntry 2 }
+
+    cSecPolicyRuleType  OBJECT-TYPE
+        SYNTAX      INTEGER { ipsec(1), tls(2) }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Optional column that defines the related protocol type of
+            the Security Policy rule. Depending on this column's set
+            value, entries will vary in respect to which other
+            columns/tables (if at all) must be populated to fully
+            configure the Security Policy rule."
+        ::= { cSecPolicyRuleEntry 3 }
+
+    cSecPolicyRuleFilterReference  OBJECT-TYPE
+        SYNTAX      SnmpAdminString
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "A string that references the associated filter for the
+            Security Policy rule. Data traffic flow (inbound/outbound)
+            comparison against the associated filter provide the basis
+            in which a Security Policy rule is applied to the given data
+            traffic flow."
+        ::= { cSecPolicyRuleEntry 4 }
+
+    cSecPolicyRuleAction  OBJECT-TYPE
+        SYNTAX      INTEGER { protect(1), bypass(10), discard(20),
+                              discardInbound(21), discardOutbound(22) }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This object indicates what action the ECU should take on
+            matching a data traffic flow against a filter (as defined by
+            cSecPolicyRuleFilterReference). The value of this column can
+            take one of four enumeration values.
+
+            [1] protect: The 'protect' enumeration value indicates that
+            the data traffic flow should be protected by a Secure
+            Connection with attributes defined  by the associated filter
+            (cSecPolicyRuleFilterReference).
+
+            [10] bypass: The 'bypass' enumeration value indicates that
+            the data traffic flow should be bypassed with no
+            cryptographic protection/services provided.
+
+            [20] discard: The 'discard enumeration value indicates that
+            the data traffic flow, agnostic of their direction, should
+            be discarded.
+
+            [21] discardInbound: The 'discardInbound' enumeration value
+            indicates that an inbound data traffic flow should be
+            discarded.
+
+            [22] discardOutbound: The 'discardOutbound' enumeration
+            value indicates that an outbound data traffic flow should be
+            discarded.
+
+            Implementations that do not support the 'discardInbound' and
+            'discardOutbound' enumeration values should return a
+            wrongValue exception during a SET to the cSecPolicyRuleAction
+            object.
+
+            A valid enumeration value must be specified in order for
+            cSecPolicyRuleRowStatus to be 'active'."
+        ::= { cSecPolicyRuleEntry 5 }
+
+    cSecPolicyRuleRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of the row, by which new entries may be created,
+            or old entries deleted from this table.
+
+            Entries created within this table may not become active
+            unless all read-create columns in this table have valid
+            values, as detailed by each individual column's description.
+
+            At a minimum, implementations must support createAndGo and
+            destroy management functions. Support for createAndWait,
+            active, notInService, and notReady management functions is
+            optional."
+        ::= { cSecPolicyRuleEntry 6 }
+
+    -- *****************************************************************
+    -- Module Conformance Information
+    -- *****************************************************************
+
+    cSecurePolicyCompliances  OBJECT IDENTIFIER
+        ::= { cSecurePolicyConformance 1 }
+    cSecurePolicyGroups  OBJECT IDENTIFIER
+        ::= { cSecurePolicyConformance 2 }
+
+    cSecurePolicyCompliance MODULE-COMPLIANCE
+        STATUS    current
+        DESCRIPTION
+            "Compliance levels for secure policy information."
+        MODULE
+        MANDATORY-GROUPS { cSecurePolicyGroup }
+
+        GROUP cSecurePolicyNotifyGroup
+        DESCRIPTION
+            "This notification group is optional for implementation."
+        ::= { cSecurePolicyCompliances  1 }
+
+    cSecurePolicyGroup OBJECT-GROUP
+        OBJECTS {
+                    cSecPolicyRuleTableCount,
+                    cSecPolicyRuleTableLastChanged,
+                    cSecPolicyRulePriorityID,
+                    cSecPolicyRuleDescription,
+                    cSecPolicyRuleType,
+                    cSecPolicyRuleFilterReference,
+                    cSecPolicyRuleAction,
+                    cSecPolicyRuleRowStatus
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to secure policy
+            information."
+        ::= { cSecurePolicyGroups 1 }
+
+    cSecurePolicyNotifyGroup NOTIFICATION-GROUP
+        NOTIFICATIONS {
+                        cSecPolicyChanged
+                      }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of notifications related to secure
+            policy information."
+        ::= { cSecurePolicyGroups 2 }
+
+    END
+</pre>
+<h1 id="rfc.section.5.8"><a href="#rfc.section.5.8">5.8.</a> <a href="#secure-connection-information" id="secure-connection-information">Secure Connection Information</a></h1>
+<p id="rfc.section.5.8.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC4303">[RFC4303]</a>.</p>
+<pre>
+    CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
+
+    IMPORTS
+        ccSecureConnectionInfo
+            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM {{cc-fh}}
+        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
+        MODULE-IDENTITY
+            FROM SNMPv2-SMI                           -- FROM RFC 2578
+        MODULE-COMPLIANCE, OBJECT-GROUP,
+        NOTIFICATION-GROUP
+            FROM SNMPv2-CONF                          -- FROM RFC 2580
+        SnmpAdminString
+            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 2571
+        RowStatus, DateAndTime, TimeStamp
+            FROM SNMPv2-TC;                           -- FROM RFC 2579
+
+    ccSecureConnectionInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
+            "Shadi Azoum
+            US Navy
+            email: shadi.azoum@navy.mil
+ 
+            Elliott Jones
+            US Navy
+            elliott.jones@navy.mil
+
+            Lily Sun
+            US Navy
+            lily.sun@navy.mil
+
+            Mike Irani
+            NKI Engineering
+            irani@nkiengineering.com
+
+            Jeffrey Sun
+            NKI Engineering
+            sunjeff@nkiengineering.com
+
+            Ray Purvis
+            MITRE
+            Email:rpurvis@mitre.org
+
+            Sean Turner
+            sn3rd
+            Email:sean@sn3rd.com"
+        DESCRIPTION
+            "This MIB defines the CC MIB Secure Connection Information
+            objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -6384,8 +5970,8 @@ END ~~~~
 
     END
 </pre>
-<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#IANA" id="IANA">IANA Considerations</a></h1>
-<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#Security" id="Security">Security Considerations</a></h1>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#iana" id="iana">IANA Considerations</a></h1>
+<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#security" id="security">Security Considerations</a></h1>
 <p id="rfc.section.7.p.1">SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.</p>
 <p id="rfc.section.7.p.2">Implementations SHOULD provide the security features described by the SNMPv3 framework (see <a href="#RFC3410">[RFC3410]</a>), and implementations claiming compliance to the SNMPv3 standard MUST include full support for authentication and privacy via the User-based Security Model (USM) <a href="#RFC3414">[RFC3414]</a> with the AES cipher algorithm <a href="#RFC3826">[RFC3826]</a>.  Implementations MAY also provide support for the Transport Security Model (TSM) <a href="#RFC5591">[RFC5591]</a> in combination with a secure transport such as SSH <a href="#RFC5592">[RFC5592]</a> or TLS/DTLS {RFC6353}.</p>
 <p id="rfc.section.7.p.3">Further, deployment of SNMP versions prior to SNMPv3 is NOT RECOMMENDED.  Instead, it is RECOMMENDED to deploy SNMPv3 and to enable cryptographic security.  It is then a customer/operator responsibility to ensure that the SNMP entity giving access to an instance of this MIB module is properly configured to give access to the objects only to those principals (users) that have legitimate rights to indeed GET or SET (change/create/delete) them.</p>
@@ -6505,12 +6091,6 @@ END ~~~~
         <b id="RFC4303">[RFC4303]</b>
       </td>
       <td class="top"><a>Kent, S.</a>, "<a href="http://tools.ietf.org/html/rfc4303">IP Encapsulating Security Payload (ESP)</a>", RFC 4303, DOI 10.17487/RFC4303, December 2005.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC5225">[RFC5225]</b>
-      </td>
-      <td class="top"><a>Pelletier, G.</a> and <a>K. Sandlund</a>, "<a href="http://tools.ietf.org/html/rfc5225">RObust Header Compression Version 2 (ROHCv2): Profiles for RTP, UDP, IP, ESP and UDP-Lite</a>", RFC 5225, DOI 10.17487/RFC5225, April 2008.</td>
     </tr>
   </tbody>
 </table>

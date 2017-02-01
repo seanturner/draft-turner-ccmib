@@ -71,40 +71,40 @@ Internet-Draft                    CCMIB                        June 2016
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  The Internet-Standard Management Framework  . . . . . . . . .   3
    4.  Structure of the MIB module . . . . . . . . . . . . . . . . .   3
    5.  Definition of the CC MIB module . . . . . . . . . . . . . . .   3
-     5.1.  CC Assignments  [assign]  . . . . . . . . . . . . . . . .   3
+     5.1.  CC Assignments  . . . . . . . . . . . . . . . . . . . . .   3
      5.2.  CC Feature Hierarchy  . . . . . . . . . . . . . . . . . .   5
-     5.3.  CC Textual Conventions  . . . . . . . . . . . . . . . . .   6
-     5.4.  CC Device Info  . . . . . . . . . . . . . . . . . . . . .  11
-     5.5.  Key Management Info . . . . . . . . . . . . . . . . . . .  30
-     5.6.  Key Transfer Pull . . . . . . . . . . . . . . . . . . . .  84
-     5.7.  Key Transfer Push . . . . . . . . . . . . . . . . . . . . 100
-     5.8.  Security Policy Information . . . . . . . . . . . . . . . 113
-     5.9.  Secure Connection Information . . . . . . . . . . . . . . 120
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 128
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . . 128
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 128
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . . 128
-     8.2.  Informative References  . . . . . . . . . . . . . . . . . 130
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 130
+     5.3.  CC Device Info  . . . . . . . . . . . . . . . . . . . . .   6
+     5.4.  Key Management Information  . . . . . . . . . . . . . . .  21
+     5.5.  Key Transfer Pull . . . . . . . . . . . . . . . . . . . .  75
+     5.6.  Key Transfer Push . . . . . . . . . . . . . . . . . . . .  91
+     5.7.  Security Policy Information . . . . . . . . . . . . . . . 104
+     5.8.  Secure Connection Information . . . . . . . . . . . . . . 111
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 119
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . . 119
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 119
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . . 120
+     8.2.  Informative References  . . . . . . . . . . . . . . . . . 121
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 122
 
 1.  Introduction
+
+   RFC EDITOR: PLEASE REMOVE THE FOLLOWING PARAGRAPH PRIOR TO
+   PUBLICATION
+
+   The source for this draft is maintained in GitHub.  Suggested changes
+   should be submitted as pull requests at
+   https://github.com/seanturner/draft-turner-ccmib.  Instructions are
+   on that page as well.  Editorial changes can be managed in GitHub.
 
    This document defines a portion of the Management Information Base
    (MIB) for use with network management protocols in the Internet
    community.  In particular, it describes managed objects used to
    manage key management implementations including asymmetric keys,
    symmetric keys, trust anchors, and cryptographic-related firmware.
-
-2.  Terminology
-
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   [RFC2119].
 
 
 
@@ -113,6 +113,13 @@ Azoum, et al.            Expires January 1, 2017                [Page 2]
 
 Internet-Draft                    CCMIB                        June 2016
 
+
+2.  Terminology
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   [RFC2119].
 
 3.  The Internet-Standard Management Framework
 
@@ -125,19 +132,15 @@ Internet-Draft                    CCMIB                        June 2016
    accessed through the Simple Network Management Protocol (SNMP).
    Objects in the MIB are defined using the mechanisms defined in the
    Structure of Management Information (SMI).  This memo specifies a MIB
-   module that is compliant to the SMIv2, which is described in
-   [RFC2578], [RFC2579], and [RFC2580].
-
-   As with all MIB modules, an attempt to SET or CREATE an object to
-   value that is not supported by the implementation will result in a
-   failure using a return code that indicates that the value is not
-   supported.
+   module that is compliant to the SMIv2, which is described in RFC 2578
+   [RFC2578], STD 58, RFC 2579 [RFC2579], and STD 58, RFC 2580
+   [RFC2580].
 
 4.  Structure of the MIB module
 
 5.  Definition of the CC MIB module
 
-5.1.  CC Assignments [assign]
+5.1.  CC Assignments
 
    This MIB module makes reference to the following document: [RFC2578].
 
@@ -159,9 +162,6 @@ Internet-Draft                    CCMIB                        June 2016
             US Navy
             elliott.jones@navy.mil
 
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
 
 
 
@@ -169,6 +169,10 @@ Azoum, et al.            Expires January 1, 2017                [Page 3]
 
 Internet-Draft                    CCMIB                        June 2016
 
+
+            Lily Sun
+            US Navy
+            lily.sun@navy.mil
 
             Mike Irani
             NKI Engineering
@@ -217,10 +221,6 @@ Internet-Draft                    CCMIB                        June 2016
 
 
 
-
-
-
-
 Azoum, et al.            Expires January 1, 2017                [Page 4]
 
 Internet-Draft                    CCMIB                        June 2016
@@ -234,7 +234,7 @@ Internet-Draft                    CCMIB                        June 2016
 
     IMPORTS
         ccAssignmentsMIB
-            FROM CC-ASSIGNMENTS-MIB                     -- FROM [assign]
+            FROM CC-ASSIGNMENTS-MIB                     -- FROM {{cc-assign}}
         MODULE-IDENTITY
             FROM SNMPv2-SMI;                            -- FROM RFC 2578
 
@@ -270,10 +270,10 @@ Internet-Draft                    CCMIB                        June 2016
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB features in hierarchical MIB
+            tree assignments.  It acts as a reservation mechanism for
+            other MIB sets to be anchored below it.
 
-            Copyright (c) 2016 IETF Trust and the persons
 
 
 
@@ -282,6 +282,7 @@ Azoum, et al.            Expires January 1, 2017                [Page 5]
 Internet-Draft                    CCMIB                        June 2016
 
 
+            Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -299,8 +300,6 @@ Internet-Draft                    CCMIB                        June 2016
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccAssignmentsMIB 1 }
 
-    ccTextualConventions  OBJECT IDENTIFIER
-        ::= { ccFeatureHierarchyMIB 1 }
     ccDeviceInfo  OBJECT IDENTIFIER
         ::= { ccFeatureHierarchyMIB 2 }
     ccKeyManagement  OBJECT IDENTIFIER
@@ -316,20 +315,21 @@ Internet-Draft                    CCMIB                        June 2016
 
     END
 
-5.3.  CC Textual Conventions
+5.3.  CC Device Info
 
-   This MIB module makes reference to following documents: Section 5.2,
-   [RFC2578], [RFC2579], [RFC5225], and [RFC5246].
+   This MIB module makes reference to the following documents:
+   [RFC1213], [RFC1907], [RFC2571], [RFC2578], [RFC2579], and [RFC2580].
 
-    CC-TEXTUAL-CONVENTIONS-MIB  DEFINITIONS  ::= BEGIN
+    CC-DEVICE-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
-        ccTextualConventions
+        ccDeviceInfo
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-        MODULE-IDENTITY, Integer32, Unsigned32
-            FROM SNMPv2-SMI                            -- FROM RFC 2578
-        TEXTUAL-CONVENTION
-            FROM SNMPv2-TC;                            -- FROM RFC 2579
+        MODULE-COMPLIANCE, OBJECT-GROUP,
+        NOTIFICATION-GROUP
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
+        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
+        MODULE-IDENTITY, TimeTicks
 
 
 
@@ -338,7 +338,13 @@ Azoum, et al.            Expires January 1, 2017                [Page 6]
 Internet-Draft                    CCMIB                        June 2016
 
 
-    ccTextualConventionMIB MODULE-IDENTITY
+            FROM SNMPv2-SMI                            -- FROM RFC 2578
+        SnmpAdminString
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+        DateAndTime, TruthValue, TimeStamp
+            FROM SNMPv2-TC;                            -- FROM RFC 2579
+
+    ccDeviceInfoMIB  MODULE-IDENTITY
         LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
         ORGANIZATION  "IETF"
         CONTACT-INFO
@@ -370,8 +376,7 @@ Internet-Draft                    CCMIB                        June 2016
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Device Information objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -381,11 +386,6 @@ Internet-Draft                    CCMIB                        June 2016
             subject to the license terms contained in, the Simplified
             BSD License set forth in Section 4.c of the IETF Trust's
             Legal Provisions Relating to IETF Documents
-            (http://trustee.ietf.org/license-info).
-
-            This version of this MIB module is part of RFC xxxx;
-            see the RFC itself for full legal notices."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
 
 
 
@@ -394,268 +394,6 @@ Azoum, et al.            Expires January 1, 2017                [Page 7]
 Internet-Draft                    CCMIB                        June 2016
 
 
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
-        ::= { ccTextualConventions 1 }
-
-    -- *****************************************************************
-    -- IP Address Textual Conventions
-    -- *****************************************************************
-
-    IPAddressType ::= TEXTUAL-CONVENTION
-        STATUS      current
-        DESCRIPTION
-            "A value that represents a type of Internet address.
-            ipv4(1)     An IPv4 address as defined by the
-                        IPv4Address textual convention.
-
-            ipv6(2)     An IPv6 address as defined by the
-                        IPv6Address textual convention.
-
-            Implementations must ensure that IPAddressType objects
-            and any dependent objects (e.g. IPv4Address and IPv6Address
-            objects) are consistent. An inconsistentValue error must
-            be generated if an attempt to change an IPv4Address or
-            IPv6Address object would, for example, lead to an undefined
-            value. IPAddressType/IPv4Address and
-            IPAddressType/IPv6Address pairs must be changed together if
-            IPAddressType changes."
-        SYNTAX      INTEGER { ipv4(1), ipv6(2) }
-
-    IPAddress ::= TEXTUAL-CONVENTION
-        STATUS      current
-        DESCRIPTION
-            "Denotes a generic Internet address that is either IPv4 or
-            IPv6.
-
-            Every usage of the IPAddress textual convention is required
-            to specify the IPAddressType object which provides the
-            context. It is suggested that the IPAddressType object is
-            logically registered before the object(s) which use the
-            IPAddress textual convention if they appear in the same
-            logical row.
-
-            The value of an IPAddress object must always be consistent
-            with the value of the associated IPAddressType object.
-            Attempts to set an IPAddress object to a value which is
-            inconsistent with the associated IPAddressType must
-            fail with an inconsistentValue error.
-
-
-
-
-Azoum, et al.            Expires January 1, 2017                [Page 8]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-            See the IPv4Address and IPv6Address textual conventions for
-            more details."
-        SYNTAX       OCTET STRING (SIZE(4|16))
-
-    IPv4Address ::= TEXTUAL-CONVENTION
-        DISPLAY-HINT "1d.1d.1d.1d"
-        STATUS       current
-        DESCRIPTION
-            "Represents an IPv4 network address:
-
-               octets   contents         encoding
-                1-4     IPv4 address     network-byte order
-
-             The corresponding IPAddressType value is ipv4(1)."
-        SYNTAX       OCTET STRING (SIZE(4))
-
-    IPv6Address ::= TEXTUAL-CONVENTION
-        DISPLAY-HINT "2x:2x:2x:2x:2x:2x:2x:2x"
-        STATUS       current
-        DESCRIPTION
-            "Represents an IPv6 network address:
-
-               octets   contents         encoding
-                1-16    IPv6 address     network-byte order
-
-            The corresponding InetAddressType value is ipv6(2)."
-        SYNTAX      OCTET STRING (SIZE(16))
-
-    PortNumber ::= TEXTUAL-CONVENTION
-        DISPLAY-HINT "d"
-        STATUS       current
-        DESCRIPTION
-            "Represents a 16 bit port number of an Internet transport
-            layer protocol. Port numbers are assigned by IANA. A current
-            list of all assignments is available from
-            <http://www.iana.org/>.
-
-            The value zero represents the ANY (wildcard) value. In
-            regards to a filter or rule, this means that any port number
-            satisfies the filter or rule."
-        SYNTAX       Unsigned32 (0..65535)
-
-    ROHCCompressionProfiles ::= TEXTUAL-CONVENTION
-        STATUS      current
-        DESCRIPTION
-            "A 16-bit field that conveys the compression profiles the
-            local or peer decompressor supports. Only ROHCv2 compression
-            profiles are used and they are defined using the following
-
-
-
-Azoum, et al.            Expires January 1, 2017                [Page 9]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-            bit setting scheme shown below. Note that the bit setting
-            scheme does not correspond to the compression profile values
-            defined in RFC 5225. It is purely used in the MIB to convey
-            the compression profiles the local or peer decompressor
-            supports.
-
-                 (0)     compressionProfile1: IP/UDP/RTP
-                 (1)     compressionProfile2: IP/UDP
-                 (2)     compressionProfile3: IP/ESP
-                 (3)     compressionProfile4: IP
-                 (4)     compressionProfile5: IP/UDP-Lite/RTP
-                 (5)     compressionProfile6: IP/UDP-Lite
-                 (6-15)  RESERVED"
-
-        SYNTAX    BITS { compressionProfile1(0), compressionProfile2(1),
-                         compressionProfile3(2), compressionProfile4(3),
-                         compressionProfile5(4), compressionProfile6(5) }
-
-    ROHCModes ::= TEXTUAL-CONVENTION
-        STATUS          current
-        DESCRIPTION
-            "An indication of whether RObust Header Compression (ROHC)
-            will be used in a Generic INE Secure Connection and how it
-            is being used. This textual convention is only applicable to
-            dynamic Secure Connections, where negotiation is required
-            for establishment.
-
-            [noROHC] = ROHC will not be used
-            [useROHCWithoutFeedback] = ROHC will be used and feedback
-                will not be sent on the Secure Connection
-            [useROHCWithFeedback] = ROHC will be used and feedback will
-                be sent on the Secure Connection
-            [rohcAcceptableWithoutFeedback] = ROHC will not be signaled
-                for use by this device as an initiator of the Secure
-                Connection; feedback will also not be sent on the Secure
-                Connection.
-            [rohcAcceptableWithFeedback] = ROHC will not be signaled for
-                use by this device as an initiator of the Secure
-                Connection; feedback will be sent on the Secure
-                Connection."
-        SYNTAX     INTEGER { noROHC(1), useROHCWithoutFeedback(2),
-                             useROHCWithFeedback(3),
-                             rohcAcceptableWithoutFeedback(4),
-                             rohcAcceptableWithFeedback(5) }
-
-
-    KeyFingerprint ::= TEXTUAL-CONVENTION
-        DISPLAY-HINT "1x:1x"
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 10]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-        STATUS       current
-        DESCRIPTION
-           "A fingerprint value that can be used to uniquely reference
-           key materials of potentially arbitrary length.
-
-           A KeyFingerprint value is composed of a 1-octet hashing
-           algorithm identifier followed by the fingerprint value. The
-           octet value encoded is taken from the IANA TLS HashAlgorithm
-           Registry RFC 5246. The remaining 19 octets are filled using
-           the results of the hashing algorithm on the raw key material
-           and inherent tagging information, truncated to 19 octets.
-           With public key certificates, for example, a hash of the
-           entire structure truncated to 19 octets is used.
-
-           If no tagging information is available, the text 'NO_TAG'
-           (without quotes) will be used as input."
-        REFERENCE "RFC 5246: The Transport Layer
-                   Security (TLS) Protocol Version 1.2
-                   http://www.iana.org/assignments/tls-parameters/"
-        SYNTAX OCTET STRING (SIZE(20))
-
-    END
-
-5.4.  CC Device Info
-
-   This MIB module makes reference to the following documents:
-   [RFC1213], [RFC1907], [RFC2571], [RFC2578], [RFC2579], and [RFC2580].
-
-    CC-DEVICE-INFO-MIB  DEFINITIONS  ::=  BEGIN
-
-    IMPORTS
-        ccDeviceInfo
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-        MODULE-COMPLIANCE, OBJECT-GROUP,
-        NOTIFICATION-GROUP
-            FROM SNMPv2-CONF                           -- FROM RFC 2580
-        OBJECT-TYPE, Unsigned32, Integer32,
-        NOTIFICATION-TYPE, Counter64, MODULE-IDENTITY,
-        TimeTicks
-            FROM SNMPv2-SMI                            -- FROM RFC 2578
-        SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime, TruthValue,
-        TEXTUAL-CONVENTION, TimeStamp
-            FROM SNMPv2-TC;                            -- FROM RFC 2579
-
-    ccDeviceInfoMIB  MODULE-IDENTITY
-            "Shadi Azoum
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 11]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-            US Navy
-            email: shadi.azoum@navy.mil
-
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
-        DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
-
-            Copyright (c) 2016 IETF Trust and the persons
-            identified as authors of the code.  All rights reserved.
-
-            Redistribution and use in source and binary forms, with
-            or without modification, is permitted pursuant to, and
-            subject to the license terms contained in, the Simplified
-            BSD License set forth in Section 4.c of the IETF Trust's
-            Legal Provisions Relating to IETF Documents
             (http://trustee.ietf.org/license-info).
 
             This version of this MIB module is part of RFC xxxx;
@@ -666,24 +404,14 @@ Internet-Draft                    CCMIB                        June 2016
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccDeviceInfo 1 }
 
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 12]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
     -- *****************************************************************
-    -- Device Info Information Segments
+    -- Device Information Segments
     -- *****************************************************************
 
     cDeviceInfoConformance  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 1}
     cDeviceComponentVersInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 2}
-    cBatteryInfo  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 3}
     cFirmwareInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 4}
     cDeviceInfoScalars  OBJECT IDENTIFIER
@@ -692,7 +420,7 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { ccDeviceInfoMIB 6}
 
     -- *****************************************************************
-    -- General Device Info Scalars
+    -- General Device Information Scalars
     -- *****************************************************************
 
     cSystemDate  OBJECT-TYPE
@@ -714,6 +442,14 @@ Internet-Draft                    CCMIB                        June 2016
             Note that this is different from sysUpTime in the SNMPv2-MIB
             RFC 1907 because sysUpTime is the uptime of the network
             management portion of the system."
+
+
+
+Azoum, et al.            Expires January 1, 2017                [Page 8]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         ::= { cDeviceInfoScalars 2 }
 
     cSystemInitialLoadParameters  OBJECT-TYPE
@@ -722,14 +458,6 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "This object contains the parameters (e.g. a pathname and
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 13]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             parameter) supplied to the load device when requesting the
             initial operating system configuration from that device.
             Note that writing to this object just changes the
@@ -770,6 +498,14 @@ Internet-Draft                    CCMIB                        June 2016
             management method (e.g. via an HMI). Managers can use this
             object to ensure that no changes to any configuration within the
             device have happened since the last time it examined the device.
+
+
+
+Azoum, et al.            Expires January 1, 2017                [Page 9]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             A value of 0 indicates that no objects have been changed since
             the agent initialized."
         ::= { cDeviceInfoScalars 6 }
@@ -778,14 +514,6 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      TruthValue
         MAX-ACCESS  read-write
         STATUS      current
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 14]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         DESCRIPTION
             "The indication of whether a device should be reset. Setting
             this object to 'true' will perform a reset operation of the
@@ -826,6 +554,14 @@ Internet-Draft                    CCMIB                        June 2016
             will make the box unusable without returning to the factory
             or some equivalent. Setting this object will certainly
             render the device unreachable from distant managers since it
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 10]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             will be unconfigured. When read this object should return
             false. When set to false this object must not perform any
             operation but should accept this as a valid SET operation."
@@ -834,14 +570,6 @@ Internet-Draft                    CCMIB                        June 2016
     cVendorName OBJECT-TYPE
         SYNTAX      OCTET STRING
         MAX-ACCESS  read-only
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 15]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS      current
         DESCRIPTION
             "This object stores the device's vendor name and is intended
@@ -870,7 +598,7 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cDeviceInfoScalars 12 }
 
     -- *****************************************************************
-    -- Device Info Notifications
+    -- Device Information Notifications
     -- *****************************************************************
 
     cFirmwareInstallFailed  NOTIFICATION-TYPE
@@ -882,6 +610,14 @@ Internet-Draft                    CCMIB                        June 2016
 
     cFirmwareInstallSuccess  NOTIFICATION-TYPE
         OBJECTS     {
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 11]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
                         cFirmwareName,
                         cFirmwareVersion,
                         cFirmwareSource
@@ -890,14 +626,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "A notification from the device to the management station
             indicating a firmware install succeeded."
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 16]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         ::= { cDeviceInfoNotify 2 }
 
     cResetDeviceInitialized  NOTIFICATION-TYPE
@@ -929,53 +657,6 @@ Internet-Draft                    CCMIB                        June 2016
             operations (such as shutting down interfaces, etc.)"
         ::= { cDeviceInfoNotify 5 }
 
-    cBatteryLow  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus,
-                        cBatteryLowThreshold
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a battery has reached the threshold at which a
-            battery warning is indicated."
-        ::= { cDeviceInfoNotify 6 }
-
-    cBatteryRequiresReplacement  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 17]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a battery should be charged or changed
-            immediately."
-        ::= { cDeviceInfoNotify 7 }
-
-    cDeviceOnBattery  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cBatteryType,
-                        cBatteryOpStatus
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating the device is on battery power. This notification
-            is sent when the device is no longer connected to an
-            external power source and is operating using a battery for
-            main power."
-        ::= { cDeviceInfoNotify 8 }
-
     cDeviceComponentDisabled  NOTIFICATION-TYPE
         OBJECTS     {
                         cDeviceComponentName,
@@ -985,6 +666,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "A notification from the device to the management station
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 12]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             indicating a component described in the
             cDeviceComponentVersTable has been disabled."
         ::= { cDeviceInfoNotify 9 }
@@ -1002,14 +691,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cDeviceInfoNotify 10 }
 
     -- *****************************************************************
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 18]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
     -- CC MIB cDeviceComponentVersTable
     -- *****************************************************************
 
@@ -1041,6 +722,14 @@ Internet-Draft                    CCMIB                        June 2016
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 13]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             "The table containing a description of the specification
             versions of components or specifications supported by the
             ECU. Note that it is possible for multiple versions of a
@@ -1058,14 +747,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cDeviceComponentVersTable 1 }
 
     cDeviceComponentVersEntry  ::= SEQUENCE {
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 19]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         cDeviceComponentName        SnmpAdminString,
         cDeviceComponentVersion     SnmpAdminString,
         cDeviceComponentOpStatus    INTEGER,
@@ -1097,6 +778,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "The version of the specification or module name listed in
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 14]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             the cDeviceComponentName object field in this row. The
             string value to be used in this field should be documented
             in the text of a specification, of the device, or elsewhere.
@@ -1114,14 +803,6 @@ Internet-Draft                    CCMIB                        June 2016
 
             This row may be used to enable/disable components or modules
             in the device, and some implementations may allow for
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 20]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             various versions of a component to be activated. Devices may
             use this construct to roll back versions of a device
             software, or to allow various software feature versions to
@@ -1145,130 +826,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cDeviceComponentVersEntry 4 }
 
     -- *****************************************************************
-    -- CC MIB cBatteryInfoTable
-    -- *****************************************************************
-
-    cBatteryInfoTableCount  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The number of rows in the cBatteryInfoTable."
-        ::= { cBatteryInfo 1 }
-
-    cBatteryInfoTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The last time any entry in the table was modified, created,
-            or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
-            that no changes to configuration of this table have happened
-            since the last time it examined the table. A value of 0
-            indicates that no entry CC-DEVICE-INFO-MIB cSystemUpTime
-            should be used to populate this column."
-        ::= { cBatteryInfo 2 }
-
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 21]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-    cBatteryInfoTable  OBJECT-TYPE
-        SYNTAX      SEQUENCE OF CBatteryInfoEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "The table containing information on each of the batteries
-            installed in the device."
-        ::= { cBatteryInfo 3 }
-
-    cBatteryInfoEntry  OBJECT-TYPE
-        SYNTAX      CBatteryInfoEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A row continuing information on a specific battery. If a
-            device cannot return status of a battery it should not
-            create a row in this table for that battery."
-        INDEX      { cBatteryIndex }
-        ::= { cBatteryInfoTable 1 }
-
-    CBatteryInfoEntry  ::= SEQUENCE {
-        cBatteryIndex           Unsigned32,
-        cBatteryType            INTEGER,
-        cBatteryOpStatus        INTEGER,
-        cBatteryLowThreshold    Integer32
-    }
-
-    cBatteryIndex  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A numerical index used to identify the battery. This value
-            uniquely identifies a battery on this device. The value
-            should be persistent for a given battery, but management
-            stations should not depend on it as it may not be possible
-            for some devices to retain identical indexes (especially
-            across reboots)."
-        ::= { cBatteryInfoEntry 1 }
-
-    cBatteryType  OBJECT-TYPE
-        SYNTAX      INTEGER { other(1), main(2), clock(3), security(4) }
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The type of battery. Other(1) describes a battery which is
-            not otherwise defined here. Main(2) batteries are used for
-            operation of the device when not connected to a power
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 22]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-            source. Clock(3) is used to describe batteries which cannot
-            provide main power to the device but maintain clock or other
-            persistent data. Security(4) is used for batteries which
-            perform specific security functions or which may render the
-            device inoperable when the battery is depleted. If a battery
-            is used for both clock and security, Security should be
-            returned."
-        ::= { cBatteryInfoEntry 2 }
-
-    cBatteryOpStatus  OBJECT-TYPE
-        SYNTAX      INTEGER { unknown(1), batteryNormal(2),
-                              batteryLow(3), batteryDepleted(4),
-                              batteryMissing(5) }
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "Indication of the status of the battery."
-        ::= {cBatteryInfoEntry 3}
-
-    cBatteryLowThreshold  OBJECT-TYPE
-        SYNTAX      Integer32 (0..100)
-        MAX-ACCESS  read-write
-        STATUS      current
-        DESCRIPTION
-            "The percentage of capacity at which the cBatteryLow
-            notification will be generated. A value of zero indicates
-            that the notification should never be sent for this battery.
-            This object should not be implemented if the device will
-            detect a low battery, but the actual percentage is not
-            measurable. This object only needs be writable for
-            implementations that support modification of the warning
-            level percentage."
-        ::= { cBatteryInfoEntry 4 }
-
-    -- *****************************************************************
     -- CC MIB cFirmwareInformationTable
     -- *****************************************************************
 
@@ -1277,19 +834,19 @@ Internet-Draft                    CCMIB                        June 2016
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 15]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             "The number of rows in the cFirmwareInformationTable."
         ::= { cFirmwareInfo 1 }
 
     cFirmwareInformationTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 23]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -1333,19 +890,19 @@ Internet-Draft                    CCMIB                        June 2016
         cFirmwareRowStatus  RowStatus
     }
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 16]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     cFirmwareName  OBJECT-TYPE
         SYNTAX      OCTET STRING (SIZE(1..255))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 24]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             "Unique identifier provided in the firmware package."
         ::= { cFirmwareInformationEntry 1 }
 
@@ -1389,19 +946,19 @@ Internet-Draft                    CCMIB                        June 2016
 
     cFirmwareRowStatus OBJECT-TYPE
         SYNTAX      RowStatus
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 17]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
             "The status of the row, by which old entries may be deleted
             from this table. At a minimum, implementations must support
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 25]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             destroy management functions. Support for active and
             notReady management functions is optional."
         ::= { cFirmwareInformationEntry 5 }
@@ -1445,19 +1002,19 @@ Internet-Draft                    CCMIB                        June 2016
         MIN-ACCESS not-accessible
         DESCRIPTION
             "Implementation of this object is optional."
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 18]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         ::= { cDeviceInfoCompliances 1 }
 
     cDeviceInfoComponentCompliance MODULE-COMPLIANCE
         STATUS    current
         DESCRIPTION
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 26]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             "Compliance levels for component information."
         MODULE
         MANDATORY-GROUPS { cDeviceInfoComponentGroup }
@@ -1466,23 +1023,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "This notification group is optional for implementation."
         ::= { cDeviceInfoCompliances 2 }
-
-    cDeviceInfoBatteryCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for battery information."
-        MODULE
-        MANDATORY-GROUPS { cDeviceInfoBatteryGroup }
-
-        GROUP cDeviceInfoBatteryNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-
-        OBJECT cBatteryLowThreshold
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-        ::= { cDeviceInfoCompliances 3 }
 
     cDeviceInfoFirmwareCompliance MODULE-COMPLIANCE
         STATUS    current
@@ -1506,14 +1046,6 @@ Internet-Draft                    CCMIB                        June 2016
                     cResetDevice,
                     cSanitizeDevice,
                     cRenderInoperable,
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 27]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
                     cVendorName,
                     cModelIdentifier,
                     cHardwareVersionNumber
@@ -1526,6 +1058,14 @@ Internet-Draft                    CCMIB                        June 2016
 
     cDeviceInfoComponentGroup OBJECT-GROUP
         OBJECTS {
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 19]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
                     cDeviceComponentVersTableCount,
                     cDeviceComponentVersTableLastChanged,
                     cDeviceComponentName,
@@ -1539,20 +1079,6 @@ Internet-Draft                    CCMIB                        June 2016
             information."
         ::= { cDeviceInfoGroups 2 }
 
-    cDeviceInfoBatteryGroup OBJECT-GROUP
-        OBJECTS {
-                    cBatteryInfoTableCount,
-                    cBatteryInfoTableLastChanged,
-                    cBatteryType,
-                    cBatteryOpStatus,
-                    cBatteryLowThreshold
-                }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of objects related to battery
-            information."
-        ::= { cDeviceInfoGroups 3 }
-
     cDeviceInfoFirmwareGroup OBJECT-GROUP
         OBJECTS {
                     cFirmwareInformationTableCount,
@@ -1562,14 +1088,6 @@ Internet-Draft                    CCMIB                        June 2016
                     cFirmwareSource,
                     cFirmwareRunning,
                     cFirmwareRowStatus
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 28]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
                 }
         STATUS current
         DESCRIPTION
@@ -1596,36 +1114,24 @@ Internet-Draft                    CCMIB                        June 2016
                         cDeviceComponentEnabled
                       }
         STATUS current
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 20]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         DESCRIPTION
             "This group is composed of notifications related to
             component information."
         ::= { cDeviceInfoGroups 6 }
-
-    cDeviceInfoBatteryNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
-                        cBatteryLow,
-                        cBatteryRequiresReplacement,
-                        cDeviceOnBattery
-                      }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of notifications related to battery
-            information."
-        ::= { cDeviceInfoGroups 7 }
 
     cDeviceInfoFirmwareNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cFirmwareInstallFailed,
                         cFirmwareInstallSuccess
                      }
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 29]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS current
         DESCRIPTION
             "This group is composed of notifications related to firmware
@@ -1634,7 +1140,7 @@ Internet-Draft                    CCMIB                        June 2016
 
     END
 
-5.5.  Key Management Info
+5.4.  Key Management Information
 
    This MIB module makes references to the following documents:
    [RFC2571], [RFC2578], [RFC2579], [RFC2580], [RFC5280], [RFC5914],
@@ -1644,15 +1150,14 @@ Internet-Draft                    CCMIB                        June 2016
 
     IMPORTS
         ccKeyManagement
-
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime,
-        TruthValue,TEXTUAL-CONVENTION, TimeStamp
+        TruthValue, TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
@@ -1661,7 +1166,18 @@ Internet-Draft                    CCMIB                        June 2016
             FROM SNMP-TLS-TM-MIB;                      -- FROM RFC 6353
 
     ccKeyManagementMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 21]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             US Navy
             email: shadi.azoum@navy.mil
 
@@ -1674,14 +1190,6 @@ Internet-Draft                    CCMIB                        June 2016
             lily.sun@navy.mil
 
             Mike Irani
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 30]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             NKI Engineering
             irani@nkiengineering.com
 
@@ -1697,8 +1205,7 @@ Internet-Draft                    CCMIB                        June 2016
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Managment objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -1719,6 +1226,14 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { ccKeyManagement 1 }
 
     -- *****************************************************************
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 22]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     -- Key Management Information Segments
     -- *****************************************************************
 
@@ -1730,14 +1245,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { ccKeyManagementMIB 3 }
     cCKLInfo OBJECT IDENTIFIER
         ::= { ccKeyManagementMIB 4 }
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 31]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
     cCDMStoreInfo  OBJECT IDENTIFIER
         ::= { ccKeyManagementMIB 5 }
     cCertSubAltNameInfo OBJECT IDENTIFIER
@@ -1758,7 +1265,7 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { ccKeyManagementMIB 13 }
 
     -- *****************************************************************
-    -- Key Management Scalars
+    -- Key Management Information Scalars
     -- *****************************************************************
 
     cZeroizeAllKeys  OBJECT-TYPE
@@ -1775,6 +1282,14 @@ Internet-Draft                    CCMIB                        June 2016
             same value as the current value, the device must not perform
             any operation but should accept this as a valid SET
             operation. Note after being set to true, an agent should
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 23]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             reset this object to false once it has zeroized all the keys
             stored in the device."
         ::= { cKeyManagementScalars 1 }
@@ -1786,14 +1301,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "Setting this object to 'true' removes all entries in the
             cSymmetricKeyTablekey and zeroizes the associated key
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 32]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             materials. This operation must not modify any other
             information in the device such as the persistent storage or
             the audit log. When read this object should return false. If
@@ -1831,6 +1338,14 @@ Internet-Draft                    CCMIB                        June 2016
             cTrustAnchorTable. This operation must not modify any other
             information in the device such as the persistent storage or
             the audit log. When read this object should return false. If
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 24]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             this object is set to the same value as the current value,
             the device must not perform any operation but should accept
             this as a valid SET operation. Note after being set to true,
@@ -1842,14 +1357,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cKeyManagementScalars 4 }
 
     cZeroizeCDMStoreTable  OBJECT-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 33]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         SYNTAX      TruthValue
         MAX-ACCESS  read-write
         STATUS      current
@@ -1887,6 +1394,14 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cKeyManagementScalars 7 }
 
     cSymKeyGlobalExpiryWarning  OBJECT-TYPE
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 25]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         SYNTAX      Unsigned32
         UNITS       "days"
         MAX-ACCESS  read-write
@@ -1897,14 +1412,6 @@ Internet-Draft                    CCMIB                        June 2016
             cSymKeyExpirationDate in the associated cSymmetricKeyTable
             entry) for which the cKeyMaterialExpiring notification will
             be transmitted.
-
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 34]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
             The value in this object is only used if no value exists for
             the associated cSymmetricKeyTable entry's
@@ -1943,6 +1450,14 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      TruthValue
         MAX-ACCESS  read-write
         STATUS      current
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 26]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         DESCRIPTION
             "Setting this object to 'true' will force the generation of
             key material, based on the type of key material described in
@@ -1954,13 +1469,6 @@ Internet-Draft                    CCMIB                        June 2016
             object to false once the key material has been generated and
             an entry created in the appropriate table."
         ::= { cKeyManagementScalars 11 }
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 35]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
     -- *****************************************************************
     -- Key Management Notifications
@@ -1998,6 +1506,14 @@ Internet-Draft                    CCMIB                        June 2016
             notification is transmitted prior to the key material's
             configured expiration date
             (cSymKeyExpirationDate/cAsymKeyExpirationDate) as indicated
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 27]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             by a global setting
             (cSymKeyGlobalExpiryWarning/cAsymKeyGlobalExpiryWarning) or
             the granular setting per key material table entry
@@ -2010,14 +1526,6 @@ Internet-Draft                    CCMIB                        June 2016
                         cKeyMaterialTableOID
                     }
         STATUS      current
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 36]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         DESCRIPTION
             "Key Material, identified by Key Fingerprint and OID of the
             associated key material table, has expired."
@@ -2054,6 +1562,14 @@ Internet-Draft                    CCMIB                        June 2016
             setting the cZeroizeSymmetricKeyTable object to 'true',
             setting the cZeroizeAsymKeyTable object to 'true', setting
             the cZeroizeTrustAnchorTable object to 'true', or setting
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 28]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             the cZeroizeCDMStoreTable object to 'true'."
         ::= { cKeyManagementNotify 6 }
 
@@ -2066,14 +1582,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "An attempt to load the device with CKL, identified by
             cCKLIndex and cCKLIssuer (indexes to the cCKLTable), has
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 37]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             succeeded."
         ::= { cKeyManagementNotify 7 }
 
@@ -2110,6 +1618,14 @@ Internet-Draft                    CCMIB                        June 2016
 
     cTrustAnchorAdded  NOTIFICATION-TYPE
         OBJECTS     {
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 29]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
                         cTrustAnchorFingerprint,
                         cTrustAnchorFormatType,
                         cTrustAnchorUsageType
@@ -2122,14 +1638,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cKeyManagementNotify 11 }
 
     cTrustAnchorUpdated  NOTIFICATION-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 38]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         OBJECTS     {
                         cTrustAnchorFingerprint,
                         cTrustAnchorFormatType,
@@ -2167,6 +1675,13 @@ Internet-Draft                    CCMIB                        June 2016
             "The number of rows in the cSymmetricKeyTable."
         ::= { cSymmetricKeyInfo 1 }
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 30]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     cSymmetricKeyTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
         MAX-ACCESS  read-only
@@ -2178,14 +1693,6 @@ Internet-Draft                    CCMIB                        June 2016
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 39]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
             should be used to populate this column."
         ::= { cSymmetricKeyInfo 2 }
@@ -2223,6 +1730,14 @@ Internet-Draft                    CCMIB                        June 2016
         cSymKeyRowStatus            RowStatus
     }
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 31]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     cSymKeyFingerprint  OBJECT-TYPE
         SYNTAX      SnmpTLSFingerprint
         MAX-ACCESS  not-accessible
@@ -2234,14 +1749,6 @@ Internet-Draft                    CCMIB                        June 2016
             This MIB does not provide any additional requirements on
             developing the fingerprint. Implementations are cautioned to
             develop the hash in a manner that does not compromise the
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 40]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             security of the key material."
         ::= { cSymmetricKeyEntry 1 }
 
@@ -2280,6 +1787,13 @@ Internet-Draft                    CCMIB                        June 2016
 
             Decrypt: The key is used for data decryption purposes.
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 32]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             KeyWrap: The key is used for key wrap purposes.
 
             Unwrap: The key is used for key unwrap purposes.
@@ -2289,14 +1803,6 @@ Internet-Draft                    CCMIB                        June 2016
 
             Generate: The key is used to generate a new key based on a
             random number and the previous value of the key.
-
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 41]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
             Shared Secret: The key is used as a shared secret between
             entities.
@@ -2336,6 +1842,14 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "Represents the name of the entity which issued the key. Use
             a distinguished name (DN) when one is available."
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 33]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         ::= { cSymmetricKeyEntry 4 }
 
     cSymKeyEffectiveDate  OBJECT-TYPE
@@ -2345,14 +1859,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "The effective date of the key."
         ::= { cSymmetricKeyEntry 5 }
-
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 42]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
     cSymKeyExpirationDate  OBJECT-TYPE
         SYNTAX      DateAndTime
@@ -2393,6 +1899,13 @@ Internet-Draft                    CCMIB                        June 2016
             cKeyMaterialExpired notification."
         ::= { cSymmetricKeyEntry 8 }
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 34]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     cSymKeyFriendlyName  OBJECT-TYPE
         SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
@@ -2401,14 +1914,6 @@ Internet-Draft                    CCMIB                        June 2016
             "A human readable label of the key for easier reference. It
             is used only for helpful or informational purposes."
         ::= { cSymmetricKeyEntry 9 }
-
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 43]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
     cSymKeyClassification  OBJECT-TYPE
         SYNTAX      BITS { unclassified(0), restricted(1),
@@ -2449,6 +1954,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "The status of this row by which existing entries may be
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 35]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             deleted from this table. Setting this column to destroy is
             synonymous with zeroizing the key. Any reference(s) to this
             object, upon setting this RowStatus to destroy, should be
@@ -2458,13 +1971,6 @@ Internet-Draft                    CCMIB                        June 2016
             be set to notReady. Only after valid information has been
             entered by the manager, can the manager set this column to
             active.
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 44]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
             At a minimum, implementations must support active and
             destroy management functions. Implementations must support
@@ -2504,6 +2010,14 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      SEQUENCE OF CAsymKeyEntry
         MAX-ACCESS  not-accessible
         STATUS      current
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 36]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         DESCRIPTION
             "The table containing the Asymmetric Key Material and
             Certificates used by the device. Enumeration values, when
@@ -2514,14 +2028,6 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      CAsymKeyEntry
         MAX-ACCESS  not-accessible
         STATUS      current
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 45]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         DESCRIPTION
              "A row containing information about an Asymmetric Key or
              Certificate."
@@ -2560,6 +2066,14 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cAsymKeyEntry 1 }
 
     cAsymKeyFriendlyName  OBJECT-TYPE
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 37]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         SYNTAX      SnmpAdminString
         MAX-ACCESS  read-write
         STATUS      current
@@ -2570,14 +2084,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cAsymKeySerialNumber  OBJECT-TYPE
         SYNTAX      OCTET STRING (SIZE(1..255))
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 46]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2616,6 +2122,14 @@ Internet-Draft                    CCMIB                        June 2016
              Note, this is a free form OCTET STRING column, meaning
              implementations may utilize a standardized definition of
              string values or use a proprietary definition of string
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 38]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
              values for supported signature algorithms."
         ::= { cAsymKeyEntry 5 }
 
@@ -2626,14 +2140,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
              "Public key algorithm with which the public key is used (as
              associated with the asymmetric key material (e.g. X.509
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 47]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
              Certificate)).
 
              Note, this is a free form OCTET STRING column, meaning
@@ -2673,6 +2179,13 @@ Internet-Draft                    CCMIB                        June 2016
              key (cAsymKeyExpirationDate) for which the
              cKeyMaterialExpiring notification will be transmitted.
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 39]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
              If configured, the scalar value of
              cAsymKeyGlobalExpiryWarning will be ignored. The value of
              cAsymKeyGlobalExpiryWarning will only be used if this
@@ -2682,14 +2195,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cAsymKeySubject  OBJECT-TYPE
         SYNTAX      OCTET STRING (SIZE(1..255))
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 48]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2729,6 +2234,14 @@ Internet-Draft                    CCMIB                        June 2016
              Subject Alternative Subject Names in the
              cCertSubAltNameTable.
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 40]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
              This column should contain an empty string if the
              Certificate has no associating Subject Alternative Names.
 
@@ -2738,14 +2251,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cAsymKeyEntry 12 }
 
     cAsymKeyUsage  OBJECT-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 49]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         SYNTAX      BITS { other(0), digitalSignature(1),
                            nonRepudiation(2), keyEncipherment(3),
                            dataEncipherment(4), keyAgreement(5),
@@ -2785,6 +2290,14 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
              "The supported classification level supported by the
              cAsymKeySubject used by this key material
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 41]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
              Bit value translation:
              1000 0000 = unclassified,
              0100 0000 = restricted,
@@ -2794,14 +2307,6 @@ Internet-Draft                    CCMIB                        June 2016
 
              This column does not exist for devices that do not have the
              concept of classification."
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 50]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         ::= { cAsymKeyEntry 14 }
 
     cAsymKeySource  OBJECT-TYPE
@@ -2841,6 +2346,14 @@ Internet-Draft                    CCMIB                        June 2016
     cAsymKeyVersion  OBJECT-TYPE
         SYNTAX     INTEGER
         MAX-ACCESS read-only
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 42]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         STATUS     current
         DESCRIPTION
             "The version of the asymmetric key material. For example,
@@ -2851,19 +2364,12 @@ Internet-Draft                    CCMIB                        June 2016
             column will not exist."
         ::= { cAsymKeyEntry 17 }
 
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 51]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
     cAsymKeyRekey  OBJECT-TYPE
         SYNTAX     TruthValue
         MAX-ACCESS read-create
         STATUS     current
         DESCRIPTION
-            "Setting this object to 'true' imitates a rekey operation
+            "Setting this object to 'true' initates a rekey operation
             for the asymmetric key material. Note, additional
             configurations will likely be required based on the
             supported key management protocol.
@@ -2896,6 +2402,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "The number of rows in the cTrustAnchorTable."
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 43]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         ::= { cTrustAnchorInfo 1 }
 
     cTrustAnchorTableLastChanged  OBJECT-TYPE
@@ -2906,14 +2420,6 @@ Internet-Draft                    CCMIB                        June 2016
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
             (e.g. via an HMI). Managers can use this object to ensure
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 52]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2952,6 +2458,14 @@ Internet-Draft                    CCMIB                        June 2016
     }
 
     cTrustAnchorFingerprint  OBJECT-TYPE
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 44]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         SYNTAX      SnmpTLSFingerprint
         MAX-ACCESS  read-only
         STATUS      current
@@ -2962,14 +2476,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cTrustAnchorFormatType  OBJECT-TYPE
         SYNTAX      INTEGER { x509v3(1), trustAnchorFormat(2),
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 53]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
                               tbsCertificate(3) }
         MAX-ACCESS  read-only
         STATUS      current
@@ -3008,6 +2514,14 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cTrustAnchorEntry 4 }
 
     cTrustAnchorKeyIdentifier  OBJECT-TYPE
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 45]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         SYNTAX      OCTET STRING (SIZE(1..255))
         MAX-ACCESS  read-only
         STATUS      current
@@ -3018,14 +2532,6 @@ Internet-Draft                    CCMIB                        June 2016
     cTrustAnchorPublicKeyAlgorithm  OBJECT-TYPE
         SYNTAX      OCTET STRING
         MAX-ACCESS  read-only
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 54]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS      current
         DESCRIPTION
             "Public key algorithm with which the public key is used (as
@@ -3064,6 +2570,14 @@ Internet-Draft                    CCMIB                        June 2016
             must not support createAndWait and createAndGo management
             functions for this object.
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 46]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             Some implementations may restrict the deletion of Trust
             Anchors to specific protocols (e.g. TAMP)."
         ::= { cTrustAnchorEntry 8 }
@@ -3074,14 +2588,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cCKLTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 55]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3120,6 +2626,14 @@ Internet-Draft                    CCMIB                        June 2016
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 47]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             "A row containing information about a Compromised Key List
             or Certificate Revocation List (CRL) used by the device."
         INDEX      { cCKLIndex, cCKLIssuer }
@@ -3130,14 +2644,6 @@ Internet-Draft                    CCMIB                        June 2016
         cCKLIssuer          OCTET STRING,
         cCKLSerialNumber    OCTET STRING,
         cCKLIssueDate       DateAndTime,
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 56]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         cCKLNextUpdate      DateAndTime,
         cCKLRowStatus       RowStatus,
         cCKLVersion         INTEGER,
@@ -3176,6 +2682,14 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "A Serial Number for this CRL or CKL.
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 48]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             For CRLs adhering to RFC 5280, this will be a monotonically
             increasing sequence number for a given Certificate
             Revocation List (CRL) scope and CRL issuer. The CRL Number
@@ -3186,14 +2700,6 @@ Internet-Draft                    CCMIB                        June 2016
     cCKLIssueDate  OBJECT-TYPE
         SYNTAX      DateAndTime
         MAX-ACCESS  read-only
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 57]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS      current
         DESCRIPTION
             "The issue date of this CRL/CKL."
@@ -3232,6 +2738,14 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      INTEGER
         MAX-ACCESS  read-only
         STATUS      current
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 49]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         DESCRIPTION
             "The version of the CKL/CRL. For example, X.509 Version 2
             CRLs would have a value of '1', as defined in RFC 5280 -
@@ -3242,14 +2756,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cCKLEntry 7 }
 
     cCKLLastUpdate  OBJECT-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 58]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         SYNTAX      DateAndTime
         MAX-ACCESS  read-only
         STATUS      current
@@ -3288,6 +2794,14 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      SEQUENCE OF CCDMStoreEntry
         MAX-ACCESS  not-accessible
         STATUS      current
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 50]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         DESCRIPTION
             "The table containing various types of stored Crypto Device
             Material (CDM) that are destined for this device and/or
@@ -3298,14 +2812,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cCDMStoreInfo 3 }
 
     cCDMStoreEntry  OBJECT-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 59]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         SYNTAX      CCDMStoreEntry
         MAX-ACCESS  not-accessible
         STATUS      current
@@ -3344,6 +2850,14 @@ Internet-Draft                    CCMIB                        June 2016
             "The type of Crypto Device Material (CDM) populated in this
             row.
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 51]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             (1) symKey - This row contains information about a stored
                 symmetric key.
             (2) asymKey - This row contains information about a stored
@@ -3354,14 +2868,6 @@ Internet-Draft                    CCMIB                        June 2016
                 Certificate Revocation List (CRL).
             (5) ckl - This row contains information about a stored
                 Compromised Key List (CKL).
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 60]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             (6) firmware - This row contains information about stored
                 firmware.
             (7) storeAndForwardWrappedPkg - This row contains
@@ -3400,6 +2906,14 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "A human readable label of this Crypto Device Material (CDM)
             for easier reference. It is used only for helpful or
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 52]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             informational purposes."
         ::= { cCDMStoreEntry 5 }
 
@@ -3410,14 +2924,6 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
              "A means to control what happens to the Crypto Device
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 61]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
              Material (CDM) stored in this table.
             (1) readyForInstall - The CDM is ready for installation.
             (2) install - The CDM will be installed in the appropriate
@@ -3456,6 +2962,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS     current
         DESCRIPTION
             "The number of rows in the cCertSubAltNameTable."
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 53]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         ::= { cCertSubAltNameInfo 1 }
 
     cCertSubAltNameTableLastChanged OBJECT-TYPE
@@ -3466,14 +2980,6 @@ Internet-Draft                    CCMIB                        June 2016
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
             (e.g. via an HMI). Managers can use this object to ensure
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 62]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3512,6 +3018,14 @@ Internet-Draft                    CCMIB                        June 2016
     cCertSubAltNameList OBJECT-TYPE
         SYNTAX     SnmpAdminString (SIZE(1..32))
         MAX-ACCESS not-accessible
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 54]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         STATUS     current
         DESCRIPTION
             "The administrative name defining the set of Subject
@@ -3522,12 +3036,6 @@ Internet-Draft                    CCMIB                        June 2016
             uniquely identifies each row or set of Subject Alternative
             Names."
         ::= { cCertSubAltNameTableEntry 1 }
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 63]
-
-Internet-Draft                    CCMIB                        June 2016
 
 
     cCertSubAltNameListIndex OBJECT-TYPE
@@ -3567,6 +3075,13 @@ Internet-Draft                    CCMIB                        June 2016
             of the value must match its Type as defined in RFC 5280,
             Section 4.2.1.6.
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 55]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             This column is the main value and is used for all
             cCertSubAltNameType types. For otherName(0), this column
 
@@ -3578,14 +3093,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cCertSubAltNameValue2 OBJECT-TYPE
         SYNTAX     OCTET STRING
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 64]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -3623,6 +3130,14 @@ Internet-Draft                    CCMIB                        June 2016
             functions for this object."
         ::= { cCertSubAltNameTableEntry 6 }
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 56]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     -- *****************************************************************
     -- CC MIB cCertPathCtrlsTable
     -- *****************************************************************
@@ -3634,13 +3149,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "The number of rows in the cCertPathCtrlsTable."
         ::= { cCertPathCtrlsInfo 1 }
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 65]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
     cCertPathCtrlsTableLastChanged OBJECT-TYPE
         SYNTAX      TimeStamp
@@ -3678,6 +3186,14 @@ Internet-Draft                    CCMIB                        June 2016
 
     CCertPathCtrlsEntry ::= SEQUENCE {
         cCertPathCtrlsKeyFingerprint    SnmpTLSFingerprint,
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 57]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         cCertPathCtrlsCertificate       RowPointer,
         cCertPathCtrlsCertPolicies      OCTET STRING,
         cCertPathCtrlsPolicyMappings    OCTET STRING,
@@ -3690,14 +3206,6 @@ Internet-Draft                    CCMIB                        June 2016
     cCertPathCtrlsKeyFingerprint  OBJECT-TYPE
         SYNTAX      SnmpTLSFingerprint
         MAX-ACCESS  not-accessible
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 66]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS      current
         DESCRIPTION
              "Identifies a trust anchor in the cTrustAnchorTable or a
@@ -3734,6 +3242,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "For a Certificate Authority (CA) certificate, this
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 58]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             indicates a grouping of policy mappings between a
             certificate issuer CA domain policy and a domain policy of
             the subject certificate CA. The value of this column
@@ -3746,14 +3262,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cCertPathCtrlsPolicyFlags  OBJECT-TYPE
         SYNTAX      BITS { inhibitPolicyMapping(0),
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 67]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
                            requireExplicitPolicy(1),
                            inhibitAnyPolicy(2) }
         MAX-ACCESS  read-only
@@ -3790,6 +3298,14 @@ Internet-Draft                    CCMIB                        June 2016
             corresponds to the cNameConstraintGenSubtree column in the
             cNameConstraintTable.
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 59]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             When this object does not apply for the key material, this
             column will not exist."
         ::= { cCertPathCtrlsEntry 6 }
@@ -3802,14 +3318,6 @@ Internet-Draft                    CCMIB                        June 2016
             "Indicates a subtree of names that are excluded from
             certificate path validation, regardless of information
             appearing in the cCertPathCtrlsNamesPermitted subtree. The
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 68]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             value of this column corresponds to the
             cNameConstraintGenSubtree column in the
             cNameConstraintTable.
@@ -3846,6 +3354,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "The last time any entry in the table was modified, created,
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 60]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             or deleted by either SNMP, agent, or other management method
             (e.g. via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
@@ -3858,14 +3374,6 @@ Internet-Draft                    CCMIB                        June 2016
     cCertPolicyTable OBJECT-TYPE
         SYNTAX      SEQUENCE OF CCertPolicyEntry
         MAX-ACCESS  not-accessible
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 69]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS      current
         DESCRIPTION
             "The table containing certificate policy information to be
@@ -3902,6 +3410,14 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "Identifies a grouping of policies that are applicable to a
             certificate. When used in conjunction with
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 61]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             cCertPolicyInformationIndex, a unique policy and qualifier
             set is defined."
         ::= { cCertPolicyEntry 1 }
@@ -3914,14 +3430,6 @@ Internet-Draft                    CCMIB                        June 2016
             "A numerical index that is unique for a specific
             cCertPolicyInformation value. This index allows multiple
             qualifiers to be defined for a particular policy. When used
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 70]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             in conjunction with cCertPolicyInformation, a unique policy
             and qualifier set is defined."
         ::= { cCertPolicyEntry 2 }
@@ -3958,6 +3466,14 @@ Internet-Draft                    CCMIB                        June 2016
 
     -- *********************************************************************
     -- CC MIB cPolicyMappingTable
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 62]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     -- *********************************************************************
 
     cPolicyMappingTableCount OBJECT-TYPE
@@ -3970,14 +3486,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cPolicyMappingTableLastChanged OBJECT-TYPE
         SYNTAX      TimeStamp
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 71]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -4014,6 +3522,14 @@ Internet-Draft                    CCMIB                        June 2016
         INDEX  { cPolicyMappingGroup, cPolicyMappingIndex }
         ::= { cPolicyMappingTable 1 }
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 63]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     CPolicyMappingEntry ::= SEQUENCE {
         cPolicyMappingGroup         OCTET STRING,
         cPolicyMappingIndex         Unsigned32,
@@ -4026,14 +3542,6 @@ Internet-Draft                    CCMIB                        June 2016
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 72]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             "Identifies a grouping of policy mappings that are
             applicable to a certificate. When used in conjunction with
             cPolicyMappingIndex, a unique policy mapping is defined."
@@ -4070,6 +3578,14 @@ Internet-Draft                    CCMIB                        June 2016
 
     -- *********************************************************************
     -- CC MIB cNameConstraintTable
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 64]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     -- *********************************************************************
 
     cNameConstraintTableCount OBJECT-TYPE
@@ -4082,14 +3598,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cNameConstraintTableLastChanged OBJECT-TYPE
         SYNTAX      TimeStamp
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 73]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -4126,6 +3634,14 @@ Internet-Draft                    CCMIB                        June 2016
     CNameConstraintEntry ::= SEQUENCE {
         cNameConstraintGenSubtree   OCTET STRING,
         cNameConstraintSubtreeIndex Unsigned32,
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 65]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         cNameConstraintBaseName     SnmpAdminString
     }
 
@@ -4138,13 +3654,6 @@ Internet-Draft                    CCMIB                        June 2016
             When used with cNameConstraintSubtreeIndex, a unique subject
             name constraint entry is defined."
         ::= { cNameConstraintEntry 1 }
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 74]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
     cNameConstraintSubtreeIndex  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -4182,6 +3691,13 @@ Internet-Draft                    CCMIB                        June 2016
         MODULE
         MANDATORY-GROUPS { cKeyManSymKeyGroup }
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 66]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         GROUP cKeyManSymKeyNotifyScalars
         DESCRIPTION
             "This symmetric key notification scalar group is optional
@@ -4194,14 +3710,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cKeyManAsymKeyCompliance MODULE-COMPLIANCE
         STATUS    current
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 75]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         DESCRIPTION
             "Compliance levels for asymmetric key information."
         MODULE
@@ -4238,6 +3746,14 @@ Internet-Draft                    CCMIB                        June 2016
             "This asymmetric key notification scalar group is optional
             for implementation."
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 67]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         GROUP cKeyManAsymKeyNotifyGroup
         DESCRIPTION
             "This notification group is optional for implementation."
@@ -4250,13 +3766,6 @@ Internet-Draft                    CCMIB                        June 2016
         MIN-ACCESS not-accessible
         DESCRIPTION
             "Implementation of this object is optional."
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 76]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
         OBJECT cCertPathCtrlsPolicyFlags
         MIN-ACCESS not-accessible
@@ -4293,6 +3802,14 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "Name Constraint group is optional for implementation."
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 68]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         GROUP cKeyManTrustAnchorNotifyGroup
         DESCRIPTION
             "This notification group is optional for implementation."
@@ -4306,13 +3823,6 @@ Internet-Draft                    CCMIB                        June 2016
         MIN-ACCESS not-accessible
         DESCRIPTION
             "Implementation of this object is optional."
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 77]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
         OBJECT cCertPathCtrlsMaxPathLength
         MIN-ACCESS not-accessible
@@ -4348,6 +3858,14 @@ Internet-Draft                    CCMIB                        June 2016
         OBJECTS {
                   cZeroizeAllKeys,
                   cZeroizeSymmetricKeyTable,
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 69]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
                   cSymmetricKeyTableCount,
                   cSymmetricKeyTableLastChanged,
                   cSymKeyUsage,
@@ -4362,14 +3880,6 @@ Internet-Draft                    CCMIB                        June 2016
                   cSymKeySource,
                   cSymKeyRowStatus
                 }
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 78]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to symmetric key
@@ -4404,6 +3914,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to asymmetric key
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 70]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             information."
         ::= { cKeyManagementGroups 2 }
 
@@ -4418,14 +3936,6 @@ Internet-Draft                    CCMIB                        June 2016
                   cCertSubAltNameRowStatus
                 }
         STATUS current
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 79]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         DESCRIPTION
             "This group is composed of objects related to certificate
             subject alternative name information."
@@ -4460,6 +3970,14 @@ Internet-Draft                    CCMIB                        June 2016
             policy information."
         ::= { cKeyManagementGroups 5 }
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 71]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     cKeyManPolicyMappingGroup OBJECT-GROUP
         OBJECTS {
                   cCertPathCtrlsPolicyMappings,
@@ -4473,14 +3991,6 @@ Internet-Draft                    CCMIB                        June 2016
             "This group is composed of objects related to policy mapping
             information."
         ::= { cKeyManagementGroups 6 }
-
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 80]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
     cKeyManNameConstraintGroup OBJECT-GROUP
         OBJECTS {
@@ -4517,6 +4027,13 @@ Internet-Draft                    CCMIB                        June 2016
             information."
         ::= { cKeyManagementGroups 8 }
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 72]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     cKeyManCKLGroup OBJECT-GROUP
         OBJECTS {
                   cCKLTableCount,
@@ -4530,14 +4047,6 @@ Internet-Draft                    CCMIB                        June 2016
                   cCKLVersion,
                   cCKLLastUpdate
                 }
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 81]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to compromised
@@ -4573,6 +4082,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to symmetric key
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 73]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             notifications."
         ::= { cKeyManagementGroups 11 }
 
@@ -4586,14 +4103,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "This group is composed of objects related to asymmetric key
             notifications."
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 82]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         ::= { cKeyManagementGroups 12 }
 
     cKeyManSymKeyNotifyGroup NOTIFICATION-GROUP
@@ -4629,6 +4138,14 @@ Internet-Draft                    CCMIB                        June 2016
     cKeyManTrustAnchorNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cTrustAnchorAdded,
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 74]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
                         cTrustAnchorUpdated,
                         cTrustAnchorRemoved
                       }
@@ -4642,14 +4159,6 @@ Internet-Draft                    CCMIB                        June 2016
         NOTIFICATIONS {
                         cCKLLoadSuccess,
                         cCKLLoadFail
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 83]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
                       }
         STATUS current
         DESCRIPTION
@@ -4670,7 +4179,7 @@ Internet-Draft                    CCMIB                        June 2016
 
     END
 
-5.6.  Key Transfer Pull
+5.5.  Key Transfer Pull
 
    This MIB module makes reference to the following documents:
    [RFC2571], [RFC2578], [RFC2579], and [RFC2580].
@@ -4682,30 +4191,37 @@ Internet-Draft                    CCMIB                        June 2016
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
-            ROM SNMPv2-CONF                            -- FROM RFC 2580
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 75]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+<<<<<<< HEAD
+        RowStatus, TimeStamp
+=======
         RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        TimeStamp
+>>>>>>> master
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
 
             Elliott Jones
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 84]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             US Navy
             elliott.jones@navy.mil
 
@@ -4729,11 +4245,18 @@ Internet-Draft                    CCMIB                        June 2016
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Transfer Pull objects.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
+
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 76]
+
+Internet-Draft                    CCMIB                        June 2016
+
 
             Redistribution and use in source and binary forms, with
             or without modification, is permitted pursuant to, and
@@ -4753,14 +4276,6 @@ Internet-Draft                    CCMIB                        June 2016
     -- *****************************************************************
     -- Key Transfer Pull Information Segments
     -- *****************************************************************
-
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 85]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
     cKeyTransferPullConformance  OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 1 }
@@ -4791,6 +4306,14 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cKeyTransferPullScalars 1 }
 
     cCDMServerRetryMaxAttempts  OBJECT-TYPE
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 77]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         SYNTAX      Unsigned32
         MAX-ACCESS  read-write
         STATUS      current
@@ -4810,14 +4333,6 @@ Internet-Draft                    CCMIB                        June 2016
             "An indication of which cryptographic device materials
             (CDMs) to retrieve based on this value and a configured
             cCDMDeliveryPriority in a cCDMDeliveryTable entry. This
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 86]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             value identifies an upper bound. A value of '5' for example,
             implies that only cCDMDeliveryTable entries with a
             cCDMDeliveryPriority value of '5' or less can be acted upon
@@ -4848,6 +4363,13 @@ Internet-Draft                    CCMIB                        June 2016
             The values which may be set depend on the current value of
             this object and the cCDMLDeliveryStatus object.
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 78]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             In order to initiate a new download, this object must
             contain the value 'readyForDownload', and the
             cCDMLDeliveryStatus must contain the value 'complete'. At
@@ -4866,17 +4388,9 @@ Internet-Draft                    CCMIB                        June 2016
             by a cCDMLDeliveryStatus value of 'downloadFailed'), this
             object will return an inconsistentValue error for any new
             value except 'discard' (which will cancel the current
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 87]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             download).
 
-            If the CDML download succeeded, the cCDMLDeliveryStatusvalue
+            If the CDML download succeeded, the cCDMLDeliveryStatus value
             remains inProgress and the device attempts to parse the
             download immediately. During the parsing of the CDML, all
             new values will return inconsistentValue error (i.e. the
@@ -4904,6 +4418,14 @@ Internet-Draft                    CCMIB                        June 2016
             'downloadFailed' indicates that the last attempted CDML
             download failed.
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 79]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             'parseFailed' indicates that the last attempted CDML parse
             failed.
 
@@ -4922,14 +4444,6 @@ Internet-Draft                    CCMIB                        June 2016
  ! downloadAndParse  !  allowed  !  error   !    error     !   error   !
  --------------------+-----------+----------+--------------+------------
  ! discard           !   error   ! allowed  !   allowed    !  allowed  !
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 88]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
  --------------------+-----------+----------+--------------+------------
 
             As described cCDMLDeliveryRequest description, an
@@ -4960,6 +4474,14 @@ Internet-Draft                    CCMIB                        June 2016
             "An attempt to receive a cryptographic device material list
             (CDML) has failed. The CDM Server URI and CDML Delivery
             Status are provided with this notification. Note, the
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 80]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             expected values for the CDML Delivery Status are:
             'downloadFailed' and 'parseFailed'."
         ::= { cKeyTransferPullNotify 2 }
@@ -4978,14 +4500,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cKeyTransferPullNotify 3 }
 
     cCDMPullReceiveFailed  NOTIFICATION-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 89]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         OBJECTS     {
                         cCDMType,
                         cCDMURI
@@ -5016,6 +4530,14 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 81]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             (e.g. via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
@@ -5034,14 +4556,6 @@ Internet-Draft                    CCMIB                        June 2016
             keys and firmware packages. This table is also used to
             obtain the cryptographic device material list (CDML), which
             is a list detailing available CDMs and their associated
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 90]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             location for obtainment."
         ::= { cCDMServerInfo 3 }
 
@@ -5072,6 +4586,14 @@ Internet-Draft                    CCMIB                        June 2016
             server prioritization functionality - lower values have a
 
             higher priority. For example, the server with the lowest
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 82]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             value will be the first server for CDML/CDM downloads. In
             the event of failure, the next lowest value server will be
             tried, and so on.
@@ -5090,14 +4612,6 @@ Internet-Draft                    CCMIB                        June 2016
 
             Note, download of a CDML will typically result in the
             population of new CDM entries in the cCDMDeliveryTable."
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 91]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         ::= { cCDMServerEntry 2 }
 
     cCDMServerAdditionalInfo  OBJECT-TYPE
@@ -5128,6 +4642,14 @@ Internet-Draft                    CCMIB                        June 2016
             functions is optional."
         ::= { cCDMServerEntry 4 }
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 83]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     -- *****************************************************************
     -- CC MIB cCDMDeliveryTable
     -- *****************************************************************
@@ -5146,14 +4668,6 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "The last time any entry in the table was modified, created,
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 92]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             or deleted by either SNMP, agent, or other management method
             (e.g. via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
@@ -5184,6 +4698,14 @@ Internet-Draft                    CCMIB                        June 2016
             "A row containing information about a specific cryptographic
             device material (CDM) available for download."
         INDEX      { cCDMType, cCDMURI }
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 84]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         ::= { cCDMDeliveryTable 1 }
 
     CCDMDeliveryEntry  ::= SEQUENCE {
@@ -5202,14 +4724,6 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      INTEGER { notification(1), symmetricKey(2),
                               asymmetricKey(3), certificate(4),
                               cklOrCrl(5), firmware(6) }
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 93]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -5240,6 +4754,14 @@ Internet-Draft                    CCMIB                        June 2016
             a CDM Server (e.g. downloading and parsing a cryptographic
             device material list (CDML) from a CDM Server (entry in the
             cCDMServerTable)). However, a manager can also configure an
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 85]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             entry in this table with predetermined knowledge of the CDM
             location."
         ::= { cCDMDeliveryEntry 2 }
@@ -5258,14 +4780,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cCDMDeliveryEntry 3 }
 
     cCDMAdditionalInfo  OBJECT-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 94]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
@@ -5296,6 +4810,14 @@ Internet-Draft                    CCMIB                        June 2016
                 'ss' - seconds
 
             2. All zero characters for the following cases.
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 86]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
                 a. No indication that device has successfully downloaded
                    the CDM.
                 b. The cCDMType is a notification."
@@ -5314,14 +4836,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cCDMDeliveryEntry 6 }
 
     cCDMDeliveryRequest  OBJECT-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 95]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         SYNTAX     INTEGER { downloadAndInstall(1), downloadAndStore(2),
                              discard(3) }
         MAX-ACCESS read-create
@@ -5352,6 +4866,14 @@ Internet-Draft                    CCMIB                        June 2016
             [discard] = Stops the current CDM delivery request and
             discards the CDM if potentially downloaded; this reverts the
             current value of the cCDMDeliveryStatus to 'complete'. If
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 87]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             entries are created in the aforementioned tables for the
             install and store operations, these newly configured entries
             will be removed.
@@ -5370,14 +4892,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     cCDMDeliveryStatus  OBJECT-TYPE
         SYNTAX     INTEGER { complete(1), inProgress(2),
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 96]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
                              downloadFailed(3), installFailed(4),
                              storeFailed(5) }
         MAX-ACCESS read-only
@@ -5408,6 +4922,14 @@ Internet-Draft                    CCMIB                        June 2016
             cCDMDeliveryRequest was configured to 'downloadAndInstall'.
 
             [storeFailed] = This state is reached after a failure
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 88]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             occurs during the store of the downloaded CDM when
             cCDMDeliveryRequest was configured to 'downloadAndStore'."
         ::= { cCDMDeliveryEntry 8 }
@@ -5426,14 +4948,6 @@ Internet-Draft                    CCMIB                        June 2016
 
             At a minimum, implementations must support createAndGo,
             active, and destroy management functions. Support for
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 97]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             createAndWait, notInService, and notReady management
             functions is optional."
         ::= { cCDMDeliveryEntry 9 }
@@ -5464,6 +4978,14 @@ Internet-Draft                    CCMIB                        June 2016
         OBJECT cCDMDeliveryRequest
         SYNTAX INTEGER { downloadAndInstall(1), discard(3) }
         DESCRIPTION
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 89]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             "Implementation of this enumeration value(s) is mandatory -
             enumeration values not listed here are optional."
 
@@ -5482,14 +5004,6 @@ Internet-Draft                    CCMIB                        June 2016
                   cCDMServerTableCount,
                   cCDMServerTableLastChanged,
                   cCDMServerURI,
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 98]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
                   cCDMServerAdditionalInfo,
                   cCDMServerRowStatus
                 }
@@ -5520,6 +5034,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to delivery
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 90]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             information."
         ::= { cKeyTransferPullGroups 2 }
 
@@ -5538,15 +5060,7 @@ Internet-Draft                    CCMIB                        June 2016
 
     END
 
-
-
-
-Azoum, et al.            Expires January 1, 2017               [Page 99]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-5.7.  Key Transfer Push
+5.6.  Key Transfer Push
 
    This MIB module makes reference to following documents: [RFC2571],
    [RFC2578], [RFC2579], [RFC2580].
@@ -5557,21 +5071,32 @@ Internet-Draft                    CCMIB                        June 2016
         ccKeyTransferPush
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
+        MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
         RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
+        TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF;                          -- FROM RFC 2580
 
     ccKeyTransferPushMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
+
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 91]
+
+Internet-Draft                    CCMIB                        June 2016
+
 
             Elliott Jones
             US Navy
@@ -5594,19 +5119,10 @@ Internet-Draft                    CCMIB                        June 2016
             Email:rpurvis@mitre.org
 
             Sean Turner
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 100]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Key Transfer Push object.
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5630,6 +5146,14 @@ Internet-Draft                    CCMIB                        June 2016
     -- Key Transfer Push Information Segments
     -- *****************************************************************
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 92]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     cCDMPushDestInfo  OBJECT IDENTIFIER
         ::= { ccKeyTransferPushMIB 1 }
     cCDMTransferPkgInfo  OBJECT IDENTIFIER
@@ -5650,14 +5174,6 @@ Internet-Draft                    CCMIB                        June 2016
     cCDMTransferDelay  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-write
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 101]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS      current
         DESCRIPTION
             "The number of seconds to wait after a Cryptographic Device
@@ -5686,6 +5202,14 @@ Internet-Draft                    CCMIB                        June 2016
                         cCDMPushDestTransferType,
                         cCDMPushDestPackageSelection
                     }
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 93]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         STATUS      current
         DESCRIPTION
             "An attempt to send CDM, identified by CDM push transfer
@@ -5706,14 +5230,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cKeyTransferPushNotify 2 }
 
     cCDMPushReceiveFail  NOTIFICATION-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 102]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         OBJECTS     {
                         cCDMPushSrcAddrLocationType,
                         cCDMPushSrcAddrLocation,
@@ -5743,6 +5259,13 @@ Internet-Draft                    CCMIB                        June 2016
     -- CC MIB cCDMPushDestTable
     -- *****************************************************************
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 94]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     cCDMPushDestTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-only
@@ -5762,14 +5285,6 @@ Internet-Draft                    CCMIB                        June 2016
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 103]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
             should be used to populate this column."
         ::= { cCDMPushDestInfo 2 }
@@ -5799,6 +5314,14 @@ Internet-Draft                    CCMIB                        June 2016
         cCDMPushDestTransferType        INTEGER,
         cCDMPushDestAddressLocationType INTEGER,
         cCDMPushDestAddressLocation     OCTET STRING,
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 95]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         cCDMPushDestTransferTime        DateAndTime,
         cCDMPushDestPackageSelection    SnmpAdminString,
         cCDMPushDestRowStatus           RowStatus
@@ -5818,14 +5341,6 @@ Internet-Draft                    CCMIB                        June 2016
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 104]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             "The transfer mechanism or protocol used by the sender to
             execute the Cryptographic Device Material (CDM) transfer:
             ipsec(1), tls(2):
@@ -5855,6 +5370,14 @@ Internet-Draft                    CCMIB                        June 2016
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 96]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             "A valid date and time value populated in this object will
             automatically initiate the transfer at the value specified.
 
@@ -5874,14 +5397,6 @@ Internet-Draft                    CCMIB                        June 2016
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 105]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             "A reference string that points to the key material(s) to
             transfer. This column may reference one entry (e.g. an entry
             in the cCDMStoreTable) or multiple entries (e.g. multiple
@@ -5911,6 +5426,14 @@ Internet-Draft                    CCMIB                        June 2016
     -- CC MIB cCDMTransferPkgTable
     -- *****************************************************************
 
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 97]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
     cCDMTransferPkgTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-only
@@ -5930,14 +5453,6 @@ Internet-Draft                    CCMIB                        June 2016
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 106]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
             should be used to populate this column."
         ::= { cCDMTransferPkgInfo 2 }
@@ -5967,6 +5482,14 @@ Internet-Draft                    CCMIB                        June 2016
         cCDMTransferPkgLabel            SnmpAdminString,
         cCDMTransferPkgIndex            Unsigned32,
         cCDMTransferPkgLocatorRowPtr    RowPointer,
+
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 98]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         cCDMTransferPkgRowStatus        RowStatus
     }
 
@@ -5986,14 +5509,6 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "An administrative way of creating a unique row within this
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 107]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             table. This value shows the position of a given item within
             this package designated by cCDMTransferPkgLabel.
             cCDMTransferPkgLabel and cCDMTransferPkgIndex serve as
@@ -6024,6 +5539,13 @@ Internet-Draft                    CCMIB                        June 2016
             unless all read-create columns in this column have valid
             values, as detailed by each individual column's description.
 
+
+
+Azoum, et al.            Expires January 1, 2017               [Page 99]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             At a minimum, implementations must support createAndGo,
             active, and destroy management functions. Support for
             createAndWait, notInService, and notReady management
@@ -6041,14 +5563,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "The number of rows in the cCDMPushSrcTable"
         ::= { cCDMPushSrcInfo 1 }
-
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 108]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
     cCDMPushSrcTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
@@ -6080,6 +5594,14 @@ Internet-Draft                    CCMIB                        June 2016
     cCDMPushSrcEntry  OBJECT-TYPE
         SYNTAX      CCDMPushSrcEntry
         MAX-ACCESS  not-accessible
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 100]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         STATUS      current
         DESCRIPTION
             "A row containing information about an authorized sender
@@ -6098,14 +5620,6 @@ Internet-Draft                    CCMIB                        June 2016
     cCDMPushSrcSenderName  OBJECT-TYPE
         SYNTAX      SnmpAdminString
         MAX-ACCESS  not-accessible
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 109]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS      current
         DESCRIPTION
             "An administrative string for an authorized sender.
@@ -6136,6 +5650,14 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS      current
         DESCRIPTION
             "Enumeration indicating the type of address location
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 101]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             (values: ipv4, ipv6 or uri)."
         ::= { cCDMPushSrcEntry 3 }
 
@@ -6154,13 +5676,6 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "The status of the row, by which new entries may be created
             or old entries deleted from this table.
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 110]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
             Entries created within this table may not become active
             unless all read-create columns in this column have valid
@@ -6192,6 +5707,13 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "This notification group is optional for implementation."
 
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 102]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         OBJECT cCDMTransferDelay
         MIN-ACCESS not-accessible
         DESCRIPTION
@@ -6209,14 +5731,6 @@ Internet-Draft                    CCMIB                        June 2016
             "Compliance levels for receiver information."
         MODULE
         MANDATORY-GROUPS { cKeyTransferPushReceiverGroup }
-
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 111]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
         GROUP cKeyTransferPushReceiverNotifyGroup
         DESCRIPTION
@@ -6248,6 +5762,14 @@ Internet-Draft                    CCMIB                        June 2016
 
     cKeyTransferPushReceiverGroup OBJECT-GROUP
         OBJECTS {
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 103]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
                   cCDMPushSrcTableCount,
                   cCDMPushSrcTableLastChanged,
                   cCDMPushSrcTransferType,
@@ -6266,14 +5788,6 @@ Internet-Draft                    CCMIB                        June 2016
                         cCDMPushSendSuccess,
                         cCDMPushSendFail
                       }
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 112]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         STATUS current
         DESCRIPTION
             "This group is composed of notifications related to sender
@@ -6293,411 +5807,42 @@ Internet-Draft                    CCMIB                        June 2016
 
     END
 
-5.8.  Security Policy Information
+5.7.  Security Policy Information
 
-   This module makes reference to: Section 5.2, Section 5.3, [RFC2571],
-   [RFC2578], [RFC2579], and [RFC2580].
+   This module makes reference to: Section 5.2, [RFC2571], [RFC2578],
+   [RFC2579], and [RFC2580].
 
-   ~~~~
-   CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
-
-   IMPORTS
-       ccSecurePolicyInfo
-
-           FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
-       IPAddressType, IPAddress, PortNumber,
-       ROHCModes
-           FROM CC-TEXTUAL-CONVENTIONS-MIB            -- FROM {{cc-txt}}
-       OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-       Counter64, MODULE-IDENTITY
-           FROM SNMPv2-SMI                            -- FROM RFC 2578
-       MODULE-COMPLIANCE, OBJECT-GROUP,
-       NOTIFICATION-GROUP
-           FROM SNMPv2-CONF                           -- FROM RFC 2580
-       SnmpAdminString
-           FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-       RowPointer, RowStatus, DateAndTime,
-       TruthValue, TEXTUAL-CONVENTION, TimeStamp
-           FROM SNMPv2-TC;                            -- FROM RFC 2579
-
-   ccSecurePolicyInfoMIB  MODULE-IDENTITY
-           "Shadi Azoum
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 113]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-           US Navy
-           email: shadi.azoum@navy.mil
-
-           Elliott Jones
-           US Navy
-           elliott.jones@navy.mil
-
-           Lily Sun
-           US Navy
-           lily.sun@navy.mil
-
-           Mike Irani
-           NKI Engineering
-           irani@nkiengineering.com
-
-           Jeffrey Sun
-           NKI Engineering
-           sunjeff@nkiengineering.com
-
-           Ray Purvis
-           MITRE
-           Email:rpurvis@mitre.org
-
-           Sean Turner
-           sn3rd
-           Email:sean@sn3rd.com"
-       DESCRIPTION
-           "This MIB defines the CC MIB tree hierarchical assignments
-           below it and acts as a reservation mechanism.
-
-           Copyright (c) 2016 IETF Trust and the persons
-           identified as authors of the code.  All rights reserved.
-
-           Redistribution and use in source and binary forms, with
-           or without modification, is permitted pursuant to, and
-           subject to the license terms contained in, the Simplified
-           BSD License set forth in Section 4.c of the IETF Trust's
-           Legal Provisions Relating to IETF Documents
-           (http://trustee.ietf.org/license-info).
-
-           This version of this MIB module is part of RFC xxxx;
-           see the RFC itself for full legal notices."
-   -- RFC Ed.: RFC-editor please fill in xxxx.
-       REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-       DESCRIPTION   "Initial Version. Published as RFC xxxx."
-   -- RFC Ed.: RFC-editor please fill in xxxx.
-       ::= { ccSecurePolicyInfo 1 }
-
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 114]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-   -- *****************************************************************
-   -- Secure Policy Info Information Segments
-   -- *****************************************************************
-
-   cSecurePolicyConformance  OBJECT IDENTIFIER
-       ::= { ccSecurePolicyInfoMIB 1 }
-   cSecPolicyRuleInfo  OBJECT IDENTIFIER
-       ::= { ccSecurePolicyInfoMIB 2 }
-   cSecurePolicyInfoScalars  OBJECT IDENTIFIER
-       ::= { ccSecurePolicyInfoMIB 3 }
-   cSecurePolicyInfoNotify OBJECT IDENTIFIER
-       ::= { ccSecurePolicyInfoMIB 4 }
-
-   -- *****************************************************************
-   -- Secure Policy Info Scalars
-   -- *****************************************************************
-
-   -- *****************************************************************
-   -- Secure Policy Info Notifications
-   -- *****************************************************************
-
-   cSecPolicyChanged  NOTIFICATION-TYPE
-       OBJECTS     {
-                       cSecPolicyRulePriorityID,
-                       cSecPolicyRuleDescription
-                   }
-       STATUS      current
-       DESCRIPTION
-           "A notification indicating that an existent Security Policy
-           entry in the cSecPolicyRuleTable in has changed."
-       ::= { cSecurePolicyInfoNotify 1 }
-
-   -- *****************************************************************
-   -- CC MIB cSecPolicyRuleTable
-   -- *****************************************************************
-
-   cSecPolicyRuleTableCount  OBJECT-TYPE
-       SYNTAX      Unsigned32
-       MAX-ACCESS  read-only
-       STATUS      current
-       DESCRIPTION
-           "The number of rows in the cSecPolicyRuleTable."
-       ::= { cSecPolicyRuleInfo 1 }
-
-   cSecPolicyRuleTableLastChanged  OBJECT-TYPE
-       SYNTAX      TimeStamp
-       MAX-ACCESS  read-only
-       STATUS      current
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 115]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-       DESCRIPTION
-           "The last time any entry in the table was modified, created,
-           or deleted by either SNMP, agent, or other management method
-           (e.g. via an HMI). Managers can use this object to ensure
-           that no changes to configuration of this table have happened
-           since the last time it examined the table. A value of 0
-           indicates that no entry has been changed since the agent
-           initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
-           should be used to populate this column."
-       ::= { cSecPolicyRuleInfo 2 }
-
-   cSecPolicyRuleTable  OBJECT-TYPE
-       SYNTAX      SEQUENCE OF CSecPolicyRuleEntry
-       MAX-ACCESS  not-accessible
-       STATUS      current
-       DESCRIPTION
-           "The cSecPolicyRuleTable stores the Security Policy Rules
-           that are compared against inbound and outbound data traffic
-           flow. These Security Policy Rules define the actions (e.g.
-           protect, bypass, discard) on how the data traffic flow should
-           be treated."
-       ::= { cSecPolicyRuleInfo 3 }
-
-   cSecPolicyRuleEntry  OBJECT-TYPE
-       SYNTAX      CSecPolicyRuleEntry
-       MAX-ACCESS  not-accessible
-       STATUS      current
-       DESCRIPTION
-            "A row containing general information about a Security
-            Policy rule."
-       INDEX      { cSecPolicyRulePriorityID }
-       ::= { cSecPolicyRuleTable 1 }
-
-   CSecPolicyRuleEntry  ::= SEQUENCE {
-       cSecPolicyRulePriorityID        Unsigned32,
-       cSecPolicyRuleDescription       OCTET STRING,
-       cSecPolicyRuleType              INTEGER,
-       cSecPolicyRuleFilterReference   SnmpAdminString,
-       cSecPolicyRuleAction            INTEGER,
-       cSecPolicyRuleRowStatus         RowStatus
-   }
-
-   cSecPolicyRulePriorityID  OBJECT-TYPE
-       SYNTAX      Unsigned32
-       MAX-ACCESS  read-only
-       STATUS      current
-       DESCRIPTION
-           "Local unique index that identifies the priority at which
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 116]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-           this Security Policy rule is applied. Lower values have a
-           higher priority (e.g. a value of 1 will be processed before
-           a value of 2). This column is the primary index to the
-           cSecPolicyRuleTable."
-       ::= { cSecPolicyRuleEntry 1 }
-
-   cSecPolicyRuleDescription  OBJECT-TYPE
-       SYNTAX      OCTET STRING
-       MAX-ACCESS  read-create
-       STATUS      current
-       DESCRIPTION
-           "An administrative string describing the Security Policy
-           rule. Note, this is a free form OCTET STRING that provides
-           the user a store for any form of description/documentation
-           for the given entry."
-       ::= { cSecPolicyRuleEntry 2 }
-
-   cSecPolicyRuleType  OBJECT-TYPE
-       SYNTAX      INTEGER { ipsec(1), tls(2) }
-       MAX-ACCESS  read-create
-       STATUS      current
-       DESCRIPTION
-           "Optional column that defines the related protocol type of
-           the Security Policy rule. Depending on this column's set
-           value, entries will vary in respect to which other
-           columns/tables (if at all) must be populated to fully
-           configure the Security Policy rule."
-       ::= { cSecPolicyRuleEntry 3 }
-
-   cSecPolicyRuleFilterReference  OBJECT-TYPE
-       SYNTAX      SnmpAdminString
-       MAX-ACCESS  read-create
-       STATUS      current
-       DESCRIPTION
-           "A string that references the associated filter for the
-           Security Policy rule. Data traffic flow (inbound/outbound)
-           comparison against the associated filter provide the basis
-           in which a Security Policy rule is applied to the given data
-           traffic flow."
-       ::= { cSecPolicyRuleEntry 4 }
-
-   cSecPolicyRuleAction  OBJECT-TYPE
-       SYNTAX      INTEGER { protect(1), bypass(10), discard(20),
-                             discardInbound(21), discardOutbound(22) }
-       MAX-ACCESS  read-create
-       STATUS      current
-       DESCRIPTION
-           "This object indicates what action the ECU should take on
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 117]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-           matching a data traffic flow against a filter (as defined by
-           cSecPolicyRuleFilterReference). The value of this column can
-           take one of four enumeration values.
-
-           [1] protect: The 'protect' enumeration value indicates that
-           the data traffic flow should be protected by a Secure
-           Connection with attributes defined  by the associated filter
-           (cSecPolicyRuleFilterReference).
-
-           [10] bypass: The 'bypass' enumeration value indicates that
-           the data traffic flow should be bypassed with no
-           cryptographic protection/services provided.
-
-           [20] discard: The 'discard enumeration value indicates that
-           the data traffic flow, agnostic of their direction, should
-           be discarded.
-
-           [21] discardInbound: The 'discardInbound' enumeration value
-           indicates that an inbound data traffic flow should be
-           discarded.
-
-           [22] discardOutbound: The 'discardOutbound' enumeration
-           value indicates that an outbound data traffic flow should be
-           discarded.
-
-           Implementations that do not support the 'discardInbound' and
-           'discardOutbound' enumeration values should return a
-           wrongValue exception during a SET to the cSecPolicyRuleAction
-           object.
-
-           A valid enumeration value must be specified in order for
-           cSecPolicyRuleRowStatus to be 'active'."
-       ::= { cSecPolicyRuleEntry 5 }
-
-   cSecPolicyRuleRowStatus  OBJECT-TYPE
-       SYNTAX      RowStatus
-       MAX-ACCESS  read-create
-       STATUS      current
-       DESCRIPTION
-           "The status of the row, by which new entries may be created,
-           or old entries deleted from this table.
-
-           Entries created within this table may not become active
-           unless all read-create columns in this table have valid
-           values, as detailed by each individual column's description.
-
-           At a minimum, implementations must support createAndGo and
-           destroy management functions. Support for createAndWait,
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 118]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-           active, notInService, and notReady management functions is
-           optional."
-       ::= { cSecPolicyRuleEntry 6 }
-
-   -- *****************************************************************
-   -- Module Conformance Information
-   -- *****************************************************************
-
-   cSecurePolicyCompliances  OBJECT IDENTIFIER
-       ::= { cSecurePolicyConformance 1 }
-   cSecurePolicyGroups  OBJECT IDENTIFIER
-       ::= { cSecurePolicyConformance 2 }
-
-   cSecurePolicyCompliance MODULE-COMPLIANCE
-       STATUS    current
-       DESCRIPTION
-           "Compliance levels for secure policy information."
-       MODULE
-       MANDATORY-GROUPS { cSecurePolicyGroup }
-
-       GROUP cSecurePolicyNotifyGroup
-       DESCRIPTION
-           "This notification group is optional for implementation."
-       ::= { cSecurePolicyCompliances  1 }
-
-   cSecurePolicyGroup OBJECT-GROUP
-       OBJECTS {
-                   cSecPolicyRuleTableCount,
-                   cSecPolicyRuleTableLastChanged,
-                   cSecPolicyRulePriorityID,
-                   cSecPolicyRuleDescription,
-                   cSecPolicyRuleType,
-                   cSecPolicyRuleFilterReference,
-                   cSecPolicyRuleAction,
-                   cSecPolicyRuleRowStatus
-               }
-       STATUS current
-       DESCRIPTION
-           "This group is composed of objects related to secure policy
-           information."
-       ::= { cSecurePolicyGroups 1 }
-
-   cSecurePolicyNotifyGroup NOTIFICATION-GROUP
-       NOTIFICATIONS {
-                       cSecPolicyChanged
-                     }
-       STATUS current
-       DESCRIPTION
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 119]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
-           "This group is composed of notifications related to secure
-           policy information."
-       ::= { cSecurePolicyGroups 2 }
-
-   END ~~~~
-
-5.9.  Secure Connection Information
-
-   This module makes reference to: Section 5.2, Section 5.3, [RFC2571],
-   [RFC2578], [RFC2579], and [RFC2580], [RFC4303].
-
-    CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
+    CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
-        ccSecureConnectionInfo
-            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM {{cc-fh}}
-        IPAddressType, IPAddress, PortNumber,
-        ROHCCompressionProfiles
-            FROM CC-TEXTUAL-CONVENTIONS-MIB           -- FROM {{cc-txt}}
+        ccSecurePolicyInfo
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        Counter64, MODULE-IDENTITY
-            FROM SNMPv2-SMI                           -- FROM RFC 2578
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 104]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
+        MODULE-IDENTITY
+            FROM SNMPv2-SMI                            -- FROM RFC 2578
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
-            FROM SNMPv2-CONF                          -- FROM RFC 2580
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
+<<<<<<< HEAD
+=======
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 2571
-        RowPointer, RowStatus, DateAndTime,
-        TruthValue, TEXTUAL-CONVENTION, TimeStamp
-            FROM SNMPv2-TC;                           -- FROM RFC 2579
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+>>>>>>> master
+        RowStatus, DateAndTime, TimeStamp
+            FROM SNMPv2-TC;                            -- FROM RFC 2579
 
-    ccSecureConnectionInfoMIB  MODULE-IDENTITY
+    ccSecurePolicyInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
             "Shadi Azoum
             US Navy
             email: shadi.azoum@navy.mil
@@ -6714,14 +5859,6 @@ Internet-Draft                    CCMIB                        June 2016
             NKI Engineering
             irani@nkiengineering.com
 
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 120]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
             Jeffrey Sun
             NKI Engineering
             sunjeff@nkiengineering.com
@@ -6734,8 +5871,16 @@ Internet-Draft                    CCMIB                        June 2016
             sn3rd
             Email:sean@sn3rd.com"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB defines the CC MIB Security Policy Information
+            objects.
+
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 105]
+
+Internet-Draft                    CCMIB                        June 2016
+
 
             Copyright (c) 2016 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -6753,6 +5898,382 @@ Internet-Draft                    CCMIB                        June 2016
         REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
         DESCRIPTION   "Initial Version. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
+        ::= { ccSecurePolicyInfo 1 }
+
+    -- *****************************************************************
+    -- Secure Policy Info Information Segments
+    -- *****************************************************************
+
+    cSecurePolicyConformance  OBJECT IDENTIFIER
+        ::= { ccSecurePolicyInfoMIB 1 }
+    cSecPolicyRuleInfo  OBJECT IDENTIFIER
+        ::= { ccSecurePolicyInfoMIB 2 }
+    cSecurePolicyInfoScalars  OBJECT IDENTIFIER
+        ::= { ccSecurePolicyInfoMIB 3 }
+    cSecurePolicyInfoNotify OBJECT IDENTIFIER
+        ::= { ccSecurePolicyInfoMIB 4 }
+
+    -- *****************************************************************
+    -- Secure Policy Info Scalars
+    -- *****************************************************************
+
+    -- *****************************************************************
+    -- Secure Policy Info Notifications
+    -- *****************************************************************
+
+    cSecPolicyChanged  NOTIFICATION-TYPE
+        OBJECTS     {
+                        cSecPolicyRulePriorityID,
+                        cSecPolicyRuleDescription
+                    }
+        STATUS      current
+        DESCRIPTION
+            "A notification indicating that an existent Security Policy
+            entry in the cSecPolicyRuleTable in has changed."
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 106]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
+        ::= { cSecurePolicyInfoNotify 1 }
+
+    -- *****************************************************************
+    -- CC MIB cSecPolicyRuleTable
+    -- *****************************************************************
+
+    cSecPolicyRuleTableCount  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The number of rows in the cSecPolicyRuleTable."
+        ::= { cSecPolicyRuleInfo 1 }
+
+    cSecPolicyRuleTableLastChanged  OBJECT-TYPE
+        SYNTAX      TimeStamp
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The last time any entry in the table was modified, created,
+            or deleted by either SNMP, agent, or other management method
+            (e.g. via an HMI). Managers can use this object to ensure
+            that no changes to configuration of this table have happened
+            since the last time it examined the table. A value of 0
+            indicates that no entry has been changed since the agent
+            initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
+            should be used to populate this column."
+        ::= { cSecPolicyRuleInfo 2 }
+
+    cSecPolicyRuleTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF CSecPolicyRuleEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The cSecPolicyRuleTable stores the Security Policy Rules
+            that are compared against inbound and outbound data traffic
+            flow. These Security Policy Rules define the actions (e.g.
+            protect, bypass, discard) on how the data traffic flow should
+            be treated."
+        ::= { cSecPolicyRuleInfo 3 }
+
+    cSecPolicyRuleEntry  OBJECT-TYPE
+        SYNTAX      CSecPolicyRuleEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+             "A row containing general information about a Security
+             Policy rule."
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 107]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
+        INDEX      { cSecPolicyRulePriorityID }
+        ::= { cSecPolicyRuleTable 1 }
+
+    CSecPolicyRuleEntry  ::= SEQUENCE {
+        cSecPolicyRulePriorityID        Unsigned32,
+        cSecPolicyRuleDescription       OCTET STRING,
+        cSecPolicyRuleType              INTEGER,
+        cSecPolicyRuleFilterReference   SnmpAdminString,
+        cSecPolicyRuleAction            INTEGER,
+        cSecPolicyRuleRowStatus         RowStatus
+    }
+
+    cSecPolicyRulePriorityID  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Local unique index that identifies the priority at which
+            this Security Policy rule is applied. Lower values have a
+            higher priority (e.g. a value of 1 will be processed before
+            a value of 2). This column is the primary index to the
+            cSecPolicyRuleTable."
+        ::= { cSecPolicyRuleEntry 1 }
+
+    cSecPolicyRuleDescription  OBJECT-TYPE
+        SYNTAX      OCTET STRING
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "An administrative string describing the Security Policy
+            rule. Note, this is a free form OCTET STRING that provides
+            the user a store for any form of description/documentation
+            for the given entry."
+        ::= { cSecPolicyRuleEntry 2 }
+
+    cSecPolicyRuleType  OBJECT-TYPE
+        SYNTAX      INTEGER { ipsec(1), tls(2) }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Optional column that defines the related protocol type of
+            the Security Policy rule. Depending on this column's set
+            value, entries will vary in respect to which other
+            columns/tables (if at all) must be populated to fully
+            configure the Security Policy rule."
+        ::= { cSecPolicyRuleEntry 3 }
+
+    cSecPolicyRuleFilterReference  OBJECT-TYPE
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 108]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
+        SYNTAX      SnmpAdminString
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "A string that references the associated filter for the
+            Security Policy rule. Data traffic flow (inbound/outbound)
+            comparison against the associated filter provide the basis
+            in which a Security Policy rule is applied to the given data
+            traffic flow."
+        ::= { cSecPolicyRuleEntry 4 }
+
+    cSecPolicyRuleAction  OBJECT-TYPE
+        SYNTAX      INTEGER { protect(1), bypass(10), discard(20),
+                              discardInbound(21), discardOutbound(22) }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This object indicates what action the ECU should take on
+            matching a data traffic flow against a filter (as defined by
+            cSecPolicyRuleFilterReference). The value of this column can
+            take one of four enumeration values.
+
+            [1] protect: The 'protect' enumeration value indicates that
+            the data traffic flow should be protected by a Secure
+            Connection with attributes defined  by the associated filter
+            (cSecPolicyRuleFilterReference).
+
+            [10] bypass: The 'bypass' enumeration value indicates that
+            the data traffic flow should be bypassed with no
+            cryptographic protection/services provided.
+
+            [20] discard: The 'discard enumeration value indicates that
+            the data traffic flow, agnostic of their direction, should
+            be discarded.
+
+            [21] discardInbound: The 'discardInbound' enumeration value
+            indicates that an inbound data traffic flow should be
+            discarded.
+
+            [22] discardOutbound: The 'discardOutbound' enumeration
+            value indicates that an outbound data traffic flow should be
+            discarded.
+
+            Implementations that do not support the 'discardInbound' and
+            'discardOutbound' enumeration values should return a
+            wrongValue exception during a SET to the cSecPolicyRuleAction
+            object.
+
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 109]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
+            A valid enumeration value must be specified in order for
+            cSecPolicyRuleRowStatus to be 'active'."
+        ::= { cSecPolicyRuleEntry 5 }
+
+    cSecPolicyRuleRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of the row, by which new entries may be created,
+            or old entries deleted from this table.
+
+            Entries created within this table may not become active
+            unless all read-create columns in this table have valid
+            values, as detailed by each individual column's description.
+
+            At a minimum, implementations must support createAndGo and
+            destroy management functions. Support for createAndWait,
+            active, notInService, and notReady management functions is
+            optional."
+        ::= { cSecPolicyRuleEntry 6 }
+
+    -- *****************************************************************
+    -- Module Conformance Information
+    -- *****************************************************************
+
+    cSecurePolicyCompliances  OBJECT IDENTIFIER
+        ::= { cSecurePolicyConformance 1 }
+    cSecurePolicyGroups  OBJECT IDENTIFIER
+        ::= { cSecurePolicyConformance 2 }
+
+    cSecurePolicyCompliance MODULE-COMPLIANCE
+        STATUS    current
+        DESCRIPTION
+            "Compliance levels for secure policy information."
+        MODULE
+        MANDATORY-GROUPS { cSecurePolicyGroup }
+
+        GROUP cSecurePolicyNotifyGroup
+        DESCRIPTION
+            "This notification group is optional for implementation."
+        ::= { cSecurePolicyCompliances  1 }
+
+    cSecurePolicyGroup OBJECT-GROUP
+        OBJECTS {
+                    cSecPolicyRuleTableCount,
+                    cSecPolicyRuleTableLastChanged,
+                    cSecPolicyRulePriorityID,
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 110]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
+                    cSecPolicyRuleDescription,
+                    cSecPolicyRuleType,
+                    cSecPolicyRuleFilterReference,
+                    cSecPolicyRuleAction,
+                    cSecPolicyRuleRowStatus
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to secure policy
+            information."
+        ::= { cSecurePolicyGroups 1 }
+
+    cSecurePolicyNotifyGroup NOTIFICATION-GROUP
+        NOTIFICATIONS {
+                        cSecPolicyChanged
+                      }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of notifications related to secure
+            policy information."
+        ::= { cSecurePolicyGroups 2 }
+
+    END
+
+5.8.  Secure Connection Information
+
+   This module makes reference to: Section 5.2, [RFC2571], [RFC2578],
+   [RFC2579], and [RFC2580], [RFC4303].
+
+    CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
+
+    IMPORTS
+        ccSecureConnectionInfo
+            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM {{cc-fh}}
+        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
+        MODULE-IDENTITY
+            FROM SNMPv2-SMI                           -- FROM RFC 2578
+        MODULE-COMPLIANCE, OBJECT-GROUP,
+        NOTIFICATION-GROUP
+            FROM SNMPv2-CONF                          -- FROM RFC 2580
+        SnmpAdminString
+            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 2571
+        RowStatus, DateAndTime, TimeStamp
+            FROM SNMPv2-TC;                           -- FROM RFC 2579
+
+    ccSecureConnectionInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 111]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
+        CONTACT-INFO
+            "Shadi Azoum
+            US Navy
+            email: shadi.azoum@navy.mil
+
+            Elliott Jones
+            US Navy
+            elliott.jones@navy.mil
+
+            Lily Sun
+            US Navy
+            lily.sun@navy.mil
+
+            Mike Irani
+            NKI Engineering
+            irani@nkiengineering.com
+
+            Jeffrey Sun
+            NKI Engineering
+            sunjeff@nkiengineering.com
+
+            Ray Purvis
+            MITRE
+            Email:rpurvis@mitre.org
+
+            Sean Turner
+            sn3rd
+            Email:sean@sn3rd.com"
+        DESCRIPTION
+            "This MIB defines the CC MIB Secure Connection Information
+            objects.
+
+            Copyright (c) 2016 IETF Trust and the persons
+            identified as authors of the code.  All rights reserved.
+
+            Redistribution and use in source and binary forms, with
+            or without modification, is permitted pursuant to, and
+            subject to the license terms contained in, the Simplified
+            BSD License set forth in Section 4.c of the IETF Trust's
+            Legal Provisions Relating to IETF Documents
+            (http://trustee.ietf.org/license-info).
+
+            This version of this MIB module is part of RFC xxxx;
+            see the RFC itself for full legal notices."
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 112]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         ::= { ccSecureConnectionInfo 1 }
 
     -- *****************************************************************
@@ -6770,14 +6291,6 @@ Internet-Draft                    CCMIB                        June 2016
 
     -- *****************************************************************
     -- Secure Connection Info Scalars
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 121]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
     -- *****************************************************************
 
 
@@ -6809,6 +6322,14 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      Unsigned32
         MAX-ACCESS  read-only
         STATUS      current
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 113]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         DESCRIPTION
             "The number of rows in the cSecConTable."
         ::= { cSecureConnectionInfo 1 }
@@ -6826,14 +6347,6 @@ Internet-Draft                    CCMIB                        June 2016
             indicates that no entry has been changed since the agent
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
             should be used to populate this column."
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 122]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         ::= { cSecureConnectionInfo 2 }
 
     cSecConTable  OBJECT-TYPE
@@ -6865,6 +6378,14 @@ Internet-Draft                    CCMIB                        June 2016
         cSecConKeyReference         OCTET STRING,
         cSecConCryptographicSuite   OCTET STRING,
         cSecConEstablishmentTime    DateAndTime,
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 114]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         cSecConStatus               OCTET STRING,
         cSecConRowStatus            RowStatus
     }
@@ -6882,14 +6403,6 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      OCTET STRING
         MAX-ACCESS  read-create
         STATUS      current
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 123]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         DESCRIPTION
             "Optional column that defines the related protocol type of
             the Secure Connection. Depending on this column's populated
@@ -6921,6 +6434,14 @@ Internet-Draft                    CCMIB                        June 2016
     cSecConDirection  OBJECT-TYPE
         SYNTAX      INTEGER { inbound(1), outbound(2),
                               bidirectional(3) }
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 115]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -6938,14 +6459,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cSecConEntry 4 }
 
     cSecConKeyReference  OBJECT-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 124]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         SYNTAX      OCTET STRING (SIZE(0..255))
         MAX-ACCESS  read-create
         STATUS      current
@@ -6977,6 +6490,14 @@ Internet-Draft                    CCMIB                        June 2016
         SYNTAX      DateAndTime
         MAX-ACCESS  read-create
         STATUS      current
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 116]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         DESCRIPTION
             "The local date and time when the Secure Connection was or
             will be established. The value in this column may be
@@ -6994,14 +6515,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cSecConEntry 7 }
 
     cSecConStatus  OBJECT-TYPE
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 125]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         SYNTAX      OCTET STRING
         MAX-ACCESS  read-create
         STATUS      current
@@ -7033,6 +6546,14 @@ Internet-Draft                    CCMIB                        June 2016
             implementations must support createAndGo and destroy if the
             secure connection can be created and destroyed by the
             manager. Implementations must support active and
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 117]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
             notInService if the secure connection can be
             enabled/disabled by the manager."
         ::= { cSecConEntry 9 }
@@ -7050,14 +6571,6 @@ Internet-Draft                    CCMIB                        June 2016
         STATUS    current
         DESCRIPTION
             "Compliance levels for secure connection information."
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 126]
-
-Internet-Draft                    CCMIB                        June 2016
-
-
         MODULE
         MANDATORY-GROUPS { cSecureConnectionGroup }
 
@@ -7089,6 +6602,14 @@ Internet-Draft                    CCMIB                        June 2016
         DESCRIPTION
             "This group is composed of objects related to secure
             connection information."
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 118]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
         ::= { cSecureConnectionGroups 1 }
 
     cSecureConnectionNotifyGroup NOTIFICATION-GROUP
@@ -7103,16 +6624,6 @@ Internet-Draft                    CCMIB                        June 2016
         ::= { cSecureConnectionGroups 2 }
 
     END
-
-
-
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 127]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
 6.  IANA Considerations
 
@@ -7143,6 +6654,18 @@ Internet-Draft                    CCMIB                        June 2016
 
 8.  References
 
+
+
+
+
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 119]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
 8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -7160,15 +6683,6 @@ Internet-Draft                    CCMIB                        June 2016
               Version 2 (SMIv2)", STD 58, RFC 2578,
               DOI 10.17487/RFC2578, April 1999,
               <http://www.rfc-editor.org/info/rfc2578>.
-
-
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 128]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
    [RFC2579]  McCloghrie, K., Ed., Perkins, D., Ed., and J.
               Schoenwaelder, Ed., "Textual Conventions for SMIv2",
@@ -7197,6 +6711,17 @@ Internet-Draft                    CCMIB                        June 2016
               DOI 10.17487/RFC5246, August 2008,
               <http://www.rfc-editor.org/info/rfc5246>.
 
+
+
+
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 120]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
               Infrastructure Certificate and Certificate Revocation List
@@ -7216,15 +6741,6 @@ Internet-Draft                    CCMIB                        June 2016
    [RFC5914]  Housley, R., Ashmore, S., and C. Wallace, "Trust Anchor
               Format", RFC 5914, DOI 10.17487/RFC5914, June 2010,
               <http://www.rfc-editor.org/info/rfc5914>.
-
-
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 129]
-
-Internet-Draft                    CCMIB                        June 2016
-
 
    [RFC6030]  Hoyer, P., Pei, M., and S. Machani, "Portable Symmetric
               Key Container (PSKC)", RFC 6030, DOI 10.17487/RFC6030,
@@ -7254,14 +6770,17 @@ Internet-Draft                    CCMIB                        June 2016
               DOI 10.17487/RFC3410, December 2002,
               <http://www.rfc-editor.org/info/rfc3410>.
 
+
+
+
+Azoum, et al.            Expires January 1, 2017              [Page 121]
+
+Internet-Draft                    CCMIB                        June 2016
+
+
    [RFC4303]  Kent, S., "IP Encapsulating Security Payload (ESP)",
               RFC 4303, DOI 10.17487/RFC4303, December 2005,
               <http://www.rfc-editor.org/info/rfc4303>.
-
-   [RFC5225]  Pelletier, G. and K. Sandlund, "RObust Header Compression
-              Version 2 (ROHCv2): Profiles for RTP, UDP, IP, ESP and
-              UDP-Lite", RFC 5225, DOI 10.17487/RFC5225, April 2008,
-              <http://www.rfc-editor.org/info/rfc5225>.
 
 Authors' Addresses
 
@@ -7269,17 +6788,6 @@ Authors' Addresses
    SPAWAR Systems Center Pacific
 
    Email: shadi.azoum@navy.mil
-
-
-
-
-
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 130]
-
-Internet-Draft                    CCMIB                        June 2016
 
 
    Elliott Jones
@@ -7321,16 +6829,4 @@ Internet-Draft                    CCMIB                        June 2016
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Azoum, et al.            Expires January 1, 2017              [Page 131]
+Azoum, et al.            Expires January 1, 2017              [Page 122]
