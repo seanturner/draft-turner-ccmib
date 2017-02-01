@@ -4991,7 +4991,7 @@ This MIB module makes reference to following documents: {{RFC2571}}, {{RFC2578}}
 Security Policy Information
 ---------------------------
 
-This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
+This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
 
 ~~~~
     CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
@@ -5316,7 +5316,7 @@ This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}},
 Secure Connection Information
 -----------------------------
 
-This module makes reference to: {{cc-fh}}, {{cc-txt}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}, {{RFC4303}}.
+This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}, {{RFC4303}}.
 
 ~~~~
     CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
