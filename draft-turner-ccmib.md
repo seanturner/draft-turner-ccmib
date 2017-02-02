@@ -3693,7 +3693,7 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
             Secure Object Management System (SOMS) server fails before
             attempting to retry the operation. Note, this scalar applies
             to the download of any type of item from the SOMS server
-
+            (e.g. CDMs, PALs)." 
         ::= { cKeyTransferPullScalars 1 }
     
     cSOMSServerRetryMaxAttempts  OBJECT-TYPE
