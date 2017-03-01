@@ -276,11 +276,12 @@ li, p {
 <link href="#rfc.section.5.1" rel="Chapter" title="5.1 CC Assignments"/>
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 CC Feature Hierarchy"/>
 <link href="#rfc.section.5.3" rel="Chapter" title="5.3 CC Device Info"/>
-<link href="#rfc.section.5.4" rel="Chapter" title="5.4 Key Management Information"/>
-<link href="#rfc.section.5.5" rel="Chapter" title="5.5 Key Transfer Pull"/>
-<link href="#rfc.section.5.6" rel="Chapter" title="5.6 Key Transfer Push"/>
-<link href="#rfc.section.5.7" rel="Chapter" title="5.7 Security Policy Information"/>
-<link href="#rfc.section.5.8" rel="Chapter" title="5.8 Secure Connection Information"/>
+<link href="#rfc.section.5.4" rel="Chapter" title="5.4 Firmware Management Information"/>
+<link href="#rfc.section.5.5" rel="Chapter" title="5.5 Key Management Information"/>
+<link href="#rfc.section.5.6" rel="Chapter" title="5.6 Key Transfer Pull"/>
+<link href="#rfc.section.5.7" rel="Chapter" title="5.7 Key Transfer Push"/>
+<link href="#rfc.section.5.8" rel="Chapter" title="5.8 Security Policy Information"/>
+<link href="#rfc.section.5.9" rel="Chapter" title="5.9 Secure Connection Information"/>
 <link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations"/>
 <link href="#rfc.references" rel="Chapter" title="8 References"/>
@@ -294,7 +295,7 @@ li, p {
 
   <meta name="dct.creator" content="Azoum, S., Jones, E., Sun, L., Irani, M., Sun, J., Purvis, R., and S. Turner" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-turner-ccmib-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2016-6-30" />
+  <meta name="dct.issued" scheme="ISO8601" content="2017-2-28" />
   <meta name="dct.abstract" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
   <meta name="description" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
 
@@ -318,7 +319,7 @@ li, p {
   <td class="right">L. Sun</td>
 </tr>
 <tr>
-  <td class="left">Expires: January 1, 2017</td>
+  <td class="left">Expires: September 1, 2017</td>
   <td class="right">SPAWAR Systems Center Pacific</td>
 </tr>
 <tr>
@@ -351,7 +352,7 @@ li, p {
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">June 30, 2016</td>
+  <td class="right">February 28, 2017</td>
 </tr>
 
     	
@@ -371,11 +372,11 @@ li, p {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 1, 2017.</p>
+<p>This Internet-Draft will expire on September 1, 2017.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
-<p>Copyright (c) 2016 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2017 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -391,11 +392,12 @@ li, p {
 <ul><li>5.1.   <a href="#rfc.section.5.1">CC Assignments</a></li>
 <li>5.2.   <a href="#rfc.section.5.2">CC Feature Hierarchy</a></li>
 <li>5.3.   <a href="#rfc.section.5.3">CC Device Info</a></li>
-<li>5.4.   <a href="#rfc.section.5.4">Key Management Information</a></li>
-<li>5.5.   <a href="#rfc.section.5.5">Key Transfer Pull</a></li>
-<li>5.6.   <a href="#rfc.section.5.6">Key Transfer Push</a></li>
-<li>5.7.   <a href="#rfc.section.5.7">Security Policy Information</a></li>
-<li>5.8.   <a href="#rfc.section.5.8">Secure Connection Information</a></li>
+<li>5.4.   <a href="#rfc.section.5.4">Firmware Management Information</a></li>
+<li>5.5.   <a href="#rfc.section.5.5">Key Management Information</a></li>
+<li>5.6.   <a href="#rfc.section.5.6">Key Transfer Pull</a></li>
+<li>5.7.   <a href="#rfc.section.5.7">Key Transfer Push</a></li>
+<li>5.8.   <a href="#rfc.section.5.8">Security Policy Information</a></li>
+<li>5.9.   <a href="#rfc.section.5.9">Secure Connection Information</a></li>
 </ul><li>6.   <a href="#rfc.section.6">IANA Considerations</a></li>
 <li>7.   <a href="#rfc.section.7">Security Considerations</a></li>
 <li>8.   <a href="#rfc.references">References</a></li>
@@ -553,6 +555,8 @@ li, p {
 
     ccDeviceInfo  OBJECT IDENTIFIER
         ::= { ccFeatureHierarchyMIB 2 }
+    ccFirmwareManagement  OBJECT IDENTIFIER
+        ::= { ccFeatureHierarchyMIB TBD }
     ccKeyManagement  OBJECT IDENTIFIER
         ::= { ccFeatureHierarchyMIB 3 }
     ccKeyTransferPull  OBJECT IDENTIFIER
@@ -645,8 +649,6 @@ li, p {
         ::= { ccDeviceInfoMIB 1}
     cDeviceComponentVersInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 2}
-    cFirmwareInfo  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 4}
     cDeviceInfoScalars  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 5}
     cDeviceInfoNotify  OBJECT IDENTIFIER
@@ -809,25 +811,6 @@ li, p {
     -- *****************************************************************
     -- Device Information Notifications
     -- *****************************************************************
-
-    cFirmwareInstallFailed  NOTIFICATION-TYPE
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a firmware install failed."
-        ::= { cDeviceInfoNotify 1 }
-
-    cFirmwareInstallSuccess  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cFirmwareName,
-                        cFirmwareVersion,
-                        cFirmwareSource
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a firmware install succeeded."
-        ::= { cDeviceInfoNotify 2 }
 
     cResetDeviceInitialized  NOTIFICATION-TYPE
         STATUS      current
@@ -1003,6 +986,224 @@ li, p {
         ::= { cDeviceComponentVersEntry 4 }
 
     -- *****************************************************************
+    -- Module Conformance Information
+    -- *****************************************************************
+
+    cDeviceInfoCompliances  OBJECT IDENTIFIER
+        ::= { cDeviceInfoConformance 1}
+    cDeviceInfoGroups  OBJECT IDENTIFIER
+        ::= { cDeviceInfoConformance 2}
+
+    cDeviceInfoSystemCompliance MODULE-COMPLIANCE
+        STATUS    current
+        DESCRIPTION
+            "Compliance levels for system information."
+        MODULE
+        MANDATORY-GROUPS { cDeviceInfoSystemGroup }
+    
+        GROUP cDeviceInfoSystemNotifyGroup
+        DESCRIPTION
+            "This notification group is optional for implementation."
+
+        OBJECT cSystemInitialLoadParameters
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+            "Implementation of this object is optional."
+    
+        OBJECT cSecurityLevel
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+        "Implementation of this object is optional."
+
+        cSanitizeDevice
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+            "Implementation of this object is optional."
+    
+        OBJECT cRenderInoperable
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+            "Implementation of this object is optional."
+        ::= { cDeviceInfoCompliances 1 }
+
+    cDeviceInfoComponentCompliance MODULE-COMPLIANCE
+        STATUS    current
+        DESCRIPTION
+            "Compliance levels for component information."
+        MODULE
+        MANDATORY-GROUPS { cDeviceInfoComponentGroup }
+    
+        GROUP cDeviceInfoComponentNotifyGroup
+        DESCRIPTION
+            "This notification group is optional for implementation."
+        ::= { cDeviceInfoCompliances 2 }
+
+    cDeviceInfoSystemGroup OBJECT-GROUP
+        OBJECTS {
+                    cSystemDate,
+                    cSystemUpTime,
+                    cSystemInitialLoadParameters,
+                    cSecurityLevel,
+                    cElectronicSerialNumber,
+                    cLastChanged,
+                    cResetDevice,
+                    cSanitizeDevice,
+                    cRenderInoperable,
+                    cVendorName,
+                    cModelIdentifier,
+                    cHardwareVersionNumber
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to system
+            information."
+        ::= { cDeviceInfoGroups 1 }
+
+    cDeviceInfoComponentGroup OBJECT-GROUP
+        OBJECTS {
+                    cDeviceComponentVersTableCount,
+                    cDeviceComponentVersTableLastChanged,
+                    cDeviceComponentName,
+                    cDeviceComponentVersion,
+                    cDeviceComponentOpStatus,
+                    cDeviceComponentDescription
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to component
+            information."
+        ::= { cDeviceInfoGroups 2 }
+
+    cDeviceInfoSystemNotifyGroup NOTIFICATION-GROUP
+        NOTIFICATIONS {
+                        cResetDeviceInitialized,
+                        cSanitizeDeviceInitialized,
+                        cTamperEventIndicated,
+                        cSanitizeDeviceInitialized
+                      }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of notifications related to system
+            information."
+        ::= { cDeviceInfoGroups 5 }
+
+    cDeviceInfoComponentNotifyGroup NOTIFICATION-GROUP
+        NOTIFICATIONS {
+                        cDeviceComponentDisabled,
+                        cDeviceComponentEnabled
+                      }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of notifications related to
+            component information."
+        ::= { cDeviceInfoGroups 6 }
+
+    END
+</pre>
+<h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#firmware-management-information" id="firmware-management-information">Firmware Management Information</a></h1>
+<p id="rfc.section.5.4.p.1">This MIB module makes references to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
+<pre>
+    CC-FIRMWARE-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
+
+    IMPORTS
+        SnmpAdminString
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
+        MODULE-IDENTITY
+            FROM SNMPv2-SMI                            -- FROM RFC 2578
+        TimeStamp, TruthValue, RowStatus 
+            FROM SNMPv2-TC                             -- FROM RFC 2579
+        MODULE-COMPLIANCE, OBJECT-GROUP,
+        NOTIFICATION-GROUP
+            FROM SNMPv2-CONF                           -- FROM RFC 2580;
+
+
+    ccFirmwareManagementMIB  MODULE-IDENTITY
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
+        CONTACT-INFO
+            "Shadi Azoum
+            US Navy
+            email: shadi.azoum@navy.mil
+ 
+            Elliott Jones
+            US Navy
+            elliott.jones@navy.mil
+
+            Lily Sun
+            US Navy
+            lily.sun@navy.mil
+
+            Mike Irani
+            NKI Engineering
+            irani@nkiengineering.com
+
+            Jeffrey Sun
+            NKI Engineering
+            sunjeff@nkiengineering.com
+
+            Ray Purvis
+            MITRE
+            Email:rpurvis@mitre.org
+
+            Sean Turner
+            sn3rd
+            Email:sean@sn3rd.com"
+        DESCRIPTION
+            "This MIB defines the CC MIB Firmware Managment objects.
+
+            Copyright (c) 2017 IETF Trust and the persons
+            identified as authors of the code.  All rights reserved.
+
+            Redistribution and use in source and binary forms, with
+            or without modification, is permitted pursuant to, and
+            subject to the license terms contained in, the Simplified
+            BSD License set forth in Section 4.c of the IETF Trust's
+            Legal Provisions Relating to IETF Documents
+            (http://trustee.ietf.org/license-info).
+
+            This version of this MIB module is part of RFC xxxx;
+            see the RFC itself for full legal notices."
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+    -- RFC Ed.: RFC-editor please fill in xxxx.
+        ::= { ccFirmwareManagement 1 }
+
+    -- *****************************************************************
+    -- Firmware Information Segments
+    -- *****************************************************************
+
+    cFirmwareInfo  OBJECT IDENTIFIER
+        ::= { ccFirmwareManagementMIB TBD }
+    cFirmwareInfoNoitify  OBJECT IDENTIFIER
+        ::= { ccFirmwareManagementMIB TBD }
+
+
+    -- *****************************************************************
+    -- Firmware Information Notifications
+    -- *****************************************************************
+
+    cFirmwareInstallFailed  NOTIFICATION-TYPE
+        STATUS      current
+        DESCRIPTION
+            "A notification from the device to the management station
+            indicating a firmware install failed."
+        ::= { cFirmwareInfoNotify TBD }
+
+    cFirmwareInstallSuccess  NOTIFICATION-TYPE
+        OBJECTS     {
+                        cFirmwareName,
+                        cFirmwareVersion,
+                        cFirmwareSource
+                    }
+        STATUS      current
+        DESCRIPTION
+            "A notification from the device to the management station
+            indicating a firmware install succeeded."
+        ::= { cFirmwareInfoNotify TBD }
+
+    -- *****************************************************************
     -- CC MIB cFirmwareInformationTable
     -- *****************************************************************
 
@@ -1086,9 +1287,9 @@ li, p {
             the firmware was received. Agents may use any string which
             adequately describes the interface such as 'USB' or
             'DS-100.' Agents may also reference entries in the ifTable
-            when appropriate. If received using a Cryptographic Device
-            Material (CDM) server, the exact URI that was used to
-            retrieve the firmware package would be configured in this
+            when appropriate. If received using a Secure Object
+            Maagement System (SOMS) server, the exact URI that was used
+            to retrieve the firmware package would be configured in this
             column."
         ::= { cFirmwareInformationEntry 3 }
 
@@ -1120,103 +1321,23 @@ li, p {
     -- Module Conformance Information
     -- *****************************************************************
 
-    cDeviceInfoCompliances  OBJECT IDENTIFIER
-        ::= { cDeviceInfoConformance 1}
-    cDeviceInfoGroups  OBJECT IDENTIFIER
-        ::= { cDeviceInfoConformance 2}
+    cFirmwareInfoCompliances  OBJECT IDENTIFIER
+        ::= { cFirmwareInfoConformance 1}
+    cFirmwareInfoGroups  OBJECT IDENTIFIER
+        ::= { cFirmwareInfoConformance 2}
 
-    cDeviceInfoSystemCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for system information."
-        MODULE
-        MANDATORY-GROUPS { cDeviceInfoSystemGroup }
-    
-        GROUP cDeviceInfoSystemNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-
-        OBJECT cSystemInitialLoadParameters
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-    
-        OBJECT cSecurityLevel
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-        "Implementation of this object is optional."
-
-        cSanitizeDevice
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-    
-        OBJECT cRenderInoperable
-        MIN-ACCESS not-accessible
-        DESCRIPTION
-            "Implementation of this object is optional."
-        ::= { cDeviceInfoCompliances 1 }
-
-    cDeviceInfoComponentCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for component information."
-        MODULE
-        MANDATORY-GROUPS { cDeviceInfoComponentGroup }
-    
-        GROUP cDeviceInfoComponentNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-        ::= { cDeviceInfoCompliances 2 }
-
-    cDeviceInfoFirmwareCompliance MODULE-COMPLIANCE
+    cFirmwareInfoCompliance MODULE-COMPLIANCE
         STATUS    current
         DESCRIPTION
             "Compliance levels for firmware information."
         MODULE
-        MANDATORY-GROUPS { cDeviceInfoFirmwareGroup }
-        GROUP cDeviceInfoFirmwareNotifyGroup
+        MANDATORY-GROUPS { cFirmwareInfoGroup }
+        GROUP cFirmwareInfoNotifyGroup
         DESCRIPTION
             "This notification group is optional for implementation."
-        ::= { cDeviceInfoCompliances 4 }
+        ::= { cDeviceInfoCompliances TBD }
 
-    cDeviceInfoSystemGroup OBJECT-GROUP
-        OBJECTS {
-                    cSystemDate,
-                    cSystemUpTime,
-                    cSystemInitialLoadParameters,
-                    cSecurityLevel,
-                    cElectronicSerialNumber,
-                    cLastChanged,
-                    cResetDevice,
-                    cSanitizeDevice,
-                    cRenderInoperable,
-                    cVendorName,
-                    cModelIdentifier,
-                    cHardwareVersionNumber
-                }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of objects related to system
-            information."
-        ::= { cDeviceInfoGroups 1 }
-
-    cDeviceInfoComponentGroup OBJECT-GROUP
-        OBJECTS {
-                    cDeviceComponentVersTableCount,
-                    cDeviceComponentVersTableLastChanged,
-                    cDeviceComponentName,
-                    cDeviceComponentVersion,
-                    cDeviceComponentOpStatus,
-                    cDeviceComponentDescription
-                }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of objects related to component
-            information."
-        ::= { cDeviceInfoGroups 2 }
-
-    cDeviceInfoFirmwareGroup OBJECT-GROUP
+    cFirmwareInfoGroup OBJECT-GROUP
         OBJECTS {
                     cFirmwareInformationTableCount,
                     cFirmwareInformationTableLastChanged,
@@ -1230,33 +1351,9 @@ li, p {
         DESCRIPTION
             "This group is composed of objects related to firmware
             information."
-        ::= { cDeviceInfoGroups 4 }
+        ::= { cFirmwareInfoGroups TBD }
 
-    cDeviceInfoSystemNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
-                        cResetDeviceInitialized,
-                        cSanitizeDeviceInitialized,
-                        cTamperEventIndicated,
-                        cSanitizeDeviceInitialized
-                      }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of notifications related to system
-            information."
-        ::= { cDeviceInfoGroups 5 }
-
-    cDeviceInfoComponentNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
-                        cDeviceComponentDisabled,
-                        cDeviceComponentEnabled
-                      }
-        STATUS current
-        DESCRIPTION
-            "This group is composed of notifications related to
-            component information."
-        ::= { cDeviceInfoGroups 6 }
-
-    cDeviceInfoFirmwareNotifyGroup NOTIFICATION-GROUP
+    cFirmwareInfoNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cFirmwareInstallFailed,
                         cFirmwareInstallSuccess
@@ -1265,12 +1362,12 @@ li, p {
         DESCRIPTION
             "This group is composed of notifications related to firmware
             information."
-        ::= { cDeviceInfoGroups 8 }
+        ::= { cFirmwareInfoGroups TBD }
 
     END
 </pre>
-<h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#key-management-information" id="key-management-information">Key Management Information</a></h1>
-<p id="rfc.section.5.4.p.1">This MIB module makes references to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC5280">[RFC5280]</a>, <a href="#RFC5914">[RFC5914]</a>, <a href="#RFC6030">[RFC6030]</a>, and <a href="#RFC6353">[RFC6353]</a>.</p>
+<h1 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5.</a> <a href="#key-management-information" id="key-management-information">Key Management Information</a></h1>
+<p id="rfc.section.5.5.p.1">This MIB module makes references to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC5280">[RFC5280]</a>, <a href="#RFC5914">[RFC5914]</a>, <a href="#RFC6030">[RFC6030]</a>, and <a href="#RFC6353">[RFC6353]</a>.</p>
 <pre>
     CC-KEY-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
 
@@ -2764,8 +2861,9 @@ li, p {
         DESCRIPTION
             "An administrative name that identifies the source of this
             Crypto Device Material (CDM). This could be the URI used
-            when downloaded from the CDM server or a physical port
-            designator for CDM downloaded via HMI."
+            when downloaded from the Secure Object Management System
+            (SOMS) server or a physical port designator for CDM
+            downloaded via HMI."
         ::= { cCDMStoreEntry 3 }
 
     cCDMStoreID  OBJECT-TYPE
@@ -3880,8 +3978,8 @@ li, p {
     
     END
 </pre>
-<h1 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5.</a> <a href="#key-transfer-pull" id="key-transfer-pull">Key Transfer Pull</a></h1>
-<p id="rfc.section.5.5.p.1">This MIB module makes reference to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
+<h1 id="rfc.section.5.6"><a href="#rfc.section.5.6">5.6.</a> <a href="#key-transfer-pull" id="key-transfer-pull">Key Transfer Pull</a></h1>
+<p id="rfc.section.5.6.p.1">This MIB module makes reference to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
 <pre>
     CC-KEY-TRANSFER-PULL-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -3966,7 +4064,7 @@ li, p {
         ::= { ccKeyTransferPullMIB 2 }
     cKeyTransferPullNotify       OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 3 }
-    cCDMServerInfo               OBJECT IDENTIFIER
+    cSOMSServerInfo               OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 4 }
     cCDMDeliveryInfo             OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 5 }
@@ -3975,29 +4073,29 @@ li, p {
     -- Key Transfer Pull Scalars
     -- *****************************************************************
     
-    cCDMServerRetryDelay  OBJECT-TYPE
+    cSOMSServerRetryDelay  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
 
             "The amount of time to wait after a download attempt to the
-            cryptographic device material (CDM) server fails before
+            Secure Object Management System (SOMS) server fails before
             attempting to retry the operation. Note, this scalar applies
-            to the download of any type of item from the CDM server
-            (e.g. CDMs, CDMLs)."
+            to the download of any type of item from the SOMS server
+            (e.g. CDMs, PALs)." 
         ::= { cKeyTransferPullScalars 1 }
     
-    cCDMServerRetryMaxAttempts  OBJECT-TYPE
+    cSOMSServerRetryMaxAttempts  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
             "The amount of retries attempted before the download attempt
-            to the cryptographic device material (CDM) server is
+            to the Secure Object Management System (SOMS) server is
             considered a failure. Note, this scalar applies to the
-            download of any type of item from the CDM server (e.g. CDMs,
-            CDMLs)."
+            download of any type of item from the SOMS server (e.g. CDMs,
+            PALs)."
         ::= { cKeyTransferPullScalars 2 }
     
     cCDMPullRetrievalPriorities  OBJECT-TYPE
@@ -4023,79 +4121,79 @@ li, p {
         DEFVAL {0}
         ::= { cKeyTransferPullScalars 3 }
     
-    cCDMLDeliveryRequest OBJECT-TYPE
+    cPALDeliveryRequest OBJECT-TYPE
         SYNTAX      INTEGER { readyForDownload(1), downloadAndParse(2),
                               discard(3) }
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
-            "This scalar controls the server's CDML download process -
-            server information is stored in the cCDMServerTable. When
+            "This scalar controls the server's PAL download process -
+            server information is stored in the cSOMSServerTable. When
             read, it will return 'readyForDownload' if the last action
             succeeded. If the last action is in progress or failed, it
             will return the last requested action.
 
             The values which may be set depend on the current value of
-            this object and the cCDMLDeliveryStatus object.
+            this object and the cPALDeliveryStatus object.
 
             In order to initiate a new download, this object must
             contain the value 'readyForDownload', and the
-            cCDMLDeliveryStatus must contain the value 'complete'. At
+            cPALDeliveryStatus must contain the value 'complete'. At
             which point, setting this object to to 'downloadAndParse'
-            initiates the CDML download process. Note, the
-            cCDMLDeliveryStatus should transition to 'inProgress' at
-            the device begins the CDML download process from the
-            server(s) and URI(s) listed in the cCDMLServerTable (as
-            ordered by the cCDMLServerPriority index).
+            initiates the PAL download process. Note, the
+            cPALDeliveryStatus should transition to 'inProgress' at
+            the device begins the PAL download process from the
+            server(s) and URI(s) listed in the cSOMSServerTable (as
+            ordered by the cSOMSServerPriority index).
 
-            If the CDML download fails, the next highest priority URI
+            If the PAL download fails, the next highest priority URI
             will be tried, and so on.
 
-            While a CDML download is in progress, or if the CDML
+            While a PAL download is in progress, or if the PAL
             download fails for all possible servers and URIs (indicated
-            by a cCDMLDeliveryStatus value of 'downloadFailed'), this
+            by a cPALDeliveryStatus value of 'downloadFailed'), this
             object will return an inconsistentValue error for any new
             value except 'discard' (which will cancel the current
             download).
 
-            If the CDML download succeeded, the cCDMLDeliveryStatus value
+            If the PAL download succeeded, the cPALDeliveryStatus value
             remains inProgress and the device attempts to parse the
-            download immediately. During the parsing of the CDML, all
+            download immediately. During the parsing of the PAL, all
             new values will return inconsistentValue error (i.e. the
             parse process can not be aborted). If the parse fails, the
-            cCDMLDeliveryStatus will transition to 'parseFailed', and
-            this object must be set to 'discard' before a new CDML
+            cPALDeliveryStatus will transition to 'parseFailed', and
+            this object must be set to 'discard' before a new PAL
             download is attempted."
         ::= { cKeyTransferPullScalars 4 }
     
-    cCDMLDeliveryStatus OBJECT-TYPE
+    cPALDeliveryStatus OBJECT-TYPE
         SYNTAX      INTEGER { complete(1), inProgress(2),
                               downloadFailed(3),
                               parseFailed(4) }
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "This indicates the current state of a CDML download.
+            "This indicates the current state of a PAL download.
     
             'complete' indicates that the last requested
-            cCDMLDeliveryRequest action was successful.
+            cPALDeliveryRequest action was successful.
     
-            'inProgress' indicates that a CDML download or CDML parse is
+            'inProgress' indicates that a PAL download or PAL parse is
             underway.
 
-            'downloadFailed' indicates that the last attempted CDML
+            'downloadFailed' indicates that the last attempted PAL
             download failed.
     
-            'parseFailed' indicates that the last attempted CDML parse
+            'parseFailed' indicates that the last attempted PAL parse
             failed.
 
             The relationship between this object and
-            cCDMLDeliveryRequest is detailed in the following table. The
-            table indicates values of cCDMLDeliveryRequest that are
+            cPALDeliveryRequest is detailed in the following table. The
+            table indicates values of cPALDeliveryRequest that are
             allowed depending on the current value of this object.
     
 
- cCDMLDeliveryRequest!                 cCDMLDeliveryStatus
+ cPALDeliveryRequest!                 cPALDeliveryStatus
  --------------------+-----------+----------+--------------+------------
  !                   !  complete !inProgress!downloadFailed!parseFailed!
  --------------------+-----------+----------+--------------+------------
@@ -4106,7 +4204,7 @@ li, p {
  ! discard           !   error   ! allowed  !   allowed    !  allowed  !
  --------------------+-----------+----------+--------------+------------
     
-            As described cCDMLDeliveryRequest description, an
+            As described cPALDeliveryRequest description, an
             inconsistentValue error is returned."
         DEFVAL {complete}
         ::= { cKeyTransferPullScalars 5 }
@@ -4115,27 +4213,27 @@ li, p {
     -- Key Transfer Pull Notifications
     -- *****************************************************************
 
-    cCDMLPullReceiveSuccess  NOTIFICATION-TYPE
-        OBJECTS     { cCDMServerURI }
+    cPALPullReceiveSuccess  NOTIFICATION-TYPE
+        OBJECTS     { cSOMSServerURI }
         STATUS      current
         DESCRIPTION
-            "An attempt to receive a cryptographic device material list
-            (CDML) has succeeded. The CDM Server URI is provided with
-            this notification."
+            "An attempt to receive a Product Availablity List (PAL) has
+            succeeded. The Secure Object Management System (SOMS) server
+            URI is provided with this notification."
         ::= { cKeyTransferPullNotify 1 }
 
-    cCDMLPullReceiveFailed  NOTIFICATION-TYPE
+    cPALPullReceiveFailed  NOTIFICATION-TYPE
         OBJECTS     {
-                        cCDMServerURI,
-                        cCDMLDeliveryStatus
+                        cSOMSServerURI,
+                        cPALDeliveryStatus
                     }
         STATUS      current
         DESCRIPTION
-            "An attempt to receive a cryptographic device material list
-            (CDML) has failed. The CDM Server URI and CDML Delivery
-            Status are provided with this notification. Note, the
-            expected values for the CDML Delivery Status are:
-            'downloadFailed' and 'parseFailed'."
+            "An attempt to receive a Product Availability List (PAL)
+            has failed. The Secure Object Management System (SOMS)
+            server URI and PAL Delivery Status are provided with this
+            notification. Note, the expected values for the PAL
+            Delivery Status are: 'downloadFailed' and 'parseFailed'."
         ::= { cKeyTransferPullNotify 2 }
 
     cCDMPullReceiveSuccess  NOTIFICATION-TYPE
@@ -4164,18 +4262,18 @@ li, p {
         ::= { cKeyTransferPullNotify 4 }
 
     -- *****************************************************************
-    -- CC MIB cCDMServerTable
+    -- CC MIB cSOMSServerTable
     -- *****************************************************************
 
-    cCDMServerTableCount  OBJECT-TYPE
+    cSOMSServerTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-             "The number of rows in the cCDMServerTable"
-        ::= { cCDMServerInfo 1 }
+             "The number of rows in the cSOMSServerTable"
+        ::= { cSOMSServerInfo 1 }
 
-    cCDMServerTableLastChanged  OBJECT-TYPE
+    cSOMSServerTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
         MAX-ACCESS  read-only
         STATUS      current
@@ -4188,79 +4286,79 @@ li, p {
             indicates that no entry has been changed since the agent
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
             should be used to populate this column."
-        ::= { cCDMServerInfo 2 }
+        ::= { cSOMSServerInfo 2 }
 
-    cCDMServerTable  OBJECT-TYPE
-        SYNTAX      SEQUENCE OF CCDMServerEntry
+    cSOMSServerTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF CSOMSServerEntry
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "The table containing a list of servers that will be queried
             for available cryptographic device materials (CDMs), such as
             keys and firmware packages. This table is also used to
-            obtain the cryptographic device material list (CDML), which
-            is a list detailing available CDMs and their associated
-            location for obtainment."
-        ::= { cCDMServerInfo 3 }
+            obtain the Product Avaialability List (PAL), which is a list
+            detailing available CDMs and their associated location for
+            obtainment."
+        ::= { cSOMSServerInfo 3 }
 
-    cCDMServerEntry  OBJECT-TYPE
-        SYNTAX      CCDMServerEntry
+    cSOMSServerEntry  OBJECT-TYPE
+        SYNTAX      CSOMSServerEntry
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "A row containing information about a server that has
-            available CDMLs/CDMs for download."
-        INDEX      { cCDMServerPriority }
-        ::= { cCDMServerTable 1 }
+            available PALs/CDMs for download."
+        INDEX      { cSOMSServerPriority }
+        ::= { cSOMSServerTable 1 }
 
-    CCDMServerEntry  ::= SEQUENCE {
-        cCDMServerPriority          Unsigned32,
-        cCDMServerURI               OCTET STRING,
-        cCDMServerAdditionalInfo    SnmpAdminString,
-        cCDMServerRowStatus         RowStatus
+    CSOMSServerEntry  ::= SEQUENCE {
+        cSOMSServerPriority          Unsigned32,
+        cSOMSServerURI               OCTET STRING,
+        cSOMSServerAdditionalInfo    SnmpAdminString,
+        cSOMSServerRowStatus         RowStatus
     }
 
-    cCDMServerPriority  OBJECT-TYPE
+    cSOMSServerPriority  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "A unique numeric index that identifies a server that has
-            available CDMLs/CDMs for download. This index also provides
+            available PALs/CDMs for download. This index also provides
             server prioritization functionality - lower values have a
 
             higher priority. For example, the server with the lowest
-            value will be the first server for CDML/CDM downloads. In
+            value will be the first server for PAL/CDM downloads. In
             the event of failure, the next lowest value server will be
             tried, and so on.
 
-            This column is the sole index to the cCDMServerTable."
-        ::= { cCDMServerEntry 1 }
+            This column is the sole index to the cSOMSServerTable."
+        ::= { cSOMSServerEntry 1 }
 
-    cCDMServerURI  OBJECT-TYPE
+    cSOMSServerURI  OBJECT-TYPE
         SYNTAX      OCTET STRING (SIZE(1..255))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
-            "The location of the server that has available CDMLs/CDMs
+            "The location of the server that has available PALs/CDMs
             for download. The value in this column is represented as a
             URI.
 
-            Note, download of a CDML will typically result in the
+            Note, download of a PAL will typically result in the
             population of new CDM entries in the cCDMDeliveryTable."
-        ::= { cCDMServerEntry 2 }
+        ::= { cSOMSServerEntry 2 }
 
-    cCDMServerAdditionalInfo  OBJECT-TYPE
+    cSOMSServerAdditionalInfo  OBJECT-TYPE
         SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
-            "Additional information about the CDM Server. This
+            "Additional information about the SOMS server. This
             information is manually configured by the manager both at or
             after row creation."
-        ::= { cCDMServerEntry 3 }
+        ::= { cSOMSServerEntry 3 }
 
-    cCDMServerRowStatus  OBJECT-TYPE
+    cSOMSServerRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
         MAX-ACCESS  read-create
         STATUS      current
@@ -4276,7 +4374,7 @@ li, p {
             active, and destroy management functions. Support for
             createAndWait, notInService, and notReady management
             functions is optional."
-        ::= { cCDMServerEntry 4 }
+        ::= { cSOMSServerEntry 4 }
 
     -- *****************************************************************
     -- CC MIB cCDMDeliveryTable
@@ -4371,9 +4469,9 @@ li, p {
             associated URI of the CDM Server can easily be derived.
 
             This column is typically populated by an agent upon querying
-            a CDM Server (e.g. downloading and parsing a cryptographic
-            device material list (CDML) from a CDM Server (entry in the
-            cCDMServerTable)). However, a manager can also configure an
+            a SOMS Server (e.g. downloading and parsing a Product
+            Availability List (PAL) from a SOMS Server (entry in the
+            cSOMSServerTable)). However, a manager can also configure an
             entry in this table with predetermined knowledge of the CDM
             location."
         ::= { cCDMDeliveryEntry 2 }
@@ -4386,9 +4484,9 @@ li, p {
         DESCRIPTION
             "The package size, in bytes, of the cryptographic device
             material (CDM). This information is retrieved from a
-            cryptographic device material list (CDML) or a server's
-            product availability response following a query. This column
-            does not apply to notifications found in CDMLs."
+            Product Availability List (PAL) or a server's product
+            availability response following a query. This column
+            does not apply to notifications found in PALs."
         ::= { cCDMDeliveryEntry 3 }
 
     cCDMAdditionalInfo  OBJECT-TYPE
@@ -4398,9 +4496,8 @@ li, p {
         DESCRIPTION
             "Additional information about the cryptographic device
             material (CDM). This information can be retrieved from the
-            downloaded cryptographic device material list (CDML) or
-            manually configured by the manager both at or after row
-            creation."
+            downloaded Product Availability List (PAL) or manually
+            configured by the manager both at or after row creation."
         ::= { cCDMDeliveryEntry 4 }
 
     cCDMLastDownloadDate  OBJECT-TYPE
@@ -4579,13 +4676,13 @@ li, p {
 
     cKeyTransferPullServerGroup OBJECT-GROUP
         OBJECTS {
-                  cCDMServerRetryDelay,
-                  cCDMServerRetryMaxAttempts,
-                  cCDMServerTableCount,
-                  cCDMServerTableLastChanged,
-                  cCDMServerURI,
-                  cCDMServerAdditionalInfo,
-                  cCDMServerRowStatus
+                  cSOMSServerRetryDelay,
+                  cSOMSServerRetryMaxAttempts,
+                  cSOMSServerTableCount,
+                  cSOMSServerTableLastChanged,
+                  cSOMSServerURI,
+                  cSOMSServerAdditionalInfo,
+                  cSOMSServerRowStatus
                 }
         STATUS current
         DESCRIPTION
@@ -4596,8 +4693,8 @@ li, p {
     cKeyTransferPullDeliveryGroup OBJECT-GROUP
         OBJECTS {
                   cCDMPullRetrievalPriorities,
-                  cCDMLDeliveryRequest,
-                  cCDMLDeliveryStatus,
+                  cPALDeliveryRequest,
+                  cPALDeliveryStatus,
                   cCDMDeliveryTableCount,
                   cCDMDeliveryTableLastChanged,
                   cCDMDeliveryTableLastChanged,
@@ -4605,7 +4702,7 @@ li, p {
                   cCDMURI,
                   cCDMPackageSize,
                   cCDMAdditionalInfo,
-                  cCDMLastDownloadDate,
+                  cPALastDownloadDate,
                   cCDMDeliveryPriority,
                   cCDMDeliveryRequest,
                   cCDMDeliveryStatus,
@@ -4619,8 +4716,8 @@ li, p {
 
     cKeyTransferPullDeliveryNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
-                        cCDMLPullReceiveSuccess,
-                        cCDMLPullReceiveFailed,
+                        cPALPullReceiveSuccess,
+                        cPALPullReceiveFailed,
                         cCDMPullReceiveSuccess,
                         cCDMPullReceiveFailed
                       }
@@ -4632,8 +4729,8 @@ li, p {
     
     END
 </pre>
-<h1 id="rfc.section.5.6"><a href="#rfc.section.5.6">5.6.</a> <a href="#key-transfer-push" id="key-transfer-push">Key Transfer Push</a></h1>
-<p id="rfc.section.5.6.p.1">This MIB module makes reference to following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>.</p>
+<h1 id="rfc.section.5.7"><a href="#rfc.section.5.7">5.7.</a> <a href="#key-transfer-push" id="key-transfer-push">Key Transfer Push</a></h1>
+<p id="rfc.section.5.7.p.1">This MIB module makes reference to following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>.</p>
 <pre>
     CC-KEY-TRANSFER-PUSH-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -5087,7 +5184,7 @@ li, p {
             "This table provides the list of authorized senders that
             this receiving device will accept Cryptographic Device
             Material (CDM) transfers from. Servers for the
-            cCDMServerTable are not listed in this table since this
+            cSOMSServerTable are not listed in this table since this
             table is specific for the Push Model."
         ::= { cCDMPushSrcInfo 3 }
 
@@ -5276,8 +5373,8 @@ li, p {
     
     END
 </pre>
-<h1 id="rfc.section.5.7"><a href="#rfc.section.5.7">5.7.</a> <a href="#security-policy-information" id="security-policy-information">Security Policy Information</a></h1>
-<p id="rfc.section.5.7.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
+<h1 id="rfc.section.5.8"><a href="#rfc.section.5.8">5.8.</a> <a href="#security-policy-information" id="security-policy-information">Security Policy Information</a></h1>
+<p id="rfc.section.5.8.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
 <pre>
     CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -5597,8 +5694,8 @@ li, p {
 
     END
 </pre>
-<h1 id="rfc.section.5.8"><a href="#rfc.section.5.8">5.8.</a> <a href="#secure-connection-information" id="secure-connection-information">Secure Connection Information</a></h1>
-<p id="rfc.section.5.8.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC4303">[RFC4303]</a>.</p>
+<h1 id="rfc.section.5.9"><a href="#rfc.section.5.9">5.9.</a> <a href="#secure-connection-information" id="secure-connection-information">Secure Connection Information</a></h1>
+<p id="rfc.section.5.9.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC4303">[RFC4303]</a>.</p>
 <pre>
     CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
