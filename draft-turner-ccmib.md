@@ -2,7 +2,7 @@
 title: Common Cryptographic MIB (CCMIB)
 abbrev: CCMIB
 docname: draft-turner-ccmib-latest
-date: 2016-06-30
+date: 2017-02-28
 category: std
 
 ipr: trust200902
