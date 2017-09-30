@@ -2551,7 +2551,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "An administrative name that identifies the source of this
             Crypto Device Material (CDM). This could be the URI used
             when downloaded from the Secure Object Management System
-            (SOMS) server or a physical port designator for CDdf
+            (SOMS) server or a physical port designator for CDM
             downloaded via HMI."
         ::= { cCDMStoreEntry 3 }
 
