@@ -2,7 +2,7 @@
 title: Common Cryptographic MIB (CCMIB)
 abbrev: CCMIB
 docname: draft-turner-ccmib-latest
-date: 2017-02-28
+date: {DATE}
 category: std
 
 ipr: trust200902
@@ -51,26 +51,8 @@ author:
     email: sean@sn3rd.com
 
 normative:
-  RFC2119:
-  RFC2571:
-  RFC2578:
-  RFC2579:
-  RFC2580:
-  RFC3414:
-  RFC3826:
-  RFC5246:
-  RFC5280:
-  RFC5591:
-  RFC5592:
-  RFC5914:
-  RFC6030:
-  RFC6353:
 
 informative:
-  RFC1213:
-  RFC1907:
-  RFC3410:
-  RFC4303:
 
 --- abstract
 
@@ -90,14 +72,14 @@ This document defines a portion of the Management Information Base (MIB) for use
 Terminology
 ===========
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in {{RFC2119}}.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in {{!RFC2119}}.
 
 The Internet-Standard Management Framework
 ==========================================
 
-For a detailed overview of the documents that describe the current Internet-Standard Management Framework, please refer to section 7 of {{RFC3410}}.
+For a detailed overview of the documents that describe the current Internet-Standard Management Framework, please refer to section 7 of {{?RFC3410}}.
 
-Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in RFC 2578 {{RFC2578}}, STD 58, RFC 2579 {{RFC2579}}, and STD 58, RFC 2580 {{RFC2580}}.
+Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in RFC 2578 {{!RFC2578}}, STD 58, RFC 2579 {{!RFC2579}}, and STD 58, RFC 2580 {{!RFC2580}}.
 
 Structure of the MIB module
 ===========================
@@ -152,7 +134,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
             "This MIB defines the CC MIB tree hierarchical assignments
             below it and acts as a reservation mechanism.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -188,9 +170,9 @@ This MIB module makes reference to the following document: {{RFC2578}}.
 
     IMPORTS
         ccAssignmentsMIB
-            FROM CC-ASSIGNMENTS-MIB                     -- FROM {{cc-assign}}
+            FROM CC-ASSIGNMENTS-MIB               -- FROM {{cc-assign}}
         MODULE-IDENTITY
-            FROM SNMPv2-SMI;                            -- FROM RFC 2578
+            FROM SNMPv2-SMI;                      -- FROM RFC 2578
 
     ccFeatureHierarchyMIB MODULE-IDENTITY
         LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
@@ -228,7 +210,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
             tree assignments.  It acts as a reservation mechanism for
             other MIB sets to be anchored below it.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -267,7 +249,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
 CC Device Info
 --------------
 
-This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC1907}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
+This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{!RFC3411}}, and {{?RFC3418}}.
 
 ~~~~
     CC-DEVICE-INFO-MIB  DEFINITIONS  ::=  BEGIN
@@ -282,7 +264,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         DateAndTime, TruthValue, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
@@ -320,7 +302,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         DESCRIPTION
             "This MIB defines the CC MIB Device Information objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -372,7 +354,7 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         DESCRIPTION
             "The amount of time since this host was last initialized.
             Note that this is different from sysUpTime in the SNMPv2-MIB
-            RFC 1907 because sysUpTime is the uptime of the network
+            RFC 3418 because sysUpTime is the uptime of the network
             management portion of the system."
         ::= { cDeviceInfoScalars 2 }
 
@@ -418,12 +400,12 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
         DESCRIPTION
             "The value of cSystemUpTime the last time any configurable
             object within the MIBs supported by the device has been
-            modified, created, or deleted by either SNMP, agent, or other
-            management method (e.g. via an HMI). Managers can use this
-            object to ensure that no changes to any configuration within the
-            device have happened since the last time it examined the device.
-            A value of 0 indicates that no objects have been changed since
-            the agent initialized."
+            modified, created, or deleted by either SNMP, agent, or
+            other management method (e.g. via an HMI). Managers can use
+            this object to ensure that no changes to any configuration
+            within the device have happened since the last time it
+            examined the device.  A value of 0 indicates that no objects
+            have been changed since the agent initialized."
         ::= { cDeviceInfoScalars 6 }
 
     cResetDevice  OBJECT-TYPE
@@ -801,14 +783,14 @@ This MIB module makes reference to the following documents: {{RFC1213}}, {{RFC19
 Firmware Management Information
 --------------------------
 
-This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
+This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, and {{RFC3411}}.
 
 ~~~~
     CC-FIRMWARE-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
 
     IMPORTS
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -816,7 +798,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
-            FROM SNMPv2-CONF                           -- FROM RFC 2580;
+            FROM SNMPv2-CONF;                          -- FROM RFC 2580
 
 
     ccFirmwareManagementMIB  MODULE-IDENTITY
@@ -1071,7 +1053,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
 Key Management Information
 --------------------------
 
-This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{RFC5280}}, {{RFC5914}}, {{RFC6030}}, and {{RFC6353}}.
+This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{RFC3411}}, {{!RFC5280}}, {{!RFC5914}}, {{!RFC6030}}, and {{!RFC6353}}.
 
 ~~~~
     CC-KEY-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
@@ -1083,7 +1065,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         RowPointer, RowStatus, DateAndTime,
         TruthValue, TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
@@ -1127,7 +1109,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
         DESCRIPTION
             "This MIB defines the CC MIB Key Managment objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -1314,9 +1296,9 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
         DESCRIPTION
             "A global setting, indicating the number of days prior to
             the expiration date of an asymmetric key (value of
-            cAsymKeyExpirationDate in the associated cAsymKeyTable entry)
-            for which the cKeyMaterialExpiring notification will be
-            transmitted.
+            cAsymKeyExpirationDate in the associated cAsymKeyTable
+            entry) for which the cKeyMaterialExpiring notification will
+            be transmitted.
 
             The value in this object is only used if no value exists for
             the associated cAsymKeyTable entry's cAsymKeyExpiryWarning
@@ -1790,9 +1772,9 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             by the manager."
         ::= { cSymmetricKeyEntry 12 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cAsymKeyTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cAsymKeyTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -1981,7 +1963,8 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
              "The entity associated with this Asymmetric Key.
 
              For non-X.509 based key material, or when this object does
-             not apply for the key material, this column will not exist."
+             not apply for the key material, this column will not
+             exist."
         ::= { cAsymKeyEntry 10 }
 
     cAsymKeySubjectType  OBJECT-TYPE
@@ -2001,8 +1984,9 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
              1000 0000 = other
              0100 0000 = certificationAuthority
              0010 0000 = crlIssuer
-             For non-X.509 based key material, or when this object does not
-             apply for the key material, this column will not exist."
+             For non-X.509 based key material, or when this object does
+             not apply for the key material, this column will not
+             exist."
         ::= { cAsymKeyEntry 11 }
 
     cAsymKeySubjectAltName OBJECT-TYPE
@@ -2306,9 +2290,9 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             Anchors to specific protocols (e.g. TAMP)."
         ::= { cTrustAnchorEntry 8 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cCKLTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cCKLTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -2463,9 +2447,9 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             "The date this CKL/CRL was last updated."
         ::= { cCKLEntry 8 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cCDMStoreTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cCDMStoreTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -2567,7 +2551,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             "An administrative name that identifies the source of this
             Crypto Device Material (CDM). This could be the URI used
             when downloaded from the Secure Object Management System
-            (SOMS) server or a physical port designator for CDM
+            (SOMS) server or a physical port designator for CDdf
             downloaded via HMI."
         ::= { cCDMStoreEntry 3 }
 
@@ -2817,7 +2801,8 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "The table containing the controls and constraints applied
-            to a certificate in order to process certificate trust paths."
+            to a certificate in order to process certificate trust
+            paths."
         ::= { cCertPathCtrlsInfo 3 }
 
     cCertPathCtrlsEntry OBJECT-TYPE
@@ -3070,9 +3055,9 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             cCertPolicyQualifierID."
         ::= { cCertPolicyEntry 5 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cPolicyMappingTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cPolicyMappingTableCount OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -3166,9 +3151,9 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
             subject CA domain policy."
         ::= { cPolicyMappingEntry 4 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cNameConstraintTable
-    -- *********************************************************************
+    -- *****************************************************************
     
     cNameConstraintTableCount OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -3210,7 +3195,8 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
         DESCRIPTION
             "A row designating an entity's distinguished name to a name
             space."
-        INDEX  { cNameConstraintGenSubtree, cNameConstraintSubtreeIndex }
+        INDEX  { cNameConstraintGenSubtree,
+                 cNameConstraintSubtreeIndex }
         ::= { cNameConstraintTable 1 }
 
     CNameConstraintEntry ::= SEQUENCE {
@@ -3687,7 +3673,7 @@ This MIB module makes references to the following documents: {{RFC2571}}, {{RFC2
 Key Transfer Pull
 -----------------
 
-This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
+This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, and {{RFC3411}}.
 
 ~~~~
     CC-KEY-TRANSFER-PULL-MIB  DEFINITIONS  ::=  BEGIN
@@ -3702,13 +3688,8 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-<<<<<<< HEAD
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         RowStatus, TimeStamp
-=======
-        RowPointer, RowStatus, DateAndTime,
-        TimeStamp
->>>>>>> master
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
@@ -3745,7 +3726,7 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
         DESCRIPTION
             "This MIB defines the CC MIB Key Transfer Pull objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -3787,7 +3768,6 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
-
             "The amount of time to wait after a download attempt to the
             Secure Object Management System (SOMS) server fails before
             attempting to retry the operation. Note, this scalar applies
@@ -3803,8 +3783,8 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
             "The amount of retries attempted before the download attempt
             to the Secure Object Management System (SOMS) server is
             considered a failure. Note, this scalar applies to the
-            download of any type of item from the SOMS server (e.g. CDMs,
-            PALs)."
+            download of any type of item from the SOMS server (e.g.
+            CDMs, PALs)."
         ::= { cKeyTransferPullScalars 2 }
     
     cCDMPullRetrievalPriorities  OBJECT-TYPE
@@ -3826,7 +3806,8 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
 
             A value of 0, also a default value for this scalar,
             indicates that all cCDMDeliveryTable entries can be acted
-            upon regardless of the configured cCDMDeliveryPriority value."
+            upon regardless of the configured cCDMDeliveryPriority
+            value."
         DEFVAL {0}
         ::= { cKeyTransferPullScalars 3 }
     
@@ -4442,7 +4423,7 @@ This MIB module makes reference to the following documents: {{RFC2571}}, {{RFC25
 Key Transfer Push
 -----------------
 
-This MIB module makes reference to following documents: {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}.
+This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, and {{RFC3411}}.
 
 ~~~~
     CC-KEY-TRANSFER-PUSH-MIB  DEFINITIONS  ::=  BEGIN
@@ -4454,7 +4435,7 @@ This MIB module makes reference to following documents: {{RFC2571}}, {{RFC2578}}
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         RowPointer, RowStatus, DateAndTime,
         TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
@@ -4496,7 +4477,7 @@ This MIB module makes reference to following documents: {{RFC2571}}, {{RFC2578}}
         DESCRIPTION
             "This MIB defines the CC MIB Key Transfer Push object.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5090,7 +5071,7 @@ This MIB module makes reference to following documents: {{RFC2571}}, {{RFC2578}}
 Security Policy Information
 ---------------------------
 
-This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}.
+This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, and {RFC3411}}.
 
 ~~~~
     CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
@@ -5104,12 +5085,9 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
-<<<<<<< HEAD
-=======
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
->>>>>>> master
-        RowStatus, DateAndTime, TimeStamp
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
+        RowStatus, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccSecurePolicyInfoMIB  MODULE-IDENTITY
@@ -5147,7 +5125,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
             "This MIB defines the CC MIB Security Policy Information
             objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5232,8 +5210,8 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
             "The cSecPolicyRuleTable stores the Security Policy Rules
             that are compared against inbound and outbound data traffic
             flow. These Security Policy Rules define the actions (e.g.
-            protect, bypass, discard) on how the data traffic flow should
-            be treated."
+            protect, bypass, discard) on how the data traffic flow
+            should be treated."
         ::= { cSecPolicyRuleInfo 3 }
 
     cSecPolicyRuleEntry  OBJECT-TYPE
@@ -5315,7 +5293,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
 
             [1] protect: The 'protect' enumeration value indicates that
             the data traffic flow should be protected by a Secure
-            Connection with attributes defined  by the associated filter
+            Connection with attributes defined by the associated filter
             (cSecPolicyRuleFilterReference).
 
             [10] bypass: The 'bypass' enumeration value indicates that
@@ -5336,8 +5314,8 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
 
             Implementations that do not support the 'discardInbound' and
             'discardOutbound' enumeration values should return a
-            wrongValue exception during a SET to the cSecPolicyRuleAction
-            object.
+            wrongValue exception during a SET to the
+            cSecPolicyRuleAction object.
 
             A valid enumeration value must be specified in order for
             cSecPolicyRuleRowStatus to be 'active'."
@@ -5415,7 +5393,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
 Secure Connection Information
 -----------------------------
 
-This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}, and {{RFC2580}}, {{RFC4303}}.
+This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{RFC3411}}, and {{?RFC4303}}.
 
 ~~~~
     CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
@@ -5430,7 +5408,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                          -- FROM RFC 2580
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 3411
         RowStatus, DateAndTime, TimeStamp
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
@@ -5469,7 +5447,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
             "This MIB defines the CC MIB Secure Connection Information
             objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5525,9 +5503,9 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
             Connection was successfully deleted."
         ::= { cSecureConnectionInfoNotify 2 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cSecConTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cSecConTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -5729,9 +5707,9 @@ This module makes reference to: {{cc-fh}}, {{RFC2571}}, {{RFC2578}}, {{RFC2579}}
             enabled/disabled by the manager."
         ::= { cSecConEntry 9 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- Module Conformance Information
-    -- *********************************************************************
+    -- *****************************************************************
 
     cSecureConnectionCompliances  OBJECT IDENTIFIER
         ::= { cSecureConnectionConformance 1}
@@ -5797,7 +5775,7 @@ Security Considerations  {#security}
 
 SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.
 
-Implementations SHOULD provide the security features described by the SNMPv3 framework (see {{RFC3410}}), and implementations claiming compliance to the SNMPv3 standard MUST include full support for authentication and privacy via the User-based Security Model (USM) {{RFC3414}} with the AES cipher algorithm {{RFC3826}}.  Implementations MAY also provide support for the Transport Security Model (TSM) {{RFC5591}} in combination with a secure transport such as SSH [RFC5592] or TLS/DTLS {RFC6353}.
+Implementations SHOULD provide the security features described by the SNMPv3 framework (see {{RFC3410}}), and implementations claiming compliance to the SNMPv3 standard MUST include full support for authentication and privacy via the User-based Security Model (USM) {{!RFC3414}} with the AES cipher algorithm {{!RFC3826}}.  Implementations MAY also provide support for the Transport Security Model (TSM) {{!RFC5591}} in combination with a secure transport such as SSH {{!RFC5592}} or TLS/DTLS {{RFC6353}}.
 
 Further, deployment of SNMP versions prior to SNMPv3 is NOT RECOMMENDED.  Instead, it is RECOMMENDED to deploy SNMPv3 and to enable cryptographic security.  It is then a customer/operator responsibility to ensure that the SNMP entity giving access to an instance of this MIB module is properly configured to give access to the objects only to those principals (users) that have legitimate rights to indeed GET or SET (change/create/delete) them.
 
