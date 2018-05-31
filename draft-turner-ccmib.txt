@@ -6764,8 +6764,8 @@ Internet-Draft                    CCMIB                         May 2018
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <http://www.rfc-editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
+              editor.org/info/rfc2119>.
 
 
 
@@ -6781,47 +6781,47 @@ Internet-Draft                    CCMIB                         May 2018
    [RFC2578]  McCloghrie, K., Ed., Perkins, D., Ed., and J.
               Schoenwaelder, Ed., "Structure of Management Information
               Version 2 (SMIv2)", STD 58, RFC 2578,
-              DOI 10.17487/RFC2578, April 1999,
-              <http://www.rfc-editor.org/info/rfc2578>.
+              DOI 10.17487/RFC2578, April 1999, <https://www.rfc-
+              editor.org/info/rfc2578>.
 
    [RFC2579]  McCloghrie, K., Ed., Perkins, D., Ed., and J.
               Schoenwaelder, Ed., "Textual Conventions for SMIv2",
               STD 58, RFC 2579, DOI 10.17487/RFC2579, April 1999,
-              <http://www.rfc-editor.org/info/rfc2579>.
+              <https://www.rfc-editor.org/info/rfc2579>.
 
    [RFC2580]  McCloghrie, K., Ed., Perkins, D., Ed., and J.
               Schoenwaelder, Ed., "Conformance Statements for SMIv2",
               STD 58, RFC 2580, DOI 10.17487/RFC2580, April 1999,
-              <http://www.rfc-editor.org/info/rfc2580>.
+              <https://www.rfc-editor.org/info/rfc2580>.
 
    [RFC3411]  Harrington, D., Presuhn, R., and B. Wijnen, "An
               Architecture for Describing Simple Network Management
               Protocol (SNMP) Management Frameworks", STD 62, RFC 3411,
-              DOI 10.17487/RFC3411, December 2002,
-              <http://www.rfc-editor.org/info/rfc3411>.
+              DOI 10.17487/RFC3411, December 2002, <https://www.rfc-
+              editor.org/info/rfc3411>.
 
    [RFC3414]  Blumenthal, U. and B. Wijnen, "User-based Security Model
               (USM) for version 3 of the Simple Network Management
               Protocol (SNMPv3)", STD 62, RFC 3414,
-              DOI 10.17487/RFC3414, December 2002,
-              <http://www.rfc-editor.org/info/rfc3414>.
+              DOI 10.17487/RFC3414, December 2002, <https://www.rfc-
+              editor.org/info/rfc3414>.
 
    [RFC3826]  Blumenthal, U., Maino, F., and K. McCloghrie, "The
               Advanced Encryption Standard (AES) Cipher Algorithm in the
               SNMP User-based Security Model", RFC 3826,
-              DOI 10.17487/RFC3826, June 2004,
-              <http://www.rfc-editor.org/info/rfc3826>.
+              DOI 10.17487/RFC3826, June 2004, <https://www.rfc-
+              editor.org/info/rfc3826>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
               Infrastructure Certificate and Certificate Revocation List
               (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
-              <http://www.rfc-editor.org/info/rfc5280>.
+              <https://www.rfc-editor.org/info/rfc5280>.
 
    [RFC5591]  Harrington, D. and W. Hardaker, "Transport Security Model
               for the Simple Network Management Protocol (SNMP)",
               STD 78, RFC 5591, DOI 10.17487/RFC5591, June 2009,
-              <http://www.rfc-editor.org/info/rfc5591>.
+              <https://www.rfc-editor.org/info/rfc5591>.
 
 
 
@@ -6837,42 +6837,42 @@ Internet-Draft                    CCMIB                         May 2018
    [RFC5592]  Harrington, D., Salowey, J., and W. Hardaker, "Secure
               Shell Transport Model for the Simple Network Management
               Protocol (SNMP)", RFC 5592, DOI 10.17487/RFC5592, June
-              2009, <http://www.rfc-editor.org/info/rfc5592>.
+              2009, <https://www.rfc-editor.org/info/rfc5592>.
 
    [RFC5914]  Housley, R., Ashmore, S., and C. Wallace, "Trust Anchor
               Format", RFC 5914, DOI 10.17487/RFC5914, June 2010,
-              <http://www.rfc-editor.org/info/rfc5914>.
+              <https://www.rfc-editor.org/info/rfc5914>.
 
    [RFC6030]  Hoyer, P., Pei, M., and S. Machani, "Portable Symmetric
               Key Container (PSKC)", RFC 6030, DOI 10.17487/RFC6030,
-              October 2010, <http://www.rfc-editor.org/info/rfc6030>.
+              October 2010, <https://www.rfc-editor.org/info/rfc6030>.
 
    [RFC6353]  Hardaker, W., "Transport Layer Security (TLS) Transport
               Model for the Simple Network Management Protocol (SNMP)",
               STD 78, RFC 6353, DOI 10.17487/RFC6353, July 2011,
-              <http://www.rfc-editor.org/info/rfc6353>.
+              <https://www.rfc-editor.org/info/rfc6353>.
 
 8.2.  Informative References
 
    [RFC1213]  McCloghrie, K. and M. Rose, "Management Information Base
               for Network Management of TCP/IP-based internets: MIB-II",
               STD 17, RFC 1213, DOI 10.17487/RFC1213, March 1991,
-              <http://www.rfc-editor.org/info/rfc1213>.
+              <https://www.rfc-editor.org/info/rfc1213>.
 
    [RFC3410]  Case, J., Mundy, R., Partain, D., and B. Stewart,
               "Introduction and Applicability Statements for Internet-
               Standard Management Framework", RFC 3410,
-              DOI 10.17487/RFC3410, December 2002,
-              <http://www.rfc-editor.org/info/rfc3410>.
+              DOI 10.17487/RFC3410, December 2002, <https://www.rfc-
+              editor.org/info/rfc3410>.
 
    [RFC3418]  Presuhn, R., Ed., "Management Information Base (MIB) for
               the Simple Network Management Protocol (SNMP)", STD 62,
               RFC 3418, DOI 10.17487/RFC3418, December 2002,
-              <http://www.rfc-editor.org/info/rfc3418>.
+              <https://www.rfc-editor.org/info/rfc3418>.
 
    [RFC4303]  Kent, S., "IP Encapsulating Security Payload (ESP)",
               RFC 4303, DOI 10.17487/RFC4303, December 2005,
-              <http://www.rfc-editor.org/info/rfc4303>.
+              <https://www.rfc-editor.org/info/rfc4303>.
 
 Authors' Addresses
 
