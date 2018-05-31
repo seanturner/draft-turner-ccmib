@@ -295,7 +295,7 @@ li, p {
 
   <meta name="dct.creator" content="Azoum, S., Jones, E., Sun, L., Irani, M., Sun, J., Purvis, R., and S. Turner" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-turner-ccmib-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2017-2-28" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-5-30" />
   <meta name="dct.abstract" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
   <meta name="description" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
 
@@ -319,7 +319,7 @@ li, p {
   <td class="right">L. Sun</td>
 </tr>
 <tr>
-  <td class="left">Expires: September 1, 2017</td>
+  <td class="left">Expires: December 1, 2018</td>
   <td class="right">SPAWAR Systems Center Pacific</td>
 </tr>
 <tr>
@@ -352,7 +352,7 @@ li, p {
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">February 28, 2017</td>
+  <td class="right">May 30, 2018</td>
 </tr>
 
     	
@@ -372,11 +372,11 @@ li, p {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on September 1, 2017.</p>
+<p>This Internet-Draft will expire on December 1, 2018.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
-<p>Copyright (c) 2017 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -463,7 +463,7 @@ li, p {
             "This MIB defines the CC MIB tree hierarchical assignments
             below it and acts as a reservation mechanism.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -495,9 +495,9 @@ li, p {
 
     IMPORTS
         ccAssignmentsMIB
-            FROM CC-ASSIGNMENTS-MIB                     -- FROM {{cc-assign}}
+            FROM CC-ASSIGNMENTS-MIB               -- FROM {{cc-assign}}
         MODULE-IDENTITY
-            FROM SNMPv2-SMI;                            -- FROM RFC 2578
+            FROM SNMPv2-SMI;                      -- FROM RFC 2578
 
     ccFeatureHierarchyMIB MODULE-IDENTITY
         LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
@@ -535,7 +535,7 @@ li, p {
             tree assignments.  It acts as a reservation mechanism for
             other MIB sets to be anchored below it.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -571,7 +571,7 @@ li, p {
     END
 </pre>
 <h1 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3.</a> <a href="#cc-device-info" id="cc-device-info">CC Device Info</a></h1>
-<p id="rfc.section.5.3.p.1">This MIB module makes reference to the following documents: <a href="#RFC1213">[RFC1213]</a>, <a href="#RFC1907">[RFC1907]</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
+<p id="rfc.section.5.3.p.1">This MIB module makes reference to the following documents: <a href="#RFC1213">[RFC1213]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, and <a href="#RFC3418">[RFC3418]</a>.</p>
 <pre>
     CC-DEVICE-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -585,7 +585,7 @@ li, p {
         MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         DateAndTime, TruthValue, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
@@ -623,7 +623,7 @@ li, p {
         DESCRIPTION
             "This MIB defines the CC MIB Device Information objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -675,7 +675,7 @@ li, p {
         DESCRIPTION
             "The amount of time since this host was last initialized.
             Note that this is different from sysUpTime in the SNMPv2-MIB
-            RFC 1907 because sysUpTime is the uptime of the network
+            RFC 3418 because sysUpTime is the uptime of the network
             management portion of the system."
         ::= { cDeviceInfoScalars 2 }
 
@@ -721,12 +721,12 @@ li, p {
         DESCRIPTION
             "The value of cSystemUpTime the last time any configurable
             object within the MIBs supported by the device has been
-            modified, created, or deleted by either SNMP, agent, or other
-            management method (e.g. via an HMI). Managers can use this
-            object to ensure that no changes to any configuration within the
-            device have happened since the last time it examined the device.
-            A value of 0 indicates that no objects have been changed since
-            the agent initialized."
+            modified, created, or deleted by either SNMP, agent, or
+            other management method (e.g. via an HMI). Managers can use
+            this object to ensure that no changes to any configuration
+            within the device have happened since the last time it
+            examined the device.  A value of 0 indicates that no objects
+            have been changed since the agent initialized."
         ::= { cDeviceInfoScalars 6 }
 
     cResetDevice  OBJECT-TYPE
@@ -1101,13 +1101,13 @@ li, p {
     END
 </pre>
 <h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#firmware-management-information" id="firmware-management-information">Firmware Management Information</a></h1>
-<p id="rfc.section.5.4.p.1">This MIB module makes references to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
+<p id="rfc.section.5.4.p.1">This MIB module makes references to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
 <pre>
     CC-FIRMWARE-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
 
     IMPORTS
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -1115,7 +1115,7 @@ li, p {
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
-            FROM SNMPv2-CONF                           -- FROM RFC 2580;
+            FROM SNMPv2-CONF;                          -- FROM RFC 2580
 
 
     ccFirmwareManagementMIB  MODULE-IDENTITY
@@ -1367,7 +1367,7 @@ li, p {
     END
 </pre>
 <h1 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5.</a> <a href="#key-management-information" id="key-management-information">Key Management Information</a></h1>
-<p id="rfc.section.5.5.p.1">This MIB module makes references to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC5280">[RFC5280]</a>, <a href="#RFC5914">[RFC5914]</a>, <a href="#RFC6030">[RFC6030]</a>, and <a href="#RFC6353">[RFC6353]</a>.</p>
+<p id="rfc.section.5.5.p.1">This MIB module makes references to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, <a href="#RFC5280">[RFC5280]</a>, <a href="#RFC5914">[RFC5914]</a>, <a href="#RFC6030">[RFC6030]</a>, and <a href="#RFC6353">[RFC6353]</a>.</p>
 <pre>
     CC-KEY-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
 
@@ -1378,7 +1378,7 @@ li, p {
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         RowPointer, RowStatus, DateAndTime,
         TruthValue, TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
@@ -1422,7 +1422,7 @@ li, p {
         DESCRIPTION
             "This MIB defines the CC MIB Key Managment objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -1609,9 +1609,9 @@ li, p {
         DESCRIPTION
             "A global setting, indicating the number of days prior to
             the expiration date of an asymmetric key (value of
-            cAsymKeyExpirationDate in the associated cAsymKeyTable entry)
-            for which the cKeyMaterialExpiring notification will be
-            transmitted.
+            cAsymKeyExpirationDate in the associated cAsymKeyTable
+            entry) for which the cKeyMaterialExpiring notification will
+            be transmitted.
 
             The value in this object is only used if no value exists for
             the associated cAsymKeyTable entry's cAsymKeyExpiryWarning
@@ -2085,9 +2085,9 @@ li, p {
             by the manager."
         ::= { cSymmetricKeyEntry 12 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cAsymKeyTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cAsymKeyTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -2276,7 +2276,8 @@ li, p {
              "The entity associated with this Asymmetric Key.
 
              For non-X.509 based key material, or when this object does
-             not apply for the key material, this column will not exist."
+             not apply for the key material, this column will not
+             exist."
         ::= { cAsymKeyEntry 10 }
 
     cAsymKeySubjectType  OBJECT-TYPE
@@ -2296,8 +2297,9 @@ li, p {
              1000 0000 = other
              0100 0000 = certificationAuthority
              0010 0000 = crlIssuer
-             For non-X.509 based key material, or when this object does not
-             apply for the key material, this column will not exist."
+             For non-X.509 based key material, or when this object does
+             not apply for the key material, this column will not
+             exist."
         ::= { cAsymKeyEntry 11 }
 
     cAsymKeySubjectAltName OBJECT-TYPE
@@ -2601,9 +2603,9 @@ li, p {
             Anchors to specific protocols (e.g. TAMP)."
         ::= { cTrustAnchorEntry 8 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cCKLTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cCKLTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -2758,9 +2760,9 @@ li, p {
             "The date this CKL/CRL was last updated."
         ::= { cCKLEntry 8 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cCDMStoreTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cCDMStoreTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -3112,7 +3114,8 @@ li, p {
         STATUS      current
         DESCRIPTION
             "The table containing the controls and constraints applied
-            to a certificate in order to process certificate trust paths."
+            to a certificate in order to process certificate trust
+            paths."
         ::= { cCertPathCtrlsInfo 3 }
 
     cCertPathCtrlsEntry OBJECT-TYPE
@@ -3365,9 +3368,9 @@ li, p {
             cCertPolicyQualifierID."
         ::= { cCertPolicyEntry 5 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cPolicyMappingTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cPolicyMappingTableCount OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -3461,9 +3464,9 @@ li, p {
             subject CA domain policy."
         ::= { cPolicyMappingEntry 4 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cNameConstraintTable
-    -- *********************************************************************
+    -- *****************************************************************
     
     cNameConstraintTableCount OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -3505,7 +3508,8 @@ li, p {
         DESCRIPTION
             "A row designating an entity's distinguished name to a name
             space."
-        INDEX  { cNameConstraintGenSubtree, cNameConstraintSubtreeIndex }
+        INDEX  { cNameConstraintGenSubtree,
+                 cNameConstraintSubtreeIndex }
         ::= { cNameConstraintTable 1 }
 
     CNameConstraintEntry ::= SEQUENCE {
@@ -3979,7 +3983,7 @@ li, p {
     END
 </pre>
 <h1 id="rfc.section.5.6"><a href="#rfc.section.5.6">5.6.</a> <a href="#key-transfer-pull" id="key-transfer-pull">Key Transfer Pull</a></h1>
-<p id="rfc.section.5.6.p.1">This MIB module makes reference to the following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
+<p id="rfc.section.5.6.p.1">This MIB module makes reference to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
 <pre>
     CC-KEY-TRANSFER-PULL-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -3993,13 +3997,8 @@ li, p {
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         RowStatus, TimeStamp
-=======
-        RowPointer, RowStatus, DateAndTime,
-        TimeStamp
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
@@ -4036,7 +4035,7 @@ li, p {
         DESCRIPTION
             "This MIB defines the CC MIB Key Transfer Pull objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -4078,7 +4077,6 @@ li, p {
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
-
             "The amount of time to wait after a download attempt to the
             Secure Object Management System (SOMS) server fails before
             attempting to retry the operation. Note, this scalar applies
@@ -4094,8 +4092,8 @@ li, p {
             "The amount of retries attempted before the download attempt
             to the Secure Object Management System (SOMS) server is
             considered a failure. Note, this scalar applies to the
-            download of any type of item from the SOMS server (e.g. CDMs,
-            PALs)."
+            download of any type of item from the SOMS server (e.g.
+            CDMs, PALs)."
         ::= { cKeyTransferPullScalars 2 }
     
     cCDMPullRetrievalPriorities  OBJECT-TYPE
@@ -4117,7 +4115,8 @@ li, p {
 
             A value of 0, also a default value for this scalar,
             indicates that all cCDMDeliveryTable entries can be acted
-            upon regardless of the configured cCDMDeliveryPriority value."
+            upon regardless of the configured cCDMDeliveryPriority
+            value."
         DEFVAL {0}
         ::= { cKeyTransferPullScalars 3 }
     
@@ -4730,7 +4729,7 @@ li, p {
     END
 </pre>
 <h1 id="rfc.section.5.7"><a href="#rfc.section.5.7">5.7.</a> <a href="#key-transfer-push" id="key-transfer-push">Key Transfer Push</a></h1>
-<p id="rfc.section.5.7.p.1">This MIB module makes reference to following documents: <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>.</p>
+<p id="rfc.section.5.7.p.1">This MIB module makes reference to following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
 <pre>
     CC-KEY-TRANSFER-PUSH-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -4741,7 +4740,7 @@ li, p {
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         RowPointer, RowStatus, DateAndTime,
         TimeStamp
             FROM SNMPv2-TC                             -- FROM RFC 2579
@@ -4783,7 +4782,7 @@ li, p {
         DESCRIPTION
             "This MIB defines the CC MIB Key Transfer Push object.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5374,7 +5373,7 @@ li, p {
     END
 </pre>
 <h1 id="rfc.section.5.8"><a href="#rfc.section.5.8">5.8.</a> <a href="#security-policy-information" id="security-policy-information">Security Policy Information</a></h1>
-<p id="rfc.section.5.8.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>.</p>
+<p id="rfc.section.5.8.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and {RFC3411}}.</p>
 <pre>
     CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -5387,12 +5386,9 @@ li, p {
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-=======
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 2571
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; master
-        RowStatus, DateAndTime, TimeStamp
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
+        RowStatus, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccSecurePolicyInfoMIB  MODULE-IDENTITY
@@ -5430,7 +5426,7 @@ li, p {
             "This MIB defines the CC MIB Security Policy Information
             objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5515,8 +5511,8 @@ li, p {
             "The cSecPolicyRuleTable stores the Security Policy Rules
             that are compared against inbound and outbound data traffic
             flow. These Security Policy Rules define the actions (e.g.
-            protect, bypass, discard) on how the data traffic flow should
-            be treated."
+            protect, bypass, discard) on how the data traffic flow
+            should be treated."
         ::= { cSecPolicyRuleInfo 3 }
 
     cSecPolicyRuleEntry  OBJECT-TYPE
@@ -5598,7 +5594,7 @@ li, p {
 
             [1] protect: The 'protect' enumeration value indicates that
             the data traffic flow should be protected by a Secure
-            Connection with attributes defined  by the associated filter
+            Connection with attributes defined by the associated filter
             (cSecPolicyRuleFilterReference).
 
             [10] bypass: The 'bypass' enumeration value indicates that
@@ -5619,8 +5615,8 @@ li, p {
 
             Implementations that do not support the 'discardInbound' and
             'discardOutbound' enumeration values should return a
-            wrongValue exception during a SET to the cSecPolicyRuleAction
-            object.
+            wrongValue exception during a SET to the
+            cSecPolicyRuleAction object.
 
             A valid enumeration value must be specified in order for
             cSecPolicyRuleRowStatus to be 'active'."
@@ -5695,7 +5691,7 @@ li, p {
     END
 </pre>
 <h1 id="rfc.section.5.9"><a href="#rfc.section.5.9">5.9.</a> <a href="#secure-connection-information" id="secure-connection-information">Secure Connection Information</a></h1>
-<p id="rfc.section.5.9.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2571">[RFC2571]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, and <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC4303">[RFC4303]</a>.</p>
+<p id="rfc.section.5.9.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, and <a href="#RFC4303">[RFC4303]</a>.</p>
 <pre>
     CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
@@ -5709,7 +5705,7 @@ li, p {
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                          -- FROM RFC 2580
         SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 2571
+            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 3411
         RowStatus, DateAndTime, TimeStamp
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
@@ -5748,7 +5744,7 @@ li, p {
             "This MIB defines the CC MIB Secure Connection Information
             objects.
 
-            Copyright (c) 2016 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5804,9 +5800,9 @@ li, p {
             Connection was successfully deleted."
         ::= { cSecureConnectionInfoNotify 2 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- CC MIB cSecConTable
-    -- *********************************************************************
+    -- *****************************************************************
 
     cSecConTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -6008,9 +6004,9 @@ li, p {
             enabled/disabled by the manager."
         ::= { cSecConEntry 9 }
 
-    -- *********************************************************************
+    -- *****************************************************************
     -- Module Conformance Information
-    -- *********************************************************************
+    -- *****************************************************************
 
     cSecureConnectionCompliances  OBJECT IDENTIFIER
         ::= { cSecureConnectionConformance 1}
@@ -6070,7 +6066,7 @@ li, p {
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#iana" id="iana">IANA Considerations</a></h1>
 <h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#security" id="security">Security Considerations</a></h1>
 <p id="rfc.section.7.p.1">SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.</p>
-<p id="rfc.section.7.p.2">Implementations SHOULD provide the security features described by the SNMPv3 framework (see <a href="#RFC3410">[RFC3410]</a>), and implementations claiming compliance to the SNMPv3 standard MUST include full support for authentication and privacy via the User-based Security Model (USM) <a href="#RFC3414">[RFC3414]</a> with the AES cipher algorithm <a href="#RFC3826">[RFC3826]</a>.  Implementations MAY also provide support for the Transport Security Model (TSM) <a href="#RFC5591">[RFC5591]</a> in combination with a secure transport such as SSH <a href="#RFC5592">[RFC5592]</a> or TLS/DTLS {RFC6353}.</p>
+<p id="rfc.section.7.p.2">Implementations SHOULD provide the security features described by the SNMPv3 framework (see <a href="#RFC3410">[RFC3410]</a>), and implementations claiming compliance to the SNMPv3 standard MUST include full support for authentication and privacy via the User-based Security Model (USM) <a href="#RFC3414">[RFC3414]</a> with the AES cipher algorithm <a href="#RFC3826">[RFC3826]</a>.  Implementations MAY also provide support for the Transport Security Model (TSM) <a href="#RFC5591">[RFC5591]</a> in combination with a secure transport such as SSH <a href="#RFC5592">[RFC5592]</a> or TLS/DTLS <a href="#RFC6353">[RFC6353]</a>.</p>
 <p id="rfc.section.7.p.3">Further, deployment of SNMP versions prior to SNMPv3 is NOT RECOMMENDED.  Instead, it is RECOMMENDED to deploy SNMPv3 and to enable cryptographic security.  It is then a customer/operator responsibility to ensure that the SNMP entity giving access to an instance of this MIB module is properly configured to give access to the objects only to those principals (users) that have legitimate rights to indeed GET or SET (change/create/delete) them.</p>
 <h1 id="rfc.references"><a href="#rfc.references">8.</a> References</h1>
 <h1 id="rfc.references.1"><a href="#rfc.references.1">8.1.</a> Normative References</h1>
@@ -6081,12 +6077,6 @@ li, p {
         <b id="RFC2119">[RFC2119]</b>
       </td>
       <td class="top"><a>Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC2571">[RFC2571]</b>
-      </td>
-      <td class="top"><a>Wijnen, B.</a>, <a>Harrington, D.</a> and <a>R. Presuhn</a>, "<a href="http://tools.ietf.org/html/rfc2571">An Architecture for Describing SNMP Management Frameworks</a>", RFC 2571, DOI 10.17487/RFC2571, April 1999.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -6108,6 +6098,12 @@ li, p {
     </tr>
     <tr>
       <td class="reference">
+        <b id="RFC3411">[RFC3411]</b>
+      </td>
+      <td class="top"><a>Harrington, D.</a>, <a>Presuhn, R.</a> and <a>B. Wijnen</a>, "<a href="http://tools.ietf.org/html/rfc3411">An Architecture for Describing Simple Network Management Protocol (SNMP) Management Frameworks</a>", STD 62, RFC 3411, DOI 10.17487/RFC3411, December 2002.</td>
+    </tr>
+    <tr>
+      <td class="reference">
         <b id="RFC3414">[RFC3414]</b>
       </td>
       <td class="top"><a>Blumenthal, U.</a> and <a>B. Wijnen</a>, "<a href="http://tools.ietf.org/html/rfc3414">User-based Security Model (USM) for version 3 of the Simple Network Management Protocol (SNMPv3)</a>", STD 62, RFC 3414, DOI 10.17487/RFC3414, December 2002.</td>
@@ -6117,12 +6113,6 @@ li, p {
         <b id="RFC3826">[RFC3826]</b>
       </td>
       <td class="top"><a>Blumenthal, U.</a>, <a>Maino, F.</a> and <a>K. McCloghrie</a>, "<a href="http://tools.ietf.org/html/rfc3826">The Advanced Encryption Standard (AES) Cipher Algorithm in the SNMP User-based Security Model</a>", RFC 3826, DOI 10.17487/RFC3826, June 2004.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC5246">[RFC5246]</b>
-      </td>
-      <td class="top"><a>Dierks, T.</a> and <a>E. Rescorla</a>, "<a href="http://tools.ietf.org/html/rfc5246">The Transport Layer Security (TLS) Protocol Version 1.2</a>", RFC 5246, DOI 10.17487/RFC5246, August 2008.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -6173,15 +6163,15 @@ li, p {
     </tr>
     <tr>
       <td class="reference">
-        <b id="RFC1907">[RFC1907]</b>
-      </td>
-      <td class="top"><a>Case, J.</a>, <a>McCloghrie, K.</a>, <a>Rose, M.</a> and <a>S. Waldbusser</a>, "<a href="http://tools.ietf.org/html/rfc1907">Management Information Base for Version 2 of the Simple Network Management Protocol (SNMPv2)</a>", RFC 1907, DOI 10.17487/RFC1907, January 1996.</td>
-    </tr>
-    <tr>
-      <td class="reference">
         <b id="RFC3410">[RFC3410]</b>
       </td>
       <td class="top"><a>Case, J.</a>, <a>Mundy, R.</a>, <a>Partain, D.</a> and <a>B. Stewart</a>, "<a href="http://tools.ietf.org/html/rfc3410">Introduction and Applicability Statements for Internet-Standard Management Framework</a>", RFC 3410, DOI 10.17487/RFC3410, December 2002.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC3418">[RFC3418]</b>
+      </td>
+      <td class="top"><a>Presuhn, R.</a>, "<a href="http://tools.ietf.org/html/rfc3418">Management Information Base (MIB) for the Simple Network Management Protocol (SNMP)</a>", STD 62, RFC 3418, DOI 10.17487/RFC3418, December 2002.</td>
     </tr>
     <tr>
       <td class="reference">
