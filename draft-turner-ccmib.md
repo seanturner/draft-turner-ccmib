@@ -15,30 +15,20 @@ pi: [toc, sortrefs, symrefs]
 
 author:
  -
-    ins: S. Azoum
-    name: Shadi Azoum
-    org: SPAWAR Systems Center Pacific
-    email: shadi.azoum@navy.mil
- -
-    ins: E. Jones
-    name: Elliott Jones
-    org: SPAWAR Systems Center Pacific
-    email: elliott.jones@navy.mil
- -
-    ins: L. Sun
-    name: Lily Sun
-    org: SPAWAR Systems Center Pacific
-    email: lily.sun@navy.mil
- -
-    ins: M. Irani
-    name: Mike Irani
-    org: Nathan Kunes, Inc.
-    email: irani@nkiengineering.com
- -
     ins: J. Sun
     name: Jeffrey Sun
-    org: Nathan Kunes, Inc.
-    email: sunjeff@nkiengineering.com
+    org: Naval Information Warfare Center Pacific
+    email: sunjeff@spawar.navy.mil
+ -  
+    ins: M. Irani
+    name: Mike Irani
+    org: Naval Information Warfare Center Pacific
+    email: irani@spawar.navy.mil
+ -
+    ins: T. Nguyen
+    name: Tom Nguyen
+    org: Naval Information Warfare Center Pacific
+    email: tmnguyen@spawar.navy.mil
  -
     ins: R. Purvis
     name: Ray Purvis
@@ -5780,3 +5770,20 @@ Implementations SHOULD provide the security features described by the SNMPv3 fra
 Further, deployment of SNMP versions prior to SNMPv3 is NOT RECOMMENDED.  Instead, it is RECOMMENDED to deploy SNMPv3 and to enable cryptographic security.  It is then a customer/operator responsibility to ensure that the SNMP entity giving access to an instance of this MIB module is properly configured to give access to the objects only to those principals (users) that have legitimate rights to indeed GET or SET (change/create/delete) them.
 
 --- back
+
+Contributors
+============
+
+The following people made technical contributions to this specification:
+
+* Shadi Azoum \\
+  Naval Information Warfare Center Pacific \\
+  shadi.azoum@navy.mil
+
+* Elliott Jones \\
+  Naval Information Warfare Center Pacific \\
+  elliott.jones@navy.mil
+
+* Lily Sun \\
+  Naval Information Warfare Center Pacific \\
+  lily.sun@navy.mil
