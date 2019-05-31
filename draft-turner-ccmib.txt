@@ -2,18 +2,15 @@
 
 
 
-Network Working Group                                           S. Azoum
-Internet-Draft                                                  E. Jones
-Intended status: Standards Track                                  L. Sun
-Expires: December 1, 2018                  SPAWAR Systems Center Pacific
-                                                                M. Irani
-                                                                  J. Sun
-                                                      Nathan Kunes, Inc.
+Network Working Group                                             J. Sun
+Internet-Draft                                                  M. Irani
+Intended status: Standards Track                               T. Nguyen
+Expires: December 2, 2019       Naval Information Warfare Center Pacific
                                                                R. Purvis
                                                    The MITRE Corporation
                                                                S. Turner
                                                                    sn3rd
-                                                            May 30, 2018
+                                                            May 31, 2019
 
 
                     Common Cryptographic MIB (CCMIB)
@@ -42,26 +39,25 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 1, 2018.
+   This Internet-Draft will expire on December 2, 2019.
 
 Copyright Notice
 
-   Copyright (c) 2018 IETF Trust and the persons identified as the
+   Copyright (c) 2019 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
-
-
-
-
-
-Azoum, et al.           Expires December 1, 2018                [Page 1]
-
-Internet-Draft                    CCMIB                         May 2018
-
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
    (http://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
+
+
+
+Sun, et al.             Expires December 2, 2019                [Page 1]
+
+Internet-Draft                    CCMIB                         May 2019
+
+
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
@@ -89,7 +85,8 @@ Table of Contents
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 121
      8.1.  Normative References  . . . . . . . . . . . . . . . . . . 121
      8.2.  Informative References  . . . . . . . . . . . . . . . . . 123
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 123
+   Appendix A.  Contributors . . . . . . . . . . . . . . . . . . . . 123
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 124
 
 1.  Introduction
 
@@ -109,9 +106,12 @@ Table of Contents
 
 
 
-Azoum, et al.           Expires December 1, 2018                [Page 2]
+
+
+
+Sun, et al.             Expires December 2, 2019                [Page 2]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
 2.  Terminology
@@ -165,9 +165,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018                [Page 3]
+Sun, et al.             Expires December 2, 2019                [Page 3]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             Lily Sun
@@ -221,9 +221,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018                [Page 4]
+Sun, et al.             Expires December 2, 2019                [Page 4]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
 5.2.  CC Feature Hierarchy
@@ -277,9 +277,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018                [Page 5]
+Sun, et al.             Expires December 2, 2019                [Page 5]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
              Copyright (c) 2017 IETF Trust and the persons
@@ -333,9 +333,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018                [Page 6]
+Sun, et al.             Expires December 2, 2019                [Page 6]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
@@ -389,9 +389,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018                [Page 7]
+Sun, et al.             Expires December 2, 2019                [Page 7]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             BSD License set forth in Section 4.c of the IETF Trust's
@@ -445,9 +445,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018                [Page 8]
+Sun, et al.             Expires December 2, 2019                [Page 8]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         ::= { cDeviceInfoScalars 2 }
@@ -501,9 +501,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018                [Page 9]
+Sun, et al.             Expires December 2, 2019                [Page 9]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             examined the device.  A value of 0 indicates that no objects
@@ -557,9 +557,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 10]
+Sun, et al.             Expires December 2, 2019               [Page 10]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             will be unconfigured. When read this object should return
@@ -613,9 +613,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 11]
+Sun, et al.             Expires December 2, 2019               [Page 11]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cSanitizeDeviceInitialized  NOTIFICATION-TYPE
@@ -669,9 +669,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 12]
+Sun, et al.             Expires December 2, 2019               [Page 12]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cDeviceComponentVersTableCount  OBJECT-TYPE
@@ -725,9 +725,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 13]
+Sun, et al.             Expires December 2, 2019               [Page 13]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         cDeviceComponentDescription OCTET STRING
@@ -781,9 +781,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 14]
+Sun, et al.             Expires December 2, 2019               [Page 14]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             be installed.
@@ -837,9 +837,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 15]
+Sun, et al.             Expires December 2, 2019               [Page 15]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         cSanitizeDevice
@@ -893,9 +893,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 16]
+Sun, et al.             Expires December 2, 2019               [Page 16]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
                     cDeviceComponentName,
@@ -949,9 +949,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 17]
+Sun, et al.             Expires December 2, 2019               [Page 17]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         MODULE-IDENTITY
@@ -1005,9 +1005,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 18]
+Sun, et al.             Expires December 2, 2019               [Page 18]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             subject to the license terms contained in, the Simplified
@@ -1061,9 +1061,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 19]
+Sun, et al.             Expires December 2, 2019               [Page 19]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     -- *****************************************************************
@@ -1117,9 +1117,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 20]
+Sun, et al.             Expires December 2, 2019               [Page 20]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         cFirmwareName       OCTET STRING,
@@ -1173,9 +1173,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 21]
+Sun, et al.             Expires December 2, 2019               [Page 21]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             agent must install the firmware, uninstall the previous
@@ -1229,9 +1229,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 22]
+Sun, et al.             Expires December 2, 2019               [Page 22]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             "This group is composed of objects related to firmware
@@ -1285,9 +1285,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 23]
+Sun, et al.             Expires December 2, 2019               [Page 23]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             email: shadi.azoum@navy.mil
@@ -1341,9 +1341,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 24]
+Sun, et al.             Expires December 2, 2019               [Page 24]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     -- *****************************************************************
@@ -1397,9 +1397,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 25]
+Sun, et al.             Expires December 2, 2019               [Page 25]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             stored in the device."
@@ -1453,9 +1453,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 26]
+Sun, et al.             Expires December 2, 2019               [Page 26]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             the device must not perform any operation but should accept
@@ -1509,9 +1509,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 27]
+Sun, et al.             Expires December 2, 2019               [Page 27]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         UNITS       "days"
@@ -1565,9 +1565,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 28]
+Sun, et al.             Expires December 2, 2019               [Page 28]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             "Setting this object to 'true' will force the generation of
@@ -1621,9 +1621,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 29]
+Sun, et al.             Expires December 2, 2019               [Page 29]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             (cSymKeyGlobalExpiryWarning/cAsymKeyGlobalExpiryWarning) or
@@ -1677,9 +1677,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 30]
+Sun, et al.             Expires December 2, 2019               [Page 30]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         ::= { cKeyManagementNotify 6 }
@@ -1733,9 +1733,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 31]
+Sun, et al.             Expires December 2, 2019               [Page 31]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
                         cTrustAnchorFormatType,
@@ -1789,9 +1789,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 32]
+Sun, et al.             Expires December 2, 2019               [Page 32]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cSymmetricKeyTableLastChanged  OBJECT-TYPE
@@ -1845,9 +1845,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 33]
+Sun, et al.             Expires December 2, 2019               [Page 33]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cSymKeyFingerprint  OBJECT-TYPE
@@ -1901,9 +1901,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 34]
+Sun, et al.             Expires December 2, 2019               [Page 34]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             KeyWrap: The key is used for key wrap purposes.
@@ -1957,9 +1957,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 35]
+Sun, et al.             Expires December 2, 2019               [Page 35]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         ::= { cSymmetricKeyEntry 4 }
@@ -2013,9 +2013,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 36]
+Sun, et al.             Expires December 2, 2019               [Page 36]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cSymKeyFriendlyName  OBJECT-TYPE
@@ -2069,9 +2069,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 37]
+Sun, et al.             Expires December 2, 2019               [Page 37]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             deleted from this table. Setting this column to destroy is
@@ -2125,9 +2125,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 38]
+Sun, et al.             Expires December 2, 2019               [Page 38]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -2181,9 +2181,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 39]
+Sun, et al.             Expires December 2, 2019               [Page 39]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         SYNTAX      SnmpAdminString
@@ -2237,9 +2237,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 40]
+Sun, et al.             Expires December 2, 2019               [Page 40]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
              values for supported signature algorithms."
@@ -2293,9 +2293,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 41]
+Sun, et al.             Expires December 2, 2019               [Page 41]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
              If configured, the scalar value of
@@ -2349,9 +2349,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 42]
+Sun, et al.             Expires December 2, 2019               [Page 42]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
              cCertSubAltNameTable.
@@ -2405,9 +2405,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 43]
+Sun, et al.             Expires December 2, 2019               [Page 43]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
              "The supported classification level supported by the
@@ -2461,9 +2461,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 44]
+Sun, et al.             Expires December 2, 2019               [Page 44]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         SYNTAX     INTEGER
@@ -2517,9 +2517,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 45]
+Sun, et al.             Expires December 2, 2019               [Page 45]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -2573,9 +2573,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 46]
+Sun, et al.             Expires December 2, 2019               [Page 46]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cTrustAnchorFingerprint  OBJECT-TYPE
@@ -2629,9 +2629,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 47]
+Sun, et al.             Expires December 2, 2019               [Page 47]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cTrustAnchorKeyIdentifier  OBJECT-TYPE
@@ -2685,9 +2685,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 48]
+Sun, et al.             Expires December 2, 2019               [Page 48]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             Some implementations may restrict the deletion of Trust
@@ -2741,9 +2741,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 49]
+Sun, et al.             Expires December 2, 2019               [Page 49]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             "A row containing information about a Compromised Key List
@@ -2797,9 +2797,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 50]
+Sun, et al.             Expires December 2, 2019               [Page 50]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             For CRLs adhering to RFC 5280, this will be a monotonically
@@ -2853,9 +2853,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 51]
+Sun, et al.             Expires December 2, 2019               [Page 51]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -2909,9 +2909,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 52]
+Sun, et al.             Expires December 2, 2019               [Page 52]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -2965,9 +2965,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 53]
+Sun, et al.             Expires December 2, 2019               [Page 53]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             (1) symKey - This row contains information about a stored
@@ -3021,9 +3021,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 54]
+Sun, et al.             Expires December 2, 2019               [Page 54]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             for easier reference. It is used only for helpful or
@@ -3077,9 +3077,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 55]
+Sun, et al.             Expires December 2, 2019               [Page 55]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             "The number of rows in the cCertSubAltNameTable."
@@ -3133,9 +3133,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 56]
+Sun, et al.             Expires December 2, 2019               [Page 56]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         MAX-ACCESS not-accessible
@@ -3189,9 +3189,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 57]
+Sun, et al.             Expires December 2, 2019               [Page 57]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             Section 4.2.1.6.
@@ -3245,9 +3245,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 58]
+Sun, et al.             Expires December 2, 2019               [Page 58]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         ::= { cCertSubAltNameTableEntry 6 }
@@ -3301,9 +3301,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 59]
+Sun, et al.             Expires December 2, 2019               [Page 59]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     CCertPathCtrlsEntry ::= SEQUENCE {
@@ -3357,9 +3357,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 60]
+Sun, et al.             Expires December 2, 2019               [Page 60]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -3413,9 +3413,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 61]
+Sun, et al.             Expires December 2, 2019               [Page 61]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             cNameConstraintTable.
@@ -3469,9 +3469,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 62]
+Sun, et al.             Expires December 2, 2019               [Page 62]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -3525,9 +3525,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 63]
+Sun, et al.             Expires December 2, 2019               [Page 63]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             "Identifies a grouping of policies that are applicable to a
@@ -3581,9 +3581,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 64]
+Sun, et al.             Expires December 2, 2019               [Page 64]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     -- *****************************************************************
@@ -3637,9 +3637,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 65]
+Sun, et al.             Expires December 2, 2019               [Page 65]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         ::= { cPolicyMappingTable 1 }
@@ -3693,9 +3693,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 66]
+Sun, et al.             Expires December 2, 2019               [Page 66]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     -- *****************************************************************
@@ -3749,9 +3749,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 67]
+Sun, et al.             Expires December 2, 2019               [Page 67]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     CNameConstraintEntry ::= SEQUENCE {
@@ -3805,9 +3805,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 68]
+Sun, et al.             Expires December 2, 2019               [Page 68]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             "Compliance levels for symmetric key information."
@@ -3861,9 +3861,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 69]
+Sun, et al.             Expires December 2, 2019               [Page 69]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -3917,9 +3917,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 70]
+Sun, et al.             Expires December 2, 2019               [Page 70]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         GROUP cKeyManNameConstraintGroup
@@ -3973,9 +3973,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 71]
+Sun, et al.             Expires December 2, 2019               [Page 71]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cKeyManSymKeyGroup OBJECT-GROUP
@@ -4029,9 +4029,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 72]
+Sun, et al.             Expires December 2, 2019               [Page 72]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
                 }
@@ -4085,9 +4085,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 73]
+Sun, et al.             Expires December 2, 2019               [Page 73]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             "This group is composed of objects related to certificate
@@ -4141,9 +4141,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 74]
+Sun, et al.             Expires December 2, 2019               [Page 74]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -4197,9 +4197,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 75]
+Sun, et al.             Expires December 2, 2019               [Page 75]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
                         cSymKeyGlobalExpiryWarning
@@ -4253,9 +4253,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 76]
+Sun, et al.             Expires December 2, 2019               [Page 76]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         ::= { cKeyManagementGroups 14 }
@@ -4309,9 +4309,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 77]
+Sun, et al.             Expires December 2, 2019               [Page 77]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         MODULE-COMPLIANCE, OBJECT-GROUP,
@@ -4365,9 +4365,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 78]
+Sun, et al.             Expires December 2, 2019               [Page 78]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             Redistribution and use in source and binary forms, with
@@ -4421,9 +4421,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 79]
+Sun, et al.             Expires December 2, 2019               [Page 79]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         MAX-ACCESS  read-write
@@ -4477,9 +4477,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 80]
+Sun, et al.             Expires December 2, 2019               [Page 80]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             In order to initiate a new download, this object must
@@ -4533,9 +4533,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 81]
+Sun, et al.             Expires December 2, 2019               [Page 81]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             'parseFailed' indicates that the last attempted PAL parse
@@ -4589,9 +4589,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 82]
+Sun, et al.             Expires December 2, 2019               [Page 82]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             notification. Note, the expected values for the PAL
@@ -4645,9 +4645,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 83]
+Sun, et al.             Expires December 2, 2019               [Page 83]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             (e.g. via an HMI). Managers can use this object to ensure
@@ -4701,9 +4701,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 84]
+Sun, et al.             Expires December 2, 2019               [Page 84]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             value will be the first server for PAL/CDM downloads. In
@@ -4757,9 +4757,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 85]
+Sun, et al.             Expires December 2, 2019               [Page 85]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     -- *****************************************************************
@@ -4813,9 +4813,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 86]
+Sun, et al.             Expires December 2, 2019               [Page 86]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         ::= { cCDMDeliveryTable 1 }
@@ -4869,9 +4869,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 87]
+Sun, et al.             Expires December 2, 2019               [Page 87]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             entry in this table with predetermined knowledge of the CDM
@@ -4925,9 +4925,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 88]
+Sun, et al.             Expires December 2, 2019               [Page 88]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
                    the CDM.
@@ -4981,9 +4981,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 89]
+Sun, et al.             Expires December 2, 2019               [Page 89]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             install and store operations, these newly configured entries
@@ -5037,9 +5037,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 90]
+Sun, et al.             Expires December 2, 2019               [Page 90]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             cCDMDeliveryRequest was configured to 'downloadAndStore'."
@@ -5093,9 +5093,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 91]
+Sun, et al.             Expires December 2, 2019               [Page 91]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             enumeration values not listed here are optional."
@@ -5149,9 +5149,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 92]
+Sun, et al.             Expires December 2, 2019               [Page 92]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         ::= { cKeyTransferPullGroups 2 }
@@ -5205,9 +5205,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 93]
+Sun, et al.             Expires December 2, 2019               [Page 93]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             US Navy
@@ -5261,9 +5261,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 94]
+Sun, et al.             Expires December 2, 2019               [Page 94]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         ::= { ccKeyTransferPushMIB 1 }
@@ -5317,9 +5317,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 95]
+Sun, et al.             Expires December 2, 2019               [Page 95]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -5373,9 +5373,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 96]
+Sun, et al.             Expires December 2, 2019               [Page 96]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cCDMPushDestTableCount  OBJECT-TYPE
@@ -5429,9 +5429,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 97]
+Sun, et al.             Expires December 2, 2019               [Page 97]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         cCDMPushDestTransferTime        DateAndTime,
@@ -5485,9 +5485,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 98]
+Sun, et al.             Expires December 2, 2019               [Page 98]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             "A valid date and time value populated in this object will
@@ -5541,9 +5541,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018               [Page 99]
+Sun, et al.             Expires December 2, 2019               [Page 99]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cCDMTransferPkgTableCount  OBJECT-TYPE
@@ -5597,9 +5597,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 100]
+Sun, et al.             Expires December 2, 2019              [Page 100]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         cCDMTransferPkgRowStatus        RowStatus
@@ -5653,9 +5653,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 101]
+Sun, et al.             Expires December 2, 2019              [Page 101]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             At a minimum, implementations must support createAndGo,
@@ -5709,9 +5709,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 102]
+Sun, et al.             Expires December 2, 2019              [Page 102]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         STATUS      current
@@ -5765,9 +5765,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 103]
+Sun, et al.             Expires December 2, 2019              [Page 103]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             (values: ipv4, ipv6 or uri)."
@@ -5821,9 +5821,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 104]
+Sun, et al.             Expires December 2, 2019              [Page 104]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         OBJECT cCDMTransferDelay
@@ -5877,9 +5877,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 105]
+Sun, et al.             Expires December 2, 2019              [Page 105]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
                   cCDMPushSrcTableCount,
@@ -5933,9 +5933,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 106]
+Sun, et al.             Expires December 2, 2019              [Page 106]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         MODULE-IDENTITY
@@ -5989,9 +5989,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 107]
+Sun, et al.             Expires December 2, 2019              [Page 107]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             Redistribution and use in source and binary forms, with
@@ -6045,9 +6045,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 108]
+Sun, et al.             Expires December 2, 2019              [Page 108]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     -- CC MIB cSecPolicyRuleTable
@@ -6101,9 +6101,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 109]
+Sun, et al.             Expires December 2, 2019              [Page 109]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     CSecPolicyRuleEntry  ::= SEQUENCE {
@@ -6157,9 +6157,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 110]
+Sun, et al.             Expires December 2, 2019              [Page 110]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         DESCRIPTION
@@ -6213,9 +6213,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 111]
+Sun, et al.             Expires December 2, 2019              [Page 111]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cSecPolicyRuleRowStatus  OBJECT-TYPE
@@ -6269,9 +6269,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 112]
+Sun, et al.             Expires December 2, 2019              [Page 112]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
                     cSecPolicyRuleRowStatus
@@ -6325,9 +6325,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 113]
+Sun, et al.             Expires December 2, 2019              [Page 113]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             Elliott Jones
@@ -6381,9 +6381,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 114]
+Sun, et al.             Expires December 2, 2019              [Page 114]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     cSecureConnectionConformance  OBJECT IDENTIFIER
@@ -6437,9 +6437,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 115]
+Sun, et al.             Expires December 2, 2019              [Page 115]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         MAX-ACCESS  read-only
@@ -6493,9 +6493,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 116]
+Sun, et al.             Expires December 2, 2019              [Page 116]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
         MAX-ACCESS  read-only
@@ -6549,9 +6549,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 117]
+Sun, et al.             Expires December 2, 2019              [Page 117]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             [1] inbound: data plane traffic flow is incoming on the
@@ -6605,9 +6605,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 118]
+Sun, et al.             Expires December 2, 2019              [Page 118]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
             manually configured with a date and time then the value will
@@ -6661,9 +6661,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 119]
+Sun, et al.             Expires December 2, 2019              [Page 119]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
     -- *****************************************************************
@@ -6717,9 +6717,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 120]
+Sun, et al.             Expires December 2, 2019              [Page 120]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
                       }
@@ -6773,9 +6773,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 121]
+Sun, et al.             Expires December 2, 2019              [Page 121]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
    [RFC2578]  McCloghrie, K., Ed., Perkins, D., Ed., and J.
@@ -6829,9 +6829,9 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-Azoum, et al.           Expires December 1, 2018              [Page 122]
+Sun, et al.             Expires December 2, 2019              [Page 122]
 
-Internet-Draft                    CCMIB                         May 2018
+Internet-Draft                    CCMIB                         May 2019
 
 
    [RFC5592]  Harrington, D., Salowey, J., and W. Hardaker, "Secure
@@ -6874,44 +6874,48 @@ Internet-Draft                    CCMIB                         May 2018
               RFC 4303, DOI 10.17487/RFC4303, December 2005,
               <https://www.rfc-editor.org/info/rfc4303>.
 
+Appendix A.  Contributors
+
+   The following people made technical contributions to this
+   specification:
+
+   o  Shadi Azoum
+      Naval Information Warfare Center Pacific
+      shadi.azoum@navy.mil
+
+
+
+Sun, et al.             Expires December 2, 2019              [Page 123]
+
+Internet-Draft                    CCMIB                         May 2019
+
+
+   o  Elliott Jones
+      Naval Information Warfare Center Pacific
+      elliott.jones@navy.mil
+
+   o  Lily Sun
+      Naval Information Warfare Center Pacific
+      lily.sun@navy.mil
+
 Authors' Addresses
 
-   Shadi Azoum
-   SPAWAR Systems Center Pacific
+   Jeffrey Sun
+   Naval Information Warfare Center Pacific
 
-   Email: shadi.azoum@navy.mil
-
-
-
-
-
-Azoum, et al.           Expires December 1, 2018              [Page 123]
-
-Internet-Draft                    CCMIB                         May 2018
-
-
-   Elliott Jones
-   SPAWAR Systems Center Pacific
-
-   Email: elliott.jones@navy.mil
-
-
-   Lily Sun
-   SPAWAR Systems Center Pacific
-
-   Email: lily.sun@navy.mil
+   Email: sunjeff@spawar.navy.mil
 
 
    Mike Irani
-   Nathan Kunes, Inc.
+   Naval Information Warfare Center Pacific
 
-   Email: irani@nkiengineering.com
+   Email: irani@spawar.navy.mil
 
 
-   Jeffrey Sun
-   Nathan Kunes, Inc.
+   Tom Nguyen
+   Naval Information Warfare Center Pacific
 
-   Email: sunjeff@nkiengineering.com
+   Email: tmnguyen@spawar.navy.mil
 
 
    Ray Purvis
@@ -6937,8 +6941,4 @@ Internet-Draft                    CCMIB                         May 2018
 
 
 
-
-
-
-
-Azoum, et al.           Expires December 1, 2018              [Page 124]
+Sun, et al.             Expires December 2, 2019              [Page 124]

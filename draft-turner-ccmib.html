@@ -16,7 +16,7 @@ body {
   font-size-adjust: 0.5;
   line-height: 24px;
   margin: 75px auto;
-  max-width: 724px;
+  max-width: 624px;
   padding: 0 5px;
 }
 
@@ -26,7 +26,7 @@ body {
   font-weight: bold;
   color: #333;
   line-height: 100%;
-  margin: 0.8em 0 0.3em;
+  margin: 1.2em 0 0.3em;
 }
 .title, #rfc\.title h1 { font-size: 32px; }
 h1, section h1, h2, section h2, section h3, nav h2 { font-size: 20px; }
@@ -78,13 +78,14 @@ table.header td, table#rfc\.headerblock td {
   line-height: 100%;
   margin: 10px 0 32px;
 }
-#rfc\.abstract+p, #rfc\.abstract p {
+#rfc\.abstract+p, #rfc\.abstract+p code, #rfc\.abstract+p samp, #rfc\.abstract+p tt {
   font-size: 20px;
   line-height: 28px;
 }
 
-samp, tt, code, pre {
-  font: 11pt consolas, monospace;
+samp, tt, code, pre, span.tt {
+  font-size: 13.5px;
+  font-family: Consolas, monospace;
   font-size-adjust: none;
 }
 pre {
@@ -165,12 +166,17 @@ a[href]:hover {
   background-color: #eee;
 }
 
-ol, ul, li, p {
+p, ol, ul, li {
   padding: 0;
-  margin: 0.5em 0 0.5em 2em;
 }
-li, p {
-  margin-left: 0;
+p {
+  margin: 0.5em 0;
+}
+ol, ul {
+  margin: 0.2em 0 0.2em 2em;
+}
+li {
+  margin: 0.2em 0;
 }
 address {
   font-style: normal;
@@ -184,7 +190,7 @@ ul.toc li {
   margin: 0;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 924px) {
   body {
     padding-right: 350px;
   }
@@ -192,7 +198,7 @@ ul.toc li {
     position: fixed;
     bottom: 0;
     right: 0;
-    right: calc(50vw - 550px);
+    right: calc(50vw - 500px);
     width: 300px;
     z-index: 1;
     overflow: auto;
@@ -295,15 +301,16 @@ ul.toc li {
 <link href="#rfc.references" rel="Chapter" title="8 References"/>
 <link href="#rfc.references.1" rel="Chapter" title="8.1 Normative References"/>
 <link href="#rfc.references.2" rel="Chapter" title="8.2 Informative References"/>
+<link href="#rfc.appendix.A" rel="Chapter" title="A Contributors"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
   <meta name="generator" content="xml2rfc version 2.5.2 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
-  <meta name="dct.creator" content="Azoum, S., Jones, E., Sun, L., Irani, M., Sun, J., Purvis, R., and S. Turner" />
+  <meta name="dct.creator" content="Sun, J., Irani, M., Nguyen, T., Purvis, R., and S. Turner" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-turner-ccmib-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-5-30" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-5-31" />
   <meta name="dct.abstract" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
   <meta name="description" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
 
@@ -316,31 +323,19 @@ ul.toc li {
     
     	<tr>
   <td class="left">Network Working Group</td>
-  <td class="right">S. Azoum</td>
-</tr>
-<tr>
-  <td class="left">Internet-Draft</td>
-  <td class="right">E. Jones</td>
-</tr>
-<tr>
-  <td class="left">Intended status: Standards Track</td>
-  <td class="right">L. Sun</td>
-</tr>
-<tr>
-  <td class="left">Expires: December 1, 2018</td>
-  <td class="right">SPAWAR Systems Center Pacific</td>
-</tr>
-<tr>
-  <td class="left"></td>
-  <td class="right">M. Irani</td>
-</tr>
-<tr>
-  <td class="left"></td>
   <td class="right">J. Sun</td>
 </tr>
 <tr>
-  <td class="left"></td>
-  <td class="right">Nathan Kunes, Inc.</td>
+  <td class="left">Internet-Draft</td>
+  <td class="right">M. Irani</td>
+</tr>
+<tr>
+  <td class="left">Intended status: Standards Track</td>
+  <td class="right">T. Nguyen</td>
+</tr>
+<tr>
+  <td class="left">Expires: December 2, 2019</td>
+  <td class="right">Naval Information Warfare Center Pacific</td>
 </tr>
 <tr>
   <td class="left"></td>
@@ -360,7 +355,7 @@ ul.toc li {
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">May 30, 2018</td>
+  <td class="right">May 31, 2019</td>
 </tr>
 
     	
@@ -380,11 +375,11 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on December 1, 2018.</p>
+<p>This Internet-Draft will expire on December 2, 2019.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
-<p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -411,7 +406,8 @@ ul.toc li {
 <li>8.   <a href="#rfc.references">References</a></li>
 <ul><li>8.1.   <a href="#rfc.references.1">Normative References</a></li>
 <li>8.2.   <a href="#rfc.references.2">Informative References</a></li>
-</ul><li><a href="#rfc.authors">Authors' Addresses</a></li>
+</ul><li>Appendix A.   <a href="#rfc.appendix.A">Contributors</a></li>
+<li><a href="#rfc.authors">Authors' Addresses</a></li>
 
 
   </ul>
@@ -6189,60 +6185,27 @@ ul.toc li {
     </tr>
   </tbody>
 </table>
+<h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> <a href="#contributors" id="contributors">Contributors</a></h1>
+<p id="rfc.section.A.p.1">The following people made technical contributions to this specification:</p>
+<p/>
+
+<ul>
+  <li>Shadi Azoum <br/> Naval Information Warfare Center Pacific <br/> shadi.azoum@navy.mil</li>
+  <li>Elliott Jones <br/> Naval Information Warfare Center Pacific <br/> elliott.jones@navy.mil</li>
+  <li>Lily Sun <br/> Naval Information Warfare Center Pacific <br/> lily.sun@navy.mil</li>
+</ul>
 <h1 id="rfc.authors">
   <a href="#rfc.authors">Authors' Addresses</a>
 </h1>
 <div class="avoidbreak">
   <address class="vcard">
 	<span class="vcardline">
-	  <span class="fn">Shadi Azoum</span> 
-	  <span class="n hidden">
-		<span class="family-name">Azoum</span>
-	  </span>
-	</span>
-	<span class="org vcardline">SPAWAR Systems Center Pacific</span>
-	<span class="adr">
-	  
-	  <span class="vcardline">
-		<span class="locality"></span> 
-		<span class="region"></span>
-		<span class="code"></span>
-	  </span>
-	  <span class="country-name vcardline"></span>
-	</span>
-	<span class="vcardline">EMail: <a href="mailto:shadi.azoum@navy.mil">shadi.azoum@navy.mil</a></span>
-
-  </address>
-</div><div class="avoidbreak">
-  <address class="vcard">
-	<span class="vcardline">
-	  <span class="fn">Elliott Jones</span> 
-	  <span class="n hidden">
-		<span class="family-name">Jones</span>
-	  </span>
-	</span>
-	<span class="org vcardline">SPAWAR Systems Center Pacific</span>
-	<span class="adr">
-	  
-	  <span class="vcardline">
-		<span class="locality"></span> 
-		<span class="region"></span>
-		<span class="code"></span>
-	  </span>
-	  <span class="country-name vcardline"></span>
-	</span>
-	<span class="vcardline">EMail: <a href="mailto:elliott.jones@navy.mil">elliott.jones@navy.mil</a></span>
-
-  </address>
-</div><div class="avoidbreak">
-  <address class="vcard">
-	<span class="vcardline">
-	  <span class="fn">Lily Sun</span> 
+	  <span class="fn">Jeffrey Sun</span> 
 	  <span class="n hidden">
 		<span class="family-name">Sun</span>
 	  </span>
 	</span>
-	<span class="org vcardline">SPAWAR Systems Center Pacific</span>
+	<span class="org vcardline">Naval Information Warfare Center Pacific</span>
 	<span class="adr">
 	  
 	  <span class="vcardline">
@@ -6252,7 +6215,7 @@ ul.toc li {
 	  </span>
 	  <span class="country-name vcardline"></span>
 	</span>
-	<span class="vcardline">EMail: <a href="mailto:lily.sun@navy.mil">lily.sun@navy.mil</a></span>
+	<span class="vcardline">EMail: <a href="mailto:sunjeff@spawar.navy.mil">sunjeff@spawar.navy.mil</a></span>
 
   </address>
 </div><div class="avoidbreak">
@@ -6263,7 +6226,7 @@ ul.toc li {
 		<span class="family-name">Irani</span>
 	  </span>
 	</span>
-	<span class="org vcardline">Nathan Kunes, Inc.</span>
+	<span class="org vcardline">Naval Information Warfare Center Pacific</span>
 	<span class="adr">
 	  
 	  <span class="vcardline">
@@ -6273,18 +6236,18 @@ ul.toc li {
 	  </span>
 	  <span class="country-name vcardline"></span>
 	</span>
-	<span class="vcardline">EMail: <a href="mailto:irani@nkiengineering.com">irani@nkiengineering.com</a></span>
+	<span class="vcardline">EMail: <a href="mailto:irani@spawar.navy.mil">irani@spawar.navy.mil</a></span>
 
   </address>
 </div><div class="avoidbreak">
   <address class="vcard">
 	<span class="vcardline">
-	  <span class="fn">Jeffrey Sun</span> 
+	  <span class="fn">Tom Nguyen</span> 
 	  <span class="n hidden">
-		<span class="family-name">Sun</span>
+		<span class="family-name">Nguyen</span>
 	  </span>
 	</span>
-	<span class="org vcardline">Nathan Kunes, Inc.</span>
+	<span class="org vcardline">Naval Information Warfare Center Pacific</span>
 	<span class="adr">
 	  
 	  <span class="vcardline">
@@ -6294,7 +6257,7 @@ ul.toc li {
 	  </span>
 	  <span class="country-name vcardline"></span>
 	</span>
-	<span class="vcardline">EMail: <a href="mailto:sunjeff@nkiengineering.com">sunjeff@nkiengineering.com</a></span>
+	<span class="vcardline">EMail: <a href="mailto:tmnguyen@spawar.navy.mil">tmnguyen@spawar.navy.mil</a></span>
 
   </address>
 </div><div class="avoidbreak">
@@ -6343,3 +6306,4 @@ ul.toc li {
 
 </body>
 </html>
+
