@@ -1066,40 +1066,15 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             FROM SNMP-TLS-TM-MIB;                      -- FROM RFC 6353
 
     ccKeyManagementMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Key Managment objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -1112,8 +1087,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyManagement 1 }
 
@@ -1579,8 +1554,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "The intended usage for the key:  One Time Password (OTP),
             Challenge/Response (CR), Unlock, Encrypt, Decrypt,
             Integrity, Verify, KeyWrap, Unwrap, Derive, Generate,
-            Shared Secret.
-            From RFC 6030 section 5.
+            Shared Secret. From RFC 6030 section 5.
 
             OTP: The key is used for One Time Password (OTP) generation.
 
@@ -1863,7 +1837,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              this column can be up to 20 bytes long per Section
              '4.1.2.2. Serial Number' of RFC 5280. Other types of Key
              Material may have different serial number format as defined
-             by the issuer (e.g. a Key Material ID)."
+             by the issuer (e.g., a Key Material ID)."
         ::= { cAsymKeyEntry 3 }
 
     cAsymKeyIssuer  OBJECT-TYPE
@@ -1885,9 +1859,9 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
              "Signature algorithm used by a Certification Authority to
-             sign this asymmetric key material (e.g. X.509 Certificate).
-             If no signature/signature algorithm is provided/used, this
-             column would not exist.
+             sign this asymmetric key material (e.g., X.509
+             Certificate). If no signature/signature algorithm is
+             provided/used, this column would not exist.
 
              Note, this is a free form OCTET STRING column, meaning
              implementations may utilize a standardized definition of
@@ -1901,7 +1875,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
              "Public key algorithm with which the public key is used (as
-             associated with the asymmetric key material (e.g. X.509
+             associated with the asymmetric key material (e.g., X.509
              Certificate)).
 
              Note, this is a free form OCTET STRING column, meaning
@@ -2123,6 +2097,21 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             If no such nomenclature exists, this column should not be
             populated or be set to an empty string (i.e. '')."
         ::= { cAsymKeyEntry 19 }
+
+    cAsymKeyAutoRekeyEnable OBJECT-TYPE
+        SYNTAX     TruthValue
+        MAX-ACCESS read-write
+        STATUS     current
+        DESCRIPTION
+            "Controls the automatic rekey settings  for this PKC.
+
+            [true]  Enables automatic rekey.
+            [false] Disables automatic rekey.
+
+            This column is optional to support."
+        DEFVAL{false}
+    ::= { cAsymKeyEntry 20 }
+
 
     -- *****************************************************************
     -- CC MIB cTrustAnchorTable
