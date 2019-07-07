@@ -844,7 +844,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "A row containing a firmware package name, version, and source."
-        INDEX      {cFirmwareName}
+        INDEX      { cFirmwareName }
         ::= { cFirmwareInformationTable 1 }
 
     CFirmwareInformationEntry  ::= SEQUENCE
