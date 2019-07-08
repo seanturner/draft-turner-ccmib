@@ -232,15 +232,40 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
-        LAST-UPDATED  "201609302154Z"
-        ORGANIZATION  "CCMIB CCB"
+        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        ORGANIZATION  "IETF"
         CONTACT-INFO
-            "CC MIB Configuration Control Board
-             Email: CCMIB.CCB@us.af.mil"
+            "Shadi Azoum
+            US Navy
+            email: shadi.azoum@navy.mil
+
+            Elliott Jones
+            US Navy
+            elliott.jones@navy.mil
+
+            Lily Sun
+            US Navy
+            lily.sun@navy.mil
+
+            Mike Irani
+            NKI Engineering
+            irani@nkiengineering.com
+
+            Jeffrey Sun
+            NKI Engineering
+            sunjeff@nkiengineering.com
+
+            Ray Purvis
+            MITRE
+            Email:rpurvis@mitre.org
+
+            Sean Turner
+            sn3rd
+            Email:sean@sn3rd.com"
         DESCRIPTION
             "This MIB defines the CC MIB Device Information objects.
 
-            Copyright (c) 2019 IETF Trust and the persons
+            Copyright (c) 2017 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -253,10 +278,10 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "201609302154Z"
-        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+         REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+         DESCRIPTION   "Initial Version. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        ::= { ccDeviceInfo 1 }
+         ::= { ccDeviceInfo 1 }
 
     -- *****************************************************************
     -- Device Information Segments
