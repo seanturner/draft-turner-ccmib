@@ -90,41 +90,16 @@ This MIB module makes reference to the following document: {{RFC2578}}.
             FROM SNMPv2-SMI;                                 -- RFC 2578
 
     ccAssignmentsMIB MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+           "CC MIB Configuration Control Board
+            Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB tree hierarchical assignments
             below it and acts as a reservation mechanism.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -136,16 +111,17 @@ This MIB module makes reference to the following document: {{RFC2578}}.
 
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
-        ::= { mib-2 TBD }
+        REVISION      "201609302154Z"
+    -- RFC EDITOR: Please update XXXX with the assigned RFC number.
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        ::= { ccmib 3 }
+
+    ccmib    OBJECT IDENTIFIER ::= { enterprise 34493 }
 
     --
     -- Note: Current top-level OID assignments within the CC MIB tree:
-    --    mib-2.TBD   : CC-ASSIGNMENTS-MIB (this MIB)
-    --    mib-2.TBD.1 : CC-FEATURE-HIERARCHY-MIB
+    --    ccmib.3   : CC-ASSIGNMENTS-MIB (this MIB)
+    --    ccmib.3.1 : CC-FEATURE-HIERARCHY-MIB
 
     END
 ~~~~
