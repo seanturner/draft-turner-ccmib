@@ -1050,7 +1050,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     IMPORTS
         ccKeyManagement
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -3320,7 +3320,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS   read-only
         STATUS       current
         DESCRIPTION
-            "This column describes the type of remote key material. 
+            "This column describes the type of remote key material.
 
             Note, this is a free form OCTET STRING column.
             Implementations are expected to utilize definition of
@@ -3354,8 +3354,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
              This column does not exist for devices that do not have
              the concept of classification."
-        ::= { cRemoteKeyMaterialTableEntry 6 }    
-    
+        ::= { cRemoteKeyMaterialTableEntry 6 }
+
     -- *****************************************************************
     -- Module Conformance Information
     -- *****************************************************************
@@ -3800,13 +3800,13 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                    cRemoteKeyMaterialKeyType,
                    cRemoteKeyMatExpirationDate,
                    cRemoteKeyMatClassification
-                }	
-        STATUS current	
-        DESCRIPTION	
+                }
+        STATUS current
+        DESCRIPTION
             "This group is composed of objects related to remote key
-            information."	
+            information."
         ::= { cKeyManagementGroups 18 }
-    
+
     END
 ~~~~
 
