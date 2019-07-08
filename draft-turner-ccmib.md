@@ -3670,7 +3670,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
 
     IMPORTS
         ccKeyTransferPull
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
