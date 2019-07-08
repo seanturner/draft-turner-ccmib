@@ -4840,7 +4840,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             "This table provides the list of authorized senders that
             this receiving device will accept Cryptographic Device
             Material (CDM) transfers from. Servers for the
-            cSOMSServerTable are not listed in this table since this
+            cCDMServerTable are not listed in this table since this
             table is specific for the Push Model."
         ::= { cCDMPushSrcInfo 3 }
 
