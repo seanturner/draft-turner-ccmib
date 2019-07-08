@@ -5390,7 +5390,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
     IMPORTS
         ccSecureConnectionInfo
-            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM Sec 5.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                           -- FROM RFC 2578
