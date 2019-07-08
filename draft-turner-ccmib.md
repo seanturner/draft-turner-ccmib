@@ -5183,7 +5183,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
     IMPORTS
         ccSecurePolicyInfo
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -5196,41 +5196,16 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccSecurePolicyInfoMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Security Policy Information
             objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5243,8 +5218,8 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccSecurePolicyInfo 1 }
 
@@ -5299,7 +5274,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -5314,7 +5289,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         DESCRIPTION
             "The cSecPolicyRuleTable stores the Security Policy Rules
             that are compared against inbound and outbound data traffic
-            flow. These Security Policy Rules define the actions (e.g.
+            flow. These Security Policy Rules define the actions (e.g.,
             protect, bypass, discard) on how the data traffic flow
             should be treated."
         ::= { cSecPolicyRuleInfo 3 }
@@ -5345,7 +5320,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         DESCRIPTION
             "Local unique index that identifies the priority at which
             this Security Policy rule is applied. Lower values have a
-            higher priority (e.g. a value of 1 will be processed before
+            higher priority (e.g., a value of 1 will be processed before
             a value of 2). This column is the primary index to the
             cSecPolicyRuleTable."
         ::= { cSecPolicyRuleEntry 1 }
@@ -5362,7 +5337,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecPolicyRuleEntry 2 }
 
     cSecPolicyRuleType  OBJECT-TYPE
-        SYNTAX      INTEGER { ipsec(1), tls(2) }
+        SYNTAX      INTEGER { ipsec(1), tls(2), macsec(3) }
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5450,6 +5425,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
     cSecurePolicyCompliances  OBJECT IDENTIFIER
         ::= { cSecurePolicyConformance 1 }
+
     cSecurePolicyGroups  OBJECT IDENTIFIER
         ::= { cSecurePolicyConformance 2 }
 
