@@ -436,7 +436,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             to be displayed and meaningful to the human operator (e.g.
             Flinstones Inc). In other words, this object is not intended
             to store the vendor's authoritative identification value
-            (i.e.. sysObjectID RFC 1213)."
+            (i.e., sysObjectID RFC 1213)."
         ::= { cDeviceInfoScalars 10 }
     
     cModelIdentifier OBJECT-TYPE
