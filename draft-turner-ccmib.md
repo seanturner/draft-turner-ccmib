@@ -1070,7 +1070,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     IMPORTS
         ccKeyManagement
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -1086,40 +1086,15 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             FROM SNMP-TLS-TM-MIB;                      -- FROM RFC 6353
 
     ccKeyManagementMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Key Managment objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -1132,8 +1107,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyManagement 1 }
 
@@ -1167,6 +1142,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { ccKeyManagementMIB 12 }
     cKeyManagementConformance  OBJECT IDENTIFIER
         ::= { ccKeyManagementMIB 13 }
+    cRemoteKeyMaterialInfo OBJECT IDENTIFIER
+        ::= { ccKeyManagementMIB 14 }
 
     -- *****************************************************************
     -- Key Management Information Scalars
@@ -1241,7 +1218,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             zeroized the specific key materials stored in the device.
 
             Some implementations may restrict the deletion of Trust
-            Anchors to specific protocols (e.g. TAMP)."
+            Anchors to specific protocols (e.g., TAMP)."
         ::= { cKeyManagementScalars 4 }
 
     cZeroizeCDMStoreTable  OBJECT-TYPE
@@ -1316,7 +1293,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementScalars 9 }
 
     cGenerateKeyType  OBJECT-TYPE
-        SYNTAX      INTEGER { x509v3(1), psk(2)}
+        SYNTAX      INTEGER { x509v3(1), psk(2) }
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -1351,7 +1328,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "An attempt to load the device with key material, identified
-            by the table identifier (e.g. cSymmetricKeyTable), has
+            by the table identifier (e.g., cSymmetricKeyTable), has
             succeeded. This notification may be sent upon a single
             successful key material load or may be sent upon a series of
             successful single key material loads."
@@ -1362,7 +1339,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "An attempt to load the device with key material, identified
-            by the table identifier (e.g. cSymmetricKeyTable), has
+            by the table identifier (e.g., cSymmetricKeyTable), has
             failed."
         ::= { cKeyManagementNotify 2 }
 
@@ -1530,7 +1507,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -1597,8 +1574,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "The intended usage for the key:  One Time Password (OTP),
             Challenge/Response (CR), Unlock, Encrypt, Decrypt,
             Integrity, Verify, KeyWrap, Unwrap, Derive, Generate,
-            Shared Secret.
-            From RFC 6030 section 5.
+            Shared Secret. From RFC 6030 section 5.
 
             OTP: The key is used for One Time Password (OTP) generation.
 
@@ -1801,7 +1777,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -1848,7 +1824,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cAsymKeyRowStatus           RowStatus,
         cAsymKeyVersion             INTEGER,
         cAsymKeyRekey               TruthValue,
-        cAsymKeyType                OCTET STRING
+        cAsymKeyType                OCTET STRING,
+        cAsymKeyAutoRekeyEnable     TruthValue
     }
 
     cAsymKeyFingerprint  OBJECT-TYPE
@@ -1880,7 +1857,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              this column can be up to 20 bytes long per Section
              '4.1.2.2. Serial Number' of RFC 5280. Other types of Key
              Material may have different serial number format as defined
-             by the issuer (e.g. a Key Material ID)."
+             by the issuer (e.g., a Key Material ID)."
         ::= { cAsymKeyEntry 3 }
 
     cAsymKeyIssuer  OBJECT-TYPE
@@ -1902,9 +1879,9 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
              "Signature algorithm used by a Certification Authority to
-             sign this asymmetric key material (e.g. X.509 Certificate).
-             If no signature/signature algorithm is provided/used, this
-             column would not exist.
+             sign this asymmetric key material (e.g., X.509
+             Certificate). If no signature/signature algorithm is
+             provided/used, this column would not exist.
 
              Note, this is a free form OCTET STRING column, meaning
              implementations may utilize a standardized definition of
@@ -1918,7 +1895,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
              "Public key algorithm with which the public key is used (as
-             associated with the asymmetric key material (e.g. X.509
+             associated with the asymmetric key material (e.g., X.509
              Certificate)).
 
              Note, this is a free form OCTET STRING column, meaning
@@ -2000,7 +1977,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 11 }
 
     cAsymKeySubjectAltName OBJECT-TYPE
-        SYNTAXSnmpAdminString (SIZE(1..32))
+        SYNTAX      SnmpAdminString (SIZE(1..32))
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2033,16 +2010,16 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              keyCertSign(6), cRLSign(7), encipherOnly(8), and
              decipherOnly(9)
              Bit value translation:
-             1000 0000 0000 0000 = other,
-             0100 0000 0000 0000 = digitalSignature,
-             0010 0000 0000 0000 = nonRepudiation,
-             0001 0000 0000 0000 = keyEncipherment,
-             0000 1000 0000 0000 = dataEncipherment,
-             0000 0100 0000 0000 = keyAgreement,
-             0000 0010 0000 0000 = keyCertSign,
-             0000 0001 0000 0000 = cRLSign,
-             0000 0000 1000 0000 = encipherOnly,
-             0000 0000 0100 0000 = decipherOnly.
+             1000 0000 0000 0000 = other
+             0100 0000 0000 0000 = digitalSignature
+             0010 0000 0000 0000 = nonRepudiation
+             0001 0000 0000 0000 = keyEncipherment
+             0000 1000 0000 0000 = dataEncipherment
+             0000 0100 0000 0000 = keyAgreement
+             0000 0010 0000 0000 = keyCertSign
+             0000 0001 0000 0000 = cRLSign
+             0000 0000 1000 0000 = encipherOnly
+             0000 0000 0100 0000 = decipherOnly
              Devices using asymmetric key material not adhering to RFC
              5280 (X.509 format) may still use an applicable value for
              the Usage, or may use 'other'."
@@ -2093,7 +2070,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              Setting this column to destroy is synonymous with zeroizing
              the key material. Any reference(s) to this object, upon
              setting this RowStatus to destroy, should be destroyed as
-
              well. At a minimum, implementations must support active and
              destroy management functions. Support for notInService and
              notReady management functions is optional. Implementations
@@ -2139,8 +2115,23 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             Implementations are expected to utilize definition of string
             values that apply to their specific nomenclature supported.
             If no such nomenclature exists, this column should not be
-            populated or be set to an empty string (i.e. '')."
+            populated or be set to an empty string (i.e., '')."
         ::= { cAsymKeyEntry 19 }
+
+    cAsymKeyAutoRekeyEnable OBJECT-TYPE
+        SYNTAX     TruthValue
+        MAX-ACCESS read-write
+        STATUS     current
+        DESCRIPTION
+            "Controls the automatic rekey settings  for this PKC.
+
+            [true]  Enables automatic rekey.
+            [false] Disables automatic rekey.
+
+            This column is optional to support."
+        DEFVAL     { false }
+    ::= { cAsymKeyEntry 20 }
+
 
     -- *****************************************************************
     -- CC MIB cTrustAnchorTable
@@ -2161,7 +2152,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2196,7 +2187,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cTrustAnchorKeyIdentifier       OCTET STRING,
         cTrustAnchorPublicKeyAlgorithm  OCTET STRING,
         cTrustAnchorContingencyAvail    TruthValue,
-        cTrustAnchorRowStatus           RowStatus
+        cTrustAnchorRowStatus           RowStatus,
+        cTrustAnchorVersion             OCTET STRING
     }
 
     cTrustAnchorFingerprint  OBJECT-TYPE
@@ -2297,8 +2289,16 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             functions for this object.
 
             Some implementations may restrict the deletion of Trust
-            Anchors to specific protocols (e.g. TAMP)."
+            Anchors to specific protocols (e.g., TAMP)."
         ::= { cTrustAnchorEntry 8 }
+
+    cTrustAnchorVersion OBJECT-TYPE
+        SYNTAX     OCTET STRING
+        MAX-ACCESS read-only
+        STATUS     current
+        DESCRIPTION
+            "The version of the Trust Anchor."
+        ::= { cTrustAnchorEntry 9 }
 
     -- *****************************************************************
     -- CC MIB cCKLTable
@@ -2319,7 +2319,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2412,7 +2412,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-
             "The date by which the next CKL/CRL issued. The next CRL
             could be issued before the indicated date, but it will not
             be issued any later than the indicated date.
@@ -2476,7 +2475,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2529,7 +2528,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     cCDMStoreType OBJECT-TYPE
         SYNTAX      INTEGER { symKey(1), asymKey(2), trustAnchor(3),
                               crl(4), ckl(5), firmware(6),
-                              storeAndForwardWrappedPkg(7) }
+                              storeAndForwardWrappedPkg(7),
+                              storeAndForwardPkg(8) }
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2550,7 +2550,10 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                 firmware.
             (7) storeAndForwardWrappedPkg - This row contains
                 information about a stored encrypted wrapped package,
-                typically meant to be forwarded to another device."
+                typically meant to be forwarded to another device.
+            (8) storeAndForwardPkg - This row contains information
+                about a stored unencrypted, typically meant to be
+               forwarded to another device."
         ::= { cCDMStoreEntry 2 }
 
     cCDMStoreSource  OBJECT-TYPE
@@ -2590,7 +2593,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cCDMStoreControl OBJECT-TYPE
         SYNTAX      INTEGER { readyForInstall(1), install(2),
-                              installAndDiscard(3) }
+                              installAndDiscard(3), other (4) }
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2603,6 +2606,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                 appropriate table based on the cCDMStoreType and
                 discarded from this table after the install operation is
                 complete.
+            (4) other - The CDM will be processed based on family
+                extension specific action.
 
             Note, setting the cCDMStoreRowStatus object to 'destroy'
             will discard the CDM."
@@ -2642,7 +2647,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2692,7 +2697,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             Names."
         ::= { cCertSubAltNameTableEntry 1 }
     
-    
     cCertSubAltNameListIndex OBJECT-TYPE
         SYNTAX     Unsigned32
         MAX-ACCESS not-accessible
@@ -2704,7 +2708,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             uniquely identifies each row, or set of Subject Alternative
             Names."
         ::= { cCertSubAltNameTableEntry 2 }
-    
     
     cCertSubAltNameType OBJECT-TYPE
         SYNTAX     INTEGER { otherName(0), rfc822Name(1), dNSName(2),
@@ -2732,7 +2735,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     
             This column is the main value and is used for all
             cCertSubAltNameType types. For otherName(0), this column
-
             provides the value of the 'value' field. For
             ediPartyName(5), this column provides the value of the
             'partyName'. For all other types, this column provides the
@@ -2797,7 +2799,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2874,7 +2876,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "For a Certificate Authority (CA) certificate, this
+            "For a Certification Authority (CA) certificate, this
             indicates a grouping of policy mappings between a
             certificate issuer CA domain policy and a domain policy of
             the subject certificate CA. The value of this column
@@ -2972,7 +2974,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2990,7 +2992,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             algorithm. For an end entity certificate, this information
             indicates under which policy this certificate has been
             issued and the purposes for which the certificate may be
-            used. For a Certificate Authority (CA) certificate, this
+            used. For a Certification Authority (CA) certificate, this
             information limits the set of policies for certification
             paths that include this certificate."
         ::= { cCertPolicyInfo 3 }
@@ -3042,7 +3044,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "For end entity certificates, this is an identifier for the
             policy under which the certificate has been issued. For
-            Certificate Authority (CA) certificates, this is an
+            Certification Authority (CA) certificates, this is an
             identifier for a certification path policy that includes
             this certificate."
         ::= { cCertPolicyEntry 3 }
@@ -3084,8 +3086,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3099,9 +3100,9 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "The table listing mappings between policies that a
-            certificate issuing Certificate Authority (CA) considers as
-            equivalent or comparable to the domain policies of the
-            subject certificate CA."
+            certificate issuing Certification Authority (CA) considers
+            as equivalent or comparable to the domain policies of the
+            subject certificate's CA."
         ::= { cPolicyMappingInfo 3 }
 
     cPolicyMappingEntry OBJECT-TYPE
@@ -3110,8 +3111,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "A row containing a mapping between the domain policy of an
-            issuing Certificate Authority (CA) and an equivalent domain
-            policy of the subject certificate's CA."
+            issuing Certification Authority (CA) and an equivalent
+            domain policy of the subject certificate's CA."
         INDEX  { cPolicyMappingGroup, cPolicyMappingIndex }
         ::= { cPolicyMappingTable 1 }
 
@@ -3147,7 +3148,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "Indicates the subject Certificate Authority's domain
+            "Indicates the subject Certification Authority's domain
             policy."
         ::= { cPolicyMappingEntry 3 }
 
@@ -3157,7 +3158,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "Indicates the issuer domain policy that the issuer
-            Certificate Authority (CA) considers equivalent to the
+            Certification Authority (CA) considers equivalent to the
             subject CA domain policy."
         ::= { cPolicyMappingEntry 4 }
 
@@ -3180,7 +3181,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3246,11 +3247,142 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cNameConstraintEntry 3 }
 
     -- *****************************************************************
+    -- CC MIB cRemoteKeyMaterialTable
+    -- *****************************************************************
+
+    cRemoteKeyMaterialTableCount OBJECT-TYPE
+        SYNTAX       Unsigned32
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The number of rows in the cRemoteKeyMaterialTable."
+        ::= { cRemoteKeyMaterialInfo 1 }
+
+    cRemoteKeyMaterialTableLastChanged OBJECT-TYPE
+        SYNTAX       TimeStamp
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The last time any entry in the table was modified,
+            created, or deleted by either SNMP, agent, or other
+            management method (e.g., via an HMI) Managers can use this
+            object to ensure that no changes to configuration of this
+            table have happened since the last time it examined the
+            table. A value of 0 indicates that no entry has been
+            changed since the agent initialized.  The value in
+            CC-DEVICE-INFO-MIB cSystemUpTime should be used to populate
+            this column."
+        ::= { cRemoteKeyMaterialInfo 2 }
+
+    cRemoteKeyMaterialTable OBJECT-TYPE
+        SYNTAX       SEQUENCE OF CRemoteKeyMaterialTableEntry
+        MAX-ACCESS   not-accessible
+        STATUS       current
+        DESCRIPTION
+            "The table containing remote key material information -
+             namely, key material used to help establish the secure
+             connection."
+        ::= { cRemoteKeyMaterialInfo 3 }
+
+    cRemoteKeyMaterialTableEntry OBJECT-TYPE
+        SYNTAX       CRemoteKeyMaterialTableEntry
+        MAX-ACCESS   not-accessible
+        STATUS       current
+        DESCRIPTION
+            "A row describing the remote key material information used
+            to establish the secure connection."
+        INDEX  { cRemoteKeyMaterialID }
+        ::= { cRemoteKeyMaterialTable 1 }
+
+    CRemoteKeyMaterialTableEntry ::= SEQUENCE {
+            cRemoteKeyMaterialID             OCTET STRING,
+            cRemoteKeyMatFriendlyName        SnmpAdminString,
+            cRemoteKeyMatSerialNumber        OCTET STRING,
+            cRemoteKeyMaterialKeyType        OCTET STRING,
+            cRemoteKeyMatExpirationDate      DateAndTime,
+            cRemoteKeyMatClassification      BITS
+        }
+
+    cRemoteKeyMaterialID OBJECT-TYPE
+        SYNTAX       OCTET STRING (SIZE(1..255))
+        MAX-ACCESS   not-accessible
+        STATUS       current
+        DESCRIPTION
+            "Represents a unique identifier assigned to this key
+            material. This would typically be an identifier inherent to
+            the key material, such as a serial number or other form of
+            identifier derived from a tag or other key wrapper. This
+            object differs from cRemoteKeyMatFriendlyName which is a
+            user-defined ID."
+        ::= { cRemoteKeyMaterialTableEntry 1 }
+
+    cRemoteKeyMatFriendlyName OBJECT-TYPE
+        SYNTAX       SnmpAdminString
+        MAX-ACCESS   read-write
+        STATUS       current
+        DESCRIPTION
+            "A human readable label of the key for easier reference. It
+            is used only for helpful or informational purposes."
+        ::= { cRemoteKeyMaterialTableEntry 2 }
+
+    cRemoteKeyMatSerialNumber OBJECT-TYPE
+        SYNTAX       OCTET STRING
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The unique positive integer assigned to the remote key
+            material.  Note, this information may not be available in
+            some key material types."
+        ::= { cRemoteKeyMaterialTableEntry 3 }
+
+    cRemoteKeyMaterialKeyType OBJECT-TYPE
+        SYNTAX       OCTET STRING
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "This column describes the type of remote key material.
+
+            Note, this is a free form OCTET STRING column.
+            Implementations are expected to utilize definition of
+            string values that apply to their specific nomenclature
+            supported.  If no such nomenclature exists, this column
+            should not be populated or be set to an empty string
+            (i.e., '')."
+        ::= { cRemoteKeyMaterialTableEntry 4 }
+
+    cRemoteKeyMatExpirationDate OBJECT-TYPE
+        SYNTAX       DateAndTime
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The expiration date of the key."
+        ::= { cRemoteKeyMaterialTableEntry 5 }
+
+    cRemoteKeyMatClassification OBJECT-TYPE
+        SYNTAX       BITS { unclassified(0), restricted(1),
+                            confidential(2), secret(3), topSecret(4) }
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The classification of the key.
+             Bit value translation:
+             1000 0000 = unclassified
+             0100 0000 = restricted
+             0010 0000 = confidential
+             0001 0000 = secret
+             0000 1000 = topSecret
+
+             This column does not exist for devices that do not have
+             the concept of classification."
+        ::= { cRemoteKeyMaterialTableEntry 6 }
+
+    -- *****************************************************************
     -- Module Conformance Information
     -- *****************************************************************
     
     cKeyManagementCompliances          OBJECT IDENTIFIER
         ::= { cKeyManagementConformance 1}
+
     cKeyManagementGroups               OBJECT IDENTIFIER
         ::= { cKeyManagementConformance 2}
 
@@ -3259,7 +3391,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "Compliance levels for symmetric key information."
         MODULE
-        MANDATORY-GROUPS { cKeyManSymKeyGroup }
+        MANDATORY-GROUPS { cKeyManSymKeyGroup, cKeyManRemoteKeyGroup }
 
         GROUP cKeyManSymKeyNotifyScalars
         DESCRIPTION
@@ -3276,7 +3408,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "Compliance levels for asymmetric key information."
         MODULE
-        MANDATORY-GROUPS { cKeyManAsymKeyGroup }
+        MANDATORY-GROUPS { cKeyManAsymKeyGroup, cKeyManRemoteKeyGroup }
 
         GROUP cKeyManCertSubAltNameGroup
         DESCRIPTION
@@ -3448,7 +3580,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cAsymKeyRowStatus,
                   cAsymKeyVersion,
                   cAsymKeyRekey,
-                  cAsymKeyType
+                  cAsymKeyType,
+                  cAsymKeyAutoRekeyEnable
                 }
         STATUS current
         DESCRIPTION
@@ -3542,7 +3675,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cTrustAnchorKeyIdentifier,
                   cTrustAnchorPublicKeyAlgorithm,
                   cTrustAnchorContingencyAvail,
-                  cTrustAnchorRowStatus
+                  cTrustAnchorRowStatus,
+                  cTrustAnchorVersion
                 }
         STATUS current
         DESCRIPTION
@@ -3676,7 +3810,23 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "This group is composed of notifications related to Crypto
             Device Material store information."
         ::= { cKeyManagementGroups 17 }
-    
+
+    cKeyManRemoteKeyGroup OBJECT-GROUP
+        OBJECTS {
+                   cRemoteKeyMaterialTableCount,
+                   cRemoteKeyMaterialTableLastChanged,
+                   cRemoteKeyMatFriendlyName,
+                   cRemoteKeyMatSerialNumber,
+                   cRemoteKeyMaterialKeyType,
+                   cRemoteKeyMatExpirationDate,
+                   cRemoteKeyMatClassification
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to remote key
+            information."
+        ::= { cKeyManagementGroups 18 }
+
     END
 ~~~~
 
