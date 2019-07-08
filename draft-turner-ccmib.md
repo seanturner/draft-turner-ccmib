@@ -549,7 +549,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
                         cDeviceComponentOpStatus
                     }
         STATUS      current
-        DESCRIPTION	
+        DESCRIPTION
             "A notification from the device to the management station
             indicating a component described in the
             cDeviceComponentVersTable has been disabled."
@@ -721,7 +721,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         DESCRIPTION 
             "The table containing information on each of the batteries
             installed in the device."
-        ::= {cBatteryInfo 3}
+        ::= { cBatteryInfo 3 }
 
     cBatteryInfoEntry  OBJECT-TYPE
         SYNTAX      CBatteryInfoEntry
@@ -807,7 +807,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "The number of rows in the cFirmwareInformationTable."
-    ::= { cFirmwareInfo 1 }
+        ::= { cFirmwareInfo 1 }
 
     cFirmwareInformationTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
@@ -1043,7 +1043,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         DESCRIPTION
             "This group is composed of objects related to battery
             information."
-        ::= { cDeviceInfoGroups 3 }    
+        ::= { cDeviceInfoGroups 3 } 
 
     cDeviceInfoFirmwareGroup OBJECT-GROUP
          OBJECTS {
