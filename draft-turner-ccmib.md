@@ -278,8 +278,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-         REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-         DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        DESCRIPTION   "Initial Version. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
          ::= { ccDeviceInfo 1 }
 
