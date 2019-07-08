@@ -71,9 +71,9 @@ Table of Contents
    3.  The Internet-Standard Management Framework  . . . . . . . . .   3
    4.  Structure of the MIB module . . . . . . . . . . . . . . . . .   3
    5.  Definition of the CC MIB module . . . . . . . . . . . . . . .   3
-     5.1.  CC Assignments  . . . . . . . . . . . . . . . . . . . . .   3
-     5.2.  CC Feature Hierarchy  . . . . . . . . . . . . . . . . . .   4
-     5.3.  CC Device Info  . . . . . . . . . . . . . . . . . . . . .   6
+     5.1.  Assignments . . . . . . . . . . . . . . . . . . . . . . .   3
+     5.2.  Feature Hierarchy . . . . . . . . . . . . . . . . . . . .   4
+     5.3.  Device Info . . . . . . . . . . . . . . . . . . . . . . .   6
      5.4.  Key Management Information  . . . . . . . . . . . . . . .  24
      5.5.  Key Transfer Pull . . . . . . . . . . . . . . . . . . . .  81
      5.6.  Key Transfer Push . . . . . . . . . . . . . . . . . . . .  96
@@ -140,7 +140,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 5.  Definition of the CC MIB module
 
-5.1.  CC Assignments
+5.1.  Assignments
 
    This MIB module makes reference to the following document: [RFC2578].
 
@@ -212,7 +212,7 @@ Internet-Draft                    CCMIB                        July 2019
 
     END
 
-5.2.  CC Feature Hierarchy
+5.2.  Feature Hierarchy
 
    This MIB module makes reference to the following document: [RFC2578].
 
@@ -284,7 +284,7 @@ Internet-Draft                    CCMIB                        July 2019
 
        END
 
-5.3.  CC Device Info
+5.3.  Device Info
 
    This MIB module makes reference to the following documents:
    [RFC1213], [RFC2578], [RFC2579], [RFC2580], [RFC3411], and [RFC3418].
