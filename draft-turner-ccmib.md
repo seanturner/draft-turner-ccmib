@@ -160,7 +160,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
 
     IMPORTS
         ccAssignmentsMIB
-            FROM CC-ASSIGNMENTS-MIB               -- FROM Section 5.2
+            FROM CC-ASSIGNMENTS-MIB               -- FROM Section 5.1
         MODULE-IDENTITY
             FROM SNMPv2-SMI;                      -- FROM RFC 2578
 
