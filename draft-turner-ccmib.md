@@ -371,14 +371,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             "The value of cSystemUpTime the last time any configurable
             object within the MIBs supported by the device has been
             modified, created, or deleted by either SNMP, agent, or
-            other management method (e.g., via an HMI). 
-
-            Managers can use this object to ensure that no changes to
-            any configuration within the device have happened since
-            the last time it examined the device.
-
-            A value of 0 indicates that no objects have been changed
-            since the agent initialized."
+            other management method (e.g., via an HMI). Managers can
+            use this object to ensure that no changes to any
+            configuration within the device have happened since the last
+            time it examined the device. A value of 0 indicates that no
+            objects have been changed since the agent initialized."
         ::= { cDeviceInfoScalars 6 }
 
     cResetDevice  OBJECT-TYPE
@@ -983,7 +980,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         OBJECT cBatteryLowThreshold
         MIN-ACCESS not-accessible
         DESCRIPTION
-            "Implementation of this object is optional." 	
+            "Implementation of this object is optional."
      ::= { cDeviceInfoCompliances 3 }
 
     cDeviceInfoFirmwareCompliance MODULE-COMPLIANCE
