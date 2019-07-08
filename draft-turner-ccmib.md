@@ -594,7 +594,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             should be used to populate this column."
         ::= { cDeviceComponentVersInfo 2 }
 
-    cDeviceComponentVersTable  OBJECT-TYPEi
+    cDeviceComponentVersTable  OBJECT-TYPE
         SYNTAX      SEQUENCE OF CDeviceComponentVersEntry
         MAX-ACCESS  not-accessible
         STATUS      current
