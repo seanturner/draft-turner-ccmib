@@ -3719,7 +3719,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         ::= { ccKeyTransferPullMIB 2 }
     cKeyTransferPullNotify       OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 3 }
-    cSOMSServerInfo               OBJECT IDENTIFIER
+    cCDMServerInfo               OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 4 }
     cCDMDeliveryInfo             OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 5 }
@@ -3848,7 +3848,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             allowed depending on the current value of this object.
     
 
- cPALDeliveryRequest!                 cPALDeliveryStatus
+ cCDMLDeliveryRequest!                 cCDMLDeliveryStatus
  --------------------+-----------+----------+--------------+------------
  !                   !  complete !inProgress!downloadFailed!parseFailed!
  --------------------+-----------+----------+--------------+------------
@@ -3861,7 +3861,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
     
             As described cCDMLDeliveryRequest description, an
             inconsistentValue error is returned."
-        DEFVAL {complete}
+        DEFVAL { complete }
         ::= { cKeyTransferPullScalars 5 }
     
     -- *****************************************************************
@@ -3880,7 +3880,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
     cCDMLPullReceiveFailed  NOTIFICATION-TYPE
         OBJECTS     {
                         cCDMServerURI,
-                        cPALDeliveryStatus
+                        cCDMLDeliveryStatus
                     }
         STATUS      current
         DESCRIPTION
@@ -3925,7 +3925,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         STATUS      current
         DESCRIPTION
              "The number of rows in the cCDMServerTable."
-        ::= { cSOMSServerInfo 1 }
+        ::= { cCDMServerInfo 1 }
 
     cCDMServerTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
@@ -3940,7 +3940,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             indicates that no entry has been changed since the agent
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
             should be used to populate this column."
-        ::= { cSOMSServerInfo 2 }
+        ::= { cCDMServerInfo 2 }
 
     cCDMServerTable  OBJECT-TYPE
         SYNTAX      SEQUENCE OF CCDMServerEntry
@@ -3953,7 +3953,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             obtain the cryptographic device material list (CDML), which
             is a list detailing available CDMs and their associated
             location for obtainment."
-        ::= { cSOMSServerInfo 3 }
+        ::= { cCDMServerInfo 3 }
 
     cCDMServerEntry  OBJECT-TYPE
         SYNTAX      CCDMServerEntry
@@ -4039,7 +4039,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         STATUS      current
         DESCRIPTION
              "The number of rows in the cCDMDeliveryTable."
-        ::= { cCDMDeliveryInfo 1 }i
+        ::= { cCDMDeliveryInfo 1 }
 
     cCDMDeliveryTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
