@@ -3684,7 +3684,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
         LAST-UPDATED  "201609302154Z"
-        ORGANIZATION  "IETF"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
