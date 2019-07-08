@@ -1198,7 +1198,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             zeroized the specific key materials stored in the device.
 
             Some implementations may restrict the deletion of Trust
-            Anchors to specific protocols (e.g. TAMP)."
+            Anchors to specific protocols (e.g., TAMP)."
         ::= { cKeyManagementScalars 4 }
 
     cZeroizeCDMStoreTable  OBJECT-TYPE
@@ -1308,7 +1308,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "An attempt to load the device with key material, identified
-            by the table identifier (e.g. cSymmetricKeyTable), has
+            by the table identifier (e.g., cSymmetricKeyTable), has
             succeeded. This notification may be sent upon a single
             successful key material load or may be sent upon a series of
             successful single key material loads."
@@ -1319,7 +1319,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "An attempt to load the device with key material, identified
-            by the table identifier (e.g. cSymmetricKeyTable), has
+            by the table identifier (e.g., cSymmetricKeyTable), has
             failed."
         ::= { cKeyManagementNotify 2 }
 
@@ -1487,7 +1487,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -1757,7 +1757,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2095,7 +2095,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             Implementations are expected to utilize definition of string
             values that apply to their specific nomenclature supported.
             If no such nomenclature exists, this column should not be
-            populated or be set to an empty string (i.e. '')."
+            populated or be set to an empty string (i.e., '')."
         ::= { cAsymKeyEntry 19 }
 
     cAsymKeyAutoRekeyEnable OBJECT-TYPE
@@ -2132,7 +2132,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2269,7 +2269,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             functions for this object.
 
             Some implementations may restrict the deletion of Trust
-            Anchors to specific protocols (e.g. TAMP)."
+            Anchors to specific protocols (e.g., TAMP)."
         ::= { cTrustAnchorEntry 8 }
 
     cTrustAnchorVersion OBJECT-TYPE
@@ -2299,7 +2299,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2455,7 +2455,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2627,7 +2627,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2781,7 +2781,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2858,7 +2858,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "For a Certificate Authority (CA) certificate, this
+            "For a Certification Authority (CA) certificate, this
             indicates a grouping of policy mappings between a
             certificate issuer CA domain policy and a domain policy of
             the subject certificate CA. The value of this column
@@ -2956,7 +2956,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3068,8 +3068,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3164,7 +3163,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3248,7 +3247,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified,
             created, or deleted by either SNMP, agent, or other
-            management method (e.g. via an HMI) Managers can use this
+            management method (e.g., via an HMI) Managers can use this
             object to ensure that no changes to configuration of this
             table have happened since the last time it examined the
             table. A value of 0 indicates that no entry has been
