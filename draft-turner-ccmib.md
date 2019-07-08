@@ -3683,40 +3683,15 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
+        LAST-UPDATED  "201609302154Z"
         ORGANIZATION  "IETF"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Key Transfer Pull objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -3729,10 +3704,10 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        ::= {  1 }
+        ::= { ccKeyTransferPull 1 }
 
     -- *****************************************************************
     -- Key Transfer Pull Information Segments
@@ -3753,28 +3728,28 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
     -- Key Transfer Pull Scalars
     -- *****************************************************************
     
-    cSOMSServerRetryDelay  OBJECT-TYPE
+    cCDMServerRetryDelay  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
             "The amount of time to wait after a download attempt to the
-            Secure Object Management System (SOMS) server fails before
+            Cryptographic Device Material (CDM) server fails before
             attempting to retry the operation. Note, this scalar applies
-            to the download of any type of item from the SOMS server
-            (e.g. CDMs, PALs)." 
+            to the download of any type of item from the CDM server
+            (e.g., CDMs, CDMLs)." 
         ::= { cKeyTransferPullScalars 1 }
     
-    cSOMSServerRetryMaxAttempts  OBJECT-TYPE
+    cCDMServerRetryMaxAttempts  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
             "The amount of retries attempted before the download attempt
-            to the Secure Object Management System (SOMS) server is
+            to the Cryptographic Device Material (CDM) server is
             considered a failure. Note, this scalar applies to the
-            download of any type of item from the SOMS server (e.g.
-            CDMs, PALs)."
+            download of any type of item from the CDM server (e.g.,
+            CDMs, CDMLs)."
         ::= { cKeyTransferPullScalars 2 }
     
     cCDMPullRetrievalPriorities  OBJECT-TYPE
@@ -3788,7 +3763,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             value identifies an upper bound. A value of '5' for example,
             implies that only cCDMDeliveryTable entries with a
             cCDMDeliveryPriority value of '5' or less can be acted upon
-            (i.e. retrieved).
+            (i.e., retrieved).
 
             Different types of ECUs may have different values for this
             scalar. Bandwidth-limited ECUs, for example, may configure
@@ -3801,75 +3776,75 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         DEFVAL {0}
         ::= { cKeyTransferPullScalars 3 }
     
-    cPALDeliveryRequest OBJECT-TYPE
+    cCDMLDeliveryRequest OBJECT-TYPE
         SYNTAX      INTEGER { readyForDownload(1), downloadAndParse(2),
                               discard(3) }
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
-            "This scalar controls the server's PAL download process -
-            server information is stored in the cSOMSServerTable. When
+            "This scalar controls the server's CDML download process -
+            server information is stored in the cCDMServerTable. When
             read, it will return 'readyForDownload' if the last action
             succeeded. If the last action is in progress or failed, it
             will return the last requested action.
 
             The values which may be set depend on the current value of
-            this object and the cPALDeliveryStatus object.
+            this object and the cCDMLDeliveryStatus object.
 
             In order to initiate a new download, this object must
             contain the value 'readyForDownload', and the
-            cPALDeliveryStatus must contain the value 'complete'. At
+            cCDMLDeliveryStatus must contain the value 'complete'. At
             which point, setting this object to to 'downloadAndParse'
-            initiates the PAL download process. Note, the
-            cPALDeliveryStatus should transition to 'inProgress' at
-            the device begins the PAL download process from the
-            server(s) and URI(s) listed in the cSOMSServerTable (as
-            ordered by the cSOMSServerPriority index).
+            initiates the CDML download process. Note, the
+            cCDMLDeliveryStatus should transition to 'inProgress' at
+            the device begins the CDML download process from the
+            server(s) and URI(s) listed in the cCDMLServerTable (as
+            ordered by the cCDMLServerPriority index).
 
-            If the PAL download fails, the next highest priority URI
+            If the CDML download fails, the next highest priority URI
             will be tried, and so on.
 
-            While a PAL download is in progress, or if the PAL
+            While a CDML download is in progress, or if the CDML
             download fails for all possible servers and URIs (indicated
-            by a cPALDeliveryStatus value of 'downloadFailed'), this
+            by a cCDMLDeliveryStatus value of 'downloadFailed'), this
             object will return an inconsistentValue error for any new
             value except 'discard' (which will cancel the current
             download).
 
-            If the PAL download succeeded, the cPALDeliveryStatus value
-            remains inProgress and the device attempts to parse the
-            download immediately. During the parsing of the PAL, all
-            new values will return inconsistentValue error (i.e. the
-            parse process can not be aborted). If the parse fails, the
-            cPALDeliveryStatus will transition to 'parseFailed', and
-            this object must be set to 'discard' before a new PAL
+            If the CDML download succeeded, the cCMDLDeliveryStatus
+            value remains inProgress and the device attempts to parse
+            the download immediately. During the parsing of the CDML,
+            all new values will return inconsistentValue error (i.e.,
+            the parse process can not be aborted). If the parse fails,
+            the cCDMLDeliveryStatus will transition to 'parseFailed',
+            and this object must be set to 'discard' before a new CDML
             download is attempted."
         ::= { cKeyTransferPullScalars 4 }
     
-    cPALDeliveryStatus OBJECT-TYPE
+    cCDMLDeliveryStatus OBJECT-TYPE
         SYNTAX      INTEGER { complete(1), inProgress(2),
                               downloadFailed(3),
                               parseFailed(4) }
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "This indicates the current state of a PAL download.
+            "This indicates the current state of a CDML download.
     
             'complete' indicates that the last requested
-            cPALDeliveryRequest action was successful.
+            cCDMLDeliveryRequest action was successful.
     
-            'inProgress' indicates that a PAL download or PAL parse is
+            'inProgress' indicates that a CDML download or CDML parse is
             underway.
 
-            'downloadFailed' indicates that the last attempted PAL
+            'downloadFailed' indicates that the last attempted CDML
             download failed.
     
-            'parseFailed' indicates that the last attempted PAL parse
+            'parseFailed' indicates that the last attempted CDML parse
             failed.
 
             The relationship between this object and
-            cPALDeliveryRequest is detailed in the following table. The
-            table indicates values of cPALDeliveryRequest that are
+            cCDMLDeliveryRequest is detailed in the following table. The
+            table indicates values of cCDMLDeliveryRequest that are
             allowed depending on the current value of this object.
     
 
@@ -3884,7 +3859,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
  ! discard           !   error   ! allowed  !   allowed    !  allowed  !
  --------------------+-----------+----------+--------------+------------
     
-            As described cPALDeliveryRequest description, an
+            As described cCDMLDeliveryRequest description, an
             inconsistentValue error is returned."
         DEFVAL {complete}
         ::= { cKeyTransferPullScalars 5 }
@@ -3893,27 +3868,27 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
     -- Key Transfer Pull Notifications
     -- *****************************************************************
 
-    cPALPullReceiveSuccess  NOTIFICATION-TYPE
-        OBJECTS     { cSOMSServerURI }
+    cCDMLPullReceiveSuccess  NOTIFICATION-TYPE
+        OBJECTS     { cCDMServerURI }
         STATUS      current
         DESCRIPTION
-            "An attempt to receive a Product Availablity List (PAL) has
-            succeeded. The Secure Object Management System (SOMS) server
-            URI is provided with this notification."
+            "An attempt to receive a cryptographic device material
+            list (CDML) succeeded. The CDM server URI is provided with
+            this notification."
         ::= { cKeyTransferPullNotify 1 }
 
-    cPALPullReceiveFailed  NOTIFICATION-TYPE
+    cCDMLPullReceiveFailed  NOTIFICATION-TYPE
         OBJECTS     {
-                        cSOMSServerURI,
+                        cCDMServerURI,
                         cPALDeliveryStatus
                     }
         STATUS      current
         DESCRIPTION
-            "An attempt to receive a Product Availability List (PAL)
-            has failed. The Secure Object Management System (SOMS)
-            server URI and PAL Delivery Status are provided with this
-            notification. Note, the expected values for the PAL
-            Delivery Status are: 'downloadFailed' and 'parseFailed'."
+            "An attempt to receive a cryptographic device material
+            list (CDML) has failed. The CDM server URI and CDML Delivery
+            Status are provided with this notification. Note, the
+            expected values for the CDML Delivery Status are:
+            'downloadFailed' and 'parseFailed'."
         ::= { cKeyTransferPullNotify 2 }
 
     cCDMPullReceiveSuccess  NOTIFICATION-TYPE
@@ -3923,7 +3898,6 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
                     }
         STATUS      current
         DESCRIPTION
-
             "An attempt to receive a cryptographic device material (CDM)
             has succeeded. The CDM Type and CDM URI are provided with
             this notification."
@@ -3942,25 +3916,25 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         ::= { cKeyTransferPullNotify 4 }
 
     -- *****************************************************************
-    -- CC MIB cSOMSServerTable
+    -- CC MIB cCDMServerTable
     -- *****************************************************************
 
-    cSOMSServerTableCount  OBJECT-TYPE
+    cCDMServerTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-             "The number of rows in the cSOMSServerTable"
+             "The number of rows in the cCDMServerTable."
         ::= { cSOMSServerInfo 1 }
 
-    cSOMSServerTableLastChanged  OBJECT-TYPE
+    cCDMServerTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3968,77 +3942,76 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             should be used to populate this column."
         ::= { cSOMSServerInfo 2 }
 
-    cSOMSServerTable  OBJECT-TYPE
-        SYNTAX      SEQUENCE OF CSOMSServerEntry
+    cCDMServerTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF CCDMServerEntry
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "The table containing a list of servers that will be queried
             for available cryptographic device materials (CDMs), such as
             keys and firmware packages. This table is also used to
-            obtain the Product Avaialability List (PAL), which is a list
-            detailing available CDMs and their associated location for
-            obtainment."
+            obtain the cryptographic device material list (CDML), which
+            is a list detailing available CDMs and their associated
+            location for obtainment."
         ::= { cSOMSServerInfo 3 }
 
-    cSOMSServerEntry  OBJECT-TYPE
-        SYNTAX      CSOMSServerEntry
+    cCDMServerEntry  OBJECT-TYPE
+        SYNTAX      CCDMServerEntry
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "A row containing information about a server that has
-            available PALs/CDMs for download."
-        INDEX      { cSOMSServerPriority }
-        ::= { cSOMSServerTable 1 }
+            available CDMLs/CDMs for download."
+        INDEX      { cCDMServerPriority }
+        ::= { cCDMServerTable 1 }
 
-    CSOMSServerEntry  ::= SEQUENCE {
-        cSOMSServerPriority          Unsigned32,
-        cSOMSServerURI               OCTET STRING,
-        cSOMSServerAdditionalInfo    SnmpAdminString,
-        cSOMSServerRowStatus         RowStatus
+    CCDMServerEntry  ::= SEQUENCE {
+        cCDMServerPriority          Unsigned32,
+        cCDMServerURI               OCTET STRING,
+        cCDMServerAdditionalInfo    SnmpAdminString,
+        cCDMServerRowStatus         RowStatus
     }
 
-    cSOMSServerPriority  OBJECT-TYPE
+    cCDMServerPriority  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "A unique numeric index that identifies a server that has
-            available PALs/CDMs for download. This index also provides
+            available CDMLs/CDMs for download. This index also provides
             server prioritization functionality - lower values have a
-
             higher priority. For example, the server with the lowest
-            value will be the first server for PAL/CDM downloads. In
+            value will be the first server for CDML/CDM downloads. In
             the event of failure, the next lowest value server will be
             tried, and so on.
 
-            This column is the sole index to the cSOMSServerTable."
-        ::= { cSOMSServerEntry 1 }
+            This column is the sole index to the cCDMServerTable."
+        ::= { cCDMServerEntry 1 }
 
-    cSOMSServerURI  OBJECT-TYPE
+    cCDMServerURI  OBJECT-TYPE
         SYNTAX      OCTET STRING (SIZE(1..255))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
-            "The location of the server that has available PALs/CDMs
+            "The location of the server that has available CDMLs/CDMs
             for download. The value in this column is represented as a
             URI.
 
-            Note, download of a PAL will typically result in the
+            Note, download of a CDML will typically result in the
             population of new CDM entries in the cCDMDeliveryTable."
-        ::= { cSOMSServerEntry 2 }
+        ::= { cCDMServerEntry 2 }
 
-    cSOMSServerAdditionalInfo  OBJECT-TYPE
+    cCDMServerAdditionalInfo  OBJECT-TYPE
         SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
-            "Additional information about the SOMS server. This
+            "Additional information about the CDM server. This
             information is manually configured by the manager both at or
             after row creation."
-        ::= { cSOMSServerEntry 3 }
+        ::= { cCDMServerEntry 3 }
 
-    cSOMSServerRowStatus  OBJECT-TYPE
+    cCDMServerRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
         MAX-ACCESS  read-create
         STATUS      current
@@ -4054,7 +4027,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             active, and destroy management functions. Support for
             createAndWait, notInService, and notReady management
             functions is optional."
-        ::= { cSOMSServerEntry 4 }
+        ::= { cCDMServerEntry 4 }
 
     -- *****************************************************************
     -- CC MIB cCDMDeliveryTable
@@ -4065,8 +4038,8 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-             "The number of rows in the cCDMDeliveryTable"
-        ::= { cCDMDeliveryInfo 1 }
+             "The number of rows in the cCDMDeliveryTable."
+        ::= { cCDMDeliveryInfo 1 }i
 
     cCDMDeliveryTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
@@ -4075,7 +4048,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -4136,7 +4109,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             [certificate]   = CDM is a certificate
             [cklOrCrl]      = CDM is a compromised key list or
                               certificate revocation list
-            [firmware]      = CDM is a firmware package."
+            [firmware]      = CDM is a firmware package"
         ::= { cCDMDeliveryEntry 1 }
 
     cCDMURI  OBJECT-TYPE
@@ -4149,9 +4122,9 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             associated URI of the CDM Server can easily be derived.
 
             This column is typically populated by an agent upon querying
-            a SOMS Server (e.g. downloading and parsing a Product
-            Availability List (PAL) from a SOMS Server (entry in the
-            cSOMSServerTable)). However, a manager can also configure an
+            a CDM Server (e.g., downloading and parsing a cryptographic
+            device material list (CDML) from a CDM Server (entry in the
+            cCDMServerTable)). However, a manager can also configure an
             entry in this table with predetermined knowledge of the CDM
             location."
         ::= { cCDMDeliveryEntry 2 }
@@ -4164,9 +4137,9 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         DESCRIPTION
             "The package size, in bytes, of the cryptographic device
             material (CDM). This information is retrieved from a
-            Product Availability List (PAL) or a server's product
-            availability response following a query. This column
-            does not apply to notifications found in PALs."
+            cryptographic device material list (CDML) or a server's
+            product availability response following a query. This column
+            does not apply to notifications found in CDMLs."
         ::= { cCDMDeliveryEntry 3 }
 
     cCDMAdditionalInfo  OBJECT-TYPE
@@ -4176,8 +4149,9 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         DESCRIPTION
             "Additional information about the cryptographic device
             material (CDM). This information can be retrieved from the
-            downloaded Product Availability List (PAL) or manually
-            configured by the manager both at or after row creation."
+            downloaded cryptographic device material list (CDML) or
+            manually configured by the manager both at or after row
+            creation."
         ::= { cCDMDeliveryEntry 4 }
 
     cCDMLastDownloadDate  OBJECT-TYPE
@@ -4188,6 +4162,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             "This is a 14 character field that will be populated with
             the following values depending on the state of the download
             and the CDM type.
+
             1. The date and time (expressed as Generalized Time) when
                the device last successfully downloaded the CDM from the
                CDM Server. The format follows:  'yyyymmddhhmmss'  where
@@ -4212,7 +4187,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             "A configurable priority value on the cryptographic device
             material (CDM). This column is a means to allow certain key
             products to be downloaded before others. Lower values have a
-            higher priority (e.g. a value of 1 will be processed before
+            higher priority (e.g., a value of 1 will be processed before
             a value of 2)."
         ::= { cCDMDeliveryEntry 6 }
     
@@ -4323,6 +4298,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
 
     cKeyTransferPullCompliances        OBJECT IDENTIFIER
         ::= { cKeyTransferPullConformance 1}
+
     cKeyTransferPullGroups             OBJECT IDENTIFIER
         ::= { cKeyTransferPullConformance 2}
 
@@ -4356,13 +4332,13 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
 
     cKeyTransferPullServerGroup OBJECT-GROUP
         OBJECTS {
-                  cSOMSServerRetryDelay,
-                  cSOMSServerRetryMaxAttempts,
-                  cSOMSServerTableCount,
-                  cSOMSServerTableLastChanged,
-                  cSOMSServerURI,
-                  cSOMSServerAdditionalInfo,
-                  cSOMSServerRowStatus
+                  cCDMServerRetryDelay,
+                  cCDMServerRetryMaxAttempts,
+                  cCDMServerTableCount,
+                  cCDMServerTableLastChanged,
+                  cCDMServerURI,
+                  cCDMServerAdditionalInfo,
+                  cCDMServerRowStatus
                 }
         STATUS current
         DESCRIPTION
@@ -4373,8 +4349,8 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
     cKeyTransferPullDeliveryGroup OBJECT-GROUP
         OBJECTS {
                   cCDMPullRetrievalPriorities,
-                  cPALDeliveryRequest,
-                  cPALDeliveryStatus,
+                  cCDMLDeliveryRequest,
+                  cCDMLDeliveryStatus,
                   cCDMDeliveryTableCount,
                   cCDMDeliveryTableLastChanged,
                   cCDMDeliveryTableLastChanged,
@@ -4382,7 +4358,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
                   cCDMURI,
                   cCDMPackageSize,
                   cCDMAdditionalInfo,
-                  cPALastDownloadDate,
+                  cCDMLastDownloadDate,
                   cCDMDeliveryPriority,
                   cCDMDeliveryRequest,
                   cCDMDeliveryStatus,
@@ -4396,8 +4372,8 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
 
     cKeyTransferPullDeliveryNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
-                        cPALPullReceiveSuccess,
-                        cPALPullReceiveFailed,
+                        cCDMLPullReceiveSuccess,
+                        cCDMLPullReceiveFailed,
                         cCDMPullReceiveSuccess,
                         cCDMPullReceiveFailed
                       }
