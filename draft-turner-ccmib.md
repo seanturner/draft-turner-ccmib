@@ -5403,41 +5403,16 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
     ccSecureConnectionInfoMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Secure Connection Information
             objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5450,8 +5425,8 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccSecureConnectionInfo 1 }
 
@@ -5512,7 +5487,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -5550,7 +5525,8 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         cSecConCryptographicSuite   OCTET STRING,
         cSecConEstablishmentTime    DateAndTime,
         cSecConStatus               OCTET STRING,
-        cSecConRowStatus            RowStatus
+        cSecConRowStatus            RowStatus,
+        cSecConRemoteKeyReference   OCTET STRING
     }
 
     cSecConTableID  OBJECT-TYPE
@@ -5587,9 +5563,9 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
             Note, this is a free form OCTET STRING column where
             meaningful values/format are defined per Secure Connection
-            protocol type basis. For instance, in an IPsec context (i.e.
-            cSecConType value is set to 'ipsec'), this column would
-            store the Security Parameter Index (SPI) for a given
+            protocol type basis. For instance, in an IPsec context
+            (i.e., cSecConType value is set to 'ipsec'), this column
+            would store the Security Parameter Index (SPI) for a given
             Encapsulating Security Payload Version 3 Security
             Association (RFC 4303 - Section 2.1.)."
         ::= { cSecConEntry 3 }
@@ -5669,7 +5645,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             "Column that provides the current status of the Secure
             Connection. Note, this is a free form OCTET STRING column
             where meaningful values are defined per Secure Connection
-            protocol type basis (i.e. as defined by the cSecConType
+            protocol type basis (i.e., as defined by the cSecConType
             value) or per implementation basis.
 
             If there is no appropriate value to populate with, this
@@ -5697,12 +5673,28 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             enabled/disabled by the manager."
         ::= { cSecConEntry 9 }
 
+    cSecConRemoteKeyReference  OBJECT-TYPE
+        SYNTAX      OCTET STRING (SIZE(0..255))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION 
+            "Administrative string that references remote key material
+            associated with the Secure Connection (i.e., the remote key
+            material used by the peer to establish the Secure
+            Connection. This column references an entry (via table index
+            value) in cRemoteKeyMaterialTable (CC-KEY-MANAGEMENT-MIB).
+
+            If there is no appropriate value to populate with, this
+            column would be populated with an empty string, ''"
+        ::= {cSecConEntry 10}
+
     -- *****************************************************************
     -- Module Conformance Information
     -- *****************************************************************
 
     cSecureConnectionCompliances  OBJECT IDENTIFIER
         ::= { cSecureConnectionConformance 1}
+
     cSecureConnectionGroups  OBJECT IDENTIFIER
         ::= { cSecureConnectionConformance 2}
 
@@ -5735,7 +5727,8 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
                     cSecConCryptographicSuite,
                     cSecConEstablishmentTime,
                     cSecConStatus,
-                    cSecConRowStatus
+                    cSecConRowStatus,
+                    cSecConRemoteKeyReference
                 }
         STATUS current
         DESCRIPTION
