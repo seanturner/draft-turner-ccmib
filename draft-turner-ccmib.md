@@ -291,6 +291,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { ccDeviceInfoMIB 1}
     cDeviceComponentVersInfo  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 2}
+    ccFirmwareManagement  OBJECT IDENTIFIER
+        ::= { ccFeatureHierarchyMIB TBD }
     cDeviceInfoScalars  OBJECT IDENTIFIER
         ::= { ccDeviceInfoMIB 5}
     cDeviceInfoNotify  OBJECT IDENTIFIER
