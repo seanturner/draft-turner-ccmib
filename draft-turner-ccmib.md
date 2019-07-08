@@ -4434,40 +4434,15 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             FROM SNMPv2-CONF;                          -- FROM RFC 2580
 
     ccKeyTransferPushMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Key Transfer Push object.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -4480,8 +4455,8 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyTransferPush 1 }
 
@@ -4591,7 +4566,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "The number of rows in the cCDMPushDestTable"
+            "The number of rows in the cCDMPushDestTable."
         ::= { cCDMPushDestInfo 1 }
 
     cCDMPushDestTableLastChanged  OBJECT-TYPE
@@ -4601,7 +4576,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -4649,15 +4624,12 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushDestEntry 1 }
 
     cCDMPushDestTransferType  OBJECT-TYPE
-        SYNTAX      INTEGER { ipsec(1), tls(2) }
+        SYNTAX      SnmpAdminString (SIZE(1..32))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "The transfer mechanism or protocol used by the sender to
-            execute the Cryptographic Device Material (CDM) transfer:
-            ipsec(1), tls(2):
-            ipsec - Internet Protocol Security (IPsec)
-            tls - Transport Layer Security (TLS)"
+            execute the Cryptographic Device Material (CDM) transfer."
         ::= { cCDMPushDestEntry 2 }
 
     cCDMPushDestAddressLocationType  OBJECT-TYPE
@@ -4702,10 +4674,10 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         STATUS      current
         DESCRIPTION
             "A reference string that points to the key material(s) to
-            transfer. This column may reference one entry (e.g. an entry
-            in the cCDMStoreTable) or multiple entries (e.g. multiple
-            entries in the cCDMTransferPkgTable). This object defines
-            all the items in the package that will be sent."
+            transfer. This column may reference one entry (e.g., an
+            entry in the cCDMStoreTable) or multiple entries (e.g.,
+            multiple entries in the cCDMTransferPkgTable). This object
+            defines all the items in the package that will be sent."
         ::= { cCDMPushDestEntry 6 }
 
     cCDMPushDestRowStatus  OBJECT-TYPE
@@ -4745,7 +4717,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -4842,7 +4814,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "The number of rows in the cCDMPushSrcTable"
+            "The number of rows in the cCDMPushSrcTable."
         ::= { cCDMPushSrcInfo 1 }
 
     cCDMPushSrcTableLastChanged  OBJECT-TYPE
@@ -4852,7 +4824,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -4884,7 +4856,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
 
     CCDMPushSrcEntry  ::= SEQUENCE {
         cCDMPushSrcSenderName       SnmpAdminString,
-        cCDMPushSrcTransferType     INTEGER,
+        cCDMPushSrcTransferType     SnmpAdminString,
         cCDMPushSrcAddrLocationType INTEGER,
         cCDMPushSrcAddrLocation     OCTET STRING,
         cCDMPushSrcRowStatus        RowStatus
@@ -4901,7 +4873,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushSrcEntry 1 }
 
     cCDMPushSrcTransferType  OBJECT-TYPE
-        SYNTAX      INTEGER { ipsec(1), tls(2), other(3) }
+        SYNTAX      SnmpAdminString (SIZE(1..32))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -4909,10 +4881,6 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             mechanism or protocol used by the receiver to receive the
             Cryptographic Device Material (CDM) transfer.
 
-            ipsec - Internet Protocol Security (IPsec)
-            tls - Transport Layer Security (TLS)
-            other - used for device specific transfer mechanisms
-    
             cCDMPushSrcSenderName and cCDMPushSrcTransferType serve as
             indexes of this table."
         ::= { cCDMPushSrcEntry 2 }
@@ -4958,6 +4926,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
 
     cKeyTransferPushCompliances  OBJECT IDENTIFIER
         ::= { cKeyTransferPushConformance 1}
+
     cKeyTransferPushGroups  OBJECT IDENTIFIER
         ::= { cKeyTransferPushConformance 2}
 
