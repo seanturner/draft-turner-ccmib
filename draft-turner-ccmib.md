@@ -332,9 +332,10 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
-            "This object contains the parameters (e.g. a pathname and
+            "This object contains the parameters (e.g., a pathname and
             parameter) supplied to the load device when requesting the
             initial operating system configuration from that device.
+
             Note that writing to this object just changes the
             configuration that will be used the next time the operating
             system is loaded and does not actually cause the reload to
@@ -370,7 +371,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             "The value of cSystemUpTime the last time any configurable
             object within the MIBs supported by the device has been
             modified, created, or deleted by either SNMP, agent, or
-            other management method (e.g. via an HMI). 
+            other management method (e.g., via an HMI). 
 
             Managers can use this object to ensure that no changes to
             any configuration within the device have happened since
@@ -438,7 +439,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             to be displayed and meaningful to the human operator (e.g.
             Flinstones Inc). In other words, this object is not intended
             to store the vendor's authoritative identification value
-            (i.e. sysObjectID RFC 1213)."
+            (i.e.. sysObjectID RFC 1213)."
         ::= { cDeviceInfoScalars 10 }
     
     cModelIdentifier OBJECT-TYPE
@@ -588,7 +589,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
