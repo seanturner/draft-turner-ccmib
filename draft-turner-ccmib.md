@@ -281,7 +281,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
         DESCRIPTION   "Initial Version. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-         ::= { ccDeviceInfo 1 }
+        ::= { ccDeviceInfo 1 }
 
     -- *****************************************************************
     -- Device Information Segments
