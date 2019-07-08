@@ -77,7 +77,7 @@ Structure of the MIB module
 Definition of the CC MIB module
 ===============================
 
-CC Assignments {#cc-assign}
+Assignments {#cc-assign}
 --------------
 
 This MIB module makes reference to the following document: {{RFC2578}}.
@@ -126,7 +126,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
     END
 ~~~~
 
-CC Feature Hierarchy {#cc-fh}
+Feature Hierarchy {#cc-fh}
 --------------------
 
 This MIB module makes reference to the following document: {{RFC2578}}.
@@ -185,7 +185,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
     END
 ~~~~
 
-CC Device Info
+Device Info
 --------------
 
 This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{!RFC3411}}, and {{?RFC3418}}.
