@@ -1123,7 +1123,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     cKeyManagementConformance  OBJECT IDENTIFIER
         ::= { ccKeyManagementMIB 13 }
     cRemoteKeyMaterialInfo OBJECT IDENTIFIER
-        ::= { ccKeyManagementMIB 14}
+        ::= { ccKeyManagementMIB 14 }
 
     -- *****************************************************************
     -- Key Management Information Scalars
@@ -1273,7 +1273,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementScalars 9 }
 
     cGenerateKeyType  OBJECT-TYPE
-        SYNTAX      INTEGER { x509v3(1), psk(2)}
+        SYNTAX      INTEGER { x509v3(1), psk(2) }
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2109,7 +2109,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             [false] Disables automatic rekey.
 
             This column is optional to support."
-        DEFVAL{false}
+        DEFVAL     { false }
     ::= { cAsymKeyEntry 20 }
 
 
@@ -2278,7 +2278,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS     current
         DESCRIPTION
             "The version of the Trust Anchor."
-        ::= {cTrustAnchorEntry 9}
+        ::= { cTrustAnchorEntry 9 }
 
     -- *****************************************************************
     -- CC MIB cCKLTable
@@ -2677,7 +2677,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             Names."
         ::= { cCertSubAltNameTableEntry 1 }
     
-    
     cCertSubAltNameListIndex OBJECT-TYPE
         SYNTAX     Unsigned32
         MAX-ACCESS not-accessible
@@ -2689,7 +2688,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             uniquely identifies each row, or set of Subject Alternative
             Names."
         ::= { cCertSubAltNameTableEntry 2 }
-    
     
     cCertSubAltNameType OBJECT-TYPE
         SYNTAX     INTEGER { otherName(0), rfc822Name(1), dNSName(2),
@@ -2974,7 +2972,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             algorithm. For an end entity certificate, this information
             indicates under which policy this certificate has been
             issued and the purposes for which the certificate may be
-            used. For a Certificate Authority (CA) certificate, this
+            used. For a Certification Authority (CA) certificate, this
             information limits the set of policies for certification
             paths that include this certificate."
         ::= { cCertPolicyInfo 3 }
@@ -3026,7 +3024,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "For end entity certificates, this is an identifier for the
             policy under which the certificate has been issued. For
-            Certificate Authority (CA) certificates, this is an
+            Certification Authority (CA) certificates, this is an
             identifier for a certification path policy that includes
             this certificate."
         ::= { cCertPolicyEntry 3 }
@@ -3082,9 +3080,9 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "The table listing mappings between policies that a
-            certificate issuing Certificate Authority (CA) considers as
-            equivalent or comparable to the domain policies of the
-            subject certificate CA."
+            certificate issuing Certification Authority (CA) considers
+            as equivalent or comparable to the domain policies of the
+            subject certificate's CA."
         ::= { cPolicyMappingInfo 3 }
 
     cPolicyMappingEntry OBJECT-TYPE
@@ -3093,8 +3091,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "A row containing a mapping between the domain policy of an
-            issuing Certificate Authority (CA) and an equivalent domain
-            policy of the subject certificate's CA."
+            issuing Certification Authority (CA) and an equivalent
+            domain policy of the subject certificate's CA."
         INDEX  { cPolicyMappingGroup, cPolicyMappingIndex }
         ::= { cPolicyMappingTable 1 }
 
@@ -3130,7 +3128,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "Indicates the subject Certificate Authority's domain
+            "Indicates the subject Certification Authority's domain
             policy."
         ::= { cPolicyMappingEntry 3 }
 
@@ -3140,7 +3138,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "Indicates the issuer domain policy that the issuer
-            Certificate Authority (CA) considers equivalent to the
+            Certification Authority (CA) considers equivalent to the
             subject CA domain policy."
         ::= { cPolicyMappingEntry 4 }
 
@@ -3364,6 +3362,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     
     cKeyManagementCompliances          OBJECT IDENTIFIER
         ::= { cKeyManagementConformance 1}
+
     cKeyManagementGroups               OBJECT IDENTIFIER
         ::= { cKeyManagementConformance 2}
 
