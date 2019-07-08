@@ -1095,7 +1095,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         DESCRIPTION
             "This group is composed of notifications related to battery 
             information."
-        ::= { cDeviceInfoGroups 7 }      
+        ::= { cDeviceInfoGroups 7 }
 
     cDeviceInfoFirmwareNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS { 
