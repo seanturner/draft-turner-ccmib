@@ -290,12 +290,11 @@ ul.toc li {
 <link href="#rfc.section.5.1" rel="Chapter" title="5.1 CC Assignments"/>
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 CC Feature Hierarchy"/>
 <link href="#rfc.section.5.3" rel="Chapter" title="5.3 CC Device Info"/>
-<link href="#rfc.section.5.4" rel="Chapter" title="5.4 Firmware Management Information"/>
-<link href="#rfc.section.5.5" rel="Chapter" title="5.5 Key Management Information"/>
-<link href="#rfc.section.5.6" rel="Chapter" title="5.6 Key Transfer Pull"/>
-<link href="#rfc.section.5.7" rel="Chapter" title="5.7 Key Transfer Push"/>
-<link href="#rfc.section.5.8" rel="Chapter" title="5.8 Security Policy Information"/>
-<link href="#rfc.section.5.9" rel="Chapter" title="5.9 Secure Connection Information"/>
+<link href="#rfc.section.5.4" rel="Chapter" title="5.4 Key Management Information"/>
+<link href="#rfc.section.5.5" rel="Chapter" title="5.5 Key Transfer Pull"/>
+<link href="#rfc.section.5.6" rel="Chapter" title="5.6 Key Transfer Push"/>
+<link href="#rfc.section.5.7" rel="Chapter" title="5.7 Security Policy Information"/>
+<link href="#rfc.section.5.8" rel="Chapter" title="5.8 Secure Connection Information"/>
 <link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations"/>
 <link href="#rfc.references" rel="Chapter" title="8 References"/>
@@ -310,7 +309,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Sun, J., Irani, M., Nguyen, T., Purvis, R., and S. Turner" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-turner-ccmib-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-5-31" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-7-8" />
   <meta name="dct.abstract" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
   <meta name="description" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
 
@@ -322,7 +321,7 @@ ul.toc li {
     <tbody>
     
     	<tr>
-  <td class="left">Network Working Group</td>
+  <td class="left">N/A</td>
   <td class="right">J. Sun</td>
 </tr>
 <tr>
@@ -330,11 +329,11 @@ ul.toc li {
   <td class="right">M. Irani</td>
 </tr>
 <tr>
-  <td class="left">Intended status: Standards Track</td>
+  <td class="left">Intended status: Informational</td>
   <td class="right">T. Nguyen</td>
 </tr>
 <tr>
-  <td class="left">Expires: December 2, 2019</td>
+  <td class="left">Expires: January 9, 2020</td>
   <td class="right">Naval Information Warfare Center Pacific</td>
 </tr>
 <tr>
@@ -355,7 +354,7 @@ ul.toc li {
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">May 31, 2019</td>
+  <td class="right">July 8, 2019</td>
 </tr>
 
     	
@@ -375,7 +374,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on December 2, 2019.</p>
+<p>This Internet-Draft will expire on January 9, 2020.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -395,12 +394,11 @@ ul.toc li {
 <ul><li>5.1.   <a href="#rfc.section.5.1">CC Assignments</a></li>
 <li>5.2.   <a href="#rfc.section.5.2">CC Feature Hierarchy</a></li>
 <li>5.3.   <a href="#rfc.section.5.3">CC Device Info</a></li>
-<li>5.4.   <a href="#rfc.section.5.4">Firmware Management Information</a></li>
-<li>5.5.   <a href="#rfc.section.5.5">Key Management Information</a></li>
-<li>5.6.   <a href="#rfc.section.5.6">Key Transfer Pull</a></li>
-<li>5.7.   <a href="#rfc.section.5.7">Key Transfer Push</a></li>
-<li>5.8.   <a href="#rfc.section.5.8">Security Policy Information</a></li>
-<li>5.9.   <a href="#rfc.section.5.9">Secure Connection Information</a></li>
+<li>5.4.   <a href="#rfc.section.5.4">Key Management Information</a></li>
+<li>5.5.   <a href="#rfc.section.5.5">Key Transfer Pull</a></li>
+<li>5.6.   <a href="#rfc.section.5.6">Key Transfer Push</a></li>
+<li>5.7.   <a href="#rfc.section.5.7">Security Policy Information</a></li>
+<li>5.8.   <a href="#rfc.section.5.8">Secure Connection Information</a></li>
 </ul><li>6.   <a href="#rfc.section.6">IANA Considerations</a></li>
 <li>7.   <a href="#rfc.section.7">Security Considerations</a></li>
 <li>8.   <a href="#rfc.references">References</a></li>
@@ -433,41 +431,16 @@ ul.toc li {
             FROM SNMPv2-SMI;                                 -- RFC 2578
 
     ccAssignmentsMIB MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+           "CC MIB Configuration Control Board
+            Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB tree hierarchical assignments
             below it and acts as a reservation mechanism.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -479,16 +452,17 @@ ul.toc li {
 
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
-        ::= { mib-2 TBD }
+        REVISION      "201609302154Z"
+    -- RFC EDITOR: Please update XXXX with the assigned RFC number.
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        ::= { ccmib 3 }
+
+    ccmib    OBJECT IDENTIFIER ::= { enterprise 34493 }
 
     --
     -- Note: Current top-level OID assignments within the CC MIB tree:
-    --    mib-2.TBD   : CC-ASSIGNMENTS-MIB (this MIB)
-    --    mib-2.TBD.1 : CC-FEATURE-HIERARCHY-MIB
+    --    ccmib.3   : CC-ASSIGNMENTS-MIB (this MIB)
+    --    ccmib.3.1 : CC-FEATURE-HIERARCHY-MIB
 
     END
 </pre>
@@ -499,47 +473,22 @@ ul.toc li {
 
     IMPORTS
         ccAssignmentsMIB
-            FROM CC-ASSIGNMENTS-MIB               -- FROM {{cc-assign}}
+            FROM CC-ASSIGNMENTS-MIB               -- FROM Section 5.1
         MODULE-IDENTITY
             FROM SNMPv2-SMI;                      -- FROM RFC 2578
 
     ccFeatureHierarchyMIB MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB features in hierarchical MIB
             tree assignments.  It acts as a reservation mechanism for
             other MIB sets to be anchored below it.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -552,15 +501,13 @@ ul.toc li {
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccAssignmentsMIB 1 }
 
     ccDeviceInfo  OBJECT IDENTIFIER
         ::= { ccFeatureHierarchyMIB 2 }
-    ccFirmwareManagement  OBJECT IDENTIFIER
-        ::= { ccFeatureHierarchyMIB TBD }
     ccKeyManagement  OBJECT IDENTIFIER
         ::= { ccFeatureHierarchyMIB 3 }
     ccKeyTransferPull  OBJECT IDENTIFIER
@@ -581,7 +528,7 @@ ul.toc li {
 
     IMPORTS
         ccDeviceInfo
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
@@ -594,40 +541,15 @@ ul.toc li {
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Device Information objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -640,8 +562,8 @@ ul.toc li {
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccDeviceInfo 1 }
 
@@ -650,13 +572,17 @@ ul.toc li {
     -- *****************************************************************
 
     cDeviceInfoConformance  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 1}
+        ::= { ccDeviceInfoMIB 1 }
     cDeviceComponentVersInfo  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 2}
+        ::= { ccDeviceInfoMIB 2 }
+    cBatteryInfo  OBJECT IDENTIFIER
+        ::= { ccDeviceInfoMIB 3 }
+    cFirmwareInfo  OBJECT IDENTIFIER
+        ::= { ccDeviceInfoMIB 4 }
     cDeviceInfoScalars  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 5}
+        ::= { ccDeviceInfoMIB 5 }
     cDeviceInfoNotify  OBJECT IDENTIFIER
-        ::= { ccDeviceInfoMIB 6}
+        ::= { ccDeviceInfoMIB 6 }
 
     -- *****************************************************************
     -- General Device Information Scalars
@@ -688,9 +614,10 @@ ul.toc li {
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
-            "This object contains the parameters (e.g. a pathname and
+            "This object contains the parameters (e.g., a pathname and
             parameter) supplied to the load device when requesting the
             initial operating system configuration from that device.
+
             Note that writing to this object just changes the
             configuration that will be used the next time the operating
             system is loaded and does not actually cause the reload to
@@ -726,11 +653,11 @@ ul.toc li {
             "The value of cSystemUpTime the last time any configurable
             object within the MIBs supported by the device has been
             modified, created, or deleted by either SNMP, agent, or
-            other management method (e.g. via an HMI). Managers can use
-            this object to ensure that no changes to any configuration
-            within the device have happened since the last time it
-            examined the device.  A value of 0 indicates that no objects
-            have been changed since the agent initialized."
+            other management method (e.g., via an HMI). Managers can
+            use this object to ensure that no changes to any
+            configuration within the device have happened since the last
+            time it examined the device. A value of 0 indicates that no
+            objects have been changed since the agent initialized."
         ::= { cDeviceInfoScalars 6 }
 
     cResetDevice  OBJECT-TYPE
@@ -791,7 +718,7 @@ ul.toc li {
             to be displayed and meaningful to the human operator (e.g.
             Flinstones Inc). In other words, this object is not intended
             to store the vendor's authoritative identification value
-            (i.e. sysObjectID RFC 1213)."
+            (i.e., sysObjectID RFC 1213)."
         ::= { cDeviceInfoScalars 10 }
     
     cModelIdentifier OBJECT-TYPE
@@ -815,6 +742,25 @@ ul.toc li {
     -- *****************************************************************
     -- Device Information Notifications
     -- *****************************************************************
+
+    cFirmwareInstallFailed  NOTIFICATION-TYPE
+        STATUS      current
+        DESCRIPTION 
+            "A notification from the device to the management station
+            indicating a firmware install failed."
+        ::= { cDeviceInfoNotify 1 }
+
+    cFirmwareInstallSuccess  NOTIFICATION-TYPE
+         OBJECTS     {
+                         cFirmwareName,
+                         cFirmwareVersion,
+                         cFirmwareSource
+                     }
+         STATUS      current
+         DESCRIPTION 
+             "A notification from the device to the management station
+             indicating a firmware intsall succeeded."
+         ::= {cDeviceInfoNotify 2}
 
     cResetDeviceInitialized  NOTIFICATION-TYPE
         STATUS      current
@@ -844,6 +790,39 @@ ul.toc li {
             notification should be sent before the device performs any
             operations (such as shutting down interfaces, etc.)"
         ::= { cDeviceInfoNotify 5 }
+
+    cBatteryLow  NOTIFICATION-TYPE
+        OBJECTS     {
+                        cBatteryType,
+                        cBatteryOpStatus,
+                        cBatteryLowThreshold
+                    }
+        STATUS      current
+        DESCRIPTION 
+            "A notification from the device to the management station
+            indicating a battery has reached the threshold at which a
+            battery warning is indicated."
+        ::= { cDeviceInfoNotify 6 }
+
+     cBatteryRequiresReplacement  NOTIFICATION-TYPE
+         OBJECTS     { cBatteryType, cBatteryOpStatus }
+         STATUS      current
+         DESCRIPTION 
+             "A notification from the device to the management station
+             indicating a battery should be charged or changed
+             immediately."
+         ::= { cDeviceInfoNotify 7 }
+
+     cDeviceOnBattery  NOTIFICATION-TYPE
+         OBJECTS     { cBatteryType, cBatteryOpStatus }
+         STATUS      current
+         DESCRIPTION 
+             "A notificiation from the device to the management station
+             indicating the device is on battery power. This
+             notification is sent when the device is no longer
+             connected to an external power source and is operating
+             using a battery for main power."
+         ::= { cDeviceInfoNotify 8 }
 
     cDeviceComponentDisabled  NOTIFICATION-TYPE
         OBJECTS     {
@@ -889,7 +868,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -918,12 +897,13 @@ ul.toc li {
         INDEX      { cDeviceComponentName, cDeviceComponentVersion }
         ::= { cDeviceComponentVersTable 1 }
 
-    cDeviceComponentVersEntry  ::= SEQUENCE {
-        cDeviceComponentName        SnmpAdminString,
-        cDeviceComponentVersion     SnmpAdminString,
-        cDeviceComponentOpStatus    INTEGER,
-        cDeviceComponentDescription OCTET STRING
-    }
+    cDeviceComponentVersEntry  ::= SEQUENCE
+        {
+          cDeviceComponentName        SnmpAdminString,
+          cDeviceComponentVersion     SnmpAdminString,
+          cDeviceComponentOpStatus    INTEGER,
+          cDeviceComponentDescription OCTET STRING
+        }
 
     cDeviceComponentName  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(1..32))
@@ -990,11 +970,237 @@ ul.toc li {
         ::= { cDeviceComponentVersEntry 4 }
 
     -- *****************************************************************
+    -- CC MIB cBatteryInfoTable
+    -- *****************************************************************
+
+    cBatteryInfoTableCount  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The number of rows in the cBatteryInfoTable."
+        ::= { cBatteryInfo 1 }
+
+    cBatteryInfoTableLastChanged  OBJECT-TYPE
+        SYNTAX      TimeStamp
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The last time any entry in the table was modified, created,
+            or deleted by either SNMP, agent, or other management
+            method (e.g., via an HMI). Managers can use this object to
+            ensure that no changes to configuration of this table have
+            happened since the last time it examined the table. A
+            value of 0 indicates that no entry has been changed since
+            the agent initialized.  The value in CC-DEVICE-INFO-MIB
+            cSystemUpTime should be used to populate this column."
+        ::= { cBatteryInfo 2 }
+
+    cBatteryInfoTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF CBatteryInfoEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "The table containing information on each of the batteries
+            installed in the device."
+        ::= { cBatteryInfo 3 }
+
+    cBatteryInfoEntry  OBJECT-TYPE
+        SYNTAX      CBatteryInfoEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+           "A row contining information on a specific battery. If a
+           device cannot return status of a battery it should not
+           create a row in this table for that battery."
+        INDEX      { cBatteryIndex }
+        ::= { cBatteryInfoTable 1 }
+
+    CBatteryInfoEntry  ::= SEQUENCE
+        {
+            cBatteryIndex            Unsigned32,
+            cBatteryType             INTEGER,
+            cBatteryOpStatus         INTEGER,
+            cBatteryLowThreshold     Integer32
+        }
+
+    cBatteryIndex  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "A numerical index used to identify the battery. This value
+            uniquely identifies a battery on this device. The value
+            should be persistent for a given battery, but management
+            stations should not depend on it as it may not be possible
+            for some devices to retain identical indexes (especially
+            across reboots)."
+        ::= { cBatteryInfoEntry 1 }
+
+    cBatteryType  OBJECT-TYPE
+        SYNTAX      INTEGER { other(1), main(2), clock(3), security(4) }
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The type of battery. Main(2) batteries are used for
+            operation of the device when not connected to a power
+            source. Clock(3) is used to describe batteries which cannot
+            provide main power to the device but maintain clock or
+            other persistent data. Security(4) is used for batteries
+            which perform specific security functions or which may
+            render the device inoperable when the battery is depleted.
+            If a battery is used for both clock and security, Security
+            should be returned. Other(1) describes a battery which is
+            not otherwise defined here."
+        ::= { cBatteryInfoEntry 2 }
+
+    cBatteryOpStatus  OBJECT-TYPE
+        SYNTAX      INTEGER { unknown(1), batteryNormal(2),
+                              batteryLow(3), batteryDepleted(4),
+                              batteryMissing(5) }
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "Indication of the status of the battery."
+        ::= { cBatteryInfoEntry 3 }
+
+    cBatteryLowThreshold  OBJECT-TYPE
+        SYNTAX      Integer32 (0..100)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION 
+            "The percentage of capacity at which the cBatteryLow
+            notification will be generated. A value of zero indicates
+            that the notification should never be sent for this
+            battery. This object should not be implemented if the
+            device will detect a low battery, but the actual percentage
+            is not measurable. This object only needs be writable for
+            implementations that support modification of the warning
+            level percentage."
+        ::= { cBatteryInfoEntry 4 }
+
+    -- *****************************************************************
+    -- CC MIB cFirmwareInformationTable
+    -- *****************************************************************
+
+    cFirmwareInformationTableCount  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The number of rows in the cFirmwareInformationTable."
+        ::= { cFirmwareInfo 1 }
+
+    cFirmwareInformationTableLastChanged  OBJECT-TYPE
+        SYNTAX      TimeStamp
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The last time any entry in the table was modified, created,
+            or deleted by either SNMP, agent, or other management
+            method (e.g., via an HMI). Managers can use this object to
+            ensure that no changes to configuration of this table have
+            happened since the last time it examined the table. A value
+            of 0 indicates that no entry has been changed since the
+            agent initialized. The value in CC-DEVICE-INFO-MIB
+            cSystemUpTime should be used to populate this column."
+        ::= { cFirmwareInfo 2 }
+
+    cFirmwareInformationTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF CFirmwareInformationEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "A table that lists firmware versions available in the device, along
+            with their versions and type. This is used to list currently loaded 
+            firmware versions of running firmware and other available firmware 
+            versions in support of returning to a previous version of the 
+            firmware."
+        ::= { cFirmwareInfo 3 }
+
+    cFirmwareInformationEntry  OBJECT-TYPE
+        SYNTAX      CFirmwareInformationEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "A row containing a firmware package name, version, and source."
+        INDEX      { cFirmwareName }
+        ::= { cFirmwareInformationTable 1 }
+
+    CFirmwareInformationEntry  ::= SEQUENCE
+        {
+           cFirmwareName                    OCTET STRING,
+           cFirmwareVersion                 SnmpAdminString,
+           cFirmwareSource                  SnmpAdminString,
+           cFirmwareRunning                 TruthValue,
+           cFirmwareRowStatus               RowStatus
+        }
+
+    cFirmwareName  OBJECT-TYPE
+        SYNTAX      OCTET STRING (SIZE(1..255))
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+           "Unique identifier provided in the firmware package."
+        ::= { cFirmwareInformationEntry 1 }
+
+    cFirmwareVersion  OBJECT-TYPE
+        SYNTAX      SnmpAdminString (SIZE(1..255))
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "Version of firmware (provided in the package); for legacy
+            firmware packages, this column would be the empty string,
+            ''."
+        ::= { cFirmwareInformationEntry 2 }
+
+    cFirmwareSource  OBJECT-TYPE
+        SYNTAX      SnmpAdminString (SIZE(1..255))
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+           "This column is used by the implementation to describe how
+           the firmware was received. Agents may use any string which
+           adequately describes the interface such as 'USB.' Agents may
+           also reference entries in the ifTable when appropriate. If
+           received using a Cryptographic Device Material server, the
+           exact URI that was used to retrieve the firmware package
+           would be configured in this column."
+        ::= { cFirmwareInformationEntry 3 }
+
+    cFirmwareRunning  OBJECT-TYPE
+        SYNTAX      TruthValue
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION 
+            "Indicates if the firmware is currently running. Only one
+            row in the table should have this object set to True at
+            any given time. If this object is set from False to True,
+            the agent must install the firmware, uninstall the previous
+            running firmware and change the cFirmwareRunning object for
+            the previous running firmware from True to False."
+        ::= { cFirmwareInformationEntry 4 }
+
+    cFirmwareRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION 
+            "The status of the row, by which old entries may be deleted
+            from this table.
+
+            At a minimum, implementations must support destroy
+            management functions.  Support for active, notInService,
+            and notReady management functions is optional."
+        ::= {cFirmwareInformationEntry 5}
+
+    -- *****************************************************************
     -- Module Conformance Information
     -- *****************************************************************
 
     cDeviceInfoCompliances  OBJECT IDENTIFIER
         ::= { cDeviceInfoConformance 1}
+
     cDeviceInfoGroups  OBJECT IDENTIFIER
         ::= { cDeviceInfoConformance 2}
 
@@ -1042,6 +1248,35 @@ ul.toc li {
             "This notification group is optional for implementation."
         ::= { cDeviceInfoCompliances 2 }
 
+    cDeviceInfoBatteryCompliance MODULE-COMPLIANCE
+        STATUS    current
+        DESCRIPTION
+           "Compliance levels for battery information."
+        MODULE
+        MANDATORY-GROUPS { cDeviceInfoBatteryGroup }
+
+        GROUP cDeviceInfoBatteryNotifyGroup
+        DESCRIPTION
+           "This notification group is optional for implementation."
+
+        OBJECT cBatteryLowThreshold
+        MIN-ACCESS not-accessible
+        DESCRIPTION
+            "Implementation of this object is optional."
+     ::= { cDeviceInfoCompliances 3 }
+
+    cDeviceInfoFirmwareCompliance MODULE-COMPLIANCE
+        STATUS    current
+        DESCRIPTION
+            "Compliance levels for firmware information."
+        MODULE
+        MANDATORY-GROUPS { cDeviceInfoFirmwareGroup }
+
+        GROUP cDeviceInfoFirmwareNotifyGroup
+        DESCRIPTION
+            "This notification group is optional for implementation."
+        ::= { cDeviceInfoCompliances 4 }
+
     cDeviceInfoSystemGroup OBJECT-GROUP
         OBJECTS {
                     cSystemDate,
@@ -1078,6 +1313,36 @@ ul.toc li {
             information."
         ::= { cDeviceInfoGroups 2 }
 
+    cDeviceInfoBatteryGroup OBJECT-GROUP
+        OBJECTS {
+                     cBatteryInfoTableCount,
+                     cBatteryInfoTableLastChanged,
+                     cBatteryType,
+                     cBatteryOpStatus,
+                     cBatteryLowThreshold
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to battery
+            information."
+        ::= { cDeviceInfoGroups 3 } 
+
+    cDeviceInfoFirmwareGroup OBJECT-GROUP
+         OBJECTS {
+                     cFirmwareInformationTableCount,
+                     cFirmwareInformationTableLastChanged,
+                     cFirmwareName,
+                     cFirmwareVersion,
+                     cFirmwareSource,
+                     cFirmwareRunning,
+                     cFirmwareRowStatus
+                }
+         STATUS current
+         DESCRIPTION
+             "This group is composed of objects related to firmware
+             information."
+         ::= { cDeviceInfoGroups 4 }
+
     cDeviceInfoSystemNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cResetDeviceInitialized,
@@ -1102,282 +1367,39 @@ ul.toc li {
             component information."
         ::= { cDeviceInfoGroups 6 }
 
-    END
-</pre>
-<h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#firmware-management-information" id="firmware-management-information">Firmware Management Information</a></h1>
-<p id="rfc.section.5.4.p.1">This MIB module makes references to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
-<pre>
-    CC-FIRMWARE-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
-
-    IMPORTS
-        SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
-        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY
-            FROM SNMPv2-SMI                            -- FROM RFC 2578
-        TimeStamp, TruthValue, RowStatus 
-            FROM SNMPv2-TC                             -- FROM RFC 2579
-        MODULE-COMPLIANCE, OBJECT-GROUP,
-        NOTIFICATION-GROUP
-            FROM SNMPv2-CONF;                          -- FROM RFC 2580
-
-
-    ccFirmwareManagementMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
-        CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
-        DESCRIPTION
-            "This MIB defines the CC MIB Firmware Managment objects.
-
-            Copyright (c) 2017 IETF Trust and the persons
-            identified as authors of the code.  All rights reserved.
-
-            Redistribution and use in source and binary forms, with
-            or without modification, is permitted pursuant to, and
-            subject to the license terms contained in, the Simplified
-            BSD License set forth in Section 4.c of the IETF Trust's
-            Legal Provisions Relating to IETF Documents
-            (http://trustee.ietf.org/license-info).
-
-            This version of this MIB module is part of RFC xxxx;
-            see the RFC itself for full legal notices."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
-    -- RFC Ed.: RFC-editor please fill in xxxx.
-        ::= { ccFirmwareManagement 1 }
-
-    -- *****************************************************************
-    -- Firmware Information Segments
-    -- *****************************************************************
-
-    cFirmwareInfo  OBJECT IDENTIFIER
-        ::= { ccFirmwareManagementMIB TBD }
-    cFirmwareInfoNoitify  OBJECT IDENTIFIER
-        ::= { ccFirmwareManagementMIB TBD }
-
-
-    -- *****************************************************************
-    -- Firmware Information Notifications
-    -- *****************************************************************
-
-    cFirmwareInstallFailed  NOTIFICATION-TYPE
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a firmware install failed."
-        ::= { cFirmwareInfoNotify TBD }
-
-    cFirmwareInstallSuccess  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cFirmwareName,
-                        cFirmwareVersion,
-                        cFirmwareSource
-                    }
-        STATUS      current
-        DESCRIPTION
-            "A notification from the device to the management station
-            indicating a firmware install succeeded."
-        ::= { cFirmwareInfoNotify TBD }
-
-    -- *****************************************************************
-    -- CC MIB cFirmwareInformationTable
-    -- *****************************************************************
-
-    cFirmwareInformationTableCount  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The number of rows in the cFirmwareInformationTable."
-        ::= { cFirmwareInfo 1 }
-
-    cFirmwareInformationTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "The last time any entry in the table was modified, created,
-            or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
-            that no changes to configuration of this table have happened
-            since the last time it examined the table. A value of 0
-            indicates that no entry has been changed since the agent
-            initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
-            should be used to populate this column."
-        ::= { cFirmwareInfo 2 }
-
-    cFirmwareInformationTable  OBJECT-TYPE
-        SYNTAX      SEQUENCE OF CFirmwareInformationEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A table that lists firmware versions available in the
-            device, along with their versions and type. This is used to
-            list currently loaded firmware versions of running firmware
-            and other available firmware versions in support of
-            returning to a previous version of the firmware."
-        ::= { cFirmwareInfo 3 }
-
-    cFirmwareInformationEntry  OBJECT-TYPE
-        SYNTAX      CFirmwareInformationEntry
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "A row containing a firmware package name, version, and
-            source."
-        INDEX      { cFirmwareName }
-        ::= { cFirmwareInformationTable 1 }
-
-     CFirmwareInformationEntry  ::= SEQUENCE {
-        cFirmwareName       OCTET STRING,
-        cFirmwareVersion    SnmpAdminString,
-        cFirmwareSource     SnmpAdminString,
-        cFirmwareRunning    TruthValue,
-        cFirmwareRowStatus  RowStatus
-    }
-
-    cFirmwareName  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "Unique identifier provided in the firmware package."
-        ::= { cFirmwareInformationEntry 1 }
-
-    cFirmwareVersion  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(1..255))
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "Version of firmware (provided in the package); for legacy
-            firmware packages, this column would be the empty string,
-            ''."
-        ::= { cFirmwareInformationEntry 2 }
-
-    cFirmwareSource  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(1..255))
-        MAX-ACCESS  read-only
-        STATUS      current
-        DESCRIPTION
-            "This column is used by the implementation to describe how
-            the firmware was received. Agents may use any string which
-            adequately describes the interface such as 'USB' or
-            'DS-100.' Agents may also reference entries in the ifTable
-            when appropriate. If received using a Secure Object
-            Maagement System (SOMS) server, the exact URI that was used
-            to retrieve the firmware package would be configured in this
-            column."
-        ::= { cFirmwareInformationEntry 3 }
-
-    cFirmwareRunning  OBJECT-TYPE
-        SYNTAX      TruthValue
-        MAX-ACCESS  read-write
-        STATUS      current
-        DESCRIPTION
-            "Indicates if the firmware is currently running. Only one
-            row in the table should have this object set to True at any
-            given time. If this object is set from False to True, the
-            agent must install the firmware, uninstall the previous
-            running firmware and change the cFirmwareRunning object for
-            the previous running firmware from True to False."
-        ::= { cFirmwareInformationEntry 4 }
-
-    cFirmwareRowStatus OBJECT-TYPE
-        SYNTAX      RowStatus
-        MAX-ACCESS  read-write
-        STATUS      current
-        DESCRIPTION
-            "The status of the row, by which old entries may be deleted
-            from this table. At a minimum, implementations must support
-            destroy management functions. Support for active and
-            notReady management functions is optional."
-        ::= { cFirmwareInformationEntry 5 }
-
-    -- *****************************************************************
-    -- Module Conformance Information
-    -- *****************************************************************
-
-    cFirmwareInfoCompliances  OBJECT IDENTIFIER
-        ::= { cFirmwareInfoConformance 1}
-    cFirmwareInfoGroups  OBJECT IDENTIFIER
-        ::= { cFirmwareInfoConformance 2}
-
-    cFirmwareInfoCompliance MODULE-COMPLIANCE
-        STATUS    current
-        DESCRIPTION
-            "Compliance levels for firmware information."
-        MODULE
-        MANDATORY-GROUPS { cFirmwareInfoGroup }
-        GROUP cFirmwareInfoNotifyGroup
-        DESCRIPTION
-            "This notification group is optional for implementation."
-        ::= { cDeviceInfoCompliances TBD }
-
-    cFirmwareInfoGroup OBJECT-GROUP
-        OBJECTS {
-                    cFirmwareInformationTableCount,
-                    cFirmwareInformationTableLastChanged,
-                    cFirmwareName,
-                    cFirmwareVersion,
-                    cFirmwareSource,
-                    cFirmwareRunning,
-                    cFirmwareRowStatus
-                }
+    cDeviceInfoBatteryNotifyGroup NOTIFICATION-GROUP
+        NOTIFICATIONS { 
+                        cBatteryLow,
+                        cBatteryRequiresReplacement,
+                        cDeviceOnBattery
+                      }
         STATUS current
         DESCRIPTION
-            "This group is composed of objects related to firmware
+            "This group is composed of notifications related to battery 
             information."
-        ::= { cFirmwareInfoGroups TBD }
+        ::= { cDeviceInfoGroups 7 }
 
-    cFirmwareInfoNotifyGroup NOTIFICATION-GROUP
-        NOTIFICATIONS {
+    cDeviceInfoFirmwareNotifyGroup NOTIFICATION-GROUP
+        NOTIFICATIONS { 
                         cFirmwareInstallFailed,
                         cFirmwareInstallSuccess
-                     }
+                      }
         STATUS current
         DESCRIPTION
-            "This group is composed of notifications related to firmware
+            "This group is composed of notifications related to firmware 
             information."
-        ::= { cFirmwareInfoGroups TBD }
+        ::= { cDeviceInfoGroups 8 }
 
     END
 </pre>
-<h1 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5.</a> <a href="#key-management-information" id="key-management-information">Key Management Information</a></h1>
-<p id="rfc.section.5.5.p.1">This MIB module makes references to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, <a href="#RFC5280">[RFC5280]</a>, <a href="#RFC5914">[RFC5914]</a>, <a href="#RFC6030">[RFC6030]</a>, and <a href="#RFC6353">[RFC6353]</a>.</p>
+<h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#key-management-information" id="key-management-information">Key Management Information</a></h1>
+<p id="rfc.section.5.4.p.1">This MIB module makes references to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, <a href="#RFC5280">[RFC5280]</a>, <a href="#RFC5914">[RFC5914]</a>, <a href="#RFC6030">[RFC6030]</a>, and <a href="#RFC6353">[RFC6353]</a>.</p>
 <pre>
     CC-KEY-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
 
     IMPORTS
         ccKeyManagement
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -1393,40 +1415,15 @@ ul.toc li {
             FROM SNMP-TLS-TM-MIB;                      -- FROM RFC 6353
 
     ccKeyManagementMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Key Managment objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -1439,8 +1436,8 @@ ul.toc li {
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyManagement 1 }
 
@@ -1474,6 +1471,8 @@ ul.toc li {
         ::= { ccKeyManagementMIB 12 }
     cKeyManagementConformance  OBJECT IDENTIFIER
         ::= { ccKeyManagementMIB 13 }
+    cRemoteKeyMaterialInfo OBJECT IDENTIFIER
+        ::= { ccKeyManagementMIB 14 }
 
     -- *****************************************************************
     -- Key Management Information Scalars
@@ -1548,7 +1547,7 @@ ul.toc li {
             zeroized the specific key materials stored in the device.
 
             Some implementations may restrict the deletion of Trust
-            Anchors to specific protocols (e.g. TAMP)."
+            Anchors to specific protocols (e.g., TAMP)."
         ::= { cKeyManagementScalars 4 }
 
     cZeroizeCDMStoreTable  OBJECT-TYPE
@@ -1623,7 +1622,7 @@ ul.toc li {
         ::= { cKeyManagementScalars 9 }
 
     cGenerateKeyType  OBJECT-TYPE
-        SYNTAX      INTEGER { x509v3(1), psk(2)}
+        SYNTAX      INTEGER { x509v3(1), psk(2) }
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -1658,7 +1657,7 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
             "An attempt to load the device with key material, identified
-            by the table identifier (e.g. cSymmetricKeyTable), has
+            by the table identifier (e.g., cSymmetricKeyTable), has
             succeeded. This notification may be sent upon a single
             successful key material load or may be sent upon a series of
             successful single key material loads."
@@ -1669,7 +1668,7 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
             "An attempt to load the device with key material, identified
-            by the table identifier (e.g. cSymmetricKeyTable), has
+            by the table identifier (e.g., cSymmetricKeyTable), has
             failed."
         ::= { cKeyManagementNotify 2 }
 
@@ -1837,7 +1836,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -1904,8 +1903,7 @@ ul.toc li {
             "The intended usage for the key:  One Time Password (OTP),
             Challenge/Response (CR), Unlock, Encrypt, Decrypt,
             Integrity, Verify, KeyWrap, Unwrap, Derive, Generate,
-            Shared Secret.
-            From RFC 6030 section 5.
+            Shared Secret. From RFC 6030 section 5.
 
             OTP: The key is used for One Time Password (OTP) generation.
 
@@ -2108,7 +2106,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2155,7 +2153,8 @@ ul.toc li {
         cAsymKeyRowStatus           RowStatus,
         cAsymKeyVersion             INTEGER,
         cAsymKeyRekey               TruthValue,
-        cAsymKeyType                OCTET STRING
+        cAsymKeyType                OCTET STRING,
+        cAsymKeyAutoRekeyEnable     TruthValue
     }
 
     cAsymKeyFingerprint  OBJECT-TYPE
@@ -2187,7 +2186,7 @@ ul.toc li {
              this column can be up to 20 bytes long per Section
              '4.1.2.2. Serial Number' of RFC 5280. Other types of Key
              Material may have different serial number format as defined
-             by the issuer (e.g. a Key Material ID)."
+             by the issuer (e.g., a Key Material ID)."
         ::= { cAsymKeyEntry 3 }
 
     cAsymKeyIssuer  OBJECT-TYPE
@@ -2209,9 +2208,9 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
              "Signature algorithm used by a Certification Authority to
-             sign this asymmetric key material (e.g. X.509 Certificate).
-             If no signature/signature algorithm is provided/used, this
-             column would not exist.
+             sign this asymmetric key material (e.g., X.509
+             Certificate). If no signature/signature algorithm is
+             provided/used, this column would not exist.
 
              Note, this is a free form OCTET STRING column, meaning
              implementations may utilize a standardized definition of
@@ -2225,7 +2224,7 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
              "Public key algorithm with which the public key is used (as
-             associated with the asymmetric key material (e.g. X.509
+             associated with the asymmetric key material (e.g., X.509
              Certificate)).
 
              Note, this is a free form OCTET STRING column, meaning
@@ -2307,7 +2306,7 @@ ul.toc li {
         ::= { cAsymKeyEntry 11 }
 
     cAsymKeySubjectAltName OBJECT-TYPE
-        SYNTAXSnmpAdminString (SIZE(1..32))
+        SYNTAX      SnmpAdminString (SIZE(1..32))
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2340,16 +2339,16 @@ ul.toc li {
              keyCertSign(6), cRLSign(7), encipherOnly(8), and
              decipherOnly(9)
              Bit value translation:
-             1000 0000 0000 0000 = other,
-             0100 0000 0000 0000 = digitalSignature,
-             0010 0000 0000 0000 = nonRepudiation,
-             0001 0000 0000 0000 = keyEncipherment,
-             0000 1000 0000 0000 = dataEncipherment,
-             0000 0100 0000 0000 = keyAgreement,
-             0000 0010 0000 0000 = keyCertSign,
-             0000 0001 0000 0000 = cRLSign,
-             0000 0000 1000 0000 = encipherOnly,
-             0000 0000 0100 0000 = decipherOnly.
+             1000 0000 0000 0000 = other
+             0100 0000 0000 0000 = digitalSignature
+             0010 0000 0000 0000 = nonRepudiation
+             0001 0000 0000 0000 = keyEncipherment
+             0000 1000 0000 0000 = dataEncipherment
+             0000 0100 0000 0000 = keyAgreement
+             0000 0010 0000 0000 = keyCertSign
+             0000 0001 0000 0000 = cRLSign
+             0000 0000 1000 0000 = encipherOnly
+             0000 0000 0100 0000 = decipherOnly
              Devices using asymmetric key material not adhering to RFC
              5280 (X.509 format) may still use an applicable value for
              the Usage, or may use 'other'."
@@ -2400,7 +2399,6 @@ ul.toc li {
              Setting this column to destroy is synonymous with zeroizing
              the key material. Any reference(s) to this object, upon
              setting this RowStatus to destroy, should be destroyed as
-
              well. At a minimum, implementations must support active and
              destroy management functions. Support for notInService and
              notReady management functions is optional. Implementations
@@ -2446,8 +2444,23 @@ ul.toc li {
             Implementations are expected to utilize definition of string
             values that apply to their specific nomenclature supported.
             If no such nomenclature exists, this column should not be
-            populated or be set to an empty string (i.e. '')."
+            populated or be set to an empty string (i.e., '')."
         ::= { cAsymKeyEntry 19 }
+
+    cAsymKeyAutoRekeyEnable OBJECT-TYPE
+        SYNTAX     TruthValue
+        MAX-ACCESS read-write
+        STATUS     current
+        DESCRIPTION
+            "Controls the automatic rekey settings  for this PKC.
+
+            [true]  Enables automatic rekey.
+            [false] Disables automatic rekey.
+
+            This column is optional to support."
+        DEFVAL     { false }
+    ::= { cAsymKeyEntry 20 }
+
 
     -- *****************************************************************
     -- CC MIB cTrustAnchorTable
@@ -2468,7 +2481,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2503,7 +2516,8 @@ ul.toc li {
         cTrustAnchorKeyIdentifier       OCTET STRING,
         cTrustAnchorPublicKeyAlgorithm  OCTET STRING,
         cTrustAnchorContingencyAvail    TruthValue,
-        cTrustAnchorRowStatus           RowStatus
+        cTrustAnchorRowStatus           RowStatus,
+        cTrustAnchorVersion             OCTET STRING
     }
 
     cTrustAnchorFingerprint  OBJECT-TYPE
@@ -2604,8 +2618,16 @@ ul.toc li {
             functions for this object.
 
             Some implementations may restrict the deletion of Trust
-            Anchors to specific protocols (e.g. TAMP)."
+            Anchors to specific protocols (e.g., TAMP)."
         ::= { cTrustAnchorEntry 8 }
+
+    cTrustAnchorVersion OBJECT-TYPE
+        SYNTAX     OCTET STRING
+        MAX-ACCESS read-only
+        STATUS     current
+        DESCRIPTION
+            "The version of the Trust Anchor."
+        ::= { cTrustAnchorEntry 9 }
 
     -- *****************************************************************
     -- CC MIB cCKLTable
@@ -2626,7 +2648,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2719,7 +2741,6 @@ ul.toc li {
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-
             "The date by which the next CKL/CRL issued. The next CRL
             could be issued before the indicated date, but it will not
             be issued any later than the indicated date.
@@ -2783,7 +2804,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2836,7 +2857,8 @@ ul.toc li {
     cCDMStoreType OBJECT-TYPE
         SYNTAX      INTEGER { symKey(1), asymKey(2), trustAnchor(3),
                               crl(4), ckl(5), firmware(6),
-                              storeAndForwardWrappedPkg(7) }
+                              storeAndForwardWrappedPkg(7),
+                              storeAndForwardPkg(8) }
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2857,7 +2879,10 @@ ul.toc li {
                 firmware.
             (7) storeAndForwardWrappedPkg - This row contains
                 information about a stored encrypted wrapped package,
-                typically meant to be forwarded to another device."
+                typically meant to be forwarded to another device.
+            (8) storeAndForwardPkg - This row contains information
+                about a stored unencrypted, typically meant to be
+               forwarded to another device."
         ::= { cCDMStoreEntry 2 }
 
     cCDMStoreSource  OBJECT-TYPE
@@ -2897,7 +2922,7 @@ ul.toc li {
 
     cCDMStoreControl OBJECT-TYPE
         SYNTAX      INTEGER { readyForInstall(1), install(2),
-                              installAndDiscard(3) }
+                              installAndDiscard(3), other (4) }
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2910,6 +2935,8 @@ ul.toc li {
                 appropriate table based on the cCDMStoreType and
                 discarded from this table after the install operation is
                 complete.
+            (4) other - The CDM will be processed based on family
+                extension specific action.
 
             Note, setting the cCDMStoreRowStatus object to 'destroy'
             will discard the CDM."
@@ -2949,7 +2976,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -2999,7 +3026,6 @@ ul.toc li {
             Names."
         ::= { cCertSubAltNameTableEntry 1 }
     
-    
     cCertSubAltNameListIndex OBJECT-TYPE
         SYNTAX     Unsigned32
         MAX-ACCESS not-accessible
@@ -3011,7 +3037,6 @@ ul.toc li {
             uniquely identifies each row, or set of Subject Alternative
             Names."
         ::= { cCertSubAltNameTableEntry 2 }
-    
     
     cCertSubAltNameType OBJECT-TYPE
         SYNTAX     INTEGER { otherName(0), rfc822Name(1), dNSName(2),
@@ -3039,7 +3064,6 @@ ul.toc li {
     
             This column is the main value and is used for all
             cCertSubAltNameType types. For otherName(0), this column
-
             provides the value of the 'value' field. For
             ediPartyName(5), this column provides the value of the
             'partyName'. For all other types, this column provides the
@@ -3104,7 +3128,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3181,7 +3205,7 @@ ul.toc li {
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "For a Certificate Authority (CA) certificate, this
+            "For a Certification Authority (CA) certificate, this
             indicates a grouping of policy mappings between a
             certificate issuer CA domain policy and a domain policy of
             the subject certificate CA. The value of this column
@@ -3279,7 +3303,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3297,7 +3321,7 @@ ul.toc li {
             algorithm. For an end entity certificate, this information
             indicates under which policy this certificate has been
             issued and the purposes for which the certificate may be
-            used. For a Certificate Authority (CA) certificate, this
+            used. For a Certification Authority (CA) certificate, this
             information limits the set of policies for certification
             paths that include this certificate."
         ::= { cCertPolicyInfo 3 }
@@ -3349,7 +3373,7 @@ ul.toc li {
         DESCRIPTION
             "For end entity certificates, this is an identifier for the
             policy under which the certificate has been issued. For
-            Certificate Authority (CA) certificates, this is an
+            Certification Authority (CA) certificates, this is an
             identifier for a certification path policy that includes
             this certificate."
         ::= { cCertPolicyEntry 3 }
@@ -3391,8 +3415,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3406,9 +3429,9 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
             "The table listing mappings between policies that a
-            certificate issuing Certificate Authority (CA) considers as
-            equivalent or comparable to the domain policies of the
-            subject certificate CA."
+            certificate issuing Certification Authority (CA) considers
+            as equivalent or comparable to the domain policies of the
+            subject certificate's CA."
         ::= { cPolicyMappingInfo 3 }
 
     cPolicyMappingEntry OBJECT-TYPE
@@ -3417,8 +3440,8 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
             "A row containing a mapping between the domain policy of an
-            issuing Certificate Authority (CA) and an equivalent domain
-            policy of the subject certificate's CA."
+            issuing Certification Authority (CA) and an equivalent
+            domain policy of the subject certificate's CA."
         INDEX  { cPolicyMappingGroup, cPolicyMappingIndex }
         ::= { cPolicyMappingTable 1 }
 
@@ -3454,7 +3477,7 @@ ul.toc li {
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "Indicates the subject Certificate Authority's domain
+            "Indicates the subject Certification Authority's domain
             policy."
         ::= { cPolicyMappingEntry 3 }
 
@@ -3464,7 +3487,7 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
             "Indicates the issuer domain policy that the issuer
-            Certificate Authority (CA) considers equivalent to the
+            Certification Authority (CA) considers equivalent to the
             subject CA domain policy."
         ::= { cPolicyMappingEntry 4 }
 
@@ -3487,7 +3510,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -3553,11 +3576,142 @@ ul.toc li {
         ::= { cNameConstraintEntry 3 }
 
     -- *****************************************************************
+    -- CC MIB cRemoteKeyMaterialTable
+    -- *****************************************************************
+
+    cRemoteKeyMaterialTableCount OBJECT-TYPE
+        SYNTAX       Unsigned32
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The number of rows in the cRemoteKeyMaterialTable."
+        ::= { cRemoteKeyMaterialInfo 1 }
+
+    cRemoteKeyMaterialTableLastChanged OBJECT-TYPE
+        SYNTAX       TimeStamp
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The last time any entry in the table was modified,
+            created, or deleted by either SNMP, agent, or other
+            management method (e.g., via an HMI) Managers can use this
+            object to ensure that no changes to configuration of this
+            table have happened since the last time it examined the
+            table. A value of 0 indicates that no entry has been
+            changed since the agent initialized.  The value in
+            CC-DEVICE-INFO-MIB cSystemUpTime should be used to populate
+            this column."
+        ::= { cRemoteKeyMaterialInfo 2 }
+
+    cRemoteKeyMaterialTable OBJECT-TYPE
+        SYNTAX       SEQUENCE OF CRemoteKeyMaterialTableEntry
+        MAX-ACCESS   not-accessible
+        STATUS       current
+        DESCRIPTION
+            "The table containing remote key material information -
+             namely, key material used to help establish the secure
+             connection."
+        ::= { cRemoteKeyMaterialInfo 3 }
+
+    cRemoteKeyMaterialTableEntry OBJECT-TYPE
+        SYNTAX       CRemoteKeyMaterialTableEntry
+        MAX-ACCESS   not-accessible
+        STATUS       current
+        DESCRIPTION
+            "A row describing the remote key material information used
+            to establish the secure connection."
+        INDEX  { cRemoteKeyMaterialID }
+        ::= { cRemoteKeyMaterialTable 1 }
+
+    CRemoteKeyMaterialTableEntry ::= SEQUENCE {
+            cRemoteKeyMaterialID             OCTET STRING,
+            cRemoteKeyMatFriendlyName        SnmpAdminString,
+            cRemoteKeyMatSerialNumber        OCTET STRING,
+            cRemoteKeyMaterialKeyType        OCTET STRING,
+            cRemoteKeyMatExpirationDate      DateAndTime,
+            cRemoteKeyMatClassification      BITS
+        }
+
+    cRemoteKeyMaterialID OBJECT-TYPE
+        SYNTAX       OCTET STRING (SIZE(1..255))
+        MAX-ACCESS   not-accessible
+        STATUS       current
+        DESCRIPTION
+            "Represents a unique identifier assigned to this key
+            material. This would typically be an identifier inherent to
+            the key material, such as a serial number or other form of
+            identifier derived from a tag or other key wrapper. This
+            object differs from cRemoteKeyMatFriendlyName which is a
+            user-defined ID."
+        ::= { cRemoteKeyMaterialTableEntry 1 }
+
+    cRemoteKeyMatFriendlyName OBJECT-TYPE
+        SYNTAX       SnmpAdminString
+        MAX-ACCESS   read-write
+        STATUS       current
+        DESCRIPTION
+            "A human readable label of the key for easier reference. It
+            is used only for helpful or informational purposes."
+        ::= { cRemoteKeyMaterialTableEntry 2 }
+
+    cRemoteKeyMatSerialNumber OBJECT-TYPE
+        SYNTAX       OCTET STRING
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The unique positive integer assigned to the remote key
+            material.  Note, this information may not be available in
+            some key material types."
+        ::= { cRemoteKeyMaterialTableEntry 3 }
+
+    cRemoteKeyMaterialKeyType OBJECT-TYPE
+        SYNTAX       OCTET STRING
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "This column describes the type of remote key material.
+
+            Note, this is a free form OCTET STRING column.
+            Implementations are expected to utilize definition of
+            string values that apply to their specific nomenclature
+            supported.  If no such nomenclature exists, this column
+            should not be populated or be set to an empty string
+            (i.e., '')."
+        ::= { cRemoteKeyMaterialTableEntry 4 }
+
+    cRemoteKeyMatExpirationDate OBJECT-TYPE
+        SYNTAX       DateAndTime
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The expiration date of the key."
+        ::= { cRemoteKeyMaterialTableEntry 5 }
+
+    cRemoteKeyMatClassification OBJECT-TYPE
+        SYNTAX       BITS { unclassified(0), restricted(1),
+                            confidential(2), secret(3), topSecret(4) }
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "The classification of the key.
+             Bit value translation:
+             1000 0000 = unclassified
+             0100 0000 = restricted
+             0010 0000 = confidential
+             0001 0000 = secret
+             0000 1000 = topSecret
+
+             This column does not exist for devices that do not have
+             the concept of classification."
+        ::= { cRemoteKeyMaterialTableEntry 6 }
+
+    -- *****************************************************************
     -- Module Conformance Information
     -- *****************************************************************
     
     cKeyManagementCompliances          OBJECT IDENTIFIER
         ::= { cKeyManagementConformance 1}
+
     cKeyManagementGroups               OBJECT IDENTIFIER
         ::= { cKeyManagementConformance 2}
 
@@ -3566,7 +3720,7 @@ ul.toc li {
         DESCRIPTION
             "Compliance levels for symmetric key information."
         MODULE
-        MANDATORY-GROUPS { cKeyManSymKeyGroup }
+        MANDATORY-GROUPS { cKeyManSymKeyGroup, cKeyManRemoteKeyGroup }
 
         GROUP cKeyManSymKeyNotifyScalars
         DESCRIPTION
@@ -3583,7 +3737,7 @@ ul.toc li {
         DESCRIPTION
             "Compliance levels for asymmetric key information."
         MODULE
-        MANDATORY-GROUPS { cKeyManAsymKeyGroup }
+        MANDATORY-GROUPS { cKeyManAsymKeyGroup, cKeyManRemoteKeyGroup }
 
         GROUP cKeyManCertSubAltNameGroup
         DESCRIPTION
@@ -3755,7 +3909,8 @@ ul.toc li {
                   cAsymKeyRowStatus,
                   cAsymKeyVersion,
                   cAsymKeyRekey,
-                  cAsymKeyType
+                  cAsymKeyType,
+                  cAsymKeyAutoRekeyEnable
                 }
         STATUS current
         DESCRIPTION
@@ -3849,7 +4004,8 @@ ul.toc li {
                   cTrustAnchorKeyIdentifier,
                   cTrustAnchorPublicKeyAlgorithm,
                   cTrustAnchorContingencyAvail,
-                  cTrustAnchorRowStatus
+                  cTrustAnchorRowStatus,
+                  cTrustAnchorVersion
                 }
         STATUS current
         DESCRIPTION
@@ -3983,17 +4139,33 @@ ul.toc li {
             "This group is composed of notifications related to Crypto
             Device Material store information."
         ::= { cKeyManagementGroups 17 }
-    
+
+    cKeyManRemoteKeyGroup OBJECT-GROUP
+        OBJECTS {
+                   cRemoteKeyMaterialTableCount,
+                   cRemoteKeyMaterialTableLastChanged,
+                   cRemoteKeyMatFriendlyName,
+                   cRemoteKeyMatSerialNumber,
+                   cRemoteKeyMaterialKeyType,
+                   cRemoteKeyMatExpirationDate,
+                   cRemoteKeyMatClassification
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to remote key
+            information."
+        ::= { cKeyManagementGroups 18 }
+
     END
 </pre>
-<h1 id="rfc.section.5.6"><a href="#rfc.section.5.6">5.6.</a> <a href="#key-transfer-pull" id="key-transfer-pull">Key Transfer Pull</a></h1>
-<p id="rfc.section.5.6.p.1">This MIB module makes reference to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
+<h1 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5.</a> <a href="#key-transfer-pull" id="key-transfer-pull">Key Transfer Pull</a></h1>
+<p id="rfc.section.5.5.p.1">This MIB module makes reference to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
 <pre>
     CC-KEY-TRANSFER-PULL-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
         ccKeyTransferPull
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
@@ -4006,40 +4178,15 @@ ul.toc li {
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Key Transfer Pull objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -4052,10 +4199,10 @@ ul.toc li {
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        ::= {  1 }
+        ::= { ccKeyTransferPull 1 }
 
     -- *****************************************************************
     -- Key Transfer Pull Information Segments
@@ -4067,7 +4214,7 @@ ul.toc li {
         ::= { ccKeyTransferPullMIB 2 }
     cKeyTransferPullNotify       OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 3 }
-    cSOMSServerInfo               OBJECT IDENTIFIER
+    cCDMServerInfo               OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 4 }
     cCDMDeliveryInfo             OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 5 }
@@ -4076,28 +4223,28 @@ ul.toc li {
     -- Key Transfer Pull Scalars
     -- *****************************************************************
     
-    cSOMSServerRetryDelay  OBJECT-TYPE
+    cCDMServerRetryDelay  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
             "The amount of time to wait after a download attempt to the
-            Secure Object Management System (SOMS) server fails before
+            Cryptographic Device Material (CDM) server fails before
             attempting to retry the operation. Note, this scalar applies
-            to the download of any type of item from the SOMS server
-            (e.g. CDMs, PALs)." 
+            to the download of any type of item from the CDM server
+            (e.g., CDMs, CDMLs)." 
         ::= { cKeyTransferPullScalars 1 }
     
-    cSOMSServerRetryMaxAttempts  OBJECT-TYPE
+    cCDMServerRetryMaxAttempts  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
             "The amount of retries attempted before the download attempt
-            to the Secure Object Management System (SOMS) server is
+            to the Cryptographic Device Material (CDM) server is
             considered a failure. Note, this scalar applies to the
-            download of any type of item from the SOMS server (e.g.
-            CDMs, PALs)."
+            download of any type of item from the CDM server (e.g.,
+            CDMs, CDMLs)."
         ::= { cKeyTransferPullScalars 2 }
     
     cCDMPullRetrievalPriorities  OBJECT-TYPE
@@ -4111,7 +4258,7 @@ ul.toc li {
             value identifies an upper bound. A value of '5' for example,
             implies that only cCDMDeliveryTable entries with a
             cCDMDeliveryPriority value of '5' or less can be acted upon
-            (i.e. retrieved).
+            (i.e., retrieved).
 
             Different types of ECUs may have different values for this
             scalar. Bandwidth-limited ECUs, for example, may configure
@@ -4124,79 +4271,79 @@ ul.toc li {
         DEFVAL {0}
         ::= { cKeyTransferPullScalars 3 }
     
-    cPALDeliveryRequest OBJECT-TYPE
+    cCDMLDeliveryRequest OBJECT-TYPE
         SYNTAX      INTEGER { readyForDownload(1), downloadAndParse(2),
                               discard(3) }
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
-            "This scalar controls the server's PAL download process -
-            server information is stored in the cSOMSServerTable. When
+            "This scalar controls the server's CDML download process -
+            server information is stored in the cCDMServerTable. When
             read, it will return 'readyForDownload' if the last action
             succeeded. If the last action is in progress or failed, it
             will return the last requested action.
 
             The values which may be set depend on the current value of
-            this object and the cPALDeliveryStatus object.
+            this object and the cCDMLDeliveryStatus object.
 
             In order to initiate a new download, this object must
             contain the value 'readyForDownload', and the
-            cPALDeliveryStatus must contain the value 'complete'. At
+            cCDMLDeliveryStatus must contain the value 'complete'. At
             which point, setting this object to to 'downloadAndParse'
-            initiates the PAL download process. Note, the
-            cPALDeliveryStatus should transition to 'inProgress' at
-            the device begins the PAL download process from the
-            server(s) and URI(s) listed in the cSOMSServerTable (as
-            ordered by the cSOMSServerPriority index).
+            initiates the CDML download process. Note, the
+            cCDMLDeliveryStatus should transition to 'inProgress' at
+            the device begins the CDML download process from the
+            server(s) and URI(s) listed in the cCDMLServerTable (as
+            ordered by the cCDMLServerPriority index).
 
-            If the PAL download fails, the next highest priority URI
+            If the CDML download fails, the next highest priority URI
             will be tried, and so on.
 
-            While a PAL download is in progress, or if the PAL
+            While a CDML download is in progress, or if the CDML
             download fails for all possible servers and URIs (indicated
-            by a cPALDeliveryStatus value of 'downloadFailed'), this
+            by a cCDMLDeliveryStatus value of 'downloadFailed'), this
             object will return an inconsistentValue error for any new
             value except 'discard' (which will cancel the current
             download).
 
-            If the PAL download succeeded, the cPALDeliveryStatus value
-            remains inProgress and the device attempts to parse the
-            download immediately. During the parsing of the PAL, all
-            new values will return inconsistentValue error (i.e. the
-            parse process can not be aborted). If the parse fails, the
-            cPALDeliveryStatus will transition to 'parseFailed', and
-            this object must be set to 'discard' before a new PAL
+            If the CDML download succeeded, the cCMDLDeliveryStatus
+            value remains inProgress and the device attempts to parse
+            the download immediately. During the parsing of the CDML,
+            all new values will return inconsistentValue error (i.e.,
+            the parse process can not be aborted). If the parse fails,
+            the cCDMLDeliveryStatus will transition to 'parseFailed',
+            and this object must be set to 'discard' before a new CDML
             download is attempted."
         ::= { cKeyTransferPullScalars 4 }
     
-    cPALDeliveryStatus OBJECT-TYPE
+    cCDMLDeliveryStatus OBJECT-TYPE
         SYNTAX      INTEGER { complete(1), inProgress(2),
                               downloadFailed(3),
                               parseFailed(4) }
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "This indicates the current state of a PAL download.
+            "This indicates the current state of a CDML download.
     
             'complete' indicates that the last requested
-            cPALDeliveryRequest action was successful.
+            cCDMLDeliveryRequest action was successful.
     
-            'inProgress' indicates that a PAL download or PAL parse is
+            'inProgress' indicates that a CDML download or CDML parse is
             underway.
 
-            'downloadFailed' indicates that the last attempted PAL
+            'downloadFailed' indicates that the last attempted CDML
             download failed.
     
-            'parseFailed' indicates that the last attempted PAL parse
+            'parseFailed' indicates that the last attempted CDML parse
             failed.
 
             The relationship between this object and
-            cPALDeliveryRequest is detailed in the following table. The
-            table indicates values of cPALDeliveryRequest that are
+            cCDMLDeliveryRequest is detailed in the following table. The
+            table indicates values of cCDMLDeliveryRequest that are
             allowed depending on the current value of this object.
     
 
- cPALDeliveryRequest!                 cPALDeliveryStatus
+ cCDMLDeliveryRequest!                 cCDMLDeliveryStatus
  --------------------+-----------+----------+--------------+------------
  !                   !  complete !inProgress!downloadFailed!parseFailed!
  --------------------+-----------+----------+--------------+------------
@@ -4207,36 +4354,36 @@ ul.toc li {
  ! discard           !   error   ! allowed  !   allowed    !  allowed  !
  --------------------+-----------+----------+--------------+------------
     
-            As described cPALDeliveryRequest description, an
+            As described cCDMLDeliveryRequest description, an
             inconsistentValue error is returned."
-        DEFVAL {complete}
+        DEFVAL { complete }
         ::= { cKeyTransferPullScalars 5 }
     
     -- *****************************************************************
     -- Key Transfer Pull Notifications
     -- *****************************************************************
 
-    cPALPullReceiveSuccess  NOTIFICATION-TYPE
-        OBJECTS     { cSOMSServerURI }
+    cCDMLPullReceiveSuccess  NOTIFICATION-TYPE
+        OBJECTS     { cCDMServerURI }
         STATUS      current
         DESCRIPTION
-            "An attempt to receive a Product Availablity List (PAL) has
-            succeeded. The Secure Object Management System (SOMS) server
-            URI is provided with this notification."
+            "An attempt to receive a cryptographic device material
+            list (CDML) succeeded. The CDM server URI is provided with
+            this notification."
         ::= { cKeyTransferPullNotify 1 }
 
-    cPALPullReceiveFailed  NOTIFICATION-TYPE
+    cCDMLPullReceiveFailed  NOTIFICATION-TYPE
         OBJECTS     {
-                        cSOMSServerURI,
-                        cPALDeliveryStatus
+                        cCDMServerURI,
+                        cCDMLDeliveryStatus
                     }
         STATUS      current
         DESCRIPTION
-            "An attempt to receive a Product Availability List (PAL)
-            has failed. The Secure Object Management System (SOMS)
-            server URI and PAL Delivery Status are provided with this
-            notification. Note, the expected values for the PAL
-            Delivery Status are: 'downloadFailed' and 'parseFailed'."
+            "An attempt to receive a cryptographic device material
+            list (CDML) has failed. The CDM server URI and CDML Delivery
+            Status are provided with this notification. Note, the
+            expected values for the CDML Delivery Status are:
+            'downloadFailed' and 'parseFailed'."
         ::= { cKeyTransferPullNotify 2 }
 
     cCDMPullReceiveSuccess  NOTIFICATION-TYPE
@@ -4246,7 +4393,6 @@ ul.toc li {
                     }
         STATUS      current
         DESCRIPTION
-
             "An attempt to receive a cryptographic device material (CDM)
             has succeeded. The CDM Type and CDM URI are provided with
             this notification."
@@ -4265,103 +4411,102 @@ ul.toc li {
         ::= { cKeyTransferPullNotify 4 }
 
     -- *****************************************************************
-    -- CC MIB cSOMSServerTable
+    -- CC MIB cCDMServerTable
     -- *****************************************************************
 
-    cSOMSServerTableCount  OBJECT-TYPE
+    cCDMServerTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-             "The number of rows in the cSOMSServerTable"
-        ::= { cSOMSServerInfo 1 }
+             "The number of rows in the cCDMServerTable."
+        ::= { cCDMServerInfo 1 }
 
-    cSOMSServerTableLastChanged  OBJECT-TYPE
+    cCDMServerTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
             should be used to populate this column."
-        ::= { cSOMSServerInfo 2 }
+        ::= { cCDMServerInfo 2 }
 
-    cSOMSServerTable  OBJECT-TYPE
-        SYNTAX      SEQUENCE OF CSOMSServerEntry
+    cCDMServerTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF CCDMServerEntry
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "The table containing a list of servers that will be queried
             for available cryptographic device materials (CDMs), such as
             keys and firmware packages. This table is also used to
-            obtain the Product Avaialability List (PAL), which is a list
-            detailing available CDMs and their associated location for
-            obtainment."
-        ::= { cSOMSServerInfo 3 }
+            obtain the cryptographic device material list (CDML), which
+            is a list detailing available CDMs and their associated
+            location for obtainment."
+        ::= { cCDMServerInfo 3 }
 
-    cSOMSServerEntry  OBJECT-TYPE
-        SYNTAX      CSOMSServerEntry
+    cCDMServerEntry  OBJECT-TYPE
+        SYNTAX      CCDMServerEntry
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "A row containing information about a server that has
-            available PALs/CDMs for download."
-        INDEX      { cSOMSServerPriority }
-        ::= { cSOMSServerTable 1 }
+            available CDMLs/CDMs for download."
+        INDEX      { cCDMServerPriority }
+        ::= { cCDMServerTable 1 }
 
-    CSOMSServerEntry  ::= SEQUENCE {
-        cSOMSServerPriority          Unsigned32,
-        cSOMSServerURI               OCTET STRING,
-        cSOMSServerAdditionalInfo    SnmpAdminString,
-        cSOMSServerRowStatus         RowStatus
+    CCDMServerEntry  ::= SEQUENCE {
+        cCDMServerPriority          Unsigned32,
+        cCDMServerURI               OCTET STRING,
+        cCDMServerAdditionalInfo    SnmpAdminString,
+        cCDMServerRowStatus         RowStatus
     }
 
-    cSOMSServerPriority  OBJECT-TYPE
+    cCDMServerPriority  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "A unique numeric index that identifies a server that has
-            available PALs/CDMs for download. This index also provides
+            available CDMLs/CDMs for download. This index also provides
             server prioritization functionality - lower values have a
-
             higher priority. For example, the server with the lowest
-            value will be the first server for PAL/CDM downloads. In
+            value will be the first server for CDML/CDM downloads. In
             the event of failure, the next lowest value server will be
             tried, and so on.
 
-            This column is the sole index to the cSOMSServerTable."
-        ::= { cSOMSServerEntry 1 }
+            This column is the sole index to the cCDMServerTable."
+        ::= { cCDMServerEntry 1 }
 
-    cSOMSServerURI  OBJECT-TYPE
+    cCDMServerURI  OBJECT-TYPE
         SYNTAX      OCTET STRING (SIZE(1..255))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
-            "The location of the server that has available PALs/CDMs
+            "The location of the server that has available CDMLs/CDMs
             for download. The value in this column is represented as a
             URI.
 
-            Note, download of a PAL will typically result in the
+            Note, download of a CDML will typically result in the
             population of new CDM entries in the cCDMDeliveryTable."
-        ::= { cSOMSServerEntry 2 }
+        ::= { cCDMServerEntry 2 }
 
-    cSOMSServerAdditionalInfo  OBJECT-TYPE
+    cCDMServerAdditionalInfo  OBJECT-TYPE
         SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
-            "Additional information about the SOMS server. This
+            "Additional information about the CDM server. This
             information is manually configured by the manager both at or
             after row creation."
-        ::= { cSOMSServerEntry 3 }
+        ::= { cCDMServerEntry 3 }
 
-    cSOMSServerRowStatus  OBJECT-TYPE
+    cCDMServerRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
         MAX-ACCESS  read-create
         STATUS      current
@@ -4377,7 +4522,7 @@ ul.toc li {
             active, and destroy management functions. Support for
             createAndWait, notInService, and notReady management
             functions is optional."
-        ::= { cSOMSServerEntry 4 }
+        ::= { cCDMServerEntry 4 }
 
     -- *****************************************************************
     -- CC MIB cCDMDeliveryTable
@@ -4388,7 +4533,7 @@ ul.toc li {
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-             "The number of rows in the cCDMDeliveryTable"
+             "The number of rows in the cCDMDeliveryTable."
         ::= { cCDMDeliveryInfo 1 }
 
     cCDMDeliveryTableLastChanged  OBJECT-TYPE
@@ -4398,7 +4543,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -4459,7 +4604,7 @@ ul.toc li {
             [certificate]   = CDM is a certificate
             [cklOrCrl]      = CDM is a compromised key list or
                               certificate revocation list
-            [firmware]      = CDM is a firmware package."
+            [firmware]      = CDM is a firmware package"
         ::= { cCDMDeliveryEntry 1 }
 
     cCDMURI  OBJECT-TYPE
@@ -4472,9 +4617,9 @@ ul.toc li {
             associated URI of the CDM Server can easily be derived.
 
             This column is typically populated by an agent upon querying
-            a SOMS Server (e.g. downloading and parsing a Product
-            Availability List (PAL) from a SOMS Server (entry in the
-            cSOMSServerTable)). However, a manager can also configure an
+            a CDM Server (e.g., downloading and parsing a cryptographic
+            device material list (CDML) from a CDM Server (entry in the
+            cCDMServerTable)). However, a manager can also configure an
             entry in this table with predetermined knowledge of the CDM
             location."
         ::= { cCDMDeliveryEntry 2 }
@@ -4487,9 +4632,9 @@ ul.toc li {
         DESCRIPTION
             "The package size, in bytes, of the cryptographic device
             material (CDM). This information is retrieved from a
-            Product Availability List (PAL) or a server's product
-            availability response following a query. This column
-            does not apply to notifications found in PALs."
+            cryptographic device material list (CDML) or a server's
+            product availability response following a query. This column
+            does not apply to notifications found in CDMLs."
         ::= { cCDMDeliveryEntry 3 }
 
     cCDMAdditionalInfo  OBJECT-TYPE
@@ -4499,8 +4644,9 @@ ul.toc li {
         DESCRIPTION
             "Additional information about the cryptographic device
             material (CDM). This information can be retrieved from the
-            downloaded Product Availability List (PAL) or manually
-            configured by the manager both at or after row creation."
+            downloaded cryptographic device material list (CDML) or
+            manually configured by the manager both at or after row
+            creation."
         ::= { cCDMDeliveryEntry 4 }
 
     cCDMLastDownloadDate  OBJECT-TYPE
@@ -4511,6 +4657,7 @@ ul.toc li {
             "This is a 14 character field that will be populated with
             the following values depending on the state of the download
             and the CDM type.
+
             1. The date and time (expressed as Generalized Time) when
                the device last successfully downloaded the CDM from the
                CDM Server. The format follows:  'yyyymmddhhmmss'  where
@@ -4535,7 +4682,7 @@ ul.toc li {
             "A configurable priority value on the cryptographic device
             material (CDM). This column is a means to allow certain key
             products to be downloaded before others. Lower values have a
-            higher priority (e.g. a value of 1 will be processed before
+            higher priority (e.g., a value of 1 will be processed before
             a value of 2)."
         ::= { cCDMDeliveryEntry 6 }
     
@@ -4646,6 +4793,7 @@ ul.toc li {
 
     cKeyTransferPullCompliances        OBJECT IDENTIFIER
         ::= { cKeyTransferPullConformance 1}
+
     cKeyTransferPullGroups             OBJECT IDENTIFIER
         ::= { cKeyTransferPullConformance 2}
 
@@ -4679,13 +4827,13 @@ ul.toc li {
 
     cKeyTransferPullServerGroup OBJECT-GROUP
         OBJECTS {
-                  cSOMSServerRetryDelay,
-                  cSOMSServerRetryMaxAttempts,
-                  cSOMSServerTableCount,
-                  cSOMSServerTableLastChanged,
-                  cSOMSServerURI,
-                  cSOMSServerAdditionalInfo,
-                  cSOMSServerRowStatus
+                  cCDMServerRetryDelay,
+                  cCDMServerRetryMaxAttempts,
+                  cCDMServerTableCount,
+                  cCDMServerTableLastChanged,
+                  cCDMServerURI,
+                  cCDMServerAdditionalInfo,
+                  cCDMServerRowStatus
                 }
         STATUS current
         DESCRIPTION
@@ -4696,8 +4844,8 @@ ul.toc li {
     cKeyTransferPullDeliveryGroup OBJECT-GROUP
         OBJECTS {
                   cCDMPullRetrievalPriorities,
-                  cPALDeliveryRequest,
-                  cPALDeliveryStatus,
+                  cCDMLDeliveryRequest,
+                  cCDMLDeliveryStatus,
                   cCDMDeliveryTableCount,
                   cCDMDeliveryTableLastChanged,
                   cCDMDeliveryTableLastChanged,
@@ -4705,7 +4853,7 @@ ul.toc li {
                   cCDMURI,
                   cCDMPackageSize,
                   cCDMAdditionalInfo,
-                  cPALastDownloadDate,
+                  cCDMLastDownloadDate,
                   cCDMDeliveryPriority,
                   cCDMDeliveryRequest,
                   cCDMDeliveryStatus,
@@ -4719,8 +4867,8 @@ ul.toc li {
 
     cKeyTransferPullDeliveryNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
-                        cPALPullReceiveSuccess,
-                        cPALPullReceiveFailed,
+                        cCDMLPullReceiveSuccess,
+                        cCDMLPullReceiveFailed,
                         cCDMPullReceiveSuccess,
                         cCDMPullReceiveFailed
                       }
@@ -4732,14 +4880,14 @@ ul.toc li {
     
     END
 </pre>
-<h1 id="rfc.section.5.7"><a href="#rfc.section.5.7">5.7.</a> <a href="#key-transfer-push" id="key-transfer-push">Key Transfer Push</a></h1>
-<p id="rfc.section.5.7.p.1">This MIB module makes reference to following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
+<h1 id="rfc.section.5.6"><a href="#rfc.section.5.6">5.6.</a> <a href="#key-transfer-push" id="key-transfer-push">Key Transfer Push</a></h1>
+<p id="rfc.section.5.6.p.1">This MIB module makes reference to following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
 <pre>
     CC-KEY-TRANSFER-PUSH-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
         ccKeyTransferPush
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -4753,40 +4901,15 @@ ul.toc li {
             FROM SNMPv2-CONF;                          -- FROM RFC 2580
 
     ccKeyTransferPushMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Key Transfer Push object.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -4799,8 +4922,8 @@ ul.toc li {
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyTransferPush 1 }
 
@@ -4910,7 +5033,7 @@ ul.toc li {
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "The number of rows in the cCDMPushDestTable"
+            "The number of rows in the cCDMPushDestTable."
         ::= { cCDMPushDestInfo 1 }
 
     cCDMPushDestTableLastChanged  OBJECT-TYPE
@@ -4920,7 +5043,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -4968,15 +5091,12 @@ ul.toc li {
         ::= { cCDMPushDestEntry 1 }
 
     cCDMPushDestTransferType  OBJECT-TYPE
-        SYNTAX      INTEGER { ipsec(1), tls(2) }
+        SYNTAX      SnmpAdminString (SIZE(1..32))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "The transfer mechanism or protocol used by the sender to
-            execute the Cryptographic Device Material (CDM) transfer:
-            ipsec(1), tls(2):
-            ipsec - Internet Protocol Security (IPsec)
-            tls - Transport Layer Security (TLS)"
+            execute the Cryptographic Device Material (CDM) transfer."
         ::= { cCDMPushDestEntry 2 }
 
     cCDMPushDestAddressLocationType  OBJECT-TYPE
@@ -5021,10 +5141,10 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
             "A reference string that points to the key material(s) to
-            transfer. This column may reference one entry (e.g. an entry
-            in the cCDMStoreTable) or multiple entries (e.g. multiple
-            entries in the cCDMTransferPkgTable). This object defines
-            all the items in the package that will be sent."
+            transfer. This column may reference one entry (e.g., an
+            entry in the cCDMStoreTable) or multiple entries (e.g.,
+            multiple entries in the cCDMTransferPkgTable). This object
+            defines all the items in the package that will be sent."
         ::= { cCDMPushDestEntry 6 }
 
     cCDMPushDestRowStatus  OBJECT-TYPE
@@ -5064,7 +5184,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -5161,7 +5281,7 @@ ul.toc li {
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "The number of rows in the cCDMPushSrcTable"
+            "The number of rows in the cCDMPushSrcTable."
         ::= { cCDMPushSrcInfo 1 }
 
     cCDMPushSrcTableLastChanged  OBJECT-TYPE
@@ -5171,7 +5291,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -5187,7 +5307,7 @@ ul.toc li {
             "This table provides the list of authorized senders that
             this receiving device will accept Cryptographic Device
             Material (CDM) transfers from. Servers for the
-            cSOMSServerTable are not listed in this table since this
+            cCDMServerTable are not listed in this table since this
             table is specific for the Push Model."
         ::= { cCDMPushSrcInfo 3 }
 
@@ -5203,7 +5323,7 @@ ul.toc li {
 
     CCDMPushSrcEntry  ::= SEQUENCE {
         cCDMPushSrcSenderName       SnmpAdminString,
-        cCDMPushSrcTransferType     INTEGER,
+        cCDMPushSrcTransferType     SnmpAdminString,
         cCDMPushSrcAddrLocationType INTEGER,
         cCDMPushSrcAddrLocation     OCTET STRING,
         cCDMPushSrcRowStatus        RowStatus
@@ -5220,7 +5340,7 @@ ul.toc li {
         ::= { cCDMPushSrcEntry 1 }
 
     cCDMPushSrcTransferType  OBJECT-TYPE
-        SYNTAX      INTEGER { ipsec(1), tls(2), other(3) }
+        SYNTAX      SnmpAdminString (SIZE(1..32))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -5228,10 +5348,6 @@ ul.toc li {
             mechanism or protocol used by the receiver to receive the
             Cryptographic Device Material (CDM) transfer.
 
-            ipsec - Internet Protocol Security (IPsec)
-            tls - Transport Layer Security (TLS)
-            other - used for device specific transfer mechanisms
-    
             cCDMPushSrcSenderName and cCDMPushSrcTransferType serve as
             indexes of this table."
         ::= { cCDMPushSrcEntry 2 }
@@ -5277,6 +5393,7 @@ ul.toc li {
 
     cKeyTransferPushCompliances  OBJECT IDENTIFIER
         ::= { cKeyTransferPushConformance 1}
+
     cKeyTransferPushGroups  OBJECT IDENTIFIER
         ::= { cKeyTransferPushConformance 2}
 
@@ -5376,14 +5493,14 @@ ul.toc li {
     
     END
 </pre>
-<h1 id="rfc.section.5.8"><a href="#rfc.section.5.8">5.8.</a> <a href="#security-policy-information" id="security-policy-information">Security Policy Information</a></h1>
-<p id="rfc.section.5.8.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and {RFC3411}}.</p>
+<h1 id="rfc.section.5.7"><a href="#rfc.section.5.7">5.7.</a> <a href="#security-policy-information" id="security-policy-information">Security Policy Information</a></h1>
+<p id="rfc.section.5.7.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and {RFC3411}}.</p>
 <pre>
     CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
         ccSecurePolicyInfo
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -5396,41 +5513,16 @@ ul.toc li {
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccSecurePolicyInfoMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Security Policy Information
             objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5443,8 +5535,8 @@ ul.toc li {
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccSecurePolicyInfo 1 }
 
@@ -5499,7 +5591,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -5514,7 +5606,7 @@ ul.toc li {
         DESCRIPTION
             "The cSecPolicyRuleTable stores the Security Policy Rules
             that are compared against inbound and outbound data traffic
-            flow. These Security Policy Rules define the actions (e.g.
+            flow. These Security Policy Rules define the actions (e.g.,
             protect, bypass, discard) on how the data traffic flow
             should be treated."
         ::= { cSecPolicyRuleInfo 3 }
@@ -5545,7 +5637,7 @@ ul.toc li {
         DESCRIPTION
             "Local unique index that identifies the priority at which
             this Security Policy rule is applied. Lower values have a
-            higher priority (e.g. a value of 1 will be processed before
+            higher priority (e.g., a value of 1 will be processed before
             a value of 2). This column is the primary index to the
             cSecPolicyRuleTable."
         ::= { cSecPolicyRuleEntry 1 }
@@ -5562,7 +5654,7 @@ ul.toc li {
         ::= { cSecPolicyRuleEntry 2 }
 
     cSecPolicyRuleType  OBJECT-TYPE
-        SYNTAX      INTEGER { ipsec(1), tls(2) }
+        SYNTAX      INTEGER { ipsec(1), tls(2), macsec(3) }
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5650,6 +5742,7 @@ ul.toc li {
 
     cSecurePolicyCompliances  OBJECT IDENTIFIER
         ::= { cSecurePolicyConformance 1 }
+
     cSecurePolicyGroups  OBJECT IDENTIFIER
         ::= { cSecurePolicyConformance 2 }
 
@@ -5694,14 +5787,14 @@ ul.toc li {
 
     END
 </pre>
-<h1 id="rfc.section.5.9"><a href="#rfc.section.5.9">5.9.</a> <a href="#secure-connection-information" id="secure-connection-information">Secure Connection Information</a></h1>
-<p id="rfc.section.5.9.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, and <a href="#RFC4303">[RFC4303]</a>.</p>
+<h1 id="rfc.section.5.8"><a href="#rfc.section.5.8">5.8.</a> <a href="#secure-connection-information" id="secure-connection-information">Secure Connection Information</a></h1>
+<p id="rfc.section.5.8.p.1">This module makes reference to: <a href="#cc-fh">Section 5.2</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, and <a href="#RFC4303">[RFC4303]</a>.</p>
 <pre>
     CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
         ccSecureConnectionInfo
-            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM Sec 5.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                           -- FROM RFC 2578
@@ -5714,41 +5807,16 @@ ul.toc li {
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
     ccSecureConnectionInfoMIB  MODULE-IDENTITY
-        LAST-UPDATED  "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        ORGANIZATION  "IETF"
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
-            "Shadi Azoum
-            US Navy
-            email: shadi.azoum@navy.mil
- 
-            Elliott Jones
-            US Navy
-            elliott.jones@navy.mil
-
-            Lily Sun
-            US Navy
-            lily.sun@navy.mil
-
-            Mike Irani
-            NKI Engineering
-            irani@nkiengineering.com
-
-            Jeffrey Sun
-            NKI Engineering
-            sunjeff@nkiengineering.com
-
-            Ray Purvis
-            MITRE
-            Email:rpurvis@mitre.org
-
-            Sean Turner
-            sn3rd
-            Email:sean@sn3rd.com"
+            "CC MIB Configuration Control Board
+             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
             "This MIB defines the CC MIB Secure Connection Information
             objects.
 
-            Copyright (c) 2017 IETF Trust and the persons
+            Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
             Redistribution and use in source and binary forms, with
@@ -5761,8 +5829,8 @@ ul.toc li {
             This version of this MIB module is part of RFC xxxx;
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
-        REVISION      "YYYYMMDDHHMMSSZ" -- DD MM YYYY HH:MM:00 ZULU
-        DESCRIPTION   "Initial Version. Published as RFC xxxx."
+        REVISION      "201609302154Z"
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccSecureConnectionInfo 1 }
 
@@ -5823,7 +5891,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified, created,
             or deleted by either SNMP, agent, or other management method
-            (e.g. via an HMI). Managers can use this object to ensure
+            (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
@@ -5861,7 +5929,8 @@ ul.toc li {
         cSecConCryptographicSuite   OCTET STRING,
         cSecConEstablishmentTime    DateAndTime,
         cSecConStatus               OCTET STRING,
-        cSecConRowStatus            RowStatus
+        cSecConRowStatus            RowStatus,
+        cSecConRemoteKeyReference   OCTET STRING
     }
 
     cSecConTableID  OBJECT-TYPE
@@ -5898,9 +5967,9 @@ ul.toc li {
 
             Note, this is a free form OCTET STRING column where
             meaningful values/format are defined per Secure Connection
-            protocol type basis. For instance, in an IPsec context (i.e.
-            cSecConType value is set to 'ipsec'), this column would
-            store the Security Parameter Index (SPI) for a given
+            protocol type basis. For instance, in an IPsec context
+            (i.e., cSecConType value is set to 'ipsec'), this column
+            would store the Security Parameter Index (SPI) for a given
             Encapsulating Security Payload Version 3 Security
             Association (RFC 4303 - Section 2.1.)."
         ::= { cSecConEntry 3 }
@@ -5980,7 +6049,7 @@ ul.toc li {
             "Column that provides the current status of the Secure
             Connection. Note, this is a free form OCTET STRING column
             where meaningful values are defined per Secure Connection
-            protocol type basis (i.e. as defined by the cSecConType
+            protocol type basis (i.e., as defined by the cSecConType
             value) or per implementation basis.
 
             If there is no appropriate value to populate with, this
@@ -6008,12 +6077,28 @@ ul.toc li {
             enabled/disabled by the manager."
         ::= { cSecConEntry 9 }
 
+    cSecConRemoteKeyReference  OBJECT-TYPE
+        SYNTAX      OCTET STRING (SIZE(0..255))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION 
+            "Administrative string that references remote key material
+            associated with the Secure Connection (i.e., the remote key
+            material used by the peer to establish the Secure
+            Connection. This column references an entry (via table index
+            value) in cRemoteKeyMaterialTable (CC-KEY-MANAGEMENT-MIB).
+
+            If there is no appropriate value to populate with, this
+            column would be populated with an empty string, ''"
+        ::= {cSecConEntry 10}
+
     -- *****************************************************************
     -- Module Conformance Information
     -- *****************************************************************
 
     cSecureConnectionCompliances  OBJECT IDENTIFIER
         ::= { cSecureConnectionConformance 1}
+
     cSecureConnectionGroups  OBJECT IDENTIFIER
         ::= { cSecureConnectionConformance 2}
 
@@ -6046,7 +6131,8 @@ ul.toc li {
                     cSecConCryptographicSuite,
                     cSecConEstablishmentTime,
                     cSecConStatus,
-                    cSecConRowStatus
+                    cSecConRowStatus,
+                    cSecConRemoteKeyReference
                 }
         STATUS current
         DESCRIPTION
@@ -6068,6 +6154,15 @@ ul.toc li {
     END
 </pre>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#iana" id="iana">IANA Considerations</a></h1>
+<p id="rfc.section.6.p.1">This document makes no requests of IANA.  All of the object identifiers used in the document are defined in the IANA Private Enterprise Number (PEN) ccmib arc (34493).</p>
+<p/>
+
+<dl>
+  <dt>RFC EDITOR:</dt>
+  <dd style="margin-left: 8">Please delete the following note prior to publication</dd>
+  <dt>NOTE:</dt>
+  <dd style="margin-left: 8">&#8220;cpsg&#8221; is undergoing a name change to &#8220;ccmib&#8221;.</dd>
+</dl>
 <h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#security" id="security">Security Considerations</a></h1>
 <p id="rfc.section.7.p.1">SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.</p>
 <p id="rfc.section.7.p.2">Implementations SHOULD provide the security features described by the SNMPv3 framework (see <a href="#RFC3410">[RFC3410]</a>), and implementations claiming compliance to the SNMPv3 standard MUST include full support for authentication and privacy via the User-based Security Model (USM) <a href="#RFC3414">[RFC3414]</a> with the AES cipher algorithm <a href="#RFC3826">[RFC3826]</a>.  Implementations MAY also provide support for the Transport Security Model (TSM) <a href="#RFC5591">[RFC5591]</a> in combination with a secure transport such as SSH <a href="#RFC5592">[RFC5592]</a> or TLS/DTLS <a href="#RFC6353">[RFC6353]</a>.</p>
