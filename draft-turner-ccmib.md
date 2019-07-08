@@ -5760,6 +5760,16 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 IANA Considerations  {#iana}
 ===================
 
+This document makes no requests of IANA.  All of the object identifiers
+used in the document are defined in the IANA Private Enterprise Number
+(PEN) ccmib arc (34493).
+
+RFC EDITOR:
+: Please delete the following note prior to publication
+
+NOTE:
+: "cpsg" is undergoing a name change to "ccmib".
+
 Security Considerations  {#security}
 =======================
 
