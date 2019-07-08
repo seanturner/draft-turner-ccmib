@@ -246,7 +246,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
 
     IMPORTS
         ccDeviceInfo
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM {{cc-fh}}
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
@@ -468,7 +468,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "A notification from the device to the management station
-             indicating a firmware install failed."
+            indicating a firmware install failed."
         ::= { cDeviceInfoNotify 1 }
 
     cFirmwareInstallSuccess  NOTIFICATION-TYPE
@@ -480,7 +480,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
          STATUS      current
          DESCRIPTION 
              "A notification from the device to the management station
-              indicating a firmware intsall succeeded."
+             indicating a firmware intsall succeeded."
          ::= {cDeviceInfoNotify 2}
 
     cResetDeviceInitialized  NOTIFICATION-TYPE
@@ -521,8 +521,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "A notification from the device to the management station
-             indicating a battery has reached the threshold at which a
-             battery warning is indicated."
+            indicating a battery has reached the threshold at which a
+            battery warning is indicated."
         ::= { cDeviceInfoNotify 6 }
 
      cBatteryRequiresReplacement  NOTIFICATION-TYPE
@@ -530,8 +530,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
          STATUS      current
          DESCRIPTION 
              "A notification from the device to the management station
-              indicating a battery should be charged or changed
-              immediately."
+             indicating a battery should be charged or changed
+             immediately."
          ::= { cDeviceInfoNotify 7 }
 
      cDeviceOnBattery  NOTIFICATION-TYPE
@@ -539,10 +539,10 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
          STATUS      current
          DESCRIPTION 
              "A notificiation from the device to the management station
-              indicating the device is on battery power. This
-              notification is sent when the device is no longer
-              connected to an external power source and is operating
-              using a battery for main power."
+             indicating the device is on battery power. This
+             notification is sent when the device is no longer
+             connected to an external power source and is operating
+             using a battery for main power."
          ::= { cDeviceInfoNotify 8 }
 
     cDeviceComponentDisabled  NOTIFICATION-TYPE
@@ -708,13 +708,13 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "The last time any entry in the table was modified, created,
-             or deleted by either SNMP, agent, or other management
-             method (e.g., via an HMI). Managers can use this object to
-             ensure that no changes to configuration of this table have
-             happened since the last time it examined the table. A
-             value of 0 indicates that no entry has been changed since
-             the agent initialized.  The value in CC-DEVICE-INFO-MIB
-             cSystemUpTime should be used to populate this column."
+            or deleted by either SNMP, agent, or other management
+            method (e.g., via an HMI). Managers can use this object to
+            ensure that no changes to configuration of this table have
+            happened since the last time it examined the table. A
+            value of 0 indicates that no entry has been changed since
+            the agent initialized.  The value in CC-DEVICE-INFO-MIB
+            cSystemUpTime should be used to populate this column."
         ::= { cBatteryInfo 2 }
 
     cBatteryInfoTable  OBJECT-TYPE
@@ -723,7 +723,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "The table containing information on each of the batteries
-             installed in the device."
+            installed in the device."
         ::= {cBatteryInfo 3}
 
     cBatteryInfoEntry  OBJECT-TYPE
@@ -732,8 +732,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
            "A row contining information on a specific battery. If a
-            device cannot return status of a battery it should not
-            create a row in this table for that battery."
+           device cannot return status of a battery it should not
+           create a row in this table for that battery."
         INDEX      { cBatteryIndex }
         ::= { cBatteryInfoTable 1 }
 
@@ -751,11 +751,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "A numerical index used to identify the battery. This value
-             uniquely identifies a battery on this device. The value
-             should be persistent for a given battery, but management
-             stations should not depend on it as it may not be possible
-             for some devices to retain identical indexes (especially
-             across reboots)."
+            uniquely identifies a battery on this device. The value
+            should be persistent for a given battery, but management
+            stations should not depend on it as it may not be possible
+            for some devices to retain identical indexes (especially
+            across reboots)."
         ::= { cBatteryInfoEntry 1 }
 
     cBatteryType  OBJECT-TYPE
@@ -764,15 +764,15 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "The type of battery. Main(2) batteries are used for
-             operation of the device when not connected to a power
-             source. Clock(3) is used to describe batteries which cannot
-             provide main power to the device but maintain clock or
-             other persistent data. Security(4) is used for batteries
-             which perform specific security functions or which may
-             render the device inoperable when the battery is depleted.
-             If a battery is used for both clock and security, Security
-             should be returned. Other(1) describes a battery which is
-             not otherwise defined here."
+            operation of the device when not connected to a power
+            source. Clock(3) is used to describe batteries which cannot
+            provide main power to the device but maintain clock or
+            other persistent data. Security(4) is used for batteries
+            which perform specific security functions or which may
+            render the device inoperable when the battery is depleted.
+            If a battery is used for both clock and security, Security
+            should be returned. Other(1) describes a battery which is
+            not otherwise defined here."
         ::= { cBatteryInfoEntry 2 }
 
     cBatteryOpStatus  OBJECT-TYPE
@@ -791,13 +791,13 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "The percentage of capacity at which the cBatteryLow
-             notification will be generated. A value of zero indicates
-             that the notification should never be sent for this
-             battery. This object should not be implemented if the
-             device will detect a low battery, but the actual percentage
-             is not measurable. This object only needs be writable for
-             implementations that support modification of the warning
-             level percentage."
+            notification will be generated. A value of zero indicates
+            that the notification should never be sent for this
+            battery. This object should not be implemented if the
+            device will detect a low battery, but the actual percentage
+            is not measurable. This object only needs be writable for
+            implementations that support modification of the warning
+            level percentage."
         ::= { cBatteryInfoEntry 4 }
 
     -- *****************************************************************
@@ -818,13 +818,13 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "The last time any entry in the table was modified, created,
-             or deleted by either SNMP, agent, or other management
-             method (e.g., via an HMI). Managers can use this object to
-             ensure that no changes to configuration of this table have
-             happened since the last time it examined the table. A value
-             of 0 indicates that no entry has been changed since the
-             agent initialized. The value in CC-DEVICE-INFO-MIB
-             cSystemUpTime should be used to populate this column."
+            or deleted by either SNMP, agent, or other management
+            method (e.g., via an HMI). Managers can use this object to
+            ensure that no changes to configuration of this table have
+            happened since the last time it examined the table. A value
+            of 0 indicates that no entry has been changed since the
+            agent initialized. The value in CC-DEVICE-INFO-MIB
+            cSystemUpTime should be used to populate this column."
         ::= { cFirmwareInfo 2 }
 
     cFirmwareInformationTable  OBJECT-TYPE
@@ -833,10 +833,10 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "A table that lists firmware versions available in the device, along
-             with their versions and type. This is used to list currently loaded 
-             firmware versions of running firmware and other available firmware 
-             versions in support of returning to a previous version of the 
-             firmware."
+            with their versions and type. This is used to list currently loaded 
+            firmware versions of running firmware and other available firmware 
+            versions in support of returning to a previous version of the 
+            firmware."
         ::= { cFirmwareInfo 3 }
 
     cFirmwareInformationEntry  OBJECT-TYPE
@@ -871,8 +871,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "Version of firmware (provided in the package); for legacy
-             firmware packages, this column would be the empty string,
-             ''."
+            firmware packages, this column would be the empty string,
+            ''."
         ::= { cFirmwareInformationEntry 2 }
 
     cFirmwareSource  OBJECT-TYPE
@@ -881,12 +881,12 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
            "This column is used by the implementation to describe how
-            the firmware was received. Agents may use any string which
-            adequately describes the interface such as 'USB.' Agents may
-            also reference entries in the ifTable when appropriate. If
-            received using a Cryptographic Device Material server, the
-            exact URI that was used to retrieve the firmware package
-            would be configured in this column."
+           the firmware was received. Agents may use any string which
+           adequately describes the interface such as 'USB.' Agents may
+           also reference entries in the ifTable when appropriate. If
+           received using a Cryptographic Device Material server, the
+           exact URI that was used to retrieve the firmware package
+           would be configured in this column."
         ::= { cFirmwareInformationEntry 3 }
 
     cFirmwareRunning  OBJECT-TYPE
@@ -895,11 +895,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "Indicates if the firmware is currently running. Only one
-             row in the table should have this object set to True at
-             any given time. If this object is set from False to True,
-             the agent must install the firmware, uninstall the previous
-             running firmware and change the cFirmwareRunning object for
-             the previous running firmware from True to False."
+            row in the table should have this object set to True at
+            any given time. If this object is set from False to True,
+            the agent must install the firmware, uninstall the previous
+            running firmware and change the cFirmwareRunning object for
+            the previous running firmware from True to False."
         ::= { cFirmwareInformationEntry 4 }
 
     cFirmwareRowStatus  OBJECT-TYPE
@@ -908,11 +908,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "The status of the row, by which old entries may be deleted
-             from this table.
+            from this table.
 
-             At a minimum, implementations must support destroy
-             management functions.  Support for active, notInService,
-             and notReady management functions is optional."
+            At a minimum, implementations must support destroy
+            management functions.  Support for active, notInService,
+            and notReady management functions is optional."
         ::= {cFirmwareInformationEntry 5}
 
     -- *****************************************************************
@@ -1016,7 +1016,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to system
-             information."
+            information."
         ::= { cDeviceInfoGroups 1 }
 
     cDeviceInfoComponentGroup OBJECT-GROUP
@@ -1031,7 +1031,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to component
-             information."
+            information."
         ::= { cDeviceInfoGroups 2 }
 
     cDeviceInfoBatteryGroup OBJECT-GROUP
@@ -1045,7 +1045,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to battery
-             information."
+            information."
         ::= { cDeviceInfoGroups 3 }    
 
     cDeviceInfoFirmwareGroup OBJECT-GROUP
@@ -1061,7 +1061,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
          STATUS current
          DESCRIPTION
              "This group is composed of objects related to firmware
-              information."
+             information."
          ::= { cDeviceInfoGroups 4 }
 
     cDeviceInfoSystemNotifyGroup NOTIFICATION-GROUP
@@ -1074,7 +1074,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS current
         DESCRIPTION
             "This group is composed of notifications related to system
-             information."
+            information."
         ::= { cDeviceInfoGroups 5 }
 
     cDeviceInfoComponentNotifyGroup NOTIFICATION-GROUP
@@ -1085,7 +1085,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS current
         DESCRIPTION
             "This group is composed of notifications related to
-             component information."
+            component information."
         ::= { cDeviceInfoGroups 6 }
 
     cDeviceInfoBatteryNotifyGroup NOTIFICATION-GROUP
@@ -1097,7 +1097,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS current
         DESCRIPTION
             "This group is composed of notifications related to battery 
-             information."
+            information."
         ::= { cDeviceInfoGroups 7 }      
 
     cDeviceInfoFirmwareNotifyGroup NOTIFICATION-GROUP
@@ -1108,7 +1108,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS current
         DESCRIPTION
             "This group is composed of notifications related to firmware 
-             information."
+            information."
         ::= { cDeviceInfoGroups 8 }
 
     END
