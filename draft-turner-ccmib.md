@@ -1,6 +1,5 @@
 ---
-title: 
-
+title: Common Cryptographic MIB (CCMIB)
 abbrev: CCMIB
 docname: draft-turner-ccmib-latest
 date: {DATE}
