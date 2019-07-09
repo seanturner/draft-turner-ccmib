@@ -1,5 +1,6 @@
 ---
-title: Common Cryptographic MIB (CCMIB)
+title: 
+
 abbrev: CCMIB
 docname: draft-turner-ccmib-latest
 date: {DATE}
@@ -98,6 +99,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
         DESCRIPTION
             "This MIB defines the CC MIB tree hierarchical assignments
             below it and acts as a reservation mechanism.
+
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -403,7 +405,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "This object stores the device's hardware version."
+            "This object stores the device's hardware version number."
         ::= { cDeviceInfoScalars 12 }
 
     -- *****************************************************************
@@ -621,9 +623,9 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
 
             Agents may reject the changing this object for certain rows.
             An example of this is changing the operational status of a
-            row that describes the software the device and not a
-            particular feature. In this event, the agent should return
-            an inconsistentValue error."
+            row that describes the software version of the device and
+            not a particular feature. In this event, the agent should
+            return an inconsistentValue error."
         ::= { cDeviceComponentVersEntry 3 }
 
     cDeviceComponentDescription OBJECT-TYPE
@@ -631,8 +633,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
-            "A description of the component. Agents may reject the
-            changing this object certain rows. In this event, the agent
+            "A description of the component. Agents may reject changing
+            this object for certain rows. In this event, the agent
             should return an inconsistentValue error."
         ::= { cDeviceComponentVersEntry 4 }
 
@@ -890,9 +892,9 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         OBJECT cSecurityLevel
         MIN-ACCESS not-accessible
         DESCRIPTION
-        "Implementation of this object is optional."
+            "Implementation of this object is optional."
 
-        cSanitizeDevice
+        OBJECT cSanitizeDevice
         MIN-ACCESS not-accessible
         DESCRIPTION
             "Implementation of this object is optional."
@@ -1853,7 +1855,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
              "The unique positive integer assigned to the Asymmetric
              Key. For Public Key Certificate (PKC) this serial number is
-             assigned by the Certification Authority (CA). The value is
+             assigned by the Certification Authority (CA). The value in
              this column can be up to 20 bytes long per Section
              '4.1.2.2. Serial Number' of RFC 5280. Other types of Key
              Material may have different serial number format as defined
@@ -2563,9 +2565,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "An administrative name that identifies the source of this
             Crypto Device Material (CDM). This could be the URI used
-            when downloaded from the Secure Object Management System
-            (SOMS) server or a physical port designator for CDM
-            downloaded via HMI."
+            when downloaded from the CDM server or a physical port
+            designator for CDM downloaded via HMI."
         ::= { cCDMStoreEntry 3 }
 
     cCDMStoreID  OBJECT-TYPE
@@ -3265,7 +3266,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The last time any entry in the table was modified,
             created, or deleted by either SNMP, agent, or other
-            management method (e.g., via an HMI) Managers can use this
+            management method (e.g., via an HMI). Managers can use this
             object to ensure that no changes to configuration of this
             table have happened since the last time it examined the
             table. A value of 0 indicates that no entry has been
@@ -3904,7 +3905,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         STATUS      current
         DESCRIPTION
             "The amount of time to wait after a download attempt to the
-            Cryptographic Device Material (CDM) server fails before
+            cryptographic device material (CDM) server fails before
             attempting to retry the operation. Note, this scalar applies
             to the download of any type of item from the CDM server
             (e.g., CDMs, CDMLs)." 
@@ -3916,7 +3917,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         STATUS      current
         DESCRIPTION
             "The amount of retries attempted before the download attempt
-            to the Cryptographic Device Material (CDM) server is
+            to the cryptographic device material (CDM) server is
             considered a failure. Note, this scalar applies to the
             download of any type of item from the CDM server (e.g.,
             CDMs, CDMLs)."
@@ -3966,7 +3967,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             cCDMLDeliveryStatus must contain the value 'complete'. At
             which point, setting this object to to 'downloadAndParse'
             initiates the CDML download process. Note, the
-            cCDMLDeliveryStatus should transition to 'inProgress' at
+            cCDMLDeliveryStatus should transition to 'inProgress' as
             the device begins the CDML download process from the
             server(s) and URI(s) listed in the cCDMLServerTable (as
             ordered by the cCDMLServerPriority index).
@@ -3981,7 +3982,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             value except 'discard' (which will cancel the current
             download).
 
-            If the CDML download succeeded, the cCMDLDeliveryStatus
+            If the CDML download succeeded, the cCDMLDeliveryStatus
             value remains inProgress and the device attempts to parse
             the download immediately. During the parsing of the CDML,
             all new values will return inconsistentValue error (i.e.,
@@ -4043,8 +4044,8 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         STATUS      current
         DESCRIPTION
             "An attempt to receive a cryptographic device material
-            list (CDML) succeeded. The CDM server URI is provided with
-            this notification."
+            list (CDML) has succeeded. The CDM server URI is provided
+            with this notification."
         ::= { cKeyTransferPullNotify 1 }
 
     cCDMLPullReceiveFailed  NOTIFICATION-TYPE
@@ -5020,7 +5021,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
 
     cCDMPushSrcTransferType  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(1..32))
-        MAX-ACCESS  read-only
+        MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "Analogous to cCDMPushDestTransferType. The transfer
@@ -5202,7 +5203,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Security Policy Information
+            "This MIB defines the CC MIB Secure Policy Information
             objects.
 
             Copyright (c) 2019 IETF Trust and the persons
