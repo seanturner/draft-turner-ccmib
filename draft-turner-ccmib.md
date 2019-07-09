@@ -99,7 +99,6 @@ This MIB module makes reference to the following document: {{RFC2578}}.
             "This MIB defines the CC MIB tree hierarchical assignments
             below it and acts as a reservation mechanism.
 
-
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
 
