@@ -1,13 +1,13 @@
 ---
-title:  Common Cryptographic MIB (CCMIB)
+title: Common Cryptographic MIB (CCMIB)
 abbrev: CCMIB
 docname: draft-turner-ccmib-latest
 date: {DATE}
 category: info
 
 ipr: trust200902
-area:
-workgroup:
+area: 
+workgroup: 
 keyword: Internet-Draft
 
 stand_alone: yes
