@@ -106,7 +106,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
             or without modification, is permitted pursuant to, and
             subject to the license terms contained in, the Simplified
             BSD License set forth in Section 4.c of the IETF Trust's
-            Legal Provisions Relating to IETF Documennts
+            Legal Provisions Relating to IETF Documents
             (http://trustee.ietf.org/license-info).
 
             This version of this MIB module is part of RFC xxxx;
@@ -4042,8 +4042,8 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         STATUS      current
         DESCRIPTION
             "An attempt to receive a cryptographic device material
-            list (CDML) has succeeded. The CDM server URI is provided
-            with this notification."
+             list (CDML) has succeeded. The CDM server URI is provided
+             with this notification."
         ::= { cKeyTransferPullNotify 1 }
 
     cCDMLPullReceiveFailed  NOTIFICATION-TYPE
