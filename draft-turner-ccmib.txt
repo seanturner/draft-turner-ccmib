@@ -2,15 +2,15 @@
 
 
 
-N/A                                                               J. Sun
+Network Working Group                                             J. Sun
 Internet-Draft                                                  M. Irani
 Intended status: Informational                                 T. Nguyen
-Expires: January 9, 2020        Naval Information Warfare Center Pacific
+Expires: January 31, 2020       Naval Information Warfare Center Pacific
                                                                R. Purvis
                                                    The MITRE Corporation
                                                                S. Turner
                                                                    sn3rd
-                                                            July 8, 2019
+                                                           July 30, 2019
 
 
                     Common Cryptographic MIB (CCMIB)
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 9, 2020.
+   This Internet-Draft will expire on January 31, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Sun, et al.              Expires January 9, 2020                [Page 1]
+Sun, et al.             Expires January 31, 2020                [Page 1]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Sun, et al.              Expires January 9, 2020                [Page 2]
+Sun, et al.             Expires January 31, 2020                [Page 2]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -165,7 +165,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020                [Page 3]
+Sun, et al.             Expires January 31, 2020                [Page 3]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -203,7 +203,7 @@ Internet-Draft                    CCMIB                        July 2019
         DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
         ::= { ccmib 3 }
 
-    ccmib    OBJECT IDENTIFIER ::= { enterprise 34493 }
+    ccmib    OBJECT IDENTIFIER ::= { enterprises 34493 }
 
     --
     -- Note: Current top-level OID assignments within the CC MIB tree:
@@ -221,7 +221,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020                [Page 4]
+Sun, et al.             Expires January 31, 2020                [Page 4]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -277,7 +277,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020                [Page 5]
+Sun, et al.             Expires January 31, 2020                [Page 5]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -298,11 +298,11 @@ Internet-Draft                    CCMIB                        July 2019
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY, TimeTicks
+        MODULE-IDENTITY, TimeTicks, Integer32
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
-        DateAndTime, TruthValue, TimeStamp
+        DateAndTime, TruthValue, TimeStamp, RowStatus
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
@@ -328,12 +328,12 @@ Internet-Draft                    CCMIB                        July 2019
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
-        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
 
 
 
-Sun, et al.              Expires January 9, 2020                [Page 6]
+Sun, et al.             Expires January 31, 2020                [Page 6]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -389,7 +389,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020                [Page 7]
+Sun, et al.             Expires January 31, 2020                [Page 7]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -445,7 +445,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020                [Page 8]
+Sun, et al.             Expires January 31, 2020                [Page 8]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -501,7 +501,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020                [Page 9]
+Sun, et al.             Expires January 31, 2020                [Page 9]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -533,7 +533,7 @@ Internet-Draft                    CCMIB                        July 2019
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "This object stores the device's hardware version."
+            "This object stores the device's hardware version number."
         ::= { cDeviceInfoScalars 12 }
 
     -- *****************************************************************
@@ -557,7 +557,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 10]
+Sun, et al.             Expires January 31, 2020               [Page 10]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -613,7 +613,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 11]
+Sun, et al.             Expires January 31, 2020               [Page 11]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -669,7 +669,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 12]
+Sun, et al.             Expires January 31, 2020               [Page 12]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -718,14 +718,14 @@ Internet-Draft                    CCMIB                        July 2019
         INDEX      { cDeviceComponentName, cDeviceComponentVersion }
         ::= { cDeviceComponentVersTable 1 }
 
-    cDeviceComponentVersEntry  ::= SEQUENCE
+    CDeviceComponentVersEntry  ::= SEQUENCE
         {
           cDeviceComponentName        SnmpAdminString,
           cDeviceComponentVersion     SnmpAdminString,
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 13]
+Sun, et al.             Expires January 31, 2020               [Page 13]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -781,7 +781,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 14]
+Sun, et al.             Expires January 31, 2020               [Page 14]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -791,9 +791,9 @@ Internet-Draft                    CCMIB                        July 2019
 
             Agents may reject the changing this object for certain rows.
             An example of this is changing the operational status of a
-            row that describes the software the device and not a
-            particular feature. In this event, the agent should return
-            an inconsistentValue error."
+            row that describes the software version of the device and
+            not a particular feature. In this event, the agent should
+            return an inconsistentValue error."
         ::= { cDeviceComponentVersEntry 3 }
 
     cDeviceComponentDescription OBJECT-TYPE
@@ -801,8 +801,8 @@ Internet-Draft                    CCMIB                        July 2019
         MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
-            "A description of the component. Agents may reject the
-            changing this object certain rows. In this event, the agent
+            "A description of the component. Agents may reject changing
+            this object for certain rows. In this event, the agent
             should return an inconsistentValue error."
         ::= { cDeviceComponentVersEntry 4 }
 
@@ -837,7 +837,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 15]
+Sun, et al.             Expires January 31, 2020               [Page 15]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -893,7 +893,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 16]
+Sun, et al.             Expires January 31, 2020               [Page 16]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -949,7 +949,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 17]
+Sun, et al.             Expires January 31, 2020               [Page 17]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1005,7 +1005,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 18]
+Sun, et al.             Expires January 31, 2020               [Page 18]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1061,7 +1061,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 19]
+Sun, et al.             Expires January 31, 2020               [Page 19]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1100,9 +1100,9 @@ Internet-Draft                    CCMIB                        July 2019
         OBJECT cSecurityLevel
         MIN-ACCESS not-accessible
         DESCRIPTION
-        "Implementation of this object is optional."
+            "Implementation of this object is optional."
 
-        cSanitizeDevice
+        OBJECT cSanitizeDevice
         MIN-ACCESS not-accessible
         DESCRIPTION
             "Implementation of this object is optional."
@@ -1117,7 +1117,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 20]
+Sun, et al.             Expires January 31, 2020               [Page 20]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1173,7 +1173,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 21]
+Sun, et al.             Expires January 31, 2020               [Page 21]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1229,7 +1229,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 22]
+Sun, et al.             Expires January 31, 2020               [Page 22]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1285,7 +1285,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 23]
+Sun, et al.             Expires January 31, 2020               [Page 23]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1341,7 +1341,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 24]
+Sun, et al.             Expires January 31, 2020               [Page 24]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1357,7 +1357,7 @@ Internet-Draft                    CCMIB                        July 2019
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
-        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyManagement 1 }
 
@@ -1397,7 +1397,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 25]
+Sun, et al.             Expires January 31, 2020               [Page 25]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1453,7 +1453,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 26]
+Sun, et al.             Expires January 31, 2020               [Page 26]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1509,7 +1509,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 27]
+Sun, et al.             Expires January 31, 2020               [Page 27]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1565,7 +1565,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 28]
+Sun, et al.             Expires January 31, 2020               [Page 28]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1621,7 +1621,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 29]
+Sun, et al.             Expires January 31, 2020               [Page 29]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1677,7 +1677,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 30]
+Sun, et al.             Expires January 31, 2020               [Page 30]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1733,7 +1733,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 31]
+Sun, et al.             Expires January 31, 2020               [Page 31]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1789,7 +1789,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 32]
+Sun, et al.             Expires January 31, 2020               [Page 32]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1845,7 +1845,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 33]
+Sun, et al.             Expires January 31, 2020               [Page 33]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1901,7 +1901,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 34]
+Sun, et al.             Expires January 31, 2020               [Page 34]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -1957,7 +1957,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 35]
+Sun, et al.             Expires January 31, 2020               [Page 35]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2013,7 +2013,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 36]
+Sun, et al.             Expires January 31, 2020               [Page 36]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2069,7 +2069,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 37]
+Sun, et al.             Expires January 31, 2020               [Page 37]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2125,7 +2125,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 38]
+Sun, et al.             Expires January 31, 2020               [Page 38]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2181,7 +2181,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 39]
+Sun, et al.             Expires January 31, 2020               [Page 39]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2221,7 +2221,7 @@ Internet-Draft                    CCMIB                        July 2019
         DESCRIPTION
              "The unique positive integer assigned to the Asymmetric
              Key. For Public Key Certificate (PKC) this serial number is
-             assigned by the Certification Authority (CA). The value is
+             assigned by the Certification Authority (CA). The value in
              this column can be up to 20 bytes long per Section
              '4.1.2.2. Serial Number' of RFC 5280. Other types of Key
              Material may have different serial number format as defined
@@ -2237,7 +2237,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 40]
+Sun, et al.             Expires January 31, 2020               [Page 40]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2293,7 +2293,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 41]
+Sun, et al.             Expires January 31, 2020               [Page 41]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2349,7 +2349,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 42]
+Sun, et al.             Expires January 31, 2020               [Page 42]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2405,7 +2405,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 43]
+Sun, et al.             Expires January 31, 2020               [Page 43]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2461,7 +2461,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 44]
+Sun, et al.             Expires January 31, 2020               [Page 44]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2517,7 +2517,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 45]
+Sun, et al.             Expires January 31, 2020               [Page 45]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2573,7 +2573,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 46]
+Sun, et al.             Expires January 31, 2020               [Page 46]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2629,7 +2629,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 47]
+Sun, et al.             Expires January 31, 2020               [Page 47]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2685,7 +2685,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 48]
+Sun, et al.             Expires January 31, 2020               [Page 48]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2741,7 +2741,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 49]
+Sun, et al.             Expires January 31, 2020               [Page 49]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2797,7 +2797,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 50]
+Sun, et al.             Expires January 31, 2020               [Page 50]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2853,7 +2853,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 51]
+Sun, et al.             Expires January 31, 2020               [Page 51]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2909,7 +2909,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 52]
+Sun, et al.             Expires January 31, 2020               [Page 52]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -2965,7 +2965,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 53]
+Sun, et al.             Expires January 31, 2020               [Page 53]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -3021,7 +3021,7 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 54]
+Sun, et al.             Expires January 31, 2020               [Page 54]
 
 Internet-Draft                    CCMIB                        July 2019
 
@@ -3048,9 +3048,8 @@ Internet-Draft                    CCMIB                        July 2019
         DESCRIPTION
             "An administrative name that identifies the source of this
             Crypto Device Material (CDM). This could be the URI used
-            when downloaded from the Secure Object Management System
-            (SOMS) server or a physical port designator for CDM
-            downloaded via HMI."
+            when downloaded from the CDM server or a physical port
+            designator for CDM downloaded via HMI."
         ::= { cCDMStoreEntry 3 }
 
     cCDMStoreID  OBJECT-TYPE
@@ -3074,15 +3073,14 @@ Internet-Draft                    CCMIB                        July 2019
             "A human readable label of this Crypto Device Material (CDM)
             for easier reference. It is used only for helpful or
             informational purposes."
+        ::= { cCDMStoreEntry 5 }
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 55]
+Sun, et al.             Expires January 31, 2020               [Page 55]
 
 Internet-Draft                    CCMIB                        July 2019
 
-
-        ::= { cCDMStoreEntry 5 }
 
     cCDMStoreControl OBJECT-TYPE
         SYNTAX      INTEGER { readyForInstall(1), install(2),
@@ -3130,16 +3128,15 @@ Internet-Draft                    CCMIB                        July 2019
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
+            "The number of rows in the cCertSubAltNameTable."
+        ::= { cCertSubAltNameInfo 1 }
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 56]
+Sun, et al.             Expires January 31, 2020               [Page 56]
 
 Internet-Draft                    CCMIB                        July 2019
 
-
-            "The number of rows in the cCertSubAltNameTable."
-        ::= { cCertSubAltNameInfo 1 }
 
     cCertSubAltNameTableLastChanged OBJECT-TYPE
         SYNTAX      TimeStamp
@@ -3186,17 +3183,17 @@ Internet-Draft                    CCMIB                        July 2019
 
     cCertSubAltNameList OBJECT-TYPE
         SYNTAX     SnmpAdminString (SIZE(1..32))
+        MAX-ACCESS not-accessible
+        STATUS     current
+        DESCRIPTION
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 57]
+Sun, et al.             Expires January 31, 2020               [Page 57]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-        MAX-ACCESS not-accessible
-        STATUS     current
-        DESCRIPTION
             "The administrative name defining the set of Subject
             Alternative Names that are associated with the certificate.
             Multiple Subject Alternative Names may use the same
@@ -3242,17 +3239,17 @@ Internet-Draft                    CCMIB                        July 2019
             of the value must match its Type as defined in RFC 5280,
             Section 4.2.1.6.
 
+            This column is the main value and is used for all
+            cCertSubAltNameType types. For otherName(0), this column
+            provides the value of the 'value' field. For
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 58]
+Sun, et al.             Expires January 31, 2020               [Page 58]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-            This column is the main value and is used for all
-            cCertSubAltNameType types. For otherName(0), this column
-            provides the value of the 'value' field. For
             ediPartyName(5), this column provides the value of the
             'partyName'. For all other types, this column provides the
             value as defined in RFC 5280, Section 4.2.1.6."
@@ -3298,16 +3295,16 @@ Internet-Draft                    CCMIB                        July 2019
         ::= { cCertSubAltNameTableEntry 6 }
 
     -- *****************************************************************
+    -- CC MIB cCertPathCtrlsTable
+    -- *****************************************************************
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 59]
+
+Sun, et al.             Expires January 31, 2020               [Page 59]
 
 Internet-Draft                    CCMIB                        July 2019
 
-
-    -- CC MIB cCertPathCtrlsTable
-    -- *****************************************************************
 
     cCertPathCtrlsTableCount OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -3354,17 +3351,17 @@ Internet-Draft                    CCMIB                        July 2019
 
     CCertPathCtrlsEntry ::= SEQUENCE {
         cCertPathCtrlsKeyFingerprint    SnmpTLSFingerprint,
+        cCertPathCtrlsCertificate       RowPointer,
+        cCertPathCtrlsCertPolicies      OCTET STRING,
+        cCertPathCtrlsPolicyMappings    OCTET STRING,
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 60]
+Sun, et al.             Expires January 31, 2020               [Page 60]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-        cCertPathCtrlsCertificate       RowPointer,
-        cCertPathCtrlsCertPolicies      OCTET STRING,
-        cCertPathCtrlsPolicyMappings    OCTET STRING,
         cCertPathCtrlsPolicyFlags       BITS,
         cCertPathCtrlsNamesPermitted    OCTET STRING,
         cCertPathCtrlsNamesExcluded     OCTET STRING,
@@ -3410,17 +3407,17 @@ Internet-Draft                    CCMIB                        July 2019
         STATUS      current
         DESCRIPTION
             "For a Certification Authority (CA) certificate, this
+            indicates a grouping of policy mappings between a
+            certificate issuer CA domain policy and a domain policy of
+            the subject certificate CA. The value of this column
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 61]
+Sun, et al.             Expires January 31, 2020               [Page 61]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-            indicates a grouping of policy mappings between a
-            certificate issuer CA domain policy and a domain policy of
-            the subject certificate CA. The value of this column
             corresponds to the cPolicyMappingGroup column of the
             cPolicyMappingTable.
 
@@ -3466,17 +3463,16 @@ Internet-Draft                    CCMIB                        July 2019
             corresponds to the cNameConstraintGenSubtree column in the
             cNameConstraintTable.
 
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 62]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             When this object does not apply for the key material, this
             column will not exist."
         ::= { cCertPathCtrlsEntry 6 }
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 62]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
     cCertPathCtrlsNamesExcluded  OBJECT-TYPE
         SYNTAX      OCTET STRING
@@ -3522,18 +3518,18 @@ Internet-Draft                    CCMIB                        July 2019
         STATUS      current
         DESCRIPTION
             "The last time any entry in the table was modified, created,
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 63]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             or deleted by either SNMP, agent, or other management method
             (e.g., via an HMI). Managers can use this object to ensure
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 63]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
             indicates that no entry has been changed since the agent
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
             should be used to populate this column."
@@ -3578,17 +3574,17 @@ Internet-Draft                    CCMIB                        July 2019
         DESCRIPTION
             "Identifies a grouping of policies that are applicable to a
             certificate. When used in conjunction with
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 64]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             cCertPolicyInformationIndex, a unique policy and qualifier
             set is defined."
         ::= { cCertPolicyEntry 1 }
+
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 64]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
     cCertPolicyInformationIndex  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -3634,18 +3630,18 @@ Internet-Draft                    CCMIB                        July 2019
 
     -- *****************************************************************
     -- CC MIB cPolicyMappingTable
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 65]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
     -- *****************************************************************
 
     cPolicyMappingTableCount OBJECT-TYPE
         SYNTAX      Unsigned32
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 65]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3690,18 +3686,18 @@ Internet-Draft                    CCMIB                        July 2019
         ::= { cPolicyMappingTable 1 }
 
     CPolicyMappingEntry ::= SEQUENCE {
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 66]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         cPolicyMappingGroup         OCTET STRING,
         cPolicyMappingIndex         Unsigned32,
         cPolicyMappingSubjectPolicy OBJECT IDENTIFIER,
         cPolicyMappingIssuerPolicy  OBJECT IDENTIFIER
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 66]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
     }
 
     cPolicyMappingGroup  OBJECT-TYPE
@@ -3747,16 +3743,17 @@ Internet-Draft                    CCMIB                        July 2019
     -- CC MIB cNameConstraintTable
     -- *****************************************************************
 
+    cNameConstraintTableCount OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  read-only
 
 
-Sun, et al.              Expires January 9, 2020               [Page 67]
+
+Sun, et al.             Expires January 31, 2020               [Page 67]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    cNameConstraintTableCount OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
             "The number of rows in the cNameConstraintTable."
@@ -3802,17 +3799,17 @@ Internet-Draft                    CCMIB                        July 2019
         cNameConstraintGenSubtree   OCTET STRING,
         cNameConstraintSubtreeIndex Unsigned32,
         cNameConstraintBaseName     SnmpAdminString
+    }
+
+    cNameConstraintGenSubtree  OBJECT-TYPE
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 68]
+Sun, et al.             Expires January 31, 2020               [Page 68]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    }
-
-    cNameConstraintGenSubtree  OBJECT-TYPE
         SYNTAX      OCTET STRING (SIZE(1..255))
         MAX-ACCESS  not-accessible
         STATUS      current
@@ -3858,18 +3855,18 @@ Internet-Draft                    CCMIB                        July 2019
         SYNTAX       TimeStamp
         MAX-ACCESS   read-only
         STATUS       current
+        DESCRIPTION
+            "The last time any entry in the table was modified,
+            created, or deleted by either SNMP, agent, or other
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 69]
+Sun, et al.             Expires January 31, 2020               [Page 69]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-        DESCRIPTION
-            "The last time any entry in the table was modified,
-            created, or deleted by either SNMP, agent, or other
-            management method (e.g., via an HMI) Managers can use this
+            management method (e.g., via an HMI). Managers can use this
             object to ensure that no changes to configuration of this
             table have happened since the last time it examined the
             table. A value of 0 indicates that no entry has been
@@ -3914,17 +3911,17 @@ Internet-Draft                    CCMIB                        July 2019
         DESCRIPTION
             "Represents a unique identifier assigned to this key
             material. This would typically be an identifier inherent to
+            the key material, such as a serial number or other form of
+            identifier derived from a tag or other key wrapper. This
+            object differs from cRemoteKeyMatFriendlyName which is a
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 70]
+Sun, et al.             Expires January 31, 2020               [Page 70]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-            the key material, such as a serial number or other form of
-            identifier derived from a tag or other key wrapper. This
-            object differs from cRemoteKeyMatFriendlyName which is a
             user-defined ID."
         ::= { cRemoteKeyMaterialTableEntry 1 }
 
@@ -3970,17 +3967,17 @@ Internet-Draft                    CCMIB                        July 2019
             "The expiration date of the key."
         ::= { cRemoteKeyMaterialTableEntry 5 }
 
+    cRemoteKeyMatClassification OBJECT-TYPE
+        SYNTAX       BITS { unclassified(0), restricted(1),
+                            confidential(2), secret(3), topSecret(4) }
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 71]
+Sun, et al.             Expires January 31, 2020               [Page 71]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    cRemoteKeyMatClassification OBJECT-TYPE
-        SYNTAX       BITS { unclassified(0), restricted(1),
-                            confidential(2), secret(3), topSecret(4) }
         MAX-ACCESS   read-only
         STATUS       current
         DESCRIPTION
@@ -4026,17 +4023,16 @@ Internet-Draft                    CCMIB                        July 2019
     cKeyManAsymKeyCompliance MODULE-COMPLIANCE
         STATUS    current
         DESCRIPTION
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 72]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             "Compliance levels for asymmetric key information."
         MODULE
         MANDATORY-GROUPS { cKeyManAsymKeyGroup, cKeyManRemoteKeyGroup }
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 72]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
         GROUP cKeyManCertSubAltNameGroup
         DESCRIPTION
@@ -4082,18 +4078,17 @@ Internet-Draft                    CCMIB                        July 2019
         DESCRIPTION
             "Implementation of this object is optional."
 
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 73]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         OBJECT cCertPathCtrlsPolicyFlags
         MIN-ACCESS not-accessible
         DESCRIPTION
             "Implementation of this object is optional."
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 73]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
         OBJECT cCertPathCtrlsMaxPathLength
         MIN-ACCESS not-accessible
@@ -4139,17 +4134,18 @@ Internet-Draft                    CCMIB                        July 2019
         DESCRIPTION
             "Implementation of this object is optional."
 
-
-
-Sun, et al.              Expires January 9, 2020               [Page 74]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         OBJECT cCertPathCtrlsMaxPathLength
         MIN-ACCESS not-accessible
         DESCRIPTION
             "Implementation of this object is optional."
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 74]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         ::= { cKeyManagementCompliances  3 }
 
     cKeyManCKLCompliance MODULE-COMPLIANCE
@@ -4194,18 +4190,18 @@ Internet-Draft                    CCMIB                        July 2019
                   cSymKeySource,
                   cSymKeyRowStatus
                 }
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 75]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to symmetric key
             information."
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 75]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         ::= { cKeyManagementGroups 1 }
 
     cKeyManAsymKeyGroup OBJECT-GROUP
@@ -4250,18 +4246,18 @@ Internet-Draft                    CCMIB                        July 2019
                   cCertSubAltNameValue2,
                   cCertSubAltNameRowStatus
                 }
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 76]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to certificate
             subject alternative name information."
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 76]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         ::= { cKeyManagementGroups 3 }
 
     cKeyManCertPathCtrlsGroup OBJECT-GROUP
@@ -4307,16 +4303,17 @@ Internet-Draft                    CCMIB                        July 2019
             information."
         ::= { cKeyManagementGroups 6 }
 
+    cKeyManNameConstraintGroup OBJECT-GROUP
+        OBJECTS {
+                  cCertPathCtrlsNamesPermitted,
 
 
-Sun, et al.              Expires January 9, 2020               [Page 77]
+
+Sun, et al.             Expires January 31, 2020               [Page 77]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    cKeyManNameConstraintGroup OBJECT-GROUP
-        OBJECTS {
-                  cCertPathCtrlsNamesPermitted,
                   cCertPathCtrlsNamesExcluded,
                   cNameConstraintTableCount,
                   cNameConstraintTableLastChanged,
@@ -4362,17 +4359,17 @@ Internet-Draft                    CCMIB                        July 2019
                   cCKLRowStatus,
                   cCKLVersion,
                   cCKLLastUpdate
+                }
+        STATUS current
+        DESCRIPTION
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 78]
+Sun, et al.             Expires January 31, 2020               [Page 78]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-                }
-        STATUS current
-        DESCRIPTION
             "This group is composed of objects related to compromised
             key list information."
         ::= { cKeyManagementGroups 9 }
@@ -4418,16 +4415,16 @@ Internet-Draft                    CCMIB                        July 2019
         STATUS current
         DESCRIPTION
             "This group is composed of objects related to asymmetric key
+            notifications."
+        ::= { cKeyManagementGroups 12 }
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 79]
+
+Sun, et al.             Expires January 31, 2020               [Page 79]
 
 Internet-Draft                    CCMIB                        July 2019
 
-
-            notifications."
-        ::= { cKeyManagementGroups 12 }
 
     cKeyManSymKeyNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
@@ -4474,17 +4471,17 @@ Internet-Draft                    CCMIB                        July 2019
     cKeyManCKLNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cCKLLoadSuccess,
+                        cCKLLoadFail
+                      }
+        STATUS current
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 80]
+Sun, et al.             Expires January 31, 2020               [Page 80]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-                        cCKLLoadFail
-                      }
-        STATUS current
         DESCRIPTION
             "This group is composed of notifications related to
             compromised key list information."
@@ -4530,17 +4527,17 @@ Internet-Draft                    CCMIB                        July 2019
         ccKeyTransferPull
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
         MODULE-COMPLIANCE, OBJECT-GROUP,
+        NOTIFICATION-GROUP
+            FROM SNMPv2-CONF                           -- FROM RFC 2580
+        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 81]
+Sun, et al.             Expires January 31, 2020               [Page 81]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-        NOTIFICATION-GROUP
-            FROM SNMPv2-CONF                           -- FROM RFC 2580
-        OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
@@ -4586,17 +4583,16 @@ Internet-Draft                    CCMIB                        July 2019
     cKeyTransferPullNotify       OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 3 }
     cCDMServerInfo               OBJECT IDENTIFIER
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 82]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         ::= { ccKeyTransferPullMIB 4 }
     cCDMDeliveryInfo             OBJECT IDENTIFIER
         ::= { ccKeyTransferPullMIB 5 }
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 82]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
     -- *****************************************************************
     -- Key Transfer Pull Scalars
@@ -4608,7 +4604,7 @@ Internet-Draft                    CCMIB                        July 2019
         STATUS      current
         DESCRIPTION
             "The amount of time to wait after a download attempt to the
-            Cryptographic Device Material (CDM) server fails before
+            cryptographic device material (CDM) server fails before
             attempting to retry the operation. Note, this scalar applies
             to the download of any type of item from the CDM server
             (e.g., CDMs, CDMLs)."
@@ -4620,7 +4616,7 @@ Internet-Draft                    CCMIB                        July 2019
         STATUS      current
         DESCRIPTION
             "The amount of retries attempted before the download attempt
-            to the Cryptographic Device Material (CDM) server is
+            to the cryptographic device material (CDM) server is
             considered a failure. Note, this scalar applies to the
             download of any type of item from the CDM server (e.g.,
             CDMs, CDMLs)."
@@ -4643,16 +4639,17 @@ Internet-Draft                    CCMIB                        July 2019
             scalar. Bandwidth-limited ECUs, for example, may configure
             lower values for only retrieving high-priority CDMs.
 
+            A value of 0, also a default value for this scalar,
+            indicates that all cCDMDeliveryTable entries can be acted
+            upon regardless of the configured cCDMDeliveryPriority
 
 
-Sun, et al.              Expires January 9, 2020               [Page 83]
+
+Sun, et al.             Expires January 31, 2020               [Page 83]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-            A value of 0, also a default value for this scalar,
-            indicates that all cCDMDeliveryTable entries can be acted
-            upon regardless of the configured cCDMDeliveryPriority
             value."
         DEFVAL {0}
         ::= { cKeyTransferPullScalars 3 }
@@ -4677,7 +4674,7 @@ Internet-Draft                    CCMIB                        July 2019
             cCDMLDeliveryStatus must contain the value 'complete'. At
             which point, setting this object to to 'downloadAndParse'
             initiates the CDML download process. Note, the
-            cCDMLDeliveryStatus should transition to 'inProgress' at
+            cCDMLDeliveryStatus should transition to 'inProgress' as
             the device begins the CDML download process from the
             server(s) and URI(s) listed in the cCDMLServerTable (as
             ordered by the cCDMLServerPriority index).
@@ -4692,23 +4689,22 @@ Internet-Draft                    CCMIB                        July 2019
             value except 'discard' (which will cancel the current
             download).
 
-            If the CDML download succeeded, the cCMDLDeliveryStatus
+            If the CDML download succeeded, the cCDMLDeliveryStatus
             value remains inProgress and the device attempts to parse
             the download immediately. During the parsing of the CDML,
             all new values will return inconsistentValue error (i.e.,
             the parse process can not be aborted). If the parse fails,
             the cCDMLDeliveryStatus will transition to 'parseFailed',
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 84]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             and this object must be set to 'discard' before a new CDML
             download is attempted."
         ::= { cKeyTransferPullScalars 4 }
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 84]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
     cCDMLDeliveryStatus OBJECT-TYPE
         SYNTAX      INTEGER { complete(1), inProgress(2),
@@ -4754,24 +4750,24 @@ Internet-Draft                    CCMIB                        July 2019
         ::= { cKeyTransferPullScalars 5 }
 
     -- *****************************************************************
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 85]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
     -- Key Transfer Pull Notifications
     -- *****************************************************************
 
     cCDMLPullReceiveSuccess  NOTIFICATION-TYPE
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 85]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         OBJECTS     { cCDMServerURI }
         STATUS      current
         DESCRIPTION
             "An attempt to receive a cryptographic device material
-            list (CDML) succeeded. The CDM server URI is provided with
-            this notification."
+            list (CDML) has succeeded. The CDM server URI is provided
+            with this notification."
         ::= { cKeyTransferPullNotify 1 }
 
     cCDMLPullReceiveFailed  NOTIFICATION-TYPE
@@ -4810,18 +4806,18 @@ Internet-Draft                    CCMIB                        July 2019
             "An attempt to receive a cryptographic device material (CDM)
             has failed. The CDM Type and CDM URI are provided with this
             notification."
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 86]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         ::= { cKeyTransferPullNotify 4 }
 
     -- *****************************************************************
     -- CC MIB cCDMServerTable
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 86]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
     -- *****************************************************************
 
     cCDMServerTableCount  OBJECT-TYPE
@@ -4866,17 +4862,17 @@ Internet-Draft                    CCMIB                        July 2019
         STATUS      current
         DESCRIPTION
             "A row containing information about a server that has
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 87]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             available CDMLs/CDMs for download."
         INDEX      { cCDMServerPriority }
         ::= { cCDMServerTable 1 }
+
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 87]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
     CCDMServerEntry  ::= SEQUENCE {
         cCDMServerPriority          Unsigned32,
@@ -4922,18 +4918,18 @@ Internet-Draft                    CCMIB                        July 2019
             "Additional information about the CDM server. This
             information is manually configured by the manager both at or
             after row creation."
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 88]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         ::= { cCDMServerEntry 3 }
 
     cCDMServerRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 88]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -4978,18 +4974,18 @@ Internet-Draft                    CCMIB                        July 2019
         ::= { cCDMDeliveryInfo 2 }
 
     cCDMDeliveryTable  OBJECT-TYPE
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 89]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         SYNTAX      SEQUENCE OF CCDMDeliveryEntry
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 89]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
             "The table storing information about cryptographic device
             materials (CDMs) that are ready/available for retrieval.
             Entries in this table are typically automatically configured
@@ -5034,18 +5030,18 @@ Internet-Draft                    CCMIB                        July 2019
                               status/information for a particular
                               (other) CDM
             [symmetricKey]  = CDM is a symmetric key
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 90]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             [asymmetricKey] = CDM is a non-certificate asymmetric key
             [certificate]   = CDM is a certificate
             [cklOrCrl]      = CDM is a compromised key list or
                               certificate revocation list
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 90]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
             [firmware]      = CDM is a firmware package"
         ::= { cCDMDeliveryEntry 1 }
 
@@ -5091,16 +5087,17 @@ Internet-Draft                    CCMIB                        July 2019
             creation."
         ::= { cCDMDeliveryEntry 4 }
 
+    cCDMLastDownloadDate  OBJECT-TYPE
+        SYNTAX      OCTET STRING (SIZE(14))
+        MAX-ACCESS  read-only
 
 
-Sun, et al.              Expires January 9, 2020               [Page 91]
+
+Sun, et al.             Expires January 31, 2020               [Page 91]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    cCDMLastDownloadDate  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(14))
-        MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
             "This is a 14 character field that will be populated with
@@ -5146,17 +5143,16 @@ Internet-Draft                    CCMIB                        July 2019
             CDM server. The following types of actions are supported:
 
             [downloadAndInstall] = Initiates a download of a CDM. After
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 92]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             a successful download, the CDM will be installed for local
             consumption and an entry is to be configured in the
             appropriate MIB table based on cCDMType:
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 92]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
             cCDMType          |  MIB Table Destination
             -------------------------------------
@@ -5202,18 +5198,17 @@ Internet-Draft                    CCMIB                        July 2019
             supported:
 
             [complete] = The default state where the local device is
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 93]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             ready to start a delivery request for the CDM. Between
             requests this state can only be reached after successful
             operations or if cCDMDeliveryRequest is set to 'discard'
             during an operation.
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 93]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
             [inProgress] = This state is reached when the device is
             either currently performing a download of the CDM or
@@ -5259,17 +5254,18 @@ Internet-Draft                    CCMIB                        July 2019
     cKeyTransferPullCompliances        OBJECT IDENTIFIER
         ::= { cKeyTransferPullConformance 1}
 
-
-
-Sun, et al.              Expires January 9, 2020               [Page 94]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
     cKeyTransferPullGroups             OBJECT IDENTIFIER
         ::= { cKeyTransferPullConformance 2}
 
     cKeyTransferPullCompliance MODULE-COMPLIANCE
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 94]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         STATUS    current
         DESCRIPTION
             "Compliance levels for key transfer pull information."
@@ -5314,18 +5310,18 @@ Internet-Draft                    CCMIB                        July 2019
         ::= { cKeyTransferPullGroups 1 }
 
     cKeyTransferPullDeliveryGroup OBJECT-GROUP
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 95]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         OBJECTS {
                   cCDMPullRetrievalPriorities,
                   cCDMLDeliveryRequest,
                   cCDMLDeliveryStatus,
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 95]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
                   cCDMDeliveryTableCount,
                   cCDMDeliveryTableLastChanged,
                   cCDMDeliveryTableLastChanged,
@@ -5370,18 +5366,18 @@ Internet-Draft                    CCMIB                        July 2019
     IMPORTS
         ccKeyTransferPush
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 96]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 96]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         RowPointer, RowStatus, DateAndTime,
         TimeStamp
@@ -5426,18 +5422,18 @@ Internet-Draft                    CCMIB                        July 2019
     cCDMTransferPkgInfo  OBJECT IDENTIFIER
         ::= { ccKeyTransferPushMIB 2 }
     cCDMPushSrcInfo  OBJECT IDENTIFIER
-
-
-
-Sun, et al.              Expires January 9, 2020               [Page 97]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         ::= { ccKeyTransferPushMIB 3 }
     cKeyTransferPushScalars  OBJECT IDENTIFIER
         ::= { ccKeyTransferPushMIB 4 }
     cKeyTransferPushNotify  OBJECT IDENTIFIER
+
+
+
+Sun, et al.             Expires January 31, 2020               [Page 97]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         ::= { ccKeyTransferPushMIB 5 }
     cKeyTransferPushConformance  OBJECT IDENTIFIER
         ::= { ccKeyTransferPushMIB 6 }
@@ -5483,16 +5479,17 @@ Internet-Draft                    CCMIB                        July 2019
             information (cCDMPushDestTable row data), has succeeded."
         ::= { cKeyTransferPushNotify 1 }
 
+    cCDMPushReceiveSuccess  NOTIFICATION-TYPE
+        OBJECTS     {
+                        cCDMPushSrcAddrLocationType,
 
 
-Sun, et al.              Expires January 9, 2020               [Page 98]
+
+Sun, et al.             Expires January 31, 2020               [Page 98]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    cCDMPushReceiveSuccess  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cCDMPushSrcAddrLocationType,
                         cCDMPushSrcAddrLocation,
                         cCDMPushSrcTransferType
                     }
@@ -5538,16 +5535,16 @@ Internet-Draft                    CCMIB                        July 2019
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
+            "The number of rows in the cCDMPushDestTable."
+        ::= { cCDMPushDestInfo 1 }
 
 
 
-Sun, et al.              Expires January 9, 2020               [Page 99]
+
+Sun, et al.             Expires January 31, 2020               [Page 99]
 
 Internet-Draft                    CCMIB                        July 2019
 
-
-            "The number of rows in the cCDMPushDestTable."
-        ::= { cCDMPushDestInfo 1 }
 
     cCDMPushDestTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeStamp
@@ -5586,7 +5583,7 @@ Internet-Draft                    CCMIB                        July 2019
 
     CCDMPushDestEntry  ::= SEQUENCE {
         cCDMPushDestIndex               Unsigned32,
-        cCDMPushDestTransferType        INTEGER,
+        cCDMPushDestTransferType        SnmpAdminString,
         cCDMPushDestAddressLocationType INTEGER,
         cCDMPushDestAddressLocation     OCTET STRING,
         cCDMPushDestTransferTime        DateAndTime,
@@ -5594,17 +5591,17 @@ Internet-Draft                    CCMIB                        July 2019
         cCDMPushDestRowStatus           RowStatus
     }
 
+    cCDMPushDestIndex  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  not-accessible
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 100]
+Sun, et al.             Expires January 31, 2020              [Page 100]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    cCDMPushDestIndex  OBJECT-TYPE
-        SYNTAX      Unsigned32
-        MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "A numeric index that identifies a unique location in this
@@ -5650,17 +5647,17 @@ Internet-Draft                    CCMIB                        July 2019
             month field, '1' for the day field, '-' for the direction
             from UTC field, and '0' for all other fields. This
             configuration is displayed as '0-1-1,00:00:00.0,-0:0'. Note
+            that if the timezone fields are not used then the displayed
+            value is as follows: '0-1-1,00:00:00.0'. The timezone
+            fields are the direction from UTC, hours from UTC, and
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 101]
+Sun, et al.             Expires January 31, 2020              [Page 101]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-            that if the timezone fields are not used then the displayed
-            value is as follows: '0-1-1,00:00:00.0'. The timezone
-            fields are the direction from UTC, hours from UTC, and
             minutes from UTC."
         ::= { cCDMPushDestEntry 5 }
 
@@ -5706,17 +5703,17 @@ Internet-Draft                    CCMIB                        July 2019
             "The number of rows in the cCDMTransferPkgTable."
         ::= { cCDMTransferPkgInfo 1 }
 
+    cCDMTransferPkgTableLastChanged  OBJECT-TYPE
+        SYNTAX      TimeStamp
+        MAX-ACCESS  read-only
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 102]
+Sun, et al.             Expires January 31, 2020              [Page 102]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    cCDMTransferPkgTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
-        MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
             "The last time any entry in the table was modified, created,
@@ -5762,17 +5759,17 @@ Internet-Draft                    CCMIB                        July 2019
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
+            "An administrative name that identifies a package within
+            this table. cCDMTransferPkgLabel and cCDMTransferPkgIndex
+            serve as indexes of this table."
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 103]
+Sun, et al.             Expires January 31, 2020              [Page 103]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-            "An administrative name that identifies a package within
-            this table. cCDMTransferPkgLabel and cCDMTransferPkgIndex
-            serve as indexes of this table."
         ::= { cCDMTransferPkgEntry 1 }
 
     cCDMTransferPkgIndex  OBJECT-TYPE
@@ -5818,16 +5815,16 @@ Internet-Draft                    CCMIB                        July 2019
         ::= { cCDMTransferPkgEntry 4 }
 
     -- *****************************************************************
+    -- CC MIB cCDMPushSrcTable
+    -- *****************************************************************
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 104]
+
+Sun, et al.             Expires January 31, 2020              [Page 104]
 
 Internet-Draft                    CCMIB                        July 2019
 
-
-    -- CC MIB cCDMPushSrcTable
-    -- *****************************************************************
 
     cCDMPushSrcTableCount  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -5874,17 +5871,17 @@ Internet-Draft                    CCMIB                        July 2019
         INDEX      { cCDMPushSrcSenderName, cCDMPushSrcTransferType }
         ::= { cCDMPushSrcTable 1 }
 
+    CCDMPushSrcEntry  ::= SEQUENCE {
+        cCDMPushSrcSenderName       SnmpAdminString,
+        cCDMPushSrcTransferType     SnmpAdminString,
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 105]
+Sun, et al.             Expires January 31, 2020              [Page 105]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    CCDMPushSrcEntry  ::= SEQUENCE {
-        cCDMPushSrcSenderName       SnmpAdminString,
-        cCDMPushSrcTransferType     SnmpAdminString,
         cCDMPushSrcAddrLocationType INTEGER,
         cCDMPushSrcAddrLocation     OCTET STRING,
         cCDMPushSrcRowStatus        RowStatus
@@ -5902,7 +5899,7 @@ Internet-Draft                    CCMIB                        July 2019
 
     cCDMPushSrcTransferType  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(1..32))
-        MAX-ACCESS  read-only
+        MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "Analogous to cCDMPushDestTransferType. The transfer
@@ -5930,17 +5927,17 @@ Internet-Draft                    CCMIB                        July 2019
             "Location of the authorized sender."
         ::= { cCDMPushSrcEntry 4 }
 
+    cCDMPushSrcRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 106]
+Sun, et al.             Expires January 31, 2020              [Page 106]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    cCDMPushSrcRowStatus  OBJECT-TYPE
-        SYNTAX      RowStatus
-        MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "The status of the row, by which new entries may be created
@@ -5986,17 +5983,17 @@ Internet-Draft                    CCMIB                        July 2019
         MIN-ACCESS not-accessible
         DESCRIPTION
             "Implementation of this object is optional."
+        ::= { cKeyTransferPushCompliances  1 }
+
+    cKeyTransferPushReceiverCompliance MODULE-COMPLIANCE
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 107]
+Sun, et al.             Expires January 31, 2020              [Page 107]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-        ::= { cKeyTransferPushCompliances  1 }
-
-    cKeyTransferPushReceiverCompliance MODULE-COMPLIANCE
         STATUS    current
         DESCRIPTION
             "Compliance levels for receiver information."
@@ -6042,17 +6039,16 @@ Internet-Draft                    CCMIB                        July 2019
                 }
         STATUS current
         DESCRIPTION
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 108]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             "This group is composed of objects related to receiver
             information."
         ::= { cKeyTransferPushGroups 2 }
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 108]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
     cKeyTransferPushSenderNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
@@ -6099,21 +6095,22 @@ Internet-Draft                    CCMIB                        July 2019
         RowStatus, TimeStamp
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
+    ccSecurePolicyInfoMIB  MODULE-IDENTITY
+        LAST-UPDATED  "201609302154Z"
+        ORGANIZATION  "CCMIB CCB"
 
 
-Sun, et al.              Expires January 9, 2020              [Page 109]
+
+Sun, et al.             Expires January 31, 2020              [Page 109]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    ccSecurePolicyInfoMIB  MODULE-IDENTITY
-        LAST-UPDATED  "201609302154Z"
-        ORGANIZATION  "CCMIB CCB"
         CONTACT-INFO
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Security Policy Information
+            "This MIB defines the CC MIB Secure Policy Information
             objects.
 
             Copyright (c) 2019 IETF Trust and the persons
@@ -6155,15 +6152,16 @@ Internet-Draft                    CCMIB                        July 2019
     -- Secure Policy Info Notifications
     -- *****************************************************************
 
+    cSecPolicyChanged  NOTIFICATION-TYPE
+        OBJECTS     {
 
 
-Sun, et al.              Expires January 9, 2020              [Page 110]
+
+Sun, et al.             Expires January 31, 2020              [Page 110]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-    cSecPolicyChanged  NOTIFICATION-TYPE
-        OBJECTS     {
                         cSecPolicyRulePriorityID,
                         cSecPolicyRuleDescription
                     }
@@ -6210,15 +6208,15 @@ Internet-Draft                    CCMIB                        July 2019
             flow. These Security Policy Rules define the actions (e.g.,
             protect, bypass, discard) on how the data traffic flow
             should be treated."
+        ::= { cSecPolicyRuleInfo 3 }
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 111]
+
+Sun, et al.             Expires January 31, 2020              [Page 111]
 
 Internet-Draft                    CCMIB                        July 2019
 
-
-        ::= { cSecPolicyRuleInfo 3 }
 
     cSecPolicyRuleEntry  OBJECT-TYPE
         SYNTAX      CSecPolicyRuleEntry
@@ -6266,16 +6264,16 @@ Internet-Draft                    CCMIB                        July 2019
         SYNTAX      INTEGER { ipsec(1), tls(2), macsec(3) }
         MAX-ACCESS  read-create
         STATUS      current
+        DESCRIPTION
+            "Optional column that defines the related protocol type of
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 112]
+Sun, et al.             Expires January 31, 2020              [Page 112]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-        DESCRIPTION
-            "Optional column that defines the related protocol type of
             the Security Policy rule. Depending on this column's set
             value, entries will vary in respect to which other
             columns/tables (if at all) must be populated to fully
@@ -6322,16 +6320,16 @@ Internet-Draft                    CCMIB                        July 2019
             indicates that an inbound data traffic flow should be
             discarded.
 
+            [22] discardOutbound: The 'discardOutbound' enumeration
+            value indicates that an outbound data traffic flow should be
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 113]
+Sun, et al.             Expires January 31, 2020              [Page 113]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-            [22] discardOutbound: The 'discardOutbound' enumeration
-            value indicates that an outbound data traffic flow should be
             discarded.
 
             Implementations that do not support the 'discardInbound' and
@@ -6378,16 +6376,16 @@ Internet-Draft                    CCMIB                        July 2019
         MODULE
         MANDATORY-GROUPS { cSecurePolicyGroup }
 
+        GROUP cSecurePolicyNotifyGroup
+        DESCRIPTION
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 114]
+Sun, et al.             Expires January 31, 2020              [Page 114]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-        GROUP cSecurePolicyNotifyGroup
-        DESCRIPTION
             "This notification group is optional for implementation."
         ::= { cSecurePolicyCompliances  1 }
 
@@ -6434,18 +6432,16 @@ Internet-Draft                    CCMIB                        July 2019
         MODULE-IDENTITY
             FROM SNMPv2-SMI                           -- FROM RFC 2578
         MODULE-COMPLIANCE, OBJECT-GROUP,
+        NOTIFICATION-GROUP
+            FROM SNMPv2-CONF                          -- FROM RFC 2580
 
 
 
-Sun, et al.              Expires January 9, 2020              [Page 115]
+Sun, et al.             Expires January 31, 2020              [Page 115]
 
 Internet-Draft                    CCMIB                        July 2019
 
 
-        NOTIFICATION-GROUP
-            FROM SNMPv2-CONF                          -- FROM RFC 2580
-        SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 3411
         RowStatus, DateAndTime, TimeStamp
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
@@ -6490,17 +6486,16 @@ Internet-Draft                    CCMIB                        July 2019
     cSecureConnectionInfoNotify  OBJECT IDENTIFIER
         ::= { ccSecureConnectionInfoMIB 4 }
 
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 116]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
     -- *****************************************************************
     -- Secure Connection Info Scalars
     -- *****************************************************************
+
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 116]
+
+Internet-Draft                    CCMIB                        July 2019
 
 
     -- *****************************************************************
@@ -6546,19 +6541,19 @@ Internet-Draft                    CCMIB                        July 2019
             that no changes to configuration of this table have happened
             since the last time it examined the table. A value of 0
             indicates that no entry has been changed since the agent
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 117]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             initialized. The value in CC-DEVICE-INFO-MIB cSystemUpTime
             should be used to populate this column."
         ::= { cSecureConnectionInfo 2 }
 
     cSecConTable  OBJECT-TYPE
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 117]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         SYNTAX      SEQUENCE OF CSecConEntry
         MAX-ACCESS  not-accessible
         STATUS      current
@@ -6602,19 +6597,19 @@ Internet-Draft                    CCMIB                        July 2019
         ::= { cSecConEntry 1 }
 
     cSecConType  OBJECT-TYPE
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 118]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         SYNTAX      OCTET STRING
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "Optional column that defines the related protocol type of
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 118]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
             the Secure Connection. Depending on this column's populated
             value, entries will vary in respect to which other
             columns/tables (if at all) are applicable to the Secure
@@ -6658,19 +6653,19 @@ Internet-Draft                    CCMIB                        July 2019
 
             [3] bidirectional: data plane traffic flow is incoming and
             outgoing on the Secure Connection."
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 119]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         ::= { cSecConEntry 4 }
 
     cSecConKeyReference  OBJECT-TYPE
         SYNTAX      OCTET STRING (SIZE(0..255))
         MAX-ACCESS  read-create
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 119]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         STATUS      current
         DESCRIPTION
             "Administrative string that references key material
@@ -6714,19 +6709,19 @@ Internet-Draft                    CCMIB                        July 2019
             Note, implementations may treat this column as an alpha date
             for the Secure Connection, and thus ascertain other Secure
             Connection-related values based on this time."
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 120]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
         ::= { cSecConEntry 7 }
 
     cSecConStatus  OBJECT-TYPE
         SYNTAX      OCTET STRING
         MAX-ACCESS  read-create
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 120]
+
+Internet-Draft                    CCMIB                        July 2019
+
+
         STATUS      current
         DESCRIPTION
             "Column that provides the current status of the Secure
@@ -6771,16 +6766,17 @@ Internet-Draft                    CCMIB                        July 2019
             Connection. This column references an entry (via table index
             value) in cRemoteKeyMaterialTable (CC-KEY-MANAGEMENT-MIB).
 
-
-
-Sun, et al.              Expires January 9, 2020              [Page 121]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             If there is no appropriate value to populate with, this
             column would be populated with an empty string, ''"
         ::= {cSecConEntry 10}
+
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 121]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
     -- *****************************************************************
     -- Module Conformance Information
@@ -6826,17 +6822,17 @@ Internet-Draft                    CCMIB                        July 2019
                 }
         STATUS current
         DESCRIPTION
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 122]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
             "This group is composed of objects related to secure
             connection information."
         ::= { cSecureConnectionGroups 1 }
+
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 122]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
     cSecureConnectionNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
@@ -6882,17 +6878,17 @@ Internet-Draft                    CCMIB                        July 2019
    RECOMMENDED.  Instead, it is RECOMMENDED to deploy SNMPv3 and to
    enable cryptographic security.  It is then a customer/operator
    responsibility to ensure that the SNMP entity giving access to an
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 123]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
    instance of this MIB module is properly configured to give access to
    the objects only to those principals (users) that have legitimate
    rights to indeed GET or SET (change/create/delete) them.
+
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 123]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
 8.  References
 
@@ -6937,20 +6933,18 @@ Internet-Draft                    CCMIB                        July 2019
               DOI 10.17487/RFC3826, June 2004, <https://www.rfc-
               editor.org/info/rfc3826>.
 
-
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 124]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
               Infrastructure Certificate and Certificate Revocation List
               (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
               <https://www.rfc-editor.org/info/rfc5280>.
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 124]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
    [RFC5591]  Harrington, D. and W. Hardaker, "Transport Security Model
               for the Simple Network Management Protocol (SNMP)",
@@ -6993,18 +6987,20 @@ Internet-Draft                    CCMIB                        July 2019
               RFC 3418, DOI 10.17487/RFC3418, December 2002,
               <https://www.rfc-editor.org/info/rfc3418>.
 
-
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 125]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
    [RFC4303]  Kent, S., "IP Encapsulating Security Payload (ESP)",
               RFC 4303, DOI 10.17487/RFC4303, December 2005,
               <https://www.rfc-editor.org/info/rfc4303>.
+
+
+
+
+
+
+
+Sun, et al.             Expires January 31, 2020              [Page 125]
+
+Internet-Draft                    CCMIB                        July 2019
+
 
 Appendix A.  Contributors
 
@@ -7049,15 +7045,6 @@ Authors' Addresses
    Email: rpurvis@mitre.org
 
 
-
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 126]
-
-Internet-Draft                    CCMIB                        July 2019
-
-
    Sean Turner
    sn3rd
 
@@ -7066,47 +7053,4 @@ Internet-Draft                    CCMIB                        July 2019
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Sun, et al.              Expires January 9, 2020              [Page 127]
+Sun, et al.             Expires January 31, 2020              [Page 126]

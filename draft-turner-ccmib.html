@@ -309,7 +309,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Sun, J., Irani, M., Nguyen, T., Purvis, R., and S. Turner" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-turner-ccmib-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-7-8" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-7-30" />
   <meta name="dct.abstract" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
   <meta name="description" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
 
@@ -321,7 +321,7 @@ ul.toc li {
     <tbody>
     
     	<tr>
-  <td class="left">N/A</td>
+  <td class="left">Network Working Group</td>
   <td class="right">J. Sun</td>
 </tr>
 <tr>
@@ -333,7 +333,7 @@ ul.toc li {
   <td class="right">T. Nguyen</td>
 </tr>
 <tr>
-  <td class="left">Expires: January 9, 2020</td>
+  <td class="left">Expires: January 31, 2020</td>
   <td class="right">Naval Information Warfare Center Pacific</td>
 </tr>
 <tr>
@@ -354,7 +354,7 @@ ul.toc li {
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">July 8, 2019</td>
+  <td class="right">July 30, 2019</td>
 </tr>
 
     	
@@ -374,7 +374,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 9, 2020.</p>
+<p>This Internet-Draft will expire on January 31, 2020.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -457,7 +457,7 @@ ul.toc li {
         DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
         ::= { ccmib 3 }
 
-    ccmib    OBJECT IDENTIFIER ::= { enterprise 34493 }
+    ccmib    OBJECT IDENTIFIER ::= { enterprises 34493 }
 
     --
     -- Note: Current top-level OID assignments within the CC MIB tree:
@@ -533,11 +533,11 @@ ul.toc li {
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY, TimeTicks
+        MODULE-IDENTITY, TimeTicks, Integer32
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
-        DateAndTime, TruthValue, TimeStamp
+        DateAndTime, TruthValue, TimeStamp, RowStatus
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
@@ -563,7 +563,7 @@ ul.toc li {
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
-        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccDeviceInfo 1 }
 
@@ -736,7 +736,7 @@ ul.toc li {
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "This object stores the device's hardware version."
+            "This object stores the device's hardware version number."
         ::= { cDeviceInfoScalars 12 }
 
     -- *****************************************************************
@@ -897,7 +897,7 @@ ul.toc li {
         INDEX      { cDeviceComponentName, cDeviceComponentVersion }
         ::= { cDeviceComponentVersTable 1 }
 
-    cDeviceComponentVersEntry  ::= SEQUENCE
+    CDeviceComponentVersEntry  ::= SEQUENCE
         {
           cDeviceComponentName        SnmpAdminString,
           cDeviceComponentVersion     SnmpAdminString,
@@ -954,9 +954,9 @@ ul.toc li {
 
             Agents may reject the changing this object for certain rows.
             An example of this is changing the operational status of a
-            row that describes the software the device and not a
-            particular feature. In this event, the agent should return
-            an inconsistentValue error."
+            row that describes the software version of the device and
+            not a particular feature. In this event, the agent should
+            return an inconsistentValue error."
         ::= { cDeviceComponentVersEntry 3 }
 
     cDeviceComponentDescription OBJECT-TYPE
@@ -964,8 +964,8 @@ ul.toc li {
         MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
-            "A description of the component. Agents may reject the
-            changing this object certain rows. In this event, the agent
+            "A description of the component. Agents may reject changing
+            this object for certain rows. In this event, the agent
             should return an inconsistentValue error."
         ::= { cDeviceComponentVersEntry 4 }
 
@@ -1223,9 +1223,9 @@ ul.toc li {
         OBJECT cSecurityLevel
         MIN-ACCESS not-accessible
         DESCRIPTION
-        "Implementation of this object is optional."
+            "Implementation of this object is optional."
 
-        cSanitizeDevice
+        OBJECT cSanitizeDevice
         MIN-ACCESS not-accessible
         DESCRIPTION
             "Implementation of this object is optional."
@@ -1437,7 +1437,7 @@ ul.toc li {
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
-        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyManagement 1 }
 
@@ -2182,7 +2182,7 @@ ul.toc li {
         DESCRIPTION
              "The unique positive integer assigned to the Asymmetric
              Key. For Public Key Certificate (PKC) this serial number is
-             assigned by the Certification Authority (CA). The value is
+             assigned by the Certification Authority (CA). The value in
              this column can be up to 20 bytes long per Section
              '4.1.2.2. Serial Number' of RFC 5280. Other types of Key
              Material may have different serial number format as defined
@@ -2892,9 +2892,8 @@ ul.toc li {
         DESCRIPTION
             "An administrative name that identifies the source of this
             Crypto Device Material (CDM). This could be the URI used
-            when downloaded from the Secure Object Management System
-            (SOMS) server or a physical port designator for CDM
-            downloaded via HMI."
+            when downloaded from the CDM server or a physical port
+            designator for CDM downloaded via HMI."
         ::= { cCDMStoreEntry 3 }
 
     cCDMStoreID  OBJECT-TYPE
@@ -3594,7 +3593,7 @@ ul.toc li {
         DESCRIPTION
             "The last time any entry in the table was modified,
             created, or deleted by either SNMP, agent, or other
-            management method (e.g., via an HMI) Managers can use this
+            management method (e.g., via an HMI). Managers can use this
             object to ensure that no changes to configuration of this
             table have happened since the last time it examined the
             table. A value of 0 indicates that no entry has been
@@ -4229,7 +4228,7 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
             "The amount of time to wait after a download attempt to the
-            Cryptographic Device Material (CDM) server fails before
+            cryptographic device material (CDM) server fails before
             attempting to retry the operation. Note, this scalar applies
             to the download of any type of item from the CDM server
             (e.g., CDMs, CDMLs)." 
@@ -4241,7 +4240,7 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
             "The amount of retries attempted before the download attempt
-            to the Cryptographic Device Material (CDM) server is
+            to the cryptographic device material (CDM) server is
             considered a failure. Note, this scalar applies to the
             download of any type of item from the CDM server (e.g.,
             CDMs, CDMLs)."
@@ -4291,7 +4290,7 @@ ul.toc li {
             cCDMLDeliveryStatus must contain the value 'complete'. At
             which point, setting this object to to 'downloadAndParse'
             initiates the CDML download process. Note, the
-            cCDMLDeliveryStatus should transition to 'inProgress' at
+            cCDMLDeliveryStatus should transition to 'inProgress' as
             the device begins the CDML download process from the
             server(s) and URI(s) listed in the cCDMLServerTable (as
             ordered by the cCDMLServerPriority index).
@@ -4306,7 +4305,7 @@ ul.toc li {
             value except 'discard' (which will cancel the current
             download).
 
-            If the CDML download succeeded, the cCMDLDeliveryStatus
+            If the CDML download succeeded, the cCDMLDeliveryStatus
             value remains inProgress and the device attempts to parse
             the download immediately. During the parsing of the CDML,
             all new values will return inconsistentValue error (i.e.,
@@ -4368,8 +4367,8 @@ ul.toc li {
         STATUS      current
         DESCRIPTION
             "An attempt to receive a cryptographic device material
-            list (CDML) succeeded. The CDM server URI is provided with
-            this notification."
+            list (CDML) has succeeded. The CDM server URI is provided
+            with this notification."
         ::= { cKeyTransferPullNotify 1 }
 
     cCDMLPullReceiveFailed  NOTIFICATION-TYPE
@@ -5073,7 +5072,7 @@ ul.toc li {
 
     CCDMPushDestEntry  ::= SEQUENCE {
         cCDMPushDestIndex               Unsigned32,
-        cCDMPushDestTransferType        INTEGER,
+        cCDMPushDestTransferType        SnmpAdminString,
         cCDMPushDestAddressLocationType INTEGER,
         cCDMPushDestAddressLocation     OCTET STRING,
         cCDMPushDestTransferTime        DateAndTime,
@@ -5341,7 +5340,7 @@ ul.toc li {
 
     cCDMPushSrcTransferType  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(1..32))
-        MAX-ACCESS  read-only
+        MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "Analogous to cCDMPushDestTransferType. The transfer
@@ -5519,7 +5518,7 @@ ul.toc li {
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Security Policy Information
+            "This MIB defines the CC MIB Secure Policy Information
             objects.
 
             Copyright (c) 2019 IETF Trust and the persons
@@ -5801,8 +5800,6 @@ ul.toc li {
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                          -- FROM RFC 2580
-        SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 3411
         RowStatus, DateAndTime, TimeStamp
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
