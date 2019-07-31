@@ -116,7 +116,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
         DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
         ::= { ccmib 3 }
 
-    ccmib    OBJECT IDENTIFIER ::= { enterprise 34493 }
+    ccmib    OBJECT IDENTIFIER ::= { enterprises 34493 }
 
     --
     -- Note: Current top-level OID assignments within the CC MIB tree:
@@ -200,11 +200,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY, TimeTicks
+        MODULE-IDENTITY, TimeTicks, Integer32
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
-        DateAndTime, TruthValue, TimeStamp
+        DateAndTime, TruthValue, TimeStamp, RowStatus
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
@@ -230,7 +230,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
-        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccDeviceInfo 1 }
 
@@ -564,7 +564,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         INDEX      { cDeviceComponentName, cDeviceComponentVersion }
         ::= { cDeviceComponentVersTable 1 }
 
-    cDeviceComponentVersEntry  ::= SEQUENCE
+    CDeviceComponentVersEntry  ::= SEQUENCE
         {
           cDeviceComponentName        SnmpAdminString,
           cDeviceComponentVersion     SnmpAdminString,
@@ -1108,7 +1108,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             see the RFC itself for full legal notices."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
-        DESCRIPTION   ""CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyManagement 1 }
 
@@ -4751,7 +4751,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
 
     CCDMPushDestEntry  ::= SEQUENCE {
         cCDMPushDestIndex               Unsigned32,
-        cCDMPushDestTransferType        INTEGER,
+        cCDMPushDestTransferType        SnmpAdminString,
         cCDMPushDestAddressLocationType INTEGER,
         cCDMPushDestAddressLocation     OCTET STRING,
         cCDMPushDestTransferTime        DateAndTime,
@@ -5487,8 +5487,6 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                          -- FROM RFC 2580
-        SnmpAdminString
-            FROM SNMP-FRAMEWORK-MIB                   -- FROM RFC 3411
         RowStatus, DateAndTime, TimeStamp
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
