@@ -6,8 +6,8 @@ date: {DATE}
 category: info
 
 ipr: trust200902
-area: Operations and Management
-workgroup: N/A
+area:
+workgroup:
 keyword: Internet-Draft
 
 stand_alone: yes
