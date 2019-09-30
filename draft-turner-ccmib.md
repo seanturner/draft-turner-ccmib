@@ -1,6 +1,6 @@
 ---
-title: Common Cryptographic MIB (CCMIB)
-abbrev: CCMIB
+title: DoD Common Cryptographic MIB (CCMIB)
+abbrev: DoD CCMIB
 docname: draft-turner-ccmib-latest
 date: {DATE}
 category: info
