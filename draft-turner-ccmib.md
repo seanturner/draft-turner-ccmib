@@ -43,10 +43,24 @@ author:
 normative:
 
 informative:
+  SP800-59
+    title: "Guideline for Identifying an Information System as a National Security System"
+    date: August 2003
+    author:
+      org: National Institute of Standards and Technology, U.S. Department of Commerce
+    seriesinfo:
+      NIST: NIST Special Publication 800-59, DOI 10.6028/NIST.SP.800-59
+    target: https://csrc.nist.gov/publications/detail/sp/800-59/final
 
 --- abstract
 
 This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.
+
+This profile applies to the capabilities, configuration, and operation
+of all components of US National Security Systems (SP 800-59). It is
+also appropriate for other US Government systems that process high-value
+information. It is made publicly available for use by developers and
+operators of these and any other system deployments.
 
 --- middle
 
@@ -58,6 +72,12 @@ RFC EDITOR: PLEASE REMOVE THE FOLLOWING PARAGRAPH PRIOR TO PUBLICATION
 The source for this draft is maintained in GitHub. Suggested changes should be submitted as pull requests at https://github.com/seanturner/draft-turner-ccmib. Instructions are on that page as well. Editorial changes can be managed in GitHub. 
 
 This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.
+
+This profile applies to the capabilities, configuration, and operation
+of all components of US National Security Systems [SP800-59]. It is
+also appropriate for other US Government systems that process high-value
+information. It is made publicly available for use by developers and
+operators of these and any other system deployments.
 
 Terminology
 ===========
