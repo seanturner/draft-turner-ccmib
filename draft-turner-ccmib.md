@@ -1,497 +1,213 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+---
+title: DoD Common Cryptographic MIB (CCMIB)
+abbrev: DoD CCMIB
+docname: draft-turner-ccmib-latest
+date: {DATE}
+category: info
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
-  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+ipr: trust200902
+area: 
+workgroup: 
+keyword: Internet-Draft
 
-  <title>DoD Common Cryptographic MIB (CCMIB)</title>
+stand_alone: yes
+pi: [toc, sortrefs, symrefs]
 
-  
-<style type="text/css">/*<![CDATA[*/
+author:
+ -
+    ins: J. Sun
+    name: Jeffrey Sun
+    org: Naval Information Warfare Center Pacific
+    email: sunjeff@spawar.navy.mil
+ -  
+    ins: M. Irani
+    name: Mike Irani
+    org: Naval Information Warfare Center Pacific
+    email: irani@spawar.navy.mil
+ -
+    ins: T. Nguyen
+    name: Tom Nguyen
+    org: Naval Information Warfare Center Pacific
+    email: tmnguyen@spawar.navy.mil
+ -
+    ins: R. Purvis
+    name: Ray Purvis
+    org: The MITRE Corporation
+    email: rpurvis@mitre.org
+ -
+    ins: S. Turner
+    name: Sean Turner
+    organization: sn3rd
+    email: sean@sn3rd.com
 
-body {
-  font: 16px "Helvetica Neue","Open Sans",Helvetica,Calibri,sans-serif;
-  color: #333;
-  font-size-adjust: 0.5;
-  line-height: 24px;
-  margin: 75px auto;
-  max-width: 624px;
-  padding: 0 5px;
-}
+normative:
 
-.title, .filename, h1, h2, h3, h4, h5 {
-  font: 16px "Roboto Condensed","Helvetica Neue","Open Sans",Helvetica,Calibri,sans-serif;
-  font-size-adjust: 0.5;
-  font-weight: bold;
-  color: #333;
-  line-height: 100%;
-  margin: 1.2em 0 0.3em;
-}
-.title, #rfc\.title h1 { font-size: 32px; }
-h1, section h1, h2, section h2, section h3, nav h2 { font-size: 20px; }
-h3, section h4, h4, section h5 { font-size: 16px; }
-h1 a[href], h2 a[href], h3 a[href], h4 a[href] {
-  color: #333;
-}
+informative:
+  SP800-59:
+    title: "Guideline for Identifying an Information System as a National Security System"
+    date: August 2003
+    author:
+      org: National Institute of Standards and Technology, U.S. Department of Commerce
+    seriesinfo:
+      NIST: NIST Special Publication 800-59, DOI 10.6028/NIST.SP.800-59
+    target: https://csrc.nist.gov/publications/detail/sp/800-59/final
 
-table {
-  margin-left: 0em;
-  border-collapse: collapse;
-}
-th {
-  text-align: left;
-  border-bottom: 2px solid #ddd;
-}
-td {
-  border-top: 1px solid #ddd;
-  vertical-align: top;
-}
-tr:nth-child(2n+1) > td,
-tr:nth-child(2n+1) > th {
-  background-color: #f9f9f9;
-}
-td.reference {
-  max-width: 200px;
-  border-top: none;
-  padding-right: 1em;
-}
-.right {
-  text-align: right;
-}
+--- abstract
 
+This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects for key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.
 
-table.header, table#rfc\.headerblock {
-  width: 100%;
-}
-table.header td, table#rfc\.headerblock td {
-  border: none;
-  background-color: transparent;
-  color: black;
-  padding: 0;
-}
-.filename {
-  display: block;
-  color: rgb(119, 119, 119);
-  font-size: 20px;
-  font-weight: normal;
-  line-height: 100%;
-  margin: 10px 0 32px;
-}
-#rfc\.abstract+p, #rfc\.abstract+p code, #rfc\.abstract+p samp, #rfc\.abstract+p tt {
-  font-size: 20px;
-  line-height: 28px;
-}
+This profile applies to the capabilities, configuration, and operation
+of all components of US National Security Systems (SP 800-59). It is
+also appropriate for other US Government systems that process high-value
+information. It is made publicly available for use by developers and
+operators of these and any other system deployments.
 
-samp, tt, code, pre, span.tt {
-  font-size: 13.5px;
-  font-family: Consolas, monospace;
-  font-size-adjust: none;
-}
-pre {
-  background-color: #eee;
-  border: 1px solid #ddd;
-  overflow-x: auto;
-  padding: 5px;
-  margin: 5px;
-}
-.figure, caption {
-  font-style: italic;
-  margin: 0 1.5em;
-  text-align: left;
-}
+--- middle
 
-address {
-  margin: 16px 2px;
-  line-height: 20px;
-}
-.vcard {
-  font-style: normal;
-}
-.vcardline {
-  display: block;
-}
-.vcardline .fn, address b {
-  font-weight: normal;
-}
-.vcardline .hidden {
-  display: none;
-}
+Introduction
+============
 
-dl {
-  margin-left: 1em;
-}
-dl.dl-horizontal: {
-  margin-left: 0;
-}
-dl > dt {
-  float: left;
-  margin-right: 1em;
-}
-dl.nohang > dt {
-  float: none;
-}
-dl > dd {
-  margin-bottom: .5em;
-}
-dl.compact > dd {
-  margin-bottom: 0em;
-}
-dl > dd > dl {
-  margin-top: 0.5em;
-  margin-bottom: 0em;
-}
-ul.empty {
-  list-style-type: none;
-}
-ul.empty li {
-  margin-top: .5em;
-}
+RFC EDITOR: PLEASE REMOVE THE FOLLOWING PARAGRAPH PRIOR TO PUBLICATION
 
-hr {
-  border: 0;
-  border-top: 1px solid #eee;
-}
-hr.noprint {
-  display: none;
-}
+The source for this draft is maintained in GitHub. Suggested changes should be submitted as pull requests at https://github.com/seanturner/draft-turner-ccmib. Instructions are on that page as well. Editorial changes can be managed in GitHub. 
 
-a {
-  text-decoration: none;
-}
-a[href] {
-  color: #2a6496;
-}
-a[href]:hover {
-  background-color: #eee;
-}
+This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.
 
-p, ol, ul, li {
-  padding: 0;
-}
-p {
-  margin: 0.5em 0;
-}
-ol, ul {
-  margin: 0.2em 0 0.2em 2em;
-}
-li {
-  margin: 0.2em 0;
-}
-address {
-  font-style: normal;
-}
+This profile applies to the capabilities, configuration, and operation
+of all components of US National Security Systems {{SP800-59}}. It is
+also appropriate for other US Government systems that process high-value
+information. It is made publicly available for use by developers and
+operators of these and any other system deployments.
 
-ul.toc ul {
-  margin: 0 0 0 2em;
-}
-ul.toc li {
-  list-style: none;
-  margin: 0;
-}
+Terminology
+===========
 
-@media screen and (min-width: 924px) {
-  body {
-    padding-right: 350px;
-  }
-  body>ul.toc, body>#rfc\.toc {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    right: calc(50vw - 500px);
-    width: 300px;
-    z-index: 1;
-    overflow: auto;
-    overscroll-behavior: contain;
-  }
-  body>#rfc\.toc {
-    top: 55px;
-  }
-  body>ul.toc {
-    top: 100px;
-  }
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 {{!RFC2119}} {{!RFC8174}} when, and only when, they appear in all capitals, as shown here.
 
-  ul.toc {
-    margin: 0 0 0 4px;
-    font-size: 12px;
-    line-height: 20px;
-  }
-  ul.toc ul {
-    margin-left: 1.2em;
-  }
-}
+Acronyms
+========
 
-.github-fork-ribbon-wrapper {
-  display: none;
-}
-@media screen and (min-width: 800px) {
-  /* "Fork me on GitHub" CSS ribbon based on
-   * https://github.com/simonwhitaker/github-fork-ribbon-css
-   */
-  .github-fork-ribbon {
-    position: absolute;
-    padding: 2px 0;
-    background-color: #a00;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
-    font: 700 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+CA: Certification Authority \\
+CDM: Cryptographic Device Material \\
+CDML: Cryptographic Device Material List \\
+CKL: Compromised Key List \\
+CRL: Certificate Revocation List \\
+DN: Distinguished Name \\
+ECU: End Cryptographic Unit \\
+HMI: Human Machine Interface \\
+OID: Object Identifier \\
+PAL: Product Availability List \\
+PKC: Public Key Certificate \\
+TA: Trust Anchor \\
+TAMP: Trust Anchor Management Protocol
 
-    pointer-events: auto;
+The Internet-Standard Management Framework
+==========================================
 
-    top: 38px;
-    right: -45px;
+For a detailed overview of the documents that describe the current Internet-Standard Management Framework, please refer to section 7 of {{?RFC3410}}.
 
-    transform: rotate(45deg);
-  }
+Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in RFC 2578 {{!RFC2578}}, STD 58, RFC 2579 {{!RFC2579}}, and STD 58, RFC 2580 {{!RFC2580}}.
 
-  .github-fork-ribbon a[href],
-  .github-fork-ribbon a[href]:hover {
-    color: #fff;
-    background-color: transparent;
-    text-decoration: none;
-    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
-    text-align: center;
+MIB Design
+==========
 
-    width: 190px;
-    line-height: 18px;
+Eight MIB are defined as part of the CCMIB to support key management implementations, namely CC-ASSIGNMENTS-MIB, CC-FEATURE-HIERARCHY-MIB, CC-DEVICE-INFO-MIB, CC-KEY-MANAGEMENT-MIB, CC-KEY-TRANSFER-PULL-MIB, CC-KEY-TRANSFER-PUSH-MIB, CC-SECURE-POLICY-INFO-MIB, CC-SECURE-CONNECTION-INFO-MIB. The following sections summarizes the modules and the modules' objects.
 
-    display: inline-block;
-    padding: 2px 0;
+CC-ASSIGNMENTS-MIB
+------------------
 
-    border: 1.5px dotted #fff;
-    border-color: rgba(255, 255, 255, 0.6);
-  }
+The Assignments MIB defines the "ccmib" OID, which is the OID prefix for all others definitions in the CCMIB.
 
-  .github-fork-ribbon-wrapper {
-    display: block;
-    width: 130px;
-    height: 130px;
-    position: absolute;
-    overflow: hidden;
-    top: 0; right: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
-}
-@media screen and (min-width: 1000px) {
-  .github-fork-ribbon-wrapper {
-    position: fixed;
-  }
-/*]]>*/</style>
-<meta name="viewport" content="initial-scale=1.0">
+CC-FEATURE-HIERARCHY-MIB
+------------------------
 
+The Feature Hierarchy MIB defines OIDs for the remaining MIB modules, namely ccDeviceInfo, ccKeyManagement, ccKeyTransferPull, ccKeyTransferPush, ccSecurePolicyInfo, and ccSecureConnectionInfo.  This module imports the ccmib OID from the Assignments MIB and the remaining 6 MIB modules import an OID from the Feature Hierarchy MIB.
 
-  <link href="#rfc.toc" rel="Contents"/>
-<link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
-<link href="#rfc.section.2" rel="Chapter" title="2 Terminology"/>
-<link href="#rfc.section.3" rel="Chapter" title="3 Acronyms"/>
-<link href="#rfc.section.4" rel="Chapter" title="4 The Internet-Standard Management Framework"/>
-<link href="#rfc.section.5" rel="Chapter" title="5 MIB Design"/>
-<link href="#rfc.section.5.1" rel="Chapter" title="5.1 CC-ASSIGNMENTS-MIB"/>
-<link href="#rfc.section.5.2" rel="Chapter" title="5.2 CC-FEATURE-HIERARCHY-MIB"/>
-<link href="#rfc.section.5.3" rel="Chapter" title="5.3 CC-DEVICE-INFO-MIB"/>
-<link href="#rfc.section.5.4" rel="Chapter" title="5.4 CC-KEY-MANAGEMENT-MIB"/>
-<link href="#rfc.section.5.5" rel="Chapter" title="5.5 CC-KEY-TRANSFER-PULL-MIB"/>
-<link href="#rfc.section.5.6" rel="Chapter" title="5.6 CC-KEY-TRANSFER-PUSH-MIB"/>
-<link href="#rfc.section.5.7" rel="Chapter" title="5.7 CC-SECURE-POLICY-INFO-MIB"/>
-<link href="#rfc.section.5.8" rel="Chapter" title="5.8 CC-SECURE-CONNECTION-INFO-MIB"/>
-<link href="#rfc.section.6" rel="Chapter" title="6 Definition of the CC MIB module"/>
-<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Assignments"/>
-<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Feature Hierarchy"/>
-<link href="#rfc.section.6.3" rel="Chapter" title="6.3 Device Info"/>
-<link href="#rfc.section.6.4" rel="Chapter" title="6.4 Key Management Information"/>
-<link href="#rfc.section.6.5" rel="Chapter" title="6.5 Key Transfer Pull"/>
-<link href="#rfc.section.6.6" rel="Chapter" title="6.6 Key Transfer Push"/>
-<link href="#rfc.section.6.7" rel="Chapter" title="6.7 Security Policy Information"/>
-<link href="#rfc.section.6.8" rel="Chapter" title="6.8 Secure Connection Information"/>
-<link href="#rfc.section.7" rel="Chapter" title="7 IANA Considerations"/>
-<link href="#rfc.section.8" rel="Chapter" title="8 Security Considerations"/>
-<link href="#rfc.references" rel="Chapter" title="9 References"/>
-<link href="#rfc.references.1" rel="Chapter" title="9.1 Normative References"/>
-<link href="#rfc.references.2" rel="Chapter" title="9.2 Informative References"/>
-<link href="#rfc.appendix.A" rel="Chapter" title="A Contributors"/>
-<link href="#rfc.authors" rel="Chapter"/>
+CC-DEVICE-INFO-MIB
+------------------
 
+The Device Info MIB configures basic characteristics of the device. Details of the defined tables follow.
 
-  <meta name="generator" content="xml2rfc version 2.5.2 - http://tools.ietf.org/tools/xml2rfc" />
-  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
+cDeviceComponentVersTable is used to manage the specification versions of components or specifications supported by the ECU.
 
-  <meta name="dct.creator" content="Sun, J., Irani, M., Nguyen, T., Purvis, R., and S. Turner" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-turner-ccmib-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-10-1" />
-  <meta name="dct.abstract" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects for key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
-  <meta name="description" content="This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects for key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware." />
+cBatteryInfoTable is used to manage information on each of the batteries installed in the device, along with their type, operational status, and battery low notification thresehold.
 
-</head>
+cFirmwareInformationTable is used to manage firmware versions available in the device, along with their versions, type, and source.
 
-<body>
+CC-KEY-MANAGEMENT-MIB
+---------------------
 
-  <table class="header">
-    <tbody>
-    
-    	<tr>
-  <td class="left">Network Working Group</td>
-  <td class="right">J. Sun</td>
-</tr>
-<tr>
-  <td class="left">Internet-Draft</td>
-  <td class="right">M. Irani</td>
-</tr>
-<tr>
-  <td class="left">Intended status: Informational</td>
-  <td class="right">T. Nguyen</td>
-</tr>
-<tr>
-  <td class="left">Expires: April 3, 2020</td>
-  <td class="right">Naval Information Warfare Center Pacific</td>
-</tr>
-<tr>
-  <td class="left"></td>
-  <td class="right">R. Purvis</td>
-</tr>
-<tr>
-  <td class="left"></td>
-  <td class="right">The MITRE Corporation</td>
-</tr>
-<tr>
-  <td class="left"></td>
-  <td class="right">S. Turner</td>
-</tr>
-<tr>
-  <td class="left"></td>
-  <td class="right">sn3rd</td>
-</tr>
-<tr>
-  <td class="left"></td>
-  <td class="right">October 1, 2019</td>
-</tr>
+The Key Management MIB configures key management information related to the following types of keys:
 
-    	
-    </tbody>
-  </table>
+- symmetric keys, e.g., {{!RFC6031}}
+- asymmetric keys, e.g., {{!RFC5280}} and {{!RFC5958}}
+- trust anchors, e.g., {{RFC5280}} and {{!RFC5914}},
+- CRLs and CKLs, e.g., {{RFC5280}}
+- encrypted keys, e.g., {{!RFC6032}}
 
-  <p class="title">DoD Common Cryptographic MIB (CCMIB)<br />
-  <span class="filename">draft-turner-ccmib-latest</span></p>
-  
-  <h1 id="rfc.abstract">
-  <a href="#rfc.abstract">Abstract</a>
-</h1>
-<p>This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects for key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.</p>
-<p>This profile applies to the capabilities, configuration, and operation of all components of US National Security Systems (SP 800-59). It is also appropriate for other US Government systems that process high-value information. It is made publicly available for use by developers and operators of these and any other system deployments.</p>
-<h1 id="rfc.status">
-  <a href="#rfc.status">Status of This Memo</a>
-</h1>
-<p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
-<p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
-<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 3, 2020.</p>
-<h1 id="rfc.copyrightnotice">
-  <a href="#rfc.copyrightnotice">Copyright Notice</a>
-</h1>
-<p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
-<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+Details of the defined tables follow.
 
-  
-  <hr class="noprint" />
-  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
-  <ul class="toc">
+cSymmetricKeyTable is used to manage symmetric keys used by the device.  Each table entry supports values for fingerprint, usages, identifier, effective date, expiration date, expiry warning, number of transactions, friendly name, classification, and source.
 
-  	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
-<li>2.   <a href="#rfc.section.2">Terminology</a></li>
-<li>3.   <a href="#rfc.section.3">Acronyms</a></li>
-<li>4.   <a href="#rfc.section.4">The Internet-Standard Management Framework</a></li>
-<li>5.   <a href="#rfc.section.5">MIB Design</a></li>
-<ul><li>5.1.   <a href="#rfc.section.5.1">CC-ASSIGNMENTS-MIB</a></li>
-<li>5.2.   <a href="#rfc.section.5.2">CC-FEATURE-HIERARCHY-MIB</a></li>
-<li>5.3.   <a href="#rfc.section.5.3">CC-DEVICE-INFO-MIB</a></li>
-<li>5.4.   <a href="#rfc.section.5.4">CC-KEY-MANAGEMENT-MIB</a></li>
-<li>5.5.   <a href="#rfc.section.5.5">CC-KEY-TRANSFER-PULL-MIB</a></li>
-<li>5.6.   <a href="#rfc.section.5.6">CC-KEY-TRANSFER-PUSH-MIB</a></li>
-<li>5.7.   <a href="#rfc.section.5.7">CC-SECURE-POLICY-INFO-MIB</a></li>
-<li>5.8.   <a href="#rfc.section.5.8">CC-SECURE-CONNECTION-INFO-MIB</a></li>
-</ul><li>6.   <a href="#rfc.section.6">Definition of the CC MIB module</a></li>
-<ul><li>6.1.   <a href="#rfc.section.6.1">Assignments</a></li>
-<li>6.2.   <a href="#rfc.section.6.2">Feature Hierarchy</a></li>
-<li>6.3.   <a href="#rfc.section.6.3">Device Info</a></li>
-<li>6.4.   <a href="#rfc.section.6.4">Key Management Information</a></li>
-<li>6.5.   <a href="#rfc.section.6.5">Key Transfer Pull</a></li>
-<li>6.6.   <a href="#rfc.section.6.6">Key Transfer Push</a></li>
-<li>6.7.   <a href="#rfc.section.6.7">Security Policy Information</a></li>
-<li>6.8.   <a href="#rfc.section.6.8">Secure Connection Information</a></li>
-</ul><li>7.   <a href="#rfc.section.7">IANA Considerations</a></li>
-<li>8.   <a href="#rfc.section.8">Security Considerations</a></li>
-<li>9.   <a href="#rfc.references">References</a></li>
-<ul><li>9.1.   <a href="#rfc.references.1">Normative References</a></li>
-<li>9.2.   <a href="#rfc.references.2">Informative References</a></li>
-</ul><li>Appendix A.   <a href="#rfc.appendix.A">Contributors</a></li>
-<li><a href="#rfc.authors">Authors' Addresses</a></li>
+cAsymKeyTable is used to manage asymmetric keys used by the device.  Each table entry supports values for fingerprint, friendly name, serial number, issuer, signature algorithm, public key algorithm, effective date, expiration date, expiry warning, subject, subject type, subject alternative name, usage, classification, source, version, rekey, and type as well as automatic rekey is enabled.
 
+cTrustAnchorTable is used to manage Trust Anchors used by the device.  Each table entry supports fingerprint, format type, name, usage type, key identifier, public key algorithm, contingency availability, and version.
 
-  </ul>
+cCKLTable is used to manage both CRLs and CKLs.  Each table entry supports an index, issuer, revoked serial number, issue date, next update, version, and last updated.
 
-  <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a></h1>
-<p id="rfc.section.1.p.1">RFC EDITOR: PLEASE REMOVE THE FOLLOWING PARAGRAPH PRIOR TO PUBLICATION</p>
-<p id="rfc.section.1.p.2">The source for this draft is maintained in GitHub. Suggested changes should be submitted as pull requests at https://github.com/seanturner/draft-turner-ccmib. Instructions are on that page as well. Editorial changes can be managed in GitHub.</p>
-<p id="rfc.section.1.p.3">This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.</p>
-<p id="rfc.section.1.p.4">This profile applies to the capabilities, configuration, and operation of all components of US National Security Systems <a href="#SP800-59">[SP800-59]</a>. It is also appropriate for other US Government systems that process high-value information. It is made publicly available for use by developers and operators of these and any other system deployments.</p>
-<h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#terminology" id="terminology">Terminology</a></h1>
-<p id="rfc.section.2.p.1">The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;NOT RECOMMENDED&#8221;, &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in this document are to be interpreted as described in BCP 14 <a href="#RFC2119">[RFC2119]</a> <a href="#RFC8174">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
-<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#acronyms" id="acronyms">Acronyms</a></h1>
-<p id="rfc.section.3.p.1">CA: Certification Authority <br/> CDM: Cryptographic Device Material <br/> CDML: Cryptographic Device Material List <br/> CKL: Compromised Key List <br/> CRL: Certificate Revocation List <br/> DN: Distinguished Name <br/> ECU: End Cryptographic Unit <br/> HMI: Human Machine Interface <br/> OID: Object Identifier <br/> PAL: Product Availability List <br/> PKC: Public Key Certificate <br/> TA: Trust Anchor <br/> TAMP: Trust Anchor Management Protocol</p>
-<h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#the-internet-standard-management-framework" id="the-internet-standard-management-framework">The Internet-Standard Management Framework</a></h1>
-<p id="rfc.section.4.p.1">For a detailed overview of the documents that describe the current Internet-Standard Management Framework, please refer to section 7 of <a href="#RFC3410">[RFC3410]</a>.</p>
-<p id="rfc.section.4.p.2">Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in RFC 2578 <a href="#RFC2578">[RFC2578]</a>, STD 58, RFC 2579 <a href="#RFC2579">[RFC2579]</a>, and STD 58, RFC 2580 <a href="#RFC2580">[RFC2580]</a>.</p>
-<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#mib-design" id="mib-design">MIB Design</a></h1>
-<p id="rfc.section.5.p.1">Eight MIB are defined as part of the CCMIB to support key management implementations, namely CC-ASSIGNMENTS-MIB, CC-FEATURE-HIERARCHY-MIB, CC-DEVICE-INFO-MIB, CC-KEY-MANAGEMENT-MIB, CC-KEY-TRANSFER-PULL-MIB, CC-KEY-TRANSFER-PUSH-MIB, CC-SECURE-POLICY-INFO-MIB, CC-SECURE-CONNECTION-INFO-MIB. The following sections summarizes the modules and the modules&#8217; objects.</p>
-<h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#cc-assignments-mib" id="cc-assignments-mib">CC-ASSIGNMENTS-MIB</a></h1>
-<p id="rfc.section.5.1.p.1">The Assignments MIB defines the &#8220;ccmib&#8221; OID, which is the OID prefix for all others definitions in the CCMIB.</p>
-<h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> <a href="#cc-feature-hierarchy-mib" id="cc-feature-hierarchy-mib">CC-FEATURE-HIERARCHY-MIB</a></h1>
-<p id="rfc.section.5.2.p.1">The Feature Hierarchy MIB defines OIDs for the remaining MIB modules, namely ccDeviceInfo, ccKeyManagement, ccKeyTransferPull, ccKeyTransferPush, ccSecurePolicyInfo, and ccSecureConnectionInfo.  This module imports the ccmib OID from the Assignments MIB and the remaining 6 MIB modules import an OID from the Feature Hierarchy MIB.</p>
-<h1 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3.</a> <a href="#cc-device-info-mib" id="cc-device-info-mib">CC-DEVICE-INFO-MIB</a></h1>
-<p id="rfc.section.5.3.p.1">The Device Info MIB configures basic characteristics of the device. Details of the defined tables follow.</p>
-<p id="rfc.section.5.3.p.2">cDeviceComponentVersTable is used to manage the specification versions of components or specifications supported by the ECU.</p>
-<p id="rfc.section.5.3.p.3">cBatteryInfoTable is used to manage information on each of the batteries installed in the device, along with their type, operational status, and battery low notification thresehold.</p>
-<p id="rfc.section.5.3.p.4">cFirmwareInformationTable is used to manage firmware versions available in the device, along with their versions, type, and source.</p>
-<h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#cc-key-management-mib" id="cc-key-management-mib">CC-KEY-MANAGEMENT-MIB</a></h1>
-<p id="rfc.section.5.4.p.1">The Key Management MIB configures key management information related to the following types of keys:</p>
-<p/>
+cCDMStoreTable is used to manage the types of stored CDM that are destined for this device and/or destined for another device. Types include symmetric key, asymmetric key, TA, CRL, CKL, and firmware as well as store and forward unencrypted and encrypted packages meant for another device.
 
-<ul>
-  <li>symmetric keys, e.g., <a href="#RFC6031">[RFC6031]</a></li>
-  <li>asymmetric keys, e.g., <a href="#RFC5280">[RFC5280]</a> and <a href="#RFC5958">[RFC5958]</a></li>
-  <li>trust anchors, e.g., <a href="#RFC5280">[RFC5280]</a> and <a href="#RFC5914">[RFC5914]</a>,</li>
-  <li>CRLs and CKLs, e.g., <a href="#RFC5280">[RFC5280]</a></li>
-  <li>encrypted keys, e.g., <a href="#RFC6032">[RFC6032]</a></li>
-</ul>
-<p id="rfc.section.5.4.p.3">Details of the defined tables follow.</p>
-<p id="rfc.section.5.4.p.4">cSymmetricKeyTable is used to manage symmetric keys used by the device.  Each table entry supports values for fingerprint, usages, identifier, effective date, expiration date, expiry warning, number of transactions, friendly name, classification, and source.</p>
-<p id="rfc.section.5.4.p.5">cAsymKeyTable is used to manage asymmetric keys used by the device.  Each table entry supports values for fingerprint, friendly name, serial number, issuer, signature algorithm, public key algorithm, effective date, expiration date, expiry warning, subject, subject type, subject alternative name, usage, classification, source, version, rekey, and type as well as automatic rekey is enabled.</p>
-<p id="rfc.section.5.4.p.6">cTrustAnchorTable is used to manage Trust Anchors used by the device.  Each table entry supports fingerprint, format type, name, usage type, key identifier, public key algorithm, contingency availability, and version.</p>
-<p id="rfc.section.5.4.p.7">cCKLTable is used to manage both CRLs and CKLs.  Each table entry supports an index, issuer, revoked serial number, issue date, next update, version, and last updated.</p>
-<p id="rfc.section.5.4.p.8">cCDMStoreTable is used to manage the types of stored CDM that are destined for this device and/or destined for another device. Types include symmetric key, asymmetric key, TA, CRL, CKL, and firmware as well as store and forward unencrypted and encrypted packages meant for another device.</p>
-<p id="rfc.section.5.4.p.9">cCertSubAltNameTable is used to manage the devices subject alternative names <a href="#RFC5280">[RFC5280]</a>.</p>
-<p id="rfc.section.5.4.p.10">cCertPathCtrlsTable is used to manage the controls and constraints applied to a certificate in order to process certificate trust paths <a href="#RFC5280">[RFC5280]</a>.</p>
-<p id="rfc.section.5.4.p.11">cCertPolicyTable is used to manage the devices certificate policies <a href="#RFC5280">[RFC5280]</a>.</p>
-<p id="rfc.section.5.4.p.12">cPolicyMappingTable is used to manage the devices mapped certificate policies <a href="#RFC5280">[RFC5280]</a>.</p>
-<p id="rfc.section.5.4.p.13">cNameConstraintTable is used to manage the devices name constraints <a href="#RFC5280">[RFC5280]</a>.</p>
-<p id="rfc.section.5.4.p.14">cRemoteKeyMaterialTable is used to manage the key material information used by the remote peer, i.e., the key material used to establish the secure connection.</p>
-<h1 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5.</a> <a href="#cc-key-transfer-pull-mib" id="cc-key-transfer-pull-mib">CC-KEY-TRANSFER-PULL-MIB</a></h1>
-<p id="rfc.section.5.5.p.1">The Key Transfer Pull MIB configures information used by devices to retrieve CDM from CDM servers.  Details of the defined tables follow.</p>
-<p id="rfc.section.5.5.p.2">cCDMServerTable is used to mange CDM servers that will be queried for available CDMs.  It is also used to obtain the location for the CDML, which is a list detailing available CDMs and their associated location for obtainment.  <a href="#I-D.turner-sodp-profile">[I-D.turner-sodp-profile]</a> is an example of a CDM server that contains a CDML, which is referred to as Product Availability List (PAL) in <a href="#I-D.turner-sodp-profile">[I-D.turner-sodp-profile]</a>.</p>
-<p id="rfc.section.5.5.p.3">cCDMDeliveryTable is used to manage information about cryptographic device materials (CDMs) that are ready/available for retrieval.</p>
-<h1 id="rfc.section.5.6"><a href="#rfc.section.5.6">5.6.</a> <a href="#cc-key-transfer-push-mib" id="cc-key-transfer-push-mib">CC-KEY-TRANSFER-PUSH-MIB</a></h1>
-<p id="rfc.section.5.6.p.1">The Key Transfer Push MIB configures information used by senders to push CDMs to devices.  Details of the defined tables follow.</p>
-<p id="rfc.section.5.6.p.2">cCDMPushDestTable is used to manage the information a sender needs to initiate a CDM send to a receiving device.</p>
-<p id="rfc.section.5.6.p.3">cCDMTransferPkgTable is used to configure single or multiple CDM in a package that can be transferred on a send operation.</p>
-<p id="rfc.section.5.6.p.4">cCDMPushSrcTable provides is used to list the authorized senders that this receiving device will accept CDM transfers from.</p>
-<h1 id="rfc.section.5.7"><a href="#rfc.section.5.7">5.7.</a> <a href="#cc-secure-policy-info-mib" id="cc-secure-policy-info-mib">CC-SECURE-POLICY-INFO-MIB</a></h1>
-<p id="rfc.section.5.7.p.1">The Secure Policy Information MIB defines one table, cSecPolicyRuleTable, to manage the security policy rules that are compared against inbound and outbound data traffic flow to determine how the data traffic flow should be treated (e.g., protect, bypass, discard).</p>
-<h1 id="rfc.section.5.8"><a href="#rfc.section.5.8">5.8.</a> <a href="#cc-secure-connection-info-mib" id="cc-secure-connection-info-mib">CC-SECURE-CONNECTION-INFO-MIB</a></h1>
-<p id="rfc.section.5.8.p.1">The Secure Connection Information MIB defines one table, cSecConTable, to manage the base/common information for secure connections: data plane identifier, type (e.g., &#8216;tls&#8217;, &#8216;ipsec&#8217;), direction (inbound, outbound, bidirectional), local and remote key material references, cryptographic suite, establishment time, and status.</p>
-<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#definition-of-the-cc-mib-module" id="definition-of-the-cc-mib-module">Definition of the CC MIB module</a></h1>
-<h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#cc-assign" id="cc-assign">Assignments</a></h1>
-<p id="rfc.section.6.1.p.1">This MIB module makes reference to the following document: <a href="#RFC2578">[RFC2578]</a>.</p>
-<pre>
+cCertSubAltNameTable is used to manage the devices subject alternative names {{RFC5280}}.
+
+cCertPathCtrlsTable is used to manage the controls and constraints applied to a certificate in order to process certificate trust paths {{RFC5280}}.
+
+cCertPolicyTable is used to manage the devices certificate policies {{RFC5280}}.
+
+cPolicyMappingTable is used to manage the devices mapped certificate policies {{RFC5280}}.
+
+cNameConstraintTable is used to manage the devices name constraints {{RFC5280}}.
+
+cRemoteKeyMaterialTable is used to manage the key material information used by the remote peer, i.e., the key material used to establish the secure connection.
+
+CC-KEY-TRANSFER-PULL-MIB
+------------------------
+
+The Key Transfer Pull MIB configures information used by devices to retrieve CDM from CDM servers.  Details of the defined tables follow.
+
+cCDMServerTable is used to mange CDM servers that will be queried for available CDMs.  It is also used to obtain the location for the CDML, which is a list detailing available CDMs and their associated location for obtainment.  {{?I-D.turner-sodp-profile}} is an example of a CDM server that contains a CDML, which is referred to as Product Availability List (PAL) in {{I-D.turner-sodp-profile}}.
+
+cCDMDeliveryTable is used to manage information about cryptographic device materials (CDMs) that are ready/available for retrieval.
+
+CC-KEY-TRANSFER-PUSH-MIB
+------------------------
+
+The Key Transfer Push MIB configures information used by senders to push CDMs to devices.  Details of the defined tables follow.
+
+cCDMPushDestTable is used to manage the information a sender needs to initiate a CDM send to a receiving device.
+
+cCDMTransferPkgTable is used to configure single or multiple CDM in a package that can be transferred on a send operation.
+
+cCDMPushSrcTable provides is used to list the authorized senders that this receiving device will accept CDM transfers from.
+
+CC-SECURE-POLICY-INFO-MIB
+-------------------------
+
+The Secure Policy Information MIB defines one table, cSecPolicyRuleTable, to manage the security policy rules that are compared against inbound and outbound data traffic flow to determine how the data traffic flow should be treated (e.g., protect, bypass, discard).
+
+CC-SECURE-CONNECTION-INFO-MIB
+-----------------------------
+
+The Secure Connection Information MIB defines one table, cSecConTable, to manage the base/common information for secure connections: data plane identifier, type (e.g., 'tls', 'ipsec'), direction (inbound, outbound, bidirectional), local and remote key material references, cryptographic suite, establishment time, and status.
+
+Definition of the CC MIB module
+===============================
+
+Assignments {#cc-assign}
+--------------
+
+This MIB module makes reference to the following document: {{RFC2578}}.
+
+~~~~
     CC-ASSIGNMENTS-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
@@ -533,10 +249,14 @@ ul.toc li {
     --    ccmib.3.1 : CC-FEATURE-HIERARCHY-MIB
 
     END
-</pre>
-<h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#cc-fh" id="cc-fh">Feature Hierarchy</a></h1>
-<p id="rfc.section.6.2.p.1">This MIB module makes reference to the following document: <a href="#RFC2578">[RFC2578]</a>.</p>
-<pre>
+~~~~
+
+Feature Hierarchy {#cc-fh}
+--------------------
+
+This MIB module makes reference to the following document: {{RFC2578}}.
+
+~~~~
     CC-FEATURE-HIERARCHY-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
@@ -588,10 +308,14 @@ ul.toc li {
         ::= { ccFeatureHierarchyMIB 7 }
 
     END
-</pre>
-<h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> <a href="#device-info" id="device-info">Device Info</a></h1>
-<p id="rfc.section.6.3.p.1">This MIB module makes reference to the following documents: <a href="#RFC1213">[RFC1213]</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, and <a href="#RFC3418">[RFC3418]</a>.</p>
-<pre>
+~~~~
+
+Device Info
+--------------
+
+This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{!RFC3411}}, and {{?RFC3418}}.
+
+~~~~
     CC-DEVICE-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
@@ -1179,11 +903,11 @@ ul.toc li {
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION 
-            "A table that lists firmware versions available in the device, along
-            with their versions and type. This is used to list currently loaded 
-            firmware versions of running firmware and other available firmware 
-            versions in support of returning to a previous version of the 
-            firmware."
+            "A table that lists firmware versions available in the
+            device, along with their versions and type. This is used to
+            list currently loaded firmware versions of running firmware
+            and other available firmware versions in support of
+            returning to a previous version of the firmware."
         ::= { cFirmwareInfo 3 }
 
     cFirmwareInformationEntry  OBJECT-TYPE
@@ -1191,7 +915,8 @@ ul.toc li {
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION 
-            "A row containing a firmware package name, version, and source."
+            "A row containing a firmware package name, version, and
+            source."
         INDEX      { cFirmwareName }
         ::= { cFirmwareInformationTable 1 }
 
@@ -1459,10 +1184,14 @@ ul.toc li {
         ::= { cDeviceInfoGroups 8 }
 
     END
-</pre>
-<h1 id="rfc.section.6.4"><a href="#rfc.section.6.4">6.4.</a> <a href="#key-management-information" id="key-management-information">Key Management Information</a></h1>
-<p id="rfc.section.6.4.p.1">This MIB module makes references to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, <a href="#RFC5280">[RFC5280]</a>, <a href="#RFC5914">[RFC5914]</a>, <a href="#RFC6030">[RFC6030]</a>, and <a href="#RFC6353">[RFC6353]</a>.</p>
-<pre>
+~~~~
+
+Key Management Information
+--------------------------
+
+This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{RFC3411}}, {{!RFC5280}}, {{!RFC5914}}, {{!RFC6030}}, and {{!RFC6353}}.
+
+~~~~
     CC-KEY-MANAGEMENT-MIB DEFINITIONS ::=  BEGIN
 
     IMPORTS
@@ -2520,7 +2249,7 @@ ul.toc li {
         MAX-ACCESS read-write
         STATUS     current
         DESCRIPTION
-            "Controls the automatic rekey settings  for this PKC.
+            "Controls the automatic rekey settings for this PKC.
 
             [true]  Enables automatic rekey.
             [false] Disables automatic rekey.
@@ -4224,10 +3953,14 @@ ul.toc li {
         ::= { cKeyManagementGroups 18 }
 
     END
-</pre>
-<h1 id="rfc.section.6.5"><a href="#rfc.section.6.5">6.5.</a> <a href="#key-transfer-pull" id="key-transfer-pull">Key Transfer Pull</a></h1>
-<p id="rfc.section.6.5.p.1">This MIB module makes reference to the following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
-<pre>
+~~~~
+
+Key Transfer Pull
+-----------------
+
+This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, and {{RFC3411}}.
+
+~~~~
     CC-KEY-TRANSFER-PULL-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
@@ -4946,10 +4679,14 @@ ul.toc li {
         ::= { cKeyTransferPullGroups 3 }
     
     END
-</pre>
-<h1 id="rfc.section.6.6"><a href="#rfc.section.6.6">6.6.</a> <a href="#key-transfer-push" id="key-transfer-push">Key Transfer Push</a></h1>
-<p id="rfc.section.6.6.p.1">This MIB module makes reference to following documents: <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and <a href="#RFC3411">[RFC3411]</a>.</p>
-<pre>
+~~~~
+
+Key Transfer Push
+-----------------
+
+This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, and {{RFC3411}}.
+
+~~~~
     CC-KEY-TRANSFER-PUSH-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
@@ -5559,10 +5296,14 @@ ul.toc li {
         ::= { cKeyTransferPushGroups 4 }
     
     END
-</pre>
-<h1 id="rfc.section.6.7"><a href="#rfc.section.6.7">6.7.</a> <a href="#security-policy-information" id="security-policy-information">Security Policy Information</a></h1>
-<p id="rfc.section.6.7.p.1">This module makes reference to: <a href="#cc-fh">Section 6.2</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, and {RFC3411}}.</p>
-<pre>
+~~~~
+
+Security Policy Information
+---------------------------
+
+This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, and {RFC3411}}.
+
+~~~~
     CC-SECURE-POLICY-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
@@ -5853,10 +5594,14 @@ ul.toc li {
         ::= { cSecurePolicyGroups 2 }
 
     END
-</pre>
-<h1 id="rfc.section.6.8"><a href="#rfc.section.6.8">6.8.</a> <a href="#secure-connection-information" id="secure-connection-information">Secure Connection Information</a></h1>
-<p id="rfc.section.6.8.p.1">This module makes reference to: <a href="#cc-fh">Section 6.2</a>, <a href="#RFC2578">[RFC2578]</a>, <a href="#RFC2579">[RFC2579]</a>, <a href="#RFC2580">[RFC2580]</a>, <a href="#RFC3411">[RFC3411]</a>, and <a href="#RFC4303">[RFC4303]</a>.</p>
-<pre>
+~~~~
+
+Secure Connection Information
+-----------------------------
+
+This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}, {{RFC3411}}, and {{?RFC4303}}.
+
+~~~~
     CC-SECURE-CONNECTION-INFO-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
@@ -6217,304 +5962,69 @@ ul.toc li {
         ::= { cSecureConnectionGroups 2 }
 
     END
-</pre>
-<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#iana" id="iana">IANA Considerations</a></h1>
-<p id="rfc.section.7.p.1">This document makes no requests of IANA.  All of the object identifiers used in the document are defined in the IANA Private Enterprise Number (PEN) ccmib arc (34493).</p>
-<h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> <a href="#security" id="security">Security Considerations</a></h1>
-<p id="rfc.section.8.p.1">The CCMIB modules contain some read-only objects that may be deemed sensitive. Appropriate security procedures that are related to SNMP in general but are not specific to this MIB module need to be implemented by concerned operators.</p>
-<p id="rfc.section.8.p.2">There are a number of management objects defined in this MIB module with a MAX-ACCESS clause of read-write and/or read-create.  Such objects may be considered sensitive or vulnerable in some network environments.  The support for SET operations in a non-secure environment without proper protection opens devices to attack.  The following tables and objects are sensitive/vulnerable because unauthorized modification would allow an attacker to elevate or degrade a device&#8217;s capabilities:</p>
-<p/>
+~~~~
 
-<ul>
-  <li>From the Device Information MIB: cSystemDate, cSystemInitialLoadParameters, cSecurityLevel, cResetDevice, cSanitizeDevice, cRenderInoperable, cDeviceComponentOpStatus, cDeviceComponentDescription, cBatteryLowThreshold, cFirmwareRunning, and cFirmwareRowStatus,</li>
-  <li>From the Key Management Information MIB: cZeroizeAllKeys, cZeroizeSymmetricKeyTable, cZeroizeAsymKeyTable, cZeroizeTrustAnchorTable, cZeroizeCDMStoreTable, cKeyMaterialTableOID, cSymKeyGlobalExpiryWarning, cAsymKeyGlobalExpiryWarning, cGenerateKeyType, cGenerateKey, cSymKeyUsage, cSymKeyID, cSymKeyIssuer, cSymKeyEffectiveDate, cSymKeyExpirationDate, cSymKeyExpiryWarning, cSymKeyNumberOfTransactions, cSymKeyFriendlyName, cSymKeySource, cSymKeyRowStatus, AsymKeyFriendlyName, cAsymKeyEffectiveDate, cAsymKeyExpiryWarning, cAsymKeySubjectAltName, cAsymKeyUsage, cAsymKeySource, cAsymKeyRowStatus, cAsymKeyRekey, cAsymKeyAutoRekeyEnable, cTrustAnchorRowStatus, cCKLRowStatus, cCDMStoreID, cCDMStoreFriendlyName, cCDMStoreControl, cCDMStoreRowStatus, cCertSubAltNameRowStatus, and cRemoteKeyMatFriendlyName.</li>
-  <li>From the Key Transfer Pull MIB: cCDMServerRetryDelay, cCDMServerRetryMaxAttempts, cCDMPullRetrievalPriorities, cCDMLDeliveryRequest, cCDMServerURI, cCDMServerAdditionalInfo, cCDMServerRowStatus, cCDMAdditionalInfo, cCDMDeliveryPriority, cCDMDeliveryRequest, and cCDMDeliveryRowStatus.</li>
-  <li>From the Key Transfer Push MIB: cCDMTransferDelay, cCDMTransferMaxAttempts, cCDMPushDestTransferType, cCDMPushDestAddressLocationType, cCDMPushDestAddressLocation, cCDMPushDestTransferTime, cCDMPushDestPackageSelection, cCDMPushDestRowStatus, cCDMTransferPkgLocatorRowPtr, cCDMTransferPkgRowStatus, cCDMPushSrcTransferType, cCDMPushSrcAddrLocationType, cCDMPushSrcAddrLocation, and cCDMPushSrcRowStatus.</li>
-  <li>From the Security Policy Information MIB: cSecPolicyRuleDescription, cSecPolicyRuleType, cSecPolicyRuleFilterReference, cSecPolicyRuleAction, and cSecPolicyRuleRowStatus.</li>
-  <li>From the Security Connection Information MIB: cSecConType, cSecConDataPlaneID, cSecConDirection, cSecConKeyReference, cSecConCryptographicSuite, cSecConEstablishmentTime, cSecConStatus, cSecConRowStatus, and cSecConRemoteKeyReference.</li>
-</ul>
-<p id="rfc.section.8.p.4">Some of the readable objects in this MIB module (i.e., objects with a MAX-ACCESS other than not-accessible) may be considered sensitive or vulnerable in some network environments.  It is thus important to control even GET and/or NOTIFY access to these objects and possibly to even encrypt the values of these objects when sending them over the network via SNMP.  The following tables and objects are sensitive/vulnerable because unauthorized access would disclose device configuration information:</p>
-<p/>
+IANA Considerations  {#iana}
+===================
 
-<ul>
-  <li>From the Device Information MIB: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTableLastChanged, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTableLastChanged, cFirmwareName, cFirmwareVersion, and cFirmwareSource.</li>
-  <li>From the Key Management Information MIB: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTableLastChanged, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.</li>
-  <li>From the Key Transfer Pull MIB: cCDMLDeliveryStatus, cCDMServerTableCount, cCDMServerTableLastChanged, cCDMDeliveryTableCount, cCDMDeliveryTableLastChanged, cCDMType, cCDMURI, cCDMPackageSize, cCDMLastDownloadDate, and cCDMDeliveryStatus.</li>
-  <li>From the Key Transfer Push MIB: cCDMPushDestTableCount, cCDMPushDestTableLastChanged, cCDMTransferPkgTableCount, cCDMTransferPkgTableLastChanged, cCDMPushSrcTableCount, and cCDMPushSrcTableLastChanged.</li>
-  <li>From the Security Policy Information MIB: cSecPolicyRuleTableCount, cSecPolicyRuleTableLastChanged, and cSecPolicyRulePriorityID.</li>
-  <li>From the Security Connection Information MIB: cSecConTableCount, cSecConTableLastChanged, and cSecConTableID.</li>
-</ul>
-<p id="rfc.section.8.p.6">SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.</p>
-<p id="rfc.section.8.p.7">Implementations SHOULD provide the security features described by the SNMPv3 framework (see <a href="#RFC3410">[RFC3410]</a>), and implementations claiming compliance to the SNMPv3 standard MUST include full support for authentication and privacy via the User-based Security Model (USM) <a href="#RFC3414">[RFC3414]</a> with the AES cipher algorithm <a href="#RFC3826">[RFC3826]</a>.  Implementations MAY also provide support for the Transport Security Model (TSM) <a href="#RFC5591">[RFC5591]</a> in combination with a secure transport such as SSH <a href="#RFC5592">[RFC5592]</a> or TLS/DTLS <a href="#RFC6353">[RFC6353]</a>.</p>
-<p id="rfc.section.8.p.8">Further, deployment of SNMP versions prior to SNMPv3 is NOT RECOMMENDED.  Instead, it is RECOMMENDED to deploy SNMPv3 and to enable cryptographic security.  It is then a customer/operator responsibility to ensure that the SNMP entity giving access to an instance of this MIB module is properly configured to give access to the objects only to those principals (users) that have legitimate rights to indeed GET or SET (change/create/delete) them.</p>
-<h1 id="rfc.references"><a href="#rfc.references">9.</a> References</h1>
-<h1 id="rfc.references.1"><a href="#rfc.references.1">9.1.</a> Normative References</h1>
-<table>
-  <tbody>
-    <tr>
-      <td class="reference">
-        <b id="RFC2119">[RFC2119]</b>
-      </td>
-      <td class="top"><a>Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC2578">[RFC2578]</b>
-      </td>
-      <td class="top"><a>McCloghrie, K.</a>, <a>Perkins, D.</a> and <a>J. Schoenwaelder</a>, "<a href="http://tools.ietf.org/html/rfc2578">Structure of Management Information Version 2 (SMIv2)</a>", STD 58, RFC 2578, DOI 10.17487/RFC2578, April 1999.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC2579">[RFC2579]</b>
-      </td>
-      <td class="top"><a>McCloghrie, K.</a>, <a>Perkins, D.</a> and <a>J. Schoenwaelder</a>, "<a href="http://tools.ietf.org/html/rfc2579">Textual Conventions for SMIv2</a>", STD 58, RFC 2579, DOI 10.17487/RFC2579, April 1999.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC2580">[RFC2580]</b>
-      </td>
-      <td class="top"><a>McCloghrie, K.</a>, <a>Perkins, D.</a> and <a>J. Schoenwaelder</a>, "<a href="http://tools.ietf.org/html/rfc2580">Conformance Statements for SMIv2</a>", STD 58, RFC 2580, DOI 10.17487/RFC2580, April 1999.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC3411">[RFC3411]</b>
-      </td>
-      <td class="top"><a>Harrington, D.</a>, <a>Presuhn, R.</a> and <a>B. Wijnen</a>, "<a href="http://tools.ietf.org/html/rfc3411">An Architecture for Describing Simple Network Management Protocol (SNMP) Management Frameworks</a>", STD 62, RFC 3411, DOI 10.17487/RFC3411, December 2002.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC3414">[RFC3414]</b>
-      </td>
-      <td class="top"><a>Blumenthal, U.</a> and <a>B. Wijnen</a>, "<a href="http://tools.ietf.org/html/rfc3414">User-based Security Model (USM) for version 3 of the Simple Network Management Protocol (SNMPv3)</a>", STD 62, RFC 3414, DOI 10.17487/RFC3414, December 2002.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC3826">[RFC3826]</b>
-      </td>
-      <td class="top"><a>Blumenthal, U.</a>, <a>Maino, F.</a> and <a>K. McCloghrie</a>, "<a href="http://tools.ietf.org/html/rfc3826">The Advanced Encryption Standard (AES) Cipher Algorithm in the SNMP User-based Security Model</a>", RFC 3826, DOI 10.17487/RFC3826, June 2004.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC5280">[RFC5280]</b>
-      </td>
-      <td class="top"><a>Cooper, D.</a>, <a>Santesson, S.</a>, <a>Farrell, S.</a>, <a>Boeyen, S.</a>, <a>Housley, R.</a> and <a>W. Polk</a>, "<a href="http://tools.ietf.org/html/rfc5280">Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile</a>", RFC 5280, DOI 10.17487/RFC5280, May 2008.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC5591">[RFC5591]</b>
-      </td>
-      <td class="top"><a>Harrington, D.</a> and <a>W. Hardaker</a>, "<a href="http://tools.ietf.org/html/rfc5591">Transport Security Model for the Simple Network Management Protocol (SNMP)</a>", STD 78, RFC 5591, DOI 10.17487/RFC5591, June 2009.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC5592">[RFC5592]</b>
-      </td>
-      <td class="top"><a>Harrington, D.</a>, <a>Salowey, J.</a> and <a>W. Hardaker</a>, "<a href="http://tools.ietf.org/html/rfc5592">Secure Shell Transport Model for the Simple Network Management Protocol (SNMP)</a>", RFC 5592, DOI 10.17487/RFC5592, June 2009.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC5914">[RFC5914]</b>
-      </td>
-      <td class="top"><a>Housley, R.</a>, <a>Ashmore, S.</a> and <a>C. Wallace</a>, "<a href="http://tools.ietf.org/html/rfc5914">Trust Anchor Format</a>", RFC 5914, DOI 10.17487/RFC5914, June 2010.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC5958">[RFC5958]</b>
-      </td>
-      <td class="top"><a>Turner, S.</a>, "<a href="http://tools.ietf.org/html/rfc5958">Asymmetric Key Packages</a>", RFC 5958, DOI 10.17487/RFC5958, August 2010.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC6030">[RFC6030]</b>
-      </td>
-      <td class="top"><a>Hoyer, P.</a>, <a>Pei, M.</a> and <a>S. Machani</a>, "<a href="http://tools.ietf.org/html/rfc6030">Portable Symmetric Key Container (PSKC)</a>", RFC 6030, DOI 10.17487/RFC6030, October 2010.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC6031">[RFC6031]</b>
-      </td>
-      <td class="top"><a>Turner, S.</a> and <a>R. Housley</a>, "<a href="http://tools.ietf.org/html/rfc6031">Cryptographic Message Syntax (CMS) Symmetric Key Package Content Type</a>", RFC 6031, DOI 10.17487/RFC6031, December 2010.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC6032">[RFC6032]</b>
-      </td>
-      <td class="top"><a>Turner, S.</a> and <a>R. Housley</a>, "<a href="http://tools.ietf.org/html/rfc6032">Cryptographic Message Syntax (CMS) Encrypted Key Package Content Type</a>", RFC 6032, DOI 10.17487/RFC6032, December 2010.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC6353">[RFC6353]</b>
-      </td>
-      <td class="top"><a>Hardaker, W.</a>, "<a href="http://tools.ietf.org/html/rfc6353">Transport Layer Security (TLS) Transport Model for the Simple Network Management Protocol (SNMP)</a>", STD 78, RFC 6353, DOI 10.17487/RFC6353, July 2011.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC8174">[RFC8174]</b>
-      </td>
-      <td class="top"><a>Leiba, B.</a>, "<a href="http://tools.ietf.org/html/rfc8174">Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</a>", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017.</td>
-    </tr>
-  </tbody>
-</table>
-<h1 id="rfc.references.2"><a href="#rfc.references.2">9.2.</a> Informative References</h1>
-<table>
-  <tbody>
-    <tr>
-      <td class="reference">
-        <b id="I-D.turner-sodp-profile">[I-D.turner-sodp-profile]</b>
-      </td>
-      <td class="top"><a>Jenkins, M.</a> and <a>S. Turner</a>, "<a href="http://tools.ietf.org/html/draft-turner-sodp-profile-04">The SODP (Secure Object Delivery Protocol) Server Interfaces: NSA's Profile for Delivery of Certificates, CRLs, and Symmetric Keys to Clients</a>", Internet-Draft draft-turner-sodp-profile-04, August 2019.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC1213">[RFC1213]</b>
-      </td>
-      <td class="top"><a>McCloghrie, K.</a> and <a>M. Rose</a>, "<a href="http://tools.ietf.org/html/rfc1213">Management Information Base for Network Management of TCP/IP-based internets: MIB-II</a>", STD 17, RFC 1213, DOI 10.17487/RFC1213, March 1991.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC3410">[RFC3410]</b>
-      </td>
-      <td class="top"><a>Case, J.</a>, <a>Mundy, R.</a>, <a>Partain, D.</a> and <a>B. Stewart</a>, "<a href="http://tools.ietf.org/html/rfc3410">Introduction and Applicability Statements for Internet-Standard Management Framework</a>", RFC 3410, DOI 10.17487/RFC3410, December 2002.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC3418">[RFC3418]</b>
-      </td>
-      <td class="top"><a>Presuhn, R.</a>, "<a href="http://tools.ietf.org/html/rfc3418">Management Information Base (MIB) for the Simple Network Management Protocol (SNMP)</a>", STD 62, RFC 3418, DOI 10.17487/RFC3418, December 2002.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC4303">[RFC4303]</b>
-      </td>
-      <td class="top"><a>Kent, S.</a>, "<a href="http://tools.ietf.org/html/rfc4303">IP Encapsulating Security Payload (ESP)</a>", RFC 4303, DOI 10.17487/RFC4303, December 2005.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="SP800-59">[SP800-59]</b>
-      </td>
-      <td class="top"><a>National Institute of Standards and Technology, U.S. Department of Commerce</a>, "<a href="https://csrc.nist.gov/publications/detail/sp/800-59/final">Guideline for Identifying an Information System as a National Security System</a>", NIST NIST Special Publication 800-59, DOI 10.6028/NIST.SP.800-59, August 2003.</td>
-    </tr>
-  </tbody>
-</table>
-<h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> <a href="#contributors" id="contributors">Contributors</a></h1>
-<p id="rfc.section.A.p.1">The following people made technical contributions to this specification:</p>
-<p/>
+This document makes no requests of IANA.  All of the object identifiers
+used in the document are defined in the IANA Private Enterprise Number
+(PEN) ccmib arc (34493).
 
-<ul>
-  <li>Shadi Azoum <br/> Naval Information Warfare Center Pacific <br/> shadi.azoum@navy.mil</li>
-  <li>Elliott Jones <br/> Naval Information Warfare Center Pacific <br/> elliott.jones@navy.mil</li>
-  <li>Lily Sun <br/> Naval Information Warfare Center Pacific <br/> lily.sun@navy.mil</li>
-</ul>
-<h1 id="rfc.authors">
-  <a href="#rfc.authors">Authors' Addresses</a>
-</h1>
-<div class="avoidbreak">
-  <address class="vcard">
-	<span class="vcardline">
-	  <span class="fn">Jeffrey Sun</span> 
-	  <span class="n hidden">
-		<span class="family-name">Sun</span>
-	  </span>
-	</span>
-	<span class="org vcardline">Naval Information Warfare Center Pacific</span>
-	<span class="adr">
-	  
-	  <span class="vcardline">
-		<span class="locality"></span> 
-		<span class="region"></span>
-		<span class="code"></span>
-	  </span>
-	  <span class="country-name vcardline"></span>
-	</span>
-	<span class="vcardline">EMail: <a href="mailto:sunjeff@spawar.navy.mil">sunjeff@spawar.navy.mil</a></span>
+Security Considerations  {#security}
+=======================
 
-  </address>
-</div><div class="avoidbreak">
-  <address class="vcard">
-	<span class="vcardline">
-	  <span class="fn">Mike Irani</span> 
-	  <span class="n hidden">
-		<span class="family-name">Irani</span>
-	  </span>
-	</span>
-	<span class="org vcardline">Naval Information Warfare Center Pacific</span>
-	<span class="adr">
-	  
-	  <span class="vcardline">
-		<span class="locality"></span> 
-		<span class="region"></span>
-		<span class="code"></span>
-	  </span>
-	  <span class="country-name vcardline"></span>
-	</span>
-	<span class="vcardline">EMail: <a href="mailto:irani@spawar.navy.mil">irani@spawar.navy.mil</a></span>
+The CCMIB modules contain some read-only objects that may be deemed sensitive. Appropriate security procedures that are related to SNMP in general but are not specific to this MIB module need to be implemented by concerned operators.
 
-  </address>
-</div><div class="avoidbreak">
-  <address class="vcard">
-	<span class="vcardline">
-	  <span class="fn">Tom Nguyen</span> 
-	  <span class="n hidden">
-		<span class="family-name">Nguyen</span>
-	  </span>
-	</span>
-	<span class="org vcardline">Naval Information Warfare Center Pacific</span>
-	<span class="adr">
-	  
-	  <span class="vcardline">
-		<span class="locality"></span> 
-		<span class="region"></span>
-		<span class="code"></span>
-	  </span>
-	  <span class="country-name vcardline"></span>
-	</span>
-	<span class="vcardline">EMail: <a href="mailto:tmnguyen@spawar.navy.mil">tmnguyen@spawar.navy.mil</a></span>
+There are a number of management objects defined in this MIB module with a MAX-ACCESS clause of read-write and/or read-create.  Such objects may be considered sensitive or vulnerable in some network environments.  The support for SET operations in a non-secure environment without proper protection opens devices to attack.  The following tables and objects are sensitive/vulnerable because unauthorized modification would allow an attacker to elevate or degrade a device's capabilities:
 
-  </address>
-</div><div class="avoidbreak">
-  <address class="vcard">
-	<span class="vcardline">
-	  <span class="fn">Ray Purvis</span> 
-	  <span class="n hidden">
-		<span class="family-name">Purvis</span>
-	  </span>
-	</span>
-	<span class="org vcardline">The MITRE Corporation</span>
-	<span class="adr">
-	  
-	  <span class="vcardline">
-		<span class="locality"></span> 
-		<span class="region"></span>
-		<span class="code"></span>
-	  </span>
-	  <span class="country-name vcardline"></span>
-	</span>
-	<span class="vcardline">EMail: <a href="mailto:rpurvis@mitre.org">rpurvis@mitre.org</a></span>
+- From the Device Information MIB: cSystemDate, cSystemInitialLoadParameters, cSecurityLevel, cResetDevice, cSanitizeDevice, cRenderInoperable, cDeviceComponentOpStatus, cDeviceComponentDescription, cBatteryLowThreshold, cFirmwareRunning, and cFirmwareRowStatus,
 
-  </address>
-</div><div class="avoidbreak">
-  <address class="vcard">
-	<span class="vcardline">
-	  <span class="fn">Sean Turner</span> 
-	  <span class="n hidden">
-		<span class="family-name">Turner</span>
-	  </span>
-	</span>
-	<span class="org vcardline">sn3rd</span>
-	<span class="adr">
-	  
-	  <span class="vcardline">
-		<span class="locality"></span> 
-		<span class="region"></span>
-		<span class="code"></span>
-	  </span>
-	  <span class="country-name vcardline"></span>
-	</span>
-	<span class="vcardline">EMail: <a href="mailto:sean@sn3rd.com">sean@sn3rd.com</a></span>
+- From the Key Management Information MIB: cZeroizeAllKeys, cZeroizeSymmetricKeyTable, cZeroizeAsymKeyTable, cZeroizeTrustAnchorTable, cZeroizeCDMStoreTable, cKeyMaterialTableOID, cSymKeyGlobalExpiryWarning, cAsymKeyGlobalExpiryWarning, cGenerateKeyType, cGenerateKey, cSymKeyUsage, cSymKeyID, cSymKeyIssuer, cSymKeyEffectiveDate, cSymKeyExpirationDate, cSymKeyExpiryWarning, cSymKeyNumberOfTransactions, cSymKeyFriendlyName, cSymKeySource, cSymKeyRowStatus, AsymKeyFriendlyName, cAsymKeyEffectiveDate, cAsymKeyExpiryWarning, cAsymKeySubjectAltName, cAsymKeyUsage, cAsymKeySource, cAsymKeyRowStatus, cAsymKeyRekey, cAsymKeyAutoRekeyEnable, cTrustAnchorRowStatus, cCKLRowStatus, cCDMStoreID, cCDMStoreFriendlyName, cCDMStoreControl, cCDMStoreRowStatus, cCertSubAltNameRowStatus, and cRemoteKeyMatFriendlyName.
 
-  </address>
-</div>
+- From the Key Transfer Pull MIB: cCDMServerRetryDelay, cCDMServerRetryMaxAttempts, cCDMPullRetrievalPriorities, cCDMLDeliveryRequest, cCDMServerURI, cCDMServerAdditionalInfo, cCDMServerRowStatus, cCDMAdditionalInfo, cCDMDeliveryPriority, cCDMDeliveryRequest, and cCDMDeliveryRowStatus.
 
-</body>
-</html>
+- From the Key Transfer Push MIB: cCDMTransferDelay, cCDMTransferMaxAttempts, cCDMPushDestTransferType, cCDMPushDestAddressLocationType, cCDMPushDestAddressLocation, cCDMPushDestTransferTime, cCDMPushDestPackageSelection, cCDMPushDestRowStatus, cCDMTransferPkgLocatorRowPtr, cCDMTransferPkgRowStatus, cCDMPushSrcTransferType, cCDMPushSrcAddrLocationType, cCDMPushSrcAddrLocation, and cCDMPushSrcRowStatus.
 
+- From the Security Policy Information MIB: cSecPolicyRuleDescription, cSecPolicyRuleType, cSecPolicyRuleFilterReference, cSecPolicyRuleAction, and cSecPolicyRuleRowStatus.
+
+- From the Security Connection Information MIB: cSecConType, cSecConDataPlaneID, cSecConDirection, cSecConKeyReference, cSecConCryptographicSuite, cSecConEstablishmentTime, cSecConStatus, cSecConRowStatus, and cSecConRemoteKeyReference.
+
+Some of the readable objects in this MIB module (i.e., objects with a MAX-ACCESS other than not-accessible) may be considered sensitive or vulnerable in some network environments.  It is thus important to control even GET and/or NOTIFY access to these objects and possibly to even encrypt the values of these objects when sending them over the network via SNMP.  The following tables and objects are sensitive/vulnerable because unauthorized access would disclose device configuration information:
+
+- From the Device Information MIB: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTableLastChanged, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTableLastChanged, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
+
+- From the Key Management Information MIB: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTableLastChanged, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
+
+- From the Key Transfer Pull MIB: cCDMLDeliveryStatus, cCDMServerTableCount, cCDMServerTableLastChanged, cCDMDeliveryTableCount, cCDMDeliveryTableLastChanged, cCDMType, cCDMURI, cCDMPackageSize, cCDMLastDownloadDate, and cCDMDeliveryStatus.
+
+- From the Key Transfer Push MIB: cCDMPushDestTableCount, cCDMPushDestTableLastChanged, cCDMTransferPkgTableCount, cCDMTransferPkgTableLastChanged, cCDMPushSrcTableCount, and cCDMPushSrcTableLastChanged.
+
+- From the Security Policy Information MIB: cSecPolicyRuleTableCount, cSecPolicyRuleTableLastChanged, and cSecPolicyRulePriorityID.
+
+- From the Security Connection Information MIB: cSecConTableCount, cSecConTableLastChanged, and cSecConTableID.
+
+SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.
+
+Implementations SHOULD provide the security features described by the SNMPv3 framework (see {{RFC3410}}), and implementations claiming compliance to the SNMPv3 standard MUST include full support for authentication and privacy via the User-based Security Model (USM) {{!RFC3414}} with the AES cipher algorithm {{!RFC3826}}.  Implementations MAY also provide support for the Transport Security Model (TSM) {{!RFC5591}} in combination with a secure transport such as SSH {{!RFC5592}} or TLS/DTLS {{RFC6353}}.
+
+Further, deployment of SNMP versions prior to SNMPv3 is NOT RECOMMENDED.  Instead, it is RECOMMENDED to deploy SNMPv3 and to enable cryptographic security.  It is then a customer/operator responsibility to ensure that the SNMP entity giving access to an instance of this MIB module is properly configured to give access to the objects only to those principals (users) that have legitimate rights to indeed GET or SET (change/create/delete) them.
+
+--- back
+
+Contributors
+============
+
+The following people made technical contributions to this specification:
+
+* Shadi Azoum \\
+  Naval Information Warfare Center Pacific \\
+  shadi.azoum@navy.mil
+
+* Elliott Jones \\
+  Naval Information Warfare Center Pacific \\
+  elliott.jones@navy.mil
+
+* Lily Sun \\
+  Naval Information Warfare Center Pacific \\
+  lily.sun@navy.mil
