@@ -43,7 +43,7 @@ author:
 normative:
 
 informative:
-  SP800-59
+  SP800-59:
     title: "Guideline for Identifying an Information System as a National Security System"
     date: August 2003
     author:
