@@ -141,8 +141,9 @@ Internet-Draft                  DoD CCMIB                   October 2019
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   [RFC2119].
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
 3.  Acronyms
 
@@ -159,7 +160,6 @@ Internet-Draft                  DoD CCMIB                   October 2019
    PKC: Public Key Certificate
    TA: Trust Anchor
    TAMP: Trust Anchor Management Protocol
-
 
 
 
@@ -240,7 +240,7 @@ Internet-Draft                  DoD CCMIB                   October 2019
 
    o  trust anchors, e.g., [RFC5280] and [RFC5914],
 
-   o  CRLs and CKLs, e.g., {RFC5280}}
+   o  CRLs and CKLs, e.g., [RFC5280]
 
    o  encrypted keys, e.g., [RFC6032]
 
@@ -7361,6 +7361,10 @@ Internet-Draft                  DoD CCMIB                   October 2019
               STD 78, RFC 6353, DOI 10.17487/RFC6353, July 2011,
               <https://www.rfc-editor.org/info/rfc6353>.
 
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
 9.2.  Informative References
 
    [I-D.turner-sodp-profile]
@@ -7381,10 +7385,6 @@ Internet-Draft                  DoD CCMIB                   October 2019
               DOI 10.17487/RFC3410, December 2002, <https://www.rfc-
               editor.org/info/rfc3410>.
 
-   [RFC3418]  Presuhn, R., Ed., "Management Information Base (MIB) for
-              the Simple Network Management Protocol (SNMP)", STD 62,
-              RFC 3418, DOI 10.17487/RFC3418, December 2002,
-              <https://www.rfc-editor.org/info/rfc3418>.
 
 
 
@@ -7393,6 +7393,11 @@ Sun, et al.               Expires April 3, 2020               [Page 132]
 
 Internet-Draft                  DoD CCMIB                   October 2019
 
+
+   [RFC3418]  Presuhn, R., Ed., "Management Information Base (MIB) for
+              the Simple Network Management Protocol (SNMP)", STD 62,
+              RFC 3418, DOI 10.17487/RFC3418, December 2002,
+              <https://www.rfc-editor.org/info/rfc3418>.
 
    [RFC4303]  Kent, S., "IP Encapsulating Security Payload (ESP)",
               RFC 4303, DOI 10.17487/RFC4303, December 2005,
@@ -7438,16 +7443,17 @@ Authors' Addresses
    Email: irani@spawar.navy.mil
 
 
-   Tom Nguyen
-   Naval Information Warfare Center Pacific
-
-   Email: tmnguyen@spawar.navy.mil
-
 
 
 Sun, et al.               Expires April 3, 2020               [Page 133]
 
 Internet-Draft                  DoD CCMIB                   October 2019
+
+
+   Tom Nguyen
+   Naval Information Warfare Center Pacific
+
+   Email: tmnguyen@spawar.navy.mil
 
 
    Ray Purvis
@@ -7460,12 +7466,6 @@ Internet-Draft                  DoD CCMIB                   October 2019
    sn3rd
 
    Email: sean@sn3rd.com
-
-
-
-
-
-
 
 
 
