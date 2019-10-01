@@ -71,8 +71,96 @@ For a detailed overview of the documents that describe the current Internet-Stan
 
 Managed objects are accessed via a virtual information store, termed the Management Information Base or MIB. MIB objects are generally accessed through the Simple Network Management Protocol (SNMP). Objects in the MIB are defined using the mechanisms defined in the Structure of Management Information (SMI). This memo specifies a MIB module that is compliant to the SMIv2, which is described in RFC 2578 {{!RFC2578}}, STD 58, RFC 2579 {{!RFC2579}}, and STD 58, RFC 2580 {{!RFC2580}}.
 
-Structure of the MIB module
-===========================
+MIB Design
+==========
+
+Eight MIB are defined as part of the CCMIB to support key management implementations, namely CC-ASSIGNMENTS-MIB, CC-FEATURE-HIERARCHY-MIB, CC-DEVICE-INFO-MIB, CC-KEY-MANAGEMENT-MIB, CC-KEY-TRANSFER-PULL-MIB, CC-KEY-TRANSFER-PUSH-MIB, CC-SECURE-POLICY-INFO-MIB, CC-SECURE-CONNECTION-INFO-MIB. The following sections summarizes the modules and the modules' objects.
+
+CC-ASSIGNMENTS-MIB
+------------------
+
+The Assignments MIB defines the "ccmib" OID, which is the OID prefix for all others definitions in the CCMIB.
+
+CC-FEATURE-HIERARCHY-MIB
+------------------------
+
+The Feature Hierarchy MIB defines OIDs for the remaining MIB modules, namely ccDeviceInfo, ccKeyManagement, ccKeyTransferPull, ccKeyTransferPush, ccSecurePolicyInfo, and ccSecureConnectionInfo.  This module imports the ccmib OID from the Assignments MIB and the remaining 6 MIB modules import an OID from the Feature Hierarchy MIB.
+
+CC-DEVICE-INFO-MIB
+------------------
+
+The Device Info MIB configures basic characteristics of the device. Details of the defined tables follow.
+
+cDeviceComponentVersTable is used to manage the specification versions of components or specifications supported by the ECU.
+
+cBatteryInfoTable is used to manage information on each of the batteries installed in the device, along with their type, operational status, and battery low notification thresehold.
+
+cFirmwareInformationTable is used to manage firmware versions available in the device, along with their versions, type, and source.
+
+CC-KEY-MANAGEMENT-MIB
+---------------------
+
+The Key Management MIB configures key management information related to the following types of keys:
+
+- symmetric keys, e.g., {{!RFC6031}}
+- asymmetric keys, e.g., {{!RFC5280}} and {{!RFC5958}}
+- trust anchors, e.g., {{RFC5280}} and {{!RFC5914}},
+- CRLs and CKLs, e.g., {RFC5280}}
+- encrypted keys, e.g., {{!RFC6032}}
+
+Details of the defined tables follow.
+
+cSymmetricKeyTable is used to manage symmetric keys used by the device.  Each table entry supports values for fingerprint, usages, identifier, effective date, expiration date, expiry warning, number of transactions, friendly name, classification, and source.
+
+cAsymKeyTable is used to manage asymmetric keys used by the device.  Each table entry supports values for fingerprint, friendly name, serial number, issuer, signature algorithm, public key algorithm, effective date, expiration date, expiry warning, subject, subject type, subject alternative name, usage, classification, source, version, rekey, and type as well as automatic rekey is enabled.
+
+cTrustAnchorTable is used to manage Trust Anchors used by the device.  Each table entry supports fingerprint, format type, name, usage type, key identifier, public key algorithm, contingency availability, and version.
+
+cCKLTable is used to manage both CRLs and CKLs.  Each table entry supports an index, issuer, revoked serial number, issue date, next update, version, and last updated.
+
+cCDMStoreTable is used to manage the types of stored CDM that are destined for this device and/or destined for another device. Types include symmetric key, asymmetric key, TA, CRL, CKL, and firmware as well as store and forward unencrypted and encrypted packages meant for another device.
+
+cCertSubAltNameTable is used to manage the devices subject alternative names {{RFC5280}}.
+
+cCertPathCtrlsTable is used to manage the controls and constraints applied to a certificate in order to process certificate trust paths {{RFC5280}}.
+
+cCertPolicyTable is used to manage the devices certificate policies {{RFC5280}}.
+
+cPolicyMappingTable is used to manage the devices mapped certificate policies {{RFC5280}}.
+
+cNameConstraintTable is used to manage the devices name constraints {{RFC5280}}.
+
+cRemoteKeyMaterialTable is used to manage the key material information used by the remote peer, i.e., the key material used to establish the secure connection.
+
+CC-KEY-TRANSFER-PULL-MIB
+------------------------
+
+The Key Transfer Pull MIB configures information used by devices to retrieve CDM from CDM servers.  Details of the defined tables follow.
+
+cCDMServerTable is used to mange CDM servers that will be queried for available CDMs.  It is also used to obtain the location for the CDML, which is a list detailing available CDMs and their associated location for obtainment.  {{?I-D.turner-sodp-profile}} is an example of a CDM server that contains a CDML, which is referred to as Product Availability List (PAL) in {{I-D.turner-sodp-profile}}.
+
+cCDMDeliveryTable is used to manage information about cryptographic device materials (CDMs) that are ready/available for retrieval.
+
+CC-KEY-TRANSFER-PUSH-MIB
+------------------------
+
+The Key Transfer Push MIB configures information used by senders to push CDMs to devices.  Details of the defined tables follow.
+
+cCDMPushDestTable is used to manage the information a sender needs to initiate a CDM send to a receiving device.
+
+cCDMTransferPkgTable is used to configure single or multiple CDM in a package that can be transferred on a send operation.
+
+cCDMPushSrcTable provides is used to list the authorized senders that this receiving device will accept CDM transfers from.
+
+CC-SECURE-POLICY-INFO-MIB
+-------------------------
+
+The Secure Policy Information MIB defines one table, cSecPolicyRuleTable, to manage the security policy rules that are compared against inbound and outbound data traffic flow to determine how the data traffic flow should be treated (e.g., protect, bypass, discard).
+
+CC-SECURE-CONNECTION-INFO-MIB
+-----------------------------
+
+The Secure Connection Information MIB defines one table, cSecConTable, to manage the base/common information for secure connections: data plane identifier, type (e.g., 'tls', 'ipsec'), direction (inbound, outbound, bidirectional), local and remote key material references, cryptographic suite, establishment time, and status.
 
 Definition of the CC MIB module
 ===============================
