@@ -64,6 +64,23 @@ Terminology
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in {{!RFC2119}}.
 
+Acronyms
+========
+
+CA: Certification Authority \\
+CDM: Cryptographic Device Material \\
+CDML: Cryptographic Device Material List \\
+CKL: Compromised Key List \\
+CRL: Certificate Revocation List \\
+DN: Distinguished Name \\
+ECU: End Cryptographic Unit \\
+HMI: Human Machine Interface \\
+OID: Object Identifier \\
+PAL: Product Availability List \\
+PKC: Public Key Certificate \\
+TA: Trust Anchor \\
+TAMP: Trust Anchor Management Protocol
+
 The Internet-Standard Management Framework
 ==========================================
 
@@ -136,7 +153,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
 
     IMPORTS
         ccAssignmentsMIB
-            FROM CC-ASSIGNMENTS-MIB               -- FROM Section 5.1
+            FROM CC-ASSIGNMENTS-MIB               -- FROM Section 6.1
         MODULE-IDENTITY
             FROM SNMPv2-SMI;                      -- FROM RFC 2578
 
@@ -195,7 +212,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
 
     IMPORTS
         ccDeviceInfo
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 6.2
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
@@ -1070,7 +1087,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     IMPORTS
         ccKeyManagement
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 6.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -3839,7 +3856,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
 
     IMPORTS
         ccKeyTransferPull
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 6.2
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
@@ -4565,7 +4582,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
 
     IMPORTS
         ccKeyTransferPush
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 6.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -5182,7 +5199,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
     IMPORTS
         ccSecurePolicyInfo
-            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 5.2
+            FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 6.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                            -- FROM RFC 2578
@@ -5480,7 +5497,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
     IMPORTS
         ccSecureConnectionInfo
-            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM Sec 5.2
+            FROM CC-FEATURE-HIERARCHY-MIB             -- FROM Sec 6.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
         MODULE-IDENTITY
             FROM SNMPv2-SMI                           -- FROM RFC 2578
