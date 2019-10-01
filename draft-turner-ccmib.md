@@ -5868,6 +5868,36 @@ used in the document are defined in the IANA Private Enterprise Number
 Security Considerations  {#security}
 =======================
 
+The CCMIB modules contain some read-only objects that may be deemed sensitive. Appropriate security procedures that are related to SNMP in general but are not specific to this MIB module need to be implemented by concerned operators.
+
+There are a number of management objects defined in this MIB module with a MAX-ACCESS clause of read-write and/or read-create.  Such objects may be considered sensitive or vulnerable in some network environments.  The support for SET operations in a non-secure environment without proper protection opens devices to attack.  The following tables and objects are sensitive/vulnerable because unauthorized modification would allow an attacker to elevate or degrade a device's capabilities:
+
+- From the Device Information MIB: cSystemDate, cSystemInitialLoadParameters, cSecurityLevel, cResetDevice, cSanitizeDevice, cRenderInoperable, cDeviceComponentOpStatus, cDeviceComponentDescription, cBatteryLowThreshold, cFirmwareRunning, and cFirmwareRowStatus,
+
+- From the Key Management Information MIB: cZeroizeAllKeys, cZeroizeSymmetricKeyTable, cZeroizeAsymKeyTable, cZeroizeTrustAnchorTable, cZeroizeCDMStoreTable, cKeyMaterialTableOID, cSymKeyGlobalExpiryWarning, cAsymKeyGlobalExpiryWarning, cGenerateKeyType, cGenerateKey, cSymKeyUsage, cSymKeyID, cSymKeyIssuer, cSymKeyEffectiveDate, cSymKeyExpirationDate, cSymKeyExpiryWarning, cSymKeyNumberOfTransactions, cSymKeyFriendlyName, cSymKeySource, cSymKeyRowStatus, AsymKeyFriendlyName, cAsymKeyEffectiveDate, cAsymKeyExpiryWarning, cAsymKeySubjectAltName, cAsymKeyUsage, cAsymKeySource, cAsymKeyRowStatus, cAsymKeyRekey, cAsymKeyAutoRekeyEnable, cTrustAnchorRowStatus, cCKLRowStatus, cCDMStoreID, cCDMStoreFriendlyName, cCDMStoreControl, cCDMStoreRowStatus, cCertSubAltNameRowStatus, and cRemoteKeyMatFriendlyName.
+
+- From the Key Transfer Pull MIB: cCDMServerRetryDelay, cCDMServerRetryMaxAttempts, cCDMPullRetrievalPriorities, cCDMLDeliveryRequest, cCDMServerURI, cCDMServerAdditionalInfo, cCDMServerRowStatus, cCDMAdditionalInfo, cCDMDeliveryPriority, cCDMDeliveryRequest, and cCDMDeliveryRowStatus.
+
+- From the Key Transfer Push MIB: cCDMTransferDelay, cCDMTransferMaxAttempts, cCDMPushDestTransferType, cCDMPushDestAddressLocationType, cCDMPushDestAddressLocation, cCDMPushDestTransferTime, cCDMPushDestPackageSelection, cCDMPushDestRowStatus, cCDMTransferPkgLocatorRowPtr, cCDMTransferPkgRowStatus, cCDMPushSrcTransferType, cCDMPushSrcAddrLocationType, cCDMPushSrcAddrLocation, and cCDMPushSrcRowStatus.
+
+- From the Security Policy Information MIB: cSecPolicyRuleDescription, cSecPolicyRuleType, cSecPolicyRuleFilterReference, cSecPolicyRuleAction, and cSecPolicyRuleRowStatus.
+
+- From the Security Connection Information MIB: cSecConType, cSecConDataPlaneID, cSecConDirection, cSecConKeyReference, cSecConCryptographicSuite, cSecConEstablishmentTime, cSecConStatus, cSecConRowStatus, and cSecConRemoteKeyReference.
+
+Some of the readable objects in this MIB module (i.e., objects with a MAX-ACCESS other than not-accessible) may be considered sensitive or vulnerable in some network environments.  It is thus important to control even GET and/or NOTIFY access to these objects and possibly to even encrypt the values of these objects when sending them over the network via SNMP.  The following tables and objects are sensitive/vulnerable because unauthorized access would disclose device configuration information:
+
+- From the Device Information MIB: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTableLastChanged, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTableLastChanged, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
+
+- From the Key Management Information MIB: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTableLastChanged, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
+
+- From the Key Transfer Pull MIB: cCDMLDeliveryStatus, cCDMServerTableCount, cCDMServerTableLastChanged, cCDMDeliveryTableCount, cCDMDeliveryTableLastChanged, cCDMType, cCDMURI, cCDMPackageSize, cCDMLastDownloadDate, and cCDMDeliveryStatus.
+
+- From the Key Transfer Push MIB: cCDMPushDestTableCount, cCDMPushDestTableLastChanged, cCDMTransferPkgTableCount, cCDMTransferPkgTableLastChanged, cCDMPushSrcTableCount, and cCDMPushSrcTableLastChanged.
+
+- From the Security Policy Information MIB: cSecPolicyRuleTableCount, cSecPolicyRuleTableLastChanged, and cSecPolicyRulePriorityID.
+
+- From the Security Connection Information MIB: cSecConTableCount, cSecConTableLastChanged, and cSecConTableID.
+
 SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.
 
 Implementations SHOULD provide the security features described by the SNMPv3 framework (see {{RFC3410}}), and implementations claiming compliance to the SNMPv3 standard MUST include full support for authentication and privacy via the User-based Security Model (USM) {{!RFC3414}} with the AES cipher algorithm {{!RFC3826}}.  Implementations MAY also provide support for the Transport Security Model (TSM) {{!RFC5591}} in combination with a secure transport such as SSH {{!RFC5592}} or TLS/DTLS {{RFC6353}}.
