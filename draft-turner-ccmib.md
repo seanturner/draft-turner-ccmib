@@ -82,7 +82,7 @@ operators of these and any other system deployments.
 Terminology
 ===========
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in {{!RFC2119}}.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 {{!RFC2119}} {{!RFC8174}} when, and only when, they appear in all capitals, as shown here.
 
 Acronyms
 ========
@@ -142,7 +142,7 @@ The Key Management MIB configures key management information related to the foll
 - symmetric keys, e.g., {{!RFC6031}}
 - asymmetric keys, e.g., {{!RFC5280}} and {{!RFC5958}}
 - trust anchors, e.g., {{RFC5280}} and {{!RFC5914}},
-- CRLs and CKLs, e.g., {RFC5280}}
+- CRLs and CKLs, e.g., {{RFC5280}}
 - encrypted keys, e.g., {{!RFC6032}}
 
 Details of the defined tables follow.
