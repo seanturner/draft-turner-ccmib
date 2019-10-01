@@ -83,7 +83,7 @@ Assignments {#cc-assign}
 This MIB module makes reference to the following document: {{RFC2578}}.
 
 ~~~~
-    CC-ASSIGNMENTS-MIB  DEFINITIONS  ::= BEGIN
+    CC-ASSIGNMENTS-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
         MODULE-IDENTITY, enterprises
@@ -132,7 +132,7 @@ Feature Hierarchy {#cc-fh}
 This MIB module makes reference to the following document: {{RFC2578}}.
 
 ~~~~
-    CC-FEATURE-HIERARCHY-MIB  DEFINITIONS  ::= BEGIN
+    CC-FEATURE-HIERARCHY-MIB  DEFINITIONS  ::=  BEGIN
 
     IMPORTS
         ccAssignmentsMIB
@@ -484,7 +484,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
          OBJECTS     { cBatteryType, cBatteryOpStatus }
          STATUS      current
          DESCRIPTION 
-             "A notificiation from the device to the management station
+             "A notification from the device to the management station
              indicating the device is on battery power. This
              notification is sent when the device is no longer
              connected to an external power source and is operating
@@ -1092,7 +1092,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Key Managment objects.
+            "This MIB defines the CC MIB Key Management objects.
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
