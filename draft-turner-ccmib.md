@@ -903,11 +903,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION 
-            "A table that lists firmware versions available in the device, along
-            with their versions and type. This is used to list currently loaded 
-            firmware versions of running firmware and other available firmware 
-            versions in support of returning to a previous version of the 
-            firmware."
+            "A table that lists firmware versions available in the
+            device, along with their versions and type. This is used to
+            list currently loaded firmware versions of running firmware
+            and other available firmware versions in support of
+            returning to a previous version of the firmware."
         ::= { cFirmwareInfo 3 }
 
     cFirmwareInformationEntry  OBJECT-TYPE
@@ -915,7 +915,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION 
-            "A row containing a firmware package name, version, and source."
+            "A row containing a firmware package name, version, and
+            source."
         INDEX      { cFirmwareName }
         ::= { cFirmwareInformationTable 1 }
 
@@ -2248,7 +2249,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS read-write
         STATUS     current
         DESCRIPTION
-            "Controls the automatic rekey settings  for this PKC.
+            "Controls the automatic rekey settings for this PKC.
 
             [true]  Enables automatic rekey.
             [false] Disables automatic rekey.
