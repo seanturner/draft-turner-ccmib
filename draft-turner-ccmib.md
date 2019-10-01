@@ -54,7 +54,7 @@ informative:
 
 --- abstract
 
-This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.
+This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects for key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.
 
 This profile applies to the capabilities, configuration, and operation
 of all components of US National Security Systems (SP 800-59). It is
