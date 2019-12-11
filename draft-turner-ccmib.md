@@ -111,22 +111,22 @@ Managed objects are accessed via a virtual information store, termed the Managem
 MIB Design
 ==========
 
-Eight MIB are defined as part of the CCMIB to support key management implementations, namely CC-ASSIGNMENTS-MIB, CC-FEATURE-HIERARCHY-MIB, CC-DEVICE-INFO-MIB, CC-KEY-MANAGEMENT-MIB, CC-KEY-TRANSFER-PULL-MIB, CC-KEY-TRANSFER-PUSH-MIB, CC-SECURE-POLICY-INFO-MIB, CC-SECURE-CONNECTION-INFO-MIB. The following sections summarizes the modules and the modules' objects.
+Eight MIB modules are defined as part of the CCMIB to support key management implementations, namely CC-ASSIGNMENTS-MIB, CC-FEATURE-HIERARCHY-MIB, CC-DEVICE-INFO-MIB, CC-KEY-MANAGEMENT-MIB, CC-KEY-TRANSFER-PULL-MIB, CC-KEY-TRANSFER-PUSH-MIB, CC-SECURE-POLICY-INFO-MIB, CC-SECURE-CONNECTION-INFO-MIB. The following sections summarizes the modules and the modules' objects.
 
 CC-ASSIGNMENTS-MIB
 ------------------
 
-The Assignments MIB defines the "ccmib" OID, which is the OID prefix for all others definitions in the CCMIB.
+The Assignments MIB module defines the "ccmib" OID, which is the OID prefix for all others definitions in the CCMIB.
 
 CC-FEATURE-HIERARCHY-MIB
 ------------------------
 
-The Feature Hierarchy MIB defines OIDs for the remaining MIB modules, namely ccDeviceInfo, ccKeyManagement, ccKeyTransferPull, ccKeyTransferPush, ccSecurePolicyInfo, and ccSecureConnectionInfo.  This module imports the ccmib OID from the Assignments MIB and the remaining 6 MIB modules import an OID from the Feature Hierarchy MIB.
+The Feature Hierarchy MIB module defines OIDs for the remaining MIB modules, namely ccDeviceInfo, ccKeyManagement, ccKeyTransferPull, ccKeyTransferPush, ccSecurePolicyInfo, and ccSecureConnectionInfo.  This module imports the ccmib OID from the Assignments MIB module and the remaining 6 MIB modules import an OID from the Feature Hierarchy MIB module.
 
 CC-DEVICE-INFO-MIB
 ------------------
 
-The Device Info MIB configures basic characteristics of the device. Details of the defined tables follow.
+The Device Info MIB module configures basic characteristics of the device. Details of the defined tables follow.
 
 cDeviceComponentVersTable is used to manage the specification versions of components or specifications supported by the ECU.
 
@@ -137,7 +137,7 @@ cFirmwareInformationTable is used to manage firmware versions available in the d
 CC-KEY-MANAGEMENT-MIB
 ---------------------
 
-The Key Management MIB configures key management information related to the following types of keys:
+The Key Management MIB module configures key management information related to the following types of keys:
 
 - symmetric keys, e.g., {{!RFC6031}}
 - asymmetric keys, e.g., {{!RFC5280}} and {{!RFC5958}}
@@ -172,7 +172,7 @@ cRemoteKeyMaterialTable is used to manage the key material information used by t
 CC-KEY-TRANSFER-PULL-MIB
 ------------------------
 
-The Key Transfer Pull MIB configures information used by devices to retrieve CDM from CDM servers.  Details of the defined tables follow.
+The Key Transfer Pull MIB module configures information used by devices to retrieve CDM from CDM servers.  Details of the defined tables follow.
 
 cCDMServerTable is used to mange CDM servers that will be queried for available CDMs.  It is also used to obtain the location for the CDML, which is a list detailing available CDMs and their associated location for obtainment.  {{?I-D.turner-sodp-profile}} is an example of a CDM server that contains a CDML, which is referred to as Product Availability List (PAL) in {{I-D.turner-sodp-profile}}.
 
@@ -181,7 +181,7 @@ cCDMDeliveryTable is used to manage information about cryptographic device mater
 CC-KEY-TRANSFER-PUSH-MIB
 ------------------------
 
-The Key Transfer Push MIB configures information used by senders to push CDMs to devices.  Details of the defined tables follow.
+The Key Transfer Push MIB module configures information used by senders to push CDMs to devices.  Details of the defined tables follow.
 
 cCDMPushDestTable is used to manage the information a sender needs to initiate a CDM send to a receiving device.
 
@@ -192,12 +192,12 @@ cCDMPushSrcTable provides is used to list the authorized senders that this recei
 CC-SECURE-POLICY-INFO-MIB
 -------------------------
 
-The Secure Policy Information MIB defines one table, cSecPolicyRuleTable, to manage the security policy rules that are compared against inbound and outbound data traffic flow to determine how the data traffic flow should be treated (e.g., protect, bypass, discard).
+The Secure Policy Information MIB module defines one table, cSecPolicyRuleTable, to manage the security policy rules that are compared against inbound and outbound data traffic flow to determine how the data traffic flow should be treated (e.g., protect, bypass, discard).
 
 CC-SECURE-CONNECTION-INFO-MIB
 -----------------------------
 
-The Secure Connection Information MIB defines one table, cSecConTable, to manage the base/common information for secure connections: data plane identifier, type (e.g., 'tls', 'ipsec'), direction (inbound, outbound, bidirectional), local and remote key material references, cryptographic suite, establishment time, and status.
+The Secure Connection Information MIB module defines one table, cSecConTable, to manage the base/common information for secure connections: data plane identifier, type (e.g., 'tls', 'ipsec'), direction (inbound, outbound, bidirectional), local and remote key material references, cryptographic suite, establishment time, and status.
 
 Definition of the CC MIB module
 ===============================
@@ -221,8 +221,8 @@ This MIB module makes reference to the following document: {{RFC2578}}.
            "CC MIB Configuration Control Board
             Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB tree hierarchical assignments
-            below it and acts as a reservation mechanism.
+            "This MIB module defines the CC MIB tree hierarchical 
+            assignments below it and acts as a reservation mechanism.
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -272,9 +272,9 @@ This MIB module makes reference to the following document: {{RFC2578}}.
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB features in hierarchical MIB
-            tree assignments.  It acts as a reservation mechanism for
-            other MIB sets to be anchored below it.
+            "This MIB module defines the CC MIB features in hierarchical 
+            MIB tree assignments.  It acts as a reservation mechanism 
+            for other MIB sets to be anchored below it.
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -339,7 +339,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Device Information objects.
+            "This MIB module defines the CC MIB Device Information 
+            objects.
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -1218,7 +1219,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Key Management objects.
+            "This MIB module defines the CC MIB Key Management objects.
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -3984,7 +3985,8 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Key Transfer Pull objects.
+            "This MIB module defines the CC MIB Key Transfer Pull 
+            objects.
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -4711,7 +4713,8 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Key Transfer Push object.
+            "This MIB module defines the CC MIB Key Transfer Push 
+            object.
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5327,8 +5330,8 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Secure Policy Information
-            objects.
+            "This MIB module defines the CC MIB Secure Policy 
+            Information objects.
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5623,8 +5626,8 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             "CC MIB Configuration Control Board
              Email: CCMIB.CCB@us.af.mil"
         DESCRIPTION
-            "This MIB defines the CC MIB Secure Connection Information
-            objects.
+            "This MIB module defines the CC MIB Secure Connection 
+            Information objects.
 
             Copyright (c) 2019 IETF Trust and the persons
             identified as authors of the code.  All rights reserved.
@@ -5978,31 +5981,31 @@ The CCMIB modules contain some read-only objects that may be deemed sensitive. A
 
 There are a number of management objects defined in this MIB module with a MAX-ACCESS clause of read-write and/or read-create.  Such objects may be considered sensitive or vulnerable in some network environments.  The support for SET operations in a non-secure environment without proper protection opens devices to attack.  The following tables and objects are sensitive/vulnerable because unauthorized modification would allow an attacker to elevate or degrade a device's capabilities:
 
-- From the Device Information MIB: cSystemDate, cSystemInitialLoadParameters, cSecurityLevel, cResetDevice, cSanitizeDevice, cRenderInoperable, cDeviceComponentOpStatus, cDeviceComponentDescription, cBatteryLowThreshold, cFirmwareRunning, and cFirmwareRowStatus,
+- From the Device Information MIB module: cSystemDate, cSystemInitialLoadParameters, cSecurityLevel, cResetDevice, cSanitizeDevice, cRenderInoperable, cDeviceComponentOpStatus, cDeviceComponentDescription, cBatteryLowThreshold, cFirmwareRunning, and cFirmwareRowStatus,
 
-- From the Key Management Information MIB: cZeroizeAllKeys, cZeroizeSymmetricKeyTable, cZeroizeAsymKeyTable, cZeroizeTrustAnchorTable, cZeroizeCDMStoreTable, cKeyMaterialTableOID, cSymKeyGlobalExpiryWarning, cAsymKeyGlobalExpiryWarning, cGenerateKeyType, cGenerateKey, cSymKeyUsage, cSymKeyID, cSymKeyIssuer, cSymKeyEffectiveDate, cSymKeyExpirationDate, cSymKeyExpiryWarning, cSymKeyNumberOfTransactions, cSymKeyFriendlyName, cSymKeySource, cSymKeyRowStatus, AsymKeyFriendlyName, cAsymKeyEffectiveDate, cAsymKeyExpiryWarning, cAsymKeySubjectAltName, cAsymKeyUsage, cAsymKeySource, cAsymKeyRowStatus, cAsymKeyRekey, cAsymKeyAutoRekeyEnable, cTrustAnchorRowStatus, cCKLRowStatus, cCDMStoreID, cCDMStoreFriendlyName, cCDMStoreControl, cCDMStoreRowStatus, cCertSubAltNameRowStatus, and cRemoteKeyMatFriendlyName.
+- From the Key Management Information MIB module: cZeroizeAllKeys, cZeroizeSymmetricKeyTable, cZeroizeAsymKeyTable, cZeroizeTrustAnchorTable, cZeroizeCDMStoreTable, cKeyMaterialTableOID, cSymKeyGlobalExpiryWarning, cAsymKeyGlobalExpiryWarning, cGenerateKeyType, cGenerateKey, cSymKeyUsage, cSymKeyID, cSymKeyIssuer, cSymKeyEffectiveDate, cSymKeyExpirationDate, cSymKeyExpiryWarning, cSymKeyNumberOfTransactions, cSymKeyFriendlyName, cSymKeySource, cSymKeyRowStatus, AsymKeyFriendlyName, cAsymKeyEffectiveDate, cAsymKeyExpiryWarning, cAsymKeySubjectAltName, cAsymKeyUsage, cAsymKeySource, cAsymKeyRowStatus, cAsymKeyRekey, cAsymKeyAutoRekeyEnable, cTrustAnchorRowStatus, cCKLRowStatus, cCDMStoreID, cCDMStoreFriendlyName, cCDMStoreControl, cCDMStoreRowStatus, cCertSubAltNameRowStatus, and cRemoteKeyMatFriendlyName.
 
-- From the Key Transfer Pull MIB: cCDMServerRetryDelay, cCDMServerRetryMaxAttempts, cCDMPullRetrievalPriorities, cCDMLDeliveryRequest, cCDMServerURI, cCDMServerAdditionalInfo, cCDMServerRowStatus, cCDMAdditionalInfo, cCDMDeliveryPriority, cCDMDeliveryRequest, and cCDMDeliveryRowStatus.
+- From the Key Transfer Pull MIB module: cCDMServerRetryDelay, cCDMServerRetryMaxAttempts, cCDMPullRetrievalPriorities, cCDMLDeliveryRequest, cCDMServerURI, cCDMServerAdditionalInfo, cCDMServerRowStatus, cCDMAdditionalInfo, cCDMDeliveryPriority, cCDMDeliveryRequest, and cCDMDeliveryRowStatus.
 
-- From the Key Transfer Push MIB: cCDMTransferDelay, cCDMTransferMaxAttempts, cCDMPushDestTransferType, cCDMPushDestAddressLocationType, cCDMPushDestAddressLocation, cCDMPushDestTransferTime, cCDMPushDestPackageSelection, cCDMPushDestRowStatus, cCDMTransferPkgLocatorRowPtr, cCDMTransferPkgRowStatus, cCDMPushSrcTransferType, cCDMPushSrcAddrLocationType, cCDMPushSrcAddrLocation, and cCDMPushSrcRowStatus.
+- From the Key Transfer Push MIB module: cCDMTransferDelay, cCDMTransferMaxAttempts, cCDMPushDestTransferType, cCDMPushDestAddressLocationType, cCDMPushDestAddressLocation, cCDMPushDestTransferTime, cCDMPushDestPackageSelection, cCDMPushDestRowStatus, cCDMTransferPkgLocatorRowPtr, cCDMTransferPkgRowStatus, cCDMPushSrcTransferType, cCDMPushSrcAddrLocationType, cCDMPushSrcAddrLocation, and cCDMPushSrcRowStatus.
 
-- From the Security Policy Information MIB: cSecPolicyRuleDescription, cSecPolicyRuleType, cSecPolicyRuleFilterReference, cSecPolicyRuleAction, and cSecPolicyRuleRowStatus.
+- From the Security Policy Information MIB module: cSecPolicyRuleDescription, cSecPolicyRuleType, cSecPolicyRuleFilterReference, cSecPolicyRuleAction, and cSecPolicyRuleRowStatus.
 
-- From the Security Connection Information MIB: cSecConType, cSecConDataPlaneID, cSecConDirection, cSecConKeyReference, cSecConCryptographicSuite, cSecConEstablishmentTime, cSecConStatus, cSecConRowStatus, and cSecConRemoteKeyReference.
+- From the Security Connection Information MIB module: cSecConType, cSecConDataPlaneID, cSecConDirection, cSecConKeyReference, cSecConCryptographicSuite, cSecConEstablishmentTime, cSecConStatus, cSecConRowStatus, and cSecConRemoteKeyReference.
 
 Some of the readable objects in this MIB module (i.e., objects with a MAX-ACCESS other than not-accessible) may be considered sensitive or vulnerable in some network environments.  It is thus important to control even GET and/or NOTIFY access to these objects and possibly to even encrypt the values of these objects when sending them over the network via SNMP.  The following tables and objects are sensitive/vulnerable because unauthorized access would disclose device configuration information:
 
-- From the Device Information MIB: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTableLastChanged, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTableLastChanged, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
+- From the Device Information MIB module: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTableLastChanged, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTableLastChanged, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
 
-- From the Key Management Information MIB: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTableLastChanged, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
+- From the Key Management Information MIB module: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTableLastChanged, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
 
-- From the Key Transfer Pull MIB: cCDMLDeliveryStatus, cCDMServerTableCount, cCDMServerTableLastChanged, cCDMDeliveryTableCount, cCDMDeliveryTableLastChanged, cCDMType, cCDMURI, cCDMPackageSize, cCDMLastDownloadDate, and cCDMDeliveryStatus.
+- From the Key Transfer Pull MIB module: cCDMLDeliveryStatus, cCDMServerTableCount, cCDMServerTableLastChanged, cCDMDeliveryTableCount, cCDMDeliveryTableLastChanged, cCDMType, cCDMURI, cCDMPackageSize, cCDMLastDownloadDate, and cCDMDeliveryStatus.
 
-- From the Key Transfer Push MIB: cCDMPushDestTableCount, cCDMPushDestTableLastChanged, cCDMTransferPkgTableCount, cCDMTransferPkgTableLastChanged, cCDMPushSrcTableCount, and cCDMPushSrcTableLastChanged.
+- From the Key Transfer Push MIB module: cCDMPushDestTableCount, cCDMPushDestTableLastChanged, cCDMTransferPkgTableCount, cCDMTransferPkgTableLastChanged, cCDMPushSrcTableCount, and cCDMPushSrcTableLastChanged.
 
-- From the Security Policy Information MIB: cSecPolicyRuleTableCount, cSecPolicyRuleTableLastChanged, and cSecPolicyRulePriorityID.
+- From the Security Policy Information MIB module: cSecPolicyRuleTableCount, cSecPolicyRuleTableLastChanged, and cSecPolicyRulePriorityID.
 
-- From the Security Connection Information MIB: cSecConTableCount, cSecConTableLastChanged, and cSecConTableID.
+- From the Security Connection Information MIB module: cSecConTableCount, cSecConTableLastChanged, and cSecConTableID.
 
 SNMP versions prior to SNMPv3 did not include adequate security. Even if the network itself is secure (for example by using IPsec), there is no control as to who on the secure network is allowed to access and GET/SET (read/change/create/delete) the objects in this MIB module.
 
