@@ -620,8 +620,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
     cDeviceComponentDisabled  NOTIFICATION-TYPE
         OBJECTS     {
                         cDeviceComponentName,
-                        cDeviceComponentVersion,
-                        cDeviceComponentOpStatus
+                        cDeviceComponentVersion
                     }
         STATUS      current
         DESCRIPTION
