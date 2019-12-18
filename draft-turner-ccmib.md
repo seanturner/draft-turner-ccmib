@@ -849,12 +849,14 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
 
     cBatteryOpStatus  OBJECT-TYPE
         SYNTAX      INTEGER { unknown(1), batteryNormal(2),
-                              batteryLow(3), batteryDepleted(4),
+                              batteryLow(3), batteryEmpty(4),
                               batteryMissing(5) }
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
-            "Indication of the status of the battery."
+            "Indication of the status of the battery.  Note, the 
+            batteryLow(3) state is determined by the 
+            cBatteryLowThreshold value."
         ::= { cBatteryInfoEntry 3 }
 
     cBatteryLowThreshold  OBJECT-TYPE
