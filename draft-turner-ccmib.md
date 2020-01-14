@@ -4083,7 +4083,8 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             server information is stored in the cCDMServerTable. When
             read, it will return 'readyForDownload' if the last action
             succeeded. If the last action is in progress or failed, it
-            will return the last requested action.
+            will return that requested action (e.g., downloadAndParse,
+            discard).
 
             The values which may be set depend on the current value of
             this object and the cCDMLDeliveryStatus object.
@@ -4142,7 +4143,13 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             The relationship between this object and
             cCDMLDeliveryRequest is detailed in the following table. The
             table indicates values of cCDMLDeliveryRequest that are
-            allowed depending on the current value of this object.
+            allowed (to be set) depending on the current value of this 
+            object.  Example: for a given entry, if the 
+            cCDMLDeliveryStatus indicates 'inProgress', setting
+            cCDMLDeliveryRequest to 'readForDownload' or 
+            'downloadAndParse' would result in an error.  Specifically,
+            as described cCDMLDeliveryRequest description, an
+            inconsistentValue error is returned.
     
 
  cCDMLDeliveryRequest!                 cCDMLDeliveryStatus
@@ -4155,9 +4162,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
  --------------------+-----------+----------+--------------+------------
  ! discard           !   error   ! allowed  !   allowed    !  allowed  !
  --------------------+-----------+----------+--------------+------------
-    
-            As described cCDMLDeliveryRequest description, an
-            inconsistentValue error is returned."
+            "
         DEFVAL { complete }
         ::= { cKeyTransferPullScalars 5 }
     
