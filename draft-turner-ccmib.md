@@ -109,6 +109,28 @@ MIB Design
 
 Eight MIB modules are defined as part of the CCMIB to support key management implementations, namely CC-ASSIGNMENTS-MIB, CC-FEATURE-HIERARCHY-MIB, CC-DEVICE-INFO-MIB, CC-KEY-MANAGEMENT-MIB, CC-KEY-TRANSFER-PULL-MIB, CC-KEY-TRANSFER-PUSH-MIB, CC-SECURE-POLICY-INFO-MIB, CC-SECURE-CONNECTION-INFO-MIB. The following sections summarizes the modules and the modules' objects.
 
+The CCMIB Object Identifier (OID) tree is shown below.  The CCMIB OIDs are specified in Section 6. 
+::
+  enterprises {{RFC2578}}
+       |
+       +- ccmib
+       |  |
+       |  +- ccAssignmentsMIB
+       |  |    |
+       |  |    +- ccFeatureHierarchyMIB
+       |  |    |
+       |  |    |    +- ccDeviceInfoMIB 
+       |  |    |
+       |  |    |    +- ccKeyManagementMIB 
+       |  |    |
+       |  |    |    +- ccKeyTransferPullMIB 
+       |  |    |
+       |  |    |    +- ccKeyTransferPushMIB 
+       |  |    |
+       |  |    |    +- ccSecurePolicyInfoMIB 
+       |  |    |
+       |  |    |    +- ccSecureConnectionInfoMIB
+
 CC-ASSIGNMENTS-MIB
 ------------------
 
