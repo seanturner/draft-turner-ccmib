@@ -5497,7 +5497,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             "This object indicates what action the ECU should take on
             matching a data traffic flow against a filter (as defined by
             cSecPolicyRuleFilterReference). The value of this column can
-            take one of four enumeration values.
+            take one of five enumeration values.
 
             [1] protect: The 'protect' enumeration value indicates that
             the data traffic flow should be protected by a Secure
