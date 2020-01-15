@@ -1386,7 +1386,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementScalars 7 }
 
     cSymKeyGlobalExpiryWarning  OBJECT-TYPE
-        SYNTAX      Unsigned32
+        SYNTAX      Unsigned32(0..90)
         UNITS       "days"
         MAX-ACCESS  read-write
         STATUS      current
@@ -1395,7 +1395,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             the expiration date of a symmetric key (value of
             cSymKeyExpirationDate in the associated cSymmetricKeyTable
             entry) for which the cKeyMaterialExpiring notification will
-            be transmitted.
+            be transmitted.  A value of 0 indicates that no notification
+            will be sent.
 
             The value in this object is only used if no value exists for
             the associated cSymmetricKeyTable entry's
@@ -1403,7 +1404,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementScalars 8 }
 
     cAsymKeyGlobalExpiryWarning  OBJECT-TYPE
-        SYNTAX      Unsigned32
+        SYNTAX      Unsigned32(0..90)
         UNITS       "days"
         MAX-ACCESS  read-write
         STATUS      current
@@ -1412,7 +1413,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             the expiration date of an asymmetric key (value of
             cAsymKeyExpirationDate in the associated cAsymKeyTable
             entry) for which the cKeyMaterialExpiring notification will
-            be transmitted.
+            be transmitted.  A value of 0 indicates that no notification
+            will be sent.
 
             The value in this object is only used if no value exists for
             the associated cAsymKeyTable entry's cAsymKeyExpiryWarning
@@ -1790,7 +1792,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cSymmetricKeyEntry 6 }
     
     cSymKeyExpiryWarning  OBJECT-TYPE
-        SYNTAX      Unsigned32
+        SYNTAX      Unsigned32(0..90)
         UNITS       "days"
         MAX-ACCESS  read-create
         STATUS      current
@@ -2053,7 +2055,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 8 }
 
     cAsymKeyExpiryWarning  OBJECT-TYPE
-        SYNTAX      Unsigned32
+        SYNTAX      Unsigned32(0..90)
         UNITS       "days"
         MAX-ACCESS  read-write
         STATUS      current
