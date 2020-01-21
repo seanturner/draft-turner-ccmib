@@ -2258,7 +2258,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cAsymKeyRekey  OBJECT-TYPE
         SYNTAX     TruthValue
-        MAX-ACCESS read-create
+        MAX-ACCESS read-write
         STATUS     current
         DESCRIPTION
             "Setting this object to 'true' initates a rekey operation
@@ -2842,8 +2842,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cCertSubAltNameList         SnmpAdminString,
         cCertSubAltNameType         INTEGER,
         cCertSubAltNameValue1       SnmpAdminString,
-        cCertSubAltNameValue2       SnmpAdminString,
-        cCertSubAltNameRowStatus    RowStatus
+        cCertSubAltNameValue2       SnmpAdminString
     }
     
     cCertSubAltNameIndex  OBJECT-TYPE
@@ -2920,21 +2919,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             same cCertSubAltNameType and cCertSubAltNameList but with a
             unique cCertSubAltNameIndex."
         ::= { cCertSubAltNameTableEntry 5 }
-    
-    cCertSubAltNameRowStatus OBJECT-TYPE
-        SYNTAX     RowStatus
-        MAX-ACCESS read-create
-        STATUS     current
-        DESCRIPTION
-            "The status of this row by which existing entries may be
-            deleted from this table.
-
-            At a minimum, implementations must support active and
-            destroy management functions. Support for notInService and
-            notReady management functions is optional. Implementations
-            must not support createAndWait and createAndGo management
-            functions for this object."
-        ::= { cCertSubAltNameTableEntry 6 }
 
     -- *****************************************************************
     -- CC MIB cCertPathCtrlsTable
