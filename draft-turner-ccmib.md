@@ -1856,6 +1856,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                            sharedSecret(11) }
         MAX-ACCESS  read-create
         STATUS      current
+        REFERENCE   "RFC 6030 - Section 5."
         DESCRIPTION
             "The intended usage for the key:  One Time Password (OTP),
             Challenge/Response (CR), Unlock, Encrypt, Decrypt,
@@ -2286,6 +2287,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                            decipherOnly(9) }
         MAX-ACCESS  read-write
         STATUS      current
+        REFERENCE   "RFC 5280 - Section 4.2.1.3."
         DESCRIPTION
              "Provides the intended type of usage for the Asymmetric
              Key. The following types are supported (defined in Section
@@ -2991,6 +2993,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                              registeredID(8) }
         MAX-ACCESS read-only
         STATUS     current
+        REFERENCE  "RFC 5280 - Section 4.2.1.6."
         DESCRIPTION
             "The type of the Subject Alternative Name as defined in RFC
             5280, Section 4.2.1.6. Specifically, the value of this
@@ -3002,6 +3005,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         SYNTAX     SnmpAdminString (SIZE(0..64))
         MAX-ACCESS read-only
         STATUS     current
+        REFERENCE  "RFC 5280 - Section 4.2.1.6."
         DESCRIPTION
             "The main value of the Subject Alternative Name. The format
             of the value must match its Type as defined in RFC 5280,
@@ -3019,6 +3023,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         SYNTAX     SnmpAdminString (SIZE(0..64))
         MAX-ACCESS read-only
         STATUS     current
+        REFERENCE  "RFC 5280 - Section 4.2.1.6."
         DESCRIPTION
             "This column is a supplement to the main value
             cCertSubAltNameValue1 and may only be used when the
@@ -3320,6 +3325,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         SYNTAX      INTEGER { cpsPointer(0), userNotice(1) }
         MAX-ACCESS  read-only
         STATUS      current
+        REFERENCE  "RFC 5280 - Section 4.2.1.4."
         DESCRIPTION
             "Indicates the type of qualifier per RFC 5280,
             Section 4.2.1.4."
