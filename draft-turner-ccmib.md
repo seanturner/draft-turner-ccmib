@@ -553,6 +553,27 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             "This object stores the device's hardware version number."
         ::= { cDeviceInfoScalars 12 }
 
+    cSendNotifications OBJECT-TYPE
+        SYNTAX      TruthValue
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Turns on/off the sending of notifications at the device 
+             level (i.e., applies to all supported MIB module 
+             notifications).  True value turns on notification sending; 
+             False value turns off notification sending."
+        ::= { cDeviceInfoScalars 13 }
+        
+    cNotificationThrottle OBJECT-TYPE
+        SYNTAX      Unsigned32(0..3600)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Defines the throttling interval (in seconds) for sending 
+            notifications at the device level (i.e., applies to all 
+            supported MIB module notifications). 0 value turns off 
+            throttling."
+        ::= { cDeviceInfoScalars 14 }
     -- *****************************************************************
     -- Device Information Notifications
     -- *****************************************************************
@@ -561,7 +582,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         STATUS      current
         DESCRIPTION 
             "A notification from the device to the management station
-            indicating a firmware install failed."
+            indicating a firmware install failed.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cDeviceInfoNotify 1 }
 
     cFirmwareInstallSuccess  NOTIFICATION-TYPE
@@ -573,7 +598,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
          STATUS      current
          DESCRIPTION 
              "A notification from the device to the management station
-             indicating a firmware intsall succeeded."
+             indicating a firmware intsall succeeded.
+             
+             At the device level, the sending of notifications is 
+             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+             and cNotificationThrottle."
          ::= {cDeviceInfoNotify 2}
 
     cResetDeviceInitialized  NOTIFICATION-TYPE
@@ -583,7 +612,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             indicating that the device is being reset due to a change in
             the value of cResetDevice. This notification should be sent
             before the device performs any other reset operations (such
-            as shutting down interfaces, etc.)"
+            as shutting down interfaces, etc.)
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cDeviceInfoNotify 3 }
 
     cSanitizeDeviceInitialized  NOTIFICATION-TYPE
@@ -593,7 +626,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             indicating that the device is being sanitized due to a
             change in the value of cSanitizeDevice. This notification
             should be sent before the device performs any other sanitize
-            operations (such as shutting down interfaces, etc.)"
+            operations (such as shutting down interfaces, etc.)
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cDeviceInfoNotify 4 }
 
     cTamperEventIndicated  NOTIFICATION-TYPE
@@ -602,7 +639,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             "A notification from the device to the management station
             indicating that the device has detected a tamper event. This
             notification should be sent before the device performs any
-            operations (such as shutting down interfaces, etc.)"
+            operations (such as shutting down interfaces, etc.)
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cDeviceInfoNotify 5 }
 
     cBatteryLow  NOTIFICATION-TYPE
@@ -615,7 +656,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         DESCRIPTION 
             "A notification from the device to the management station
             indicating a battery has reached the threshold at which a
-            battery warning is indicated."
+            battery warning is indicated.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cDeviceInfoNotify 6 }
 
      cBatteryRequiresReplacement  NOTIFICATION-TYPE
@@ -624,7 +669,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
          DESCRIPTION 
              "A notification from the device to the management station
              indicating a battery should be charged or changed
-             immediately."
+             immediately.
+             
+             At the device level, the sending of notifications is 
+             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+             and cNotificationThrottle."
          ::= { cDeviceInfoNotify 7 }
 
      cDeviceOnBattery  NOTIFICATION-TYPE
@@ -635,7 +684,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
              indicating the device is on battery power. This
              notification is sent when the device is no longer
              connected to an external power source and is operating
-             using a battery for main power."
+             using a battery for main power.
+             
+             At the device level, the sending of notifications is 
+             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+             and cNotificationThrottle."
          ::= { cDeviceInfoNotify 8 }
 
     cDeviceComponentDisabled  NOTIFICATION-TYPE
@@ -647,7 +700,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         DESCRIPTION
             "A notification from the device to the management station
             indicating a component described in the
-            cDeviceComponentVersTable has been disabled."
+            cDeviceComponentVersTable has been disabled.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cDeviceInfoNotify 9 }
 
     cDeviceComponentEnabled  NOTIFICATION-TYPE
@@ -659,7 +716,11 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         DESCRIPTION
             "A notification from the device to the management station
             indicating a component described in the
-            cDeviceComponentVersTable has been enabled."
+            cDeviceComponentVersTable has been enabled.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cDeviceInfoNotify 10 }
 
     -- *****************************************************************
@@ -1124,7 +1185,9 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
                     cRenderInoperable,
                     cVendorName,
                     cModelIdentifier,
-                    cHardwareVersionNumber
+                    cHardwareVersionNumber,
+                    cSendNotifications,
+                    cNotificationThrottle
                 }
         STATUS current
         DESCRIPTION
@@ -1503,7 +1566,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             by the table identifier (e.g., cSymmetricKeyTable), has
             succeeded. This notification may be sent upon a single
             successful key material load or may be sent upon a series of
-            successful single key material loads."
+            successful single key material loads.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 1 }
 
     cKeyMaterialLoadFail  NOTIFICATION-TYPE
@@ -1512,7 +1579,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "An attempt to load the device with key material, identified
             by the table identifier (e.g., cSymmetricKeyTable), has
-            failed."
+            failed.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 2 }
 
     cKeyMaterialExpiring  NOTIFICATION-TYPE
@@ -1530,7 +1601,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             by a global setting
             (cSymKeyGlobalExpiryWarning/cAsymKeyGlobalExpiryWarning) or
             the granular setting per key material table entry
-            (cSymKeyExpiryWarning/cAsymKeyExpiryWarning) if configured."
+            (cSymKeyExpiryWarning/cAsymKeyExpiryWarning) if configured.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 3 }
 
     cKeyMaterialExpired  NOTIFICATION-TYPE
@@ -1541,7 +1616,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "Key Material, identified by Key Fingerprint and OID of the
-            associated key material table, has expired."
+            associated key material table, has expired.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 4 }
 
     cKeyMaterialExpirationChanged  NOTIFICATION-TYPE
@@ -1557,7 +1636,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             'Expiration' object in the table changing or by the device
             making a change due to some other automated security policy
             change such as automatically extending a key when no new key
-            is available."
+            is available.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 5 }
 
     cKeyMaterialZeroized  NOTIFICATION-TYPE
@@ -1575,7 +1658,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             setting the cZeroizeSymmetricKeyTable object to 'true',
             setting the cZeroizeAsymKeyTable object to 'true', setting
             the cZeroizeTrustAnchorTable object to 'true', or setting
-            the cZeroizeCDMStoreTable object to 'true'."
+            the cZeroizeCDMStoreTable object to 'true'.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 6 }
 
     cCKLLoadSuccess  NOTIFICATION-TYPE
@@ -1587,13 +1674,21 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "An attempt to load the device with CKL, identified by
             cCKLIndex and cCKLIssuer (indexes to the cCKLTable), has
-            succeeded."
+            succeeded.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 7 }
 
     cCKLLoadFail  NOTIFICATION-TYPE
         STATUS      current
         DESCRIPTION
-            "An attempt to load the device with CKL has failed."
+            "An attempt to load the device with CKL has failed.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 8 }
 
     cCDMAdded  NOTIFICATION-TYPE
@@ -1605,7 +1700,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A new cryptographic device material (CDM) entry has been
             added to the cCDMStoreTable, as identified cCDMStoreIndex
-            and cCDMStoreType."
+            and cCDMStoreType.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 9 }
 
     cCDMDeleted  NOTIFICATION-TYPE
@@ -1618,7 +1717,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A cryptographic device material (CDM) entry has been
             deleted from the cCDMStoreTable, as identified
-            cCDMStoreIndex, cCDMStoreType and cCDMStoreFriendlyName."
+            cCDMStoreIndex, cCDMStoreType and cCDMStoreFriendlyName.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 10 }
 
     cTrustAnchorAdded  NOTIFICATION-TYPE
@@ -1631,7 +1734,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A trust anchor has been added to the cTrustAnchorTable, as
             identified by cTrustAnchorFingerprint,
-            cTrustAnchorFormatType, and cTrustAnchorUsageType."
+            cTrustAnchorFormatType, and cTrustAnchorUsageType.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 11 }
 
     cTrustAnchorUpdated  NOTIFICATION-TYPE
@@ -1644,7 +1751,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A trust anchor has been updated in the cTrustAnchorTable,
             as identified by cTrustAnchorFingerprint,
-            cTrustAnchorFormatType, and cTrustAnchorUsageType."
+            cTrustAnchorFormatType, and cTrustAnchorUsageType.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 12 }
 
     cTrustAnchorRemoved  NOTIFICATION-TYPE
@@ -1657,7 +1768,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A trust anchor has been removed from the cTrustAnchorTable,
             as identified by cTrustAnchorFingerprint,
-            cTrustAnchorFormatType, and cTrustAnchorUsageType."
+            cTrustAnchorFormatType, and cTrustAnchorUsageType.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyManagementNotify 13 }
         
     -- *****************************************************************
@@ -4212,7 +4327,11 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         DESCRIPTION
             "An attempt to receive a cryptographic device material
              list (CDML) has succeeded. The CDM server URI is provided
-             with this notification."
+             with this notification.
+             
+             At the device level, the sending of notifications is 
+             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+             and cNotificationThrottle."
         ::= { cKeyTransferPullNotify 1 }
 
     cCDMLPullReceiveFailed  NOTIFICATION-TYPE
@@ -4226,7 +4345,11 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             list (CDML) has failed. The CDM server URI and CDML Delivery
             Status are provided with this notification. Note, the
             expected values for the CDML Delivery Status are:
-            'downloadFailed' and 'parseFailed'."
+            'downloadFailed' and 'parseFailed'.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyTransferPullNotify 2 }
 
     cCDMPullReceiveSuccess  NOTIFICATION-TYPE
@@ -4238,7 +4361,11 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         DESCRIPTION
             "An attempt to receive a cryptographic device material (CDM)
             has succeeded. The CDM Type and CDM URI are provided with
-            this notification."
+            this notification.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyTransferPullNotify 3 }
 
     cCDMPullReceiveFailed  NOTIFICATION-TYPE
@@ -4250,7 +4377,11 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         DESCRIPTION
             "An attempt to receive a cryptographic device material (CDM)
             has failed. The CDM Type and CDM URI are provided with this
-            notification."
+            notification.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyTransferPullNotify 4 }
 
     -- *****************************************************************
@@ -4840,7 +4971,11 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         STATUS      current
         DESCRIPTION
             "An attempt to send CDM, identified by CDM push transfer
-            information (cCDMPushDestTable row data), has succeeded."
+            information (cCDMPushDestTable row data), has succeeded.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyTransferPushNotify 1 }
 
     cCDMPushReceiveSuccess  NOTIFICATION-TYPE
@@ -4853,7 +4988,11 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         DESCRIPTION
             "An attempt to receive key material, identified by CDM push
             transfer information (cCDMPushSrcTable row data), has
-            succeeded."
+            succeeded.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyTransferPushNotify 2 }
 
     cCDMPushReceiveFail  NOTIFICATION-TYPE
@@ -4866,7 +5005,11 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         DESCRIPTION
             "An attempt to receive key material via a Push operation,
             identified by the Sender Address and Transfer Type has
-            failed."
+            failed.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyTransferPushNotify 3 }
 
     cCDMPushSendFail  NOTIFICATION-TYPE
@@ -4879,7 +5022,11 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         STATUS      current
         DESCRIPTION
             "An attempt to send key material, identified by the
-            Recipient Address and Transfer Type, has failed."
+            Recipient Address and Transfer Type, has failed.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cKeyTransferPushNotify 4 }
 
     -- *****************************************************************
@@ -5431,7 +5578,11 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         STATUS      current
         DESCRIPTION
             "A notification indicating that an existent Security Policy
-            entry in the cSecPolicyRuleTable in has changed."
+            entry in the cSecPolicyRuleTable in has changed.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cSecurePolicyInfoNotify 1 }
 
     -- *****************************************************************
@@ -5725,7 +5876,11 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         STATUS      current
         DESCRIPTION
             "A notification indicating that a new Secure Connection was
-            successfully established."
+            successfully established.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cSecureConnectionInfoNotify 1 }
 
     cSecConnectionDeleted  NOTIFICATION-TYPE
@@ -5733,7 +5888,11 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         STATUS      current
         DESCRIPTION
             "A notification indicating that an existent Secure
-            Connection was successfully deleted."
+            Connection was successfully deleted.
+            
+            At the device level, the sending of notifications is 
+            controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
+            and cNotificationThrottle."
         ::= { cSecureConnectionInfoNotify 2 }
 
     -- *****************************************************************
