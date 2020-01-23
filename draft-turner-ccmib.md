@@ -996,8 +996,8 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
            also reference entries in the ifTable when appropriate. If
            received using a Cryptographic Device Material server, the
            exact URI that was used to retrieve the firmware package
-           would be configured in this column."
-        ::= { cFirmwareInformationEntry 4 }
+           would be populated in this column."
+        ::= { cFirmwareInformationEntry 3 }
 
     cFirmwareRunning  OBJECT-TYPE
         SYNTAX      TruthValue
@@ -4389,7 +4389,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         DESCRIPTION
             "The table storing information about cryptographic device
             materials (CDMs) that are ready/available for retrieval.
-            Entries in this table are typically automatically configured
+            Entries in this table are typically automatically populated
             by the device after a server query. Entries can also be
             manually configured by a manager if the location of the CDM
             is predetermined."
@@ -4459,7 +4459,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             This column is typically populated by an agent upon querying
             a CDM Server (e.g., downloading and parsing a cryptographic
             device material list (CDML) from a CDM Server (entry in the
-            cCDMServerTable)). However, a manager can also configure an
+            cCDMServerTable)). However, a manager can also populate an
             entry in this table with predetermined knowledge of the CDM
             location."
         ::= { cCDMDeliveryEntry 3 }
@@ -4538,7 +4538,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
 
             [downloadAndInstall] = Initiates a download of a CDM. After
             a successful download, the CDM will be installed for local
-            consumption and an entry is to be configured in the
+            consumption and an entry is to be populated in the
             appropriate MIB table based on cCDMType:
 
             cCDMType          |  MIB Table Destination
@@ -4558,7 +4558,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             discards the CDM if potentially downloaded; this reverts the
             current value of the cCDMDeliveryStatus to 'complete'. If
             entries are created in the aforementioned tables for the
-            install and store operations, these newly configured entries
+            install and store operations, these newly populated entries
             will be removed.
 
             The enumeration value of 'downloadAndStore' does not apply
