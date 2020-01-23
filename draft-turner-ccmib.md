@@ -67,10 +67,6 @@ operators of these and any other system deployments.
 Introduction
 ============
 
-RFC EDITOR: PLEASE REMOVE THE FOLLOWING PARAGRAPH PRIOR TO PUBLICATION
-
-The source for this draft is maintained in GitHub. Suggested changes should be submitted as pull requests at https://github.com/seanturner/draft-turner-ccmib. Instructions are on that page as well. Editorial changes can be managed in GitHub. 
-
 This document defines a portion of the Management Information Base (MIB) for use with network management protocols in the Internet community.  In particular, it describes managed objects used to manage key management implementations including asymmetric keys, symmetric keys, trust anchors, and cryptographic-related firmware.
 
 This profile applies to the capabilities, configuration, and operation
@@ -112,6 +108,28 @@ MIB Design
 ==========
 
 Eight MIB modules are defined as part of the CCMIB to support key management implementations, namely CC-ASSIGNMENTS-MIB, CC-FEATURE-HIERARCHY-MIB, CC-DEVICE-INFO-MIB, CC-KEY-MANAGEMENT-MIB, CC-KEY-TRANSFER-PULL-MIB, CC-KEY-TRANSFER-PUSH-MIB, CC-SECURE-POLICY-INFO-MIB, CC-SECURE-CONNECTION-INFO-MIB. The following sections summarizes the modules and the modules' objects.
+
+The CCMIB Object Identifier (OID) tree is shown below.  The CCMIB OIDs are specified in Section 6. 
+::
+  enterprises {{RFC2578}}
+       |
+       +- ccmib
+       |  |
+       |  +- ccAssignmentsMIB
+       |  |    |
+       |  |    +- ccFeatureHierarchyMIB
+       |  |    |
+       |  |    |    +- ccDeviceInfoMIB 
+       |  |    |
+       |  |    |    +- ccKeyManagementMIB 
+       |  |    |
+       |  |    |    +- ccKeyTransferPullMIB 
+       |  |    |
+       |  |    |    +- ccKeyTransferPushMIB 
+       |  |    |
+       |  |    |    +- ccSecurePolicyInfoMIB 
+       |  |    |
+       |  |    |    +- ccSecureConnectionInfoMIB
 
 CC-ASSIGNMENTS-MIB
 ------------------
@@ -403,7 +421,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 2 }
 
     cSystemInitialLoadParameters  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(0..128))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -418,7 +436,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 3 }
 
     cSecurityLevel  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(0..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -430,7 +448,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 4 }
 
     cElectronicSerialNumber  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -503,7 +521,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 9 }
     
     cVendorName OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString 
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -515,7 +533,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 10 }
     
     cModelIdentifier OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -525,7 +543,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 11 }
     
     cHardwareVersionNumber OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -620,8 +638,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
     cDeviceComponentDisabled  NOTIFICATION-TYPE
         OBJECTS     {
                         cDeviceComponentName,
-                        cDeviceComponentVersion,
-                        cDeviceComponentOpStatus
+                        cDeviceComponentVersion
                     }
         STATUS      current
         DESCRIPTION
@@ -687,19 +704,28 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         DESCRIPTION
             "A row containing a module descriptive name and its version
             that is supported by this device."
-        INDEX      { cDeviceComponentName, cDeviceComponentVersion }
+        INDEX      { cDeviceComponentIndex }
         ::= { cDeviceComponentVersTable 1 }
 
     CDeviceComponentVersEntry  ::= SEQUENCE
         {
+          cDeviceComponentIndex       Unsigned32, 
           cDeviceComponentName        SnmpAdminString,
           cDeviceComponentVersion     SnmpAdminString,
           cDeviceComponentOpStatus    INTEGER,
-          cDeviceComponentDescription OCTET STRING
+          cDeviceComponentDescription SnmpAdminString
         }
 
+    cDeviceComponentIndex  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "A numerical index for the device component feature."
+        ::= { cDeviceComponentVersEntry 1 }
+
     cDeviceComponentName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(1..32))
+        SYNTAX      SnmpAdminString 
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -715,10 +741,10 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
     
             The string 'hardware' (exact) is reserved for vendors to
             register a model number of the hardware of the device."
-        ::= { cDeviceComponentVersEntry 1 }
+        ::= { cDeviceComponentVersEntry 2 }
 
     cDeviceComponentVersion  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(1..32))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -728,7 +754,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             in the text of a specification, of the device, or elsewhere.
             If the cDeviceComponentName begins with a 'vendor-' prefix,
             the format of this field is vendor specific."
-        ::= { cDeviceComponentVersEntry 2 }
+        ::= { cDeviceComponentVersEntry 3 }
 
     cDeviceComponentOpStatus  OBJECT-TYPE
         SYNTAX      INTEGER { up(1), notReady(2),
@@ -750,17 +776,17 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             row that describes the software version of the device and
             not a particular feature. In this event, the agent should
             return an inconsistentValue error."
-        ::= { cDeviceComponentVersEntry 3 }
+        ::= { cDeviceComponentVersEntry 4 }
 
     cDeviceComponentDescription OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
             "A description of the component. Agents may reject changing
             this object for certain rows. In this event, the agent
             should return an inconsistentValue error."
-        ::= { cDeviceComponentVersEntry 4 }
+        ::= { cDeviceComponentVersEntry 5 }
 
     -- *****************************************************************
     -- CC MIB cBatteryInfoTable
@@ -849,12 +875,14 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
 
     cBatteryOpStatus  OBJECT-TYPE
         SYNTAX      INTEGER { unknown(1), batteryNormal(2),
-                              batteryLow(3), batteryDepleted(4),
+                              batteryLow(3), batteryEmpty(4),
                               batteryMissing(5) }
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
-            "Indication of the status of the battery."
+            "Indication of the status of the battery.  Note, the 
+            batteryLow(3) state is determined by the 
+            cBatteryLowThreshold value."
         ::= { cBatteryInfoEntry 3 }
 
     cBatteryLowThreshold  OBJECT-TYPE
@@ -918,38 +946,47 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         DESCRIPTION 
             "A row containing a firmware package name, version, and
             source."
-        INDEX      { cFirmwareName }
+        INDEX      { cFirmwareIndex }
         ::= { cFirmwareInformationTable 1 }
 
     CFirmwareInformationEntry  ::= SEQUENCE
         {
-           cFirmwareName                    OCTET STRING,
+           cFirmwareIndex                   Unsigned32,
+           cFirmwareName                    SnmpAdminString,
            cFirmwareVersion                 SnmpAdminString,
            cFirmwareSource                  SnmpAdminString,
            cFirmwareRunning                 TruthValue,
            cFirmwareRowStatus               RowStatus
         }
+        
+    cFirmwareIndex  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "A numerical index for a firmware."
+        ::= { cFirmwareInformationEntry 1 }
 
     cFirmwareName  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
-           "Unique identifier provided in the firmware package."
-        ::= { cFirmwareInformationEntry 1 }
+           "Identifier provided in the firmware package."
+        ::= { cFirmwareInformationEntry 2 }
 
     cFirmwareVersion  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
             "Version of firmware (provided in the package); for legacy
             firmware packages, this column would be the empty string,
             ''."
-        ::= { cFirmwareInformationEntry 2 }
+        ::= { cFirmwareInformationEntry 3 }
 
     cFirmwareSource  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
@@ -973,7 +1010,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             the agent must install the firmware, uninstall the previous
             running firmware and change the cFirmwareRunning object for
             the previous running firmware from True to False."
-        ::= { cFirmwareInformationEntry 4 }
+        ::= { cFirmwareInformationEntry 5 }
 
     cFirmwareRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
@@ -986,7 +1023,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             At a minimum, implementations must support destroy
             management functions.  Support for active, notInService,
             and notReady management functions is optional."
-        ::= {cFirmwareInformationEntry 5}
+        ::= {cFirmwareInformationEntry 6}
 
     -- *****************************************************************
     -- Module Conformance Information
@@ -1096,6 +1133,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         OBJECTS {
                     cDeviceComponentVersTableCount,
                     cDeviceComponentVersTableLastChanged,
+                    cDeviceComponentIndex,
                     cDeviceComponentName,
                     cDeviceComponentVersion,
                     cDeviceComponentOpStatus,
@@ -1125,6 +1163,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
          OBJECTS {
                      cFirmwareInformationTableCount,
                      cFirmwareInformationTableLastChanged,
+                     cFirmwareIndex,
                      cFirmwareName,
                      cFirmwareVersion,
                      cFirmwareSource,
@@ -1663,15 +1702,15 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     CSymmetricKeyEntry  ::= SEQUENCE {
         cSymKeyFingerprint          SnmpTLSFingerprint,
         cSymKeyUsage                BITS,
-        cSymKeyID                   OCTET STRING,
-        cSymKeyIssuer               OCTET STRING,
+        cSymKeyID                   SnmpAdminString,
+        cSymKeyIssuer               SnmpAdminString,
         cSymKeyEffectiveDate        DateAndTime,
         cSymKeyExpirationDate       DateAndTime,
         cSymKeyExpiryWarning        Unsigned32,
         cSymKeyNumberOfTransactions Unsigned32,
         cSymKeyFriendlyName         SnmpAdminString,
         cSymKeyClassification       BITS,
-        cSymKeySource               OCTET STRING,
+        cSymKeySource               SnmpAdminString,
         cSymKeyRowStatus            RowStatus
     }
     
@@ -1680,8 +1719,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-            "An inherent identification of the symmetric key and the
-            primary index to the cSymmetricKeyTable.
+            "An inherent identification of the symmetric key.
 
             This MIB does not provide any additional requirements on
             developing the fingerprint. Implementations are cautioned to
@@ -1752,7 +1790,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cSymmetricKeyEntry 2 }
     
     cSymKeyID  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -1765,7 +1803,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cSymmetricKeyEntry 3 }
     
     cSymKeyIssuer  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -1847,7 +1885,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cSymmetricKeyEntry 10 }
     
     cSymKeySource  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -1935,23 +1973,23 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     CAsymKeyEntry  ::= SEQUENCE {
         cAsymKeyFingerprint         SnmpTLSFingerprint,
         cAsymKeyFriendlyName        SnmpAdminString,
-        cAsymKeySerialNumber        OCTET STRING,
-        cAsymKeyIssuer              OCTET STRING,
-        cAsymKeySignatureAlgorithm  OCTET STRING,
-        cAsymKeyPublicKeyAlgorithm  OCTET STRING,
+        cAsymKeySerialNumber        SnmpAdminString,
+        cAsymKeyIssuer              SnmpAdminString,
+        cAsymKeySignatureAlgorithm  SnmpAdminString,
+        cAsymKeyPublicKeyAlgorithm  SnmpAdminString,
         cAsymKeyEffectiveDate       DateAndTime,
         cAsymKeyExpirationDate      DateAndTime,
         cAsymKeyExpiryWarning       Unsigned32,
-        cAsymKeySubject             OCTET STRING,
+        cAsymKeySubject             SnmpAdminString,
         cAsymKeySubjectType         BITS,
         cAsymKeySubjectAltName      SnmpAdminString,
         cAsymKeyUsage               BITS,
         cAsymKeyClassification      BITS,
-        cAsymKeySource              OCTET STRING,
+        cAsymKeySource              SnmpAdminString,
         cAsymKeyRowStatus           RowStatus,
         cAsymKeyVersion             INTEGER,
         cAsymKeyRekey               TruthValue,
-        cAsymKeyType                OCTET STRING,
+        cAsymKeyType                SnmpAdminString,
         cAsymKeyAutoRekeyEnable     TruthValue
     }
 
@@ -1960,8 +1998,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-             "An inherent identification of the asymmetric key and the
-             primary index to the cAsymKeyTable."
+             "An inherent identification of the asymmetric key."
         ::= { cAsymKeyEntry 1 }
 
     cAsymKeyFriendlyName  OBJECT-TYPE
@@ -1974,7 +2011,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 2 }
 
     cAsymKeySerialNumber  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -1988,7 +2025,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 3 }
 
     cAsymKeyIssuer  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2001,7 +2038,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 4 }
 
     cAsymKeySignatureAlgorithm  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2010,14 +2047,14 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              Certificate). If no signature/signature algorithm is
              provided/used, this column would not exist.
 
-             Note, this is a free form OCTET STRING column, meaning
+             Note, this is a free form SnmpAdminString column, meaning
              implementations may utilize a standardized definition of
              string values or use a proprietary definition of string
              values for supported signature algorithms."
         ::= { cAsymKeyEntry 5 }
 
     cAsymKeyPublicKeyAlgorithm  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2025,7 +2062,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              associated with the asymmetric key material (e.g., X.509
              Certificate)).
 
-             Note, this is a free form OCTET STRING column, meaning
+             Note, this is a free form SnmpAdminString column, meaning
              implementations may utilize a standardized definition of
              string values or use a proprietary definition of string
              values for supported public key algorithms."
@@ -2070,7 +2107,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 9 }
 
     cAsymKeySubject  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2104,7 +2141,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 11 }
 
     cAsymKeySubjectAltName OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(1..32))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2172,7 +2209,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 14 }
 
     cAsymKeySource  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString 
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2232,13 +2269,13 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 18 }
 
     cAsymKeyType  OBJECT-TYPE
-        SYNTAX     OCTET STRING (SIZE(1..255))
+        SYNTAX     SnmpAdminString
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
             "This column describes the type of asymmetric key material.
 
-            Note, this is a free form OCTET STRING column.
+            Note, this is a free form SnmpAdminString column.
             Implementations are expected to utilize definition of string
             values that apply to their specific nomenclature supported.
             If no such nomenclature exists, this column should not be
@@ -2309,13 +2346,13 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     CTrustAnchorEntry  ::= SEQUENCE {
         cTrustAnchorFingerprint         SnmpTLSFingerprint,
         cTrustAnchorFormatType          INTEGER,
-        cTrustAnchorName                OCTET STRING,
+        cTrustAnchorName                SnmpAdminString,
         cTrustAnchorUsageType           INTEGER,
-        cTrustAnchorKeyIdentifier       OCTET STRING,
-        cTrustAnchorPublicKeyAlgorithm  OCTET STRING,
+        cTrustAnchorKeyIdentifier       SnmpAdminString,
+        cTrustAnchorPublicKeyAlgorithm  SnmpAdminString,
         cTrustAnchorContingencyAvail    TruthValue,
         cTrustAnchorRowStatus           RowStatus,
-        cTrustAnchorVersion             OCTET STRING
+        cTrustAnchorVersion             SnmpAdminString
     }
 
     cTrustAnchorFingerprint  OBJECT-TYPE
@@ -2323,8 +2360,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "An inherent identification of the trust anchor and the
-            primary index to the cTrustAnchorTable."
+            "An inherent identification of the trust anchor."
         ::= { cTrustAnchorEntry 1 }
 
     cTrustAnchorFormatType  OBJECT-TYPE
@@ -2341,7 +2377,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cTrustAnchorEntry 2 }
 
     cTrustAnchorName  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(0..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2367,7 +2403,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cTrustAnchorEntry 4 }
 
     cTrustAnchorKeyIdentifier  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString 
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2375,14 +2411,14 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cTrustAnchorEntry 5 }
 
     cTrustAnchorPublicKeyAlgorithm  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
             "Public key algorithm with which the public key is used (as
             associated with the trust anchor).
 
-            Note, this is a free form OCTET STRING column, meaning
+            Note, this is a free form SnmpAdminString column, meaning
             implementations may utilize a standardized definition of
             string values or use a proprietary definition of string
             values for supported public key algorithms."
@@ -2420,7 +2456,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cTrustAnchorEntry 8 }
 
     cTrustAnchorVersion OBJECT-TYPE
-        SYNTAX     OCTET STRING
+        SYNTAX     SnmpAdminString
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -2473,13 +2509,13 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A row containing information about a Compromised Key List
             or Certificate Revocation List (CRL) used by the device."
-        INDEX      { cCKLIndex, cCKLIssuer }
+        INDEX      { cCKLIndex }
         ::= { cCKLTable 1 }
 
     CCKLEntry  ::= SEQUENCE {
         cCKLIndex           Unsigned32,
-        cCKLIssuer          OCTET STRING,
-        cCKLSerialNumber    OCTET STRING,
+        cCKLIssuer          SnmpAdminString,
+        cCKLSerialNumber    SnmpAdminString,
         cCKLIssueDate       DateAndTime,
         cCKLNextUpdate      DateAndTime,
         cCKLRowStatus       RowStatus,
@@ -2492,12 +2528,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "An ID that uniquely identifies the Compromised Key List
-            (CKL) in this table."
+            "A numerical index for Compromised Key List (CKL) entries."
         ::= { cCKLEntry 1 }
 
     cCKLIssuer  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(0..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2513,7 +2548,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCKLEntry 2 }
 
     cCKLSerialNumber  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(0..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2637,7 +2672,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cCDMStoreIndex          Unsigned32,
         cCDMStoreType           INTEGER,
         cCDMStoreSource         SnmpAdminString,
-        cCDMStoreID             OCTET STRING,
+        cCDMStoreID             SnmpAdminString,
         cCDMStoreFriendlyName   SnmpAdminString,
         cCDMStoreControl        INTEGER,
         cCDMStoreRowStatus      RowStatus
@@ -2648,8 +2683,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "A numeric index that identifies a unique location in this
-            table."
+            "A numerical index for CDM entries."
         ::= { cCDMStoreEntry 1 }
 
     cCDMStoreType OBJECT-TYPE
@@ -2695,7 +2729,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCDMStoreEntry 3 }
 
     cCDMStoreID  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2797,42 +2831,35 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A row containing information about a Subject Alternative
             Name and its type."
-        INDEX  { cCertSubAltNameList, cCertSubAltNameListIndex }
+        INDEX  { cCertSubAltNameIndex }
         ::= { cCertSubAltNameTable 1 }
     
     CCertSubAltNameTableEntry ::= SEQUENCE {
+        cCertSubAltNameIndex        Unsigned32,
         cCertSubAltNameList         SnmpAdminString,
-        cCertSubAltNameListIndex    Unsigned32,
         cCertSubAltNameType         INTEGER,
-        cCertSubAltNameValue1       OCTET STRING,
-        cCertSubAltNameValue2       OCTET STRING,
+        cCertSubAltNameValue1       SnmpAdminString,
+        cCertSubAltNameValue2       SnmpAdminString,
         cCertSubAltNameRowStatus    RowStatus
     }
     
+    cCertSubAltNameIndex  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "A numerical index for Subject Alternative Names."
+        ::= { cCertSubAltNameTableEntry 1 }
+        
     cCertSubAltNameList OBJECT-TYPE
-        SYNTAX     SnmpAdminString (SIZE(1..32))
-        MAX-ACCESS not-accessible
+        SYNTAX     SnmpAdminString
+        MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
             "The administrative name defining the set of Subject
             Alternative Names that are associated with the certificate.
             Multiple Subject Alternative Names may use the same
-            administrative name, implying a group. It is the combination
-            of cCertSubAltNameList and cCertSubAltNameListIndex that
-            uniquely identifies each row or set of Subject Alternative
-            Names."
-        ::= { cCertSubAltNameTableEntry 1 }
-    
-    cCertSubAltNameListIndex OBJECT-TYPE
-        SYNTAX     Unsigned32
-        MAX-ACCESS not-accessible
-        STATUS     current
-        DESCRIPTION
-            "A unique numeric index for rows, or sets of Subject
-            Alternative Names, with the same cCertSubAltNameList value.
-            This value, in combination with cCertSubAltNameList,
-            uniquely identifies each row, or set of Subject Alternative
-            Names."
+            administrative name, implying a group."
         ::= { cCertSubAltNameTableEntry 2 }
     
     cCertSubAltNameType OBJECT-TYPE
@@ -2851,7 +2878,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertSubAltNameTableEntry 3 }
     
     cCertSubAltNameValue1 OBJECT-TYPE
-        SYNTAX     OCTET STRING
+        SYNTAX     SnmpAdminString
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -2868,7 +2895,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertSubAltNameTableEntry 4 }
     
     cCertSubAltNameValue2 OBJECT-TYPE
-        SYNTAX     OCTET STRING
+        SYNTAX     SnmpAdminString
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -2888,7 +2915,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             Note: Support for multiple otherName(0) or ediPartyName(5)
             alternate names is provided by allowing multiple rows of the
             same cCertSubAltNameType and cCertSubAltNameList but with a
-            unique cCertSubAltNameListIndex."
+            unique cCertSubAltNameIndex."
         ::= { cCertSubAltNameTableEntry 5 }
     
     cCertSubAltNameRowStatus OBJECT-TYPE
@@ -2956,11 +2983,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     CCertPathCtrlsEntry ::= SEQUENCE {
         cCertPathCtrlsKeyFingerprint    SnmpTLSFingerprint,
         cCertPathCtrlsCertificate       RowPointer,
-        cCertPathCtrlsCertPolicies      OCTET STRING,
-        cCertPathCtrlsPolicyMappings    OCTET STRING,
+        cCertPathCtrlsCertPolicies      SnmpAdminString,
+        cCertPathCtrlsPolicyMappings    SnmpAdminString,
         cCertPathCtrlsPolicyFlags       BITS,
-        cCertPathCtrlsNamesPermitted    OCTET STRING,
-        cCertPathCtrlsNamesExcluded     OCTET STRING,
+        cCertPathCtrlsNamesPermitted    SnmpAdminString,
+        cCertPathCtrlsNamesExcluded     SnmpAdminString,
         cCertPathCtrlsMaxPathLength     Unsigned32
     }
 
@@ -2970,8 +2997,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
              "Identifies a trust anchor in the cTrustAnchorTable or a
-             certificate in the cAsymKeyTable. This column is the
-             primary index to the cCertPathCtrlsTable."
+             certificate in the cAsymKeyTable."
         ::= {cCertPathCtrlsEntry 1}
 
     cCertPathCtrlsCertificate  OBJECT-TYPE
@@ -2985,7 +3011,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPathCtrlsEntry 2 }
 
     cCertPathCtrlsCertPolicies  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2998,7 +3024,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPathCtrlsEntry 3 }
 
     cCertPathCtrlsPolicyMappings  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3042,7 +3068,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPathCtrlsEntry 5 }
 
     cCertPathCtrlsNamesPermitted  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3056,7 +3082,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPathCtrlsEntry 6 }
 
     cCertPathCtrlsNamesExcluded  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3129,38 +3155,32 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "A row containing information about a certificate policy."
-        INDEX  { cCertPolicyInformation, cCertPolicyInformationIndex }
+        INDEX  { cCertPolicyIndex }
         ::= { cCertPolicyTable 1 }
 
     CCertPolicyEntry ::= SEQUENCE {
-        cCertPolicyInformation      OCTET STRING,
-        cCertPolicyInformationIndex Unsigned32,
+        cCertPolicyIndex            Unsigned32,
+        cCertPolicyInformation      SnmpAdminString,
         cCertPolicyIdentifier       OBJECT IDENTIFIER,
         cCertPolicyQualifierID      INTEGER,
-        cCertPolicyQualifier        OCTET STRING
+        cCertPolicyQualifier        SnmpAdminString
     }
 
-    cCertPolicyInformation  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "Identifies a grouping of policies that are applicable to a
-            certificate. When used in conjunction with
-            cCertPolicyInformationIndex, a unique policy and qualifier
-            set is defined."
-        ::= { cCertPolicyEntry 1 }
-
-    cCertPolicyInformationIndex  OBJECT-TYPE
+    cCertPolicyIndex  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
+        DESCRIPTION 
+            "A numerical index for a certificate policy."
+        ::= { cCertPolicyEntry 1 }
+
+    cCertPolicyInformation  OBJECT-TYPE
+        SYNTAX      SnmpAdminString
+        MAX-ACCESS  read-only
+        STATUS      current
         DESCRIPTION
-            "A numerical index that is unique for a specific
-            cCertPolicyInformation value. This index allows multiple
-            qualifiers to be defined for a particular policy. When used
-            in conjunction with cCertPolicyInformation, a unique policy
-            and qualifier set is defined."
+            "Identifies a grouping of policies that are applicable to a
+            certificate."
         ::= { cCertPolicyEntry 2 }
 
     cCertPolicyIdentifier  OBJECT-TYPE
@@ -3185,7 +3205,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPolicyEntry 4 }
 
     cCertPolicyQualifier  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3239,34 +3259,33 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "A row containing a mapping between the domain policy of an
             issuing Certification Authority (CA) and an equivalent
             domain policy of the subject certificate's CA."
-        INDEX  { cPolicyMappingGroup, cPolicyMappingIndex }
+        INDEX  { cPolicyMappingIndex }
         ::= { cPolicyMappingTable 1 }
 
     CPolicyMappingEntry ::= SEQUENCE {
-        cPolicyMappingGroup         OCTET STRING,
         cPolicyMappingIndex         Unsigned32,
+        cPolicyMappingGroup         SnmpAdminString,
         cPolicyMappingSubjectPolicy OBJECT IDENTIFIER,
         cPolicyMappingIssuerPolicy  OBJECT IDENTIFIER
     }
-
-    cPolicyMappingGroup  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "Identifies a grouping of policy mappings that are
-            applicable to a certificate. When used in conjunction with
-            cPolicyMappingIndex, a unique policy mapping is defined."
-        ::= { cPolicyMappingEntry 1 }
 
     cPolicyMappingIndex  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-            "A numerical index that is unique for a specific
-            cPolicyMappingGroup value. When used in conjunction with
-            cPolicyMappingGroup, a unique policy mapping is defined."
+            "A numerical index for a specific cPolicyMappingGroup 
+             value."
+        ::= { cPolicyMappingEntry 1 }
+            
+    cPolicyMappingGroup  OBJECT-TYPE
+        SYNTAX      SnmpAdminString
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Identifies a grouping of policy mappings that are
+            applicable to a certificate. When used in conjunction with
+            cPolicyMappingIndex, a unique policy mapping is defined."      
         ::= { cPolicyMappingEntry 2 }
 
     cPolicyMappingSubjectPolicy  OBJECT-TYPE
@@ -3332,35 +3351,32 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A row designating an entity's distinguished name to a name
             space."
-        INDEX  { cNameConstraintGenSubtree,
-                 cNameConstraintSubtreeIndex }
+        INDEX  { cNameConstraintSubtreeIndex }
         ::= { cNameConstraintTable 1 }
 
     CNameConstraintEntry ::= SEQUENCE {
-        cNameConstraintGenSubtree   OCTET STRING,
         cNameConstraintSubtreeIndex Unsigned32,
+        cNameConstraintGenSubtree   SnmpAdminString,
         cNameConstraintBaseName     SnmpAdminString
     }
-
-    cNameConstraintGenSubtree  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "Identifies a permitted or excluded name constraint subtree.
-            When used with cNameConstraintSubtreeIndex, a unique subject
-            name constraint entry is defined."
-        ::= { cNameConstraintEntry 1 }
 
     cNameConstraintSubtreeIndex  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-            "A numerical index used to specify a name constraint within
-            a permitted or excluded name constraint subtree. When used
-            with a specific value of cNameConstraintGenSubtree, a unique
-            subject name constraint entry is defined."
+            "A numerical index for a name constraint within a permitted 
+             or excluded name constraint subtree."
+        ::= { cNameConstraintEntry 1 }
+
+    cNameConstraintGenSubtree  OBJECT-TYPE
+        SYNTAX      SnmpAdminString
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Identifies a permitted or excluded name constraint subtree.
+            When used with cNameConstraintSubtreeIndex, a unique subject
+            name constraint entry is defined."
         ::= { cNameConstraintEntry 2 }
 
     cNameConstraintBaseName  OBJECT-TYPE
@@ -3417,21 +3433,30 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A row describing the remote key material information used
             to establish the secure connection."
-        INDEX  { cRemoteKeyMaterialID }
+        INDEX  { cRemoteKeyMaterialIndex }
         ::= { cRemoteKeyMaterialTable 1 }
 
     CRemoteKeyMaterialTableEntry ::= SEQUENCE {
-            cRemoteKeyMaterialID             OCTET STRING,
+            cRemoteKeyMaterialIndex          Unsigned32,
+            cRemoteKeyMaterialID             SnmpAdminString,
             cRemoteKeyMatFriendlyName        SnmpAdminString,
-            cRemoteKeyMatSerialNumber        OCTET STRING,
-            cRemoteKeyMaterialKeyType        OCTET STRING,
+            cRemoteKeyMatSerialNumber        SnmpAdminString,
+            cRemoteKeyMaterialKeyType        SnmpAdminString,
             cRemoteKeyMatExpirationDate      DateAndTime,
             cRemoteKeyMatClassification      BITS
         }
 
+    cRemoteKeyMaterialIndex OBJECT-TYPE
+        SYNTAX       Unsigned32
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "A numerical index for remote key material entries."
+        ::= { cRemoteKeyMaterialTableEntry 1 }
+
     cRemoteKeyMaterialID OBJECT-TYPE
-        SYNTAX       OCTET STRING (SIZE(1..255))
-        MAX-ACCESS   not-accessible
+        SYNTAX       SnmpAdminString
+        MAX-ACCESS   read-only
         STATUS       current
         DESCRIPTION
             "Represents a unique identifier assigned to this key
@@ -3440,7 +3465,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             identifier derived from a tag or other key wrapper. This
             object differs from cRemoteKeyMatFriendlyName which is a
             user-defined ID."
-        ::= { cRemoteKeyMaterialTableEntry 1 }
+        ::= { cRemoteKeyMaterialTableEntry 2 }
 
     cRemoteKeyMatFriendlyName OBJECT-TYPE
         SYNTAX       SnmpAdminString
@@ -3449,32 +3474,32 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A human readable label of the key for easier reference. It
             is used only for helpful or informational purposes."
-        ::= { cRemoteKeyMaterialTableEntry 2 }
+        ::= { cRemoteKeyMaterialTableEntry 3 }
 
     cRemoteKeyMatSerialNumber OBJECT-TYPE
-        SYNTAX       OCTET STRING
+        SYNTAX       SnmpAdminString
         MAX-ACCESS   read-only
         STATUS       current
         DESCRIPTION
             "The unique positive integer assigned to the remote key
             material.  Note, this information may not be available in
             some key material types."
-        ::= { cRemoteKeyMaterialTableEntry 3 }
+        ::= { cRemoteKeyMaterialTableEntry 4 }
 
     cRemoteKeyMaterialKeyType OBJECT-TYPE
-        SYNTAX       OCTET STRING
+        SYNTAX       SnmpAdminString
         MAX-ACCESS   read-only
         STATUS       current
         DESCRIPTION
             "This column describes the type of remote key material.
 
-            Note, this is a free form OCTET STRING column.
+            Note, this is a free form SnmpAdminString column.
             Implementations are expected to utilize definition of
             string values that apply to their specific nomenclature
             supported.  If no such nomenclature exists, this column
             should not be populated or be set to an empty string
             (i.e., '')."
-        ::= { cRemoteKeyMaterialTableEntry 4 }
+        ::= { cRemoteKeyMaterialTableEntry 5 }
 
     cRemoteKeyMatExpirationDate OBJECT-TYPE
         SYNTAX       DateAndTime
@@ -3482,7 +3507,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS       current
         DESCRIPTION
             "The expiration date of the key."
-        ::= { cRemoteKeyMaterialTableEntry 5 }
+        ::= { cRemoteKeyMaterialTableEntry 6 }
 
     cRemoteKeyMatClassification OBJECT-TYPE
         SYNTAX       BITS { unclassified(0), restricted(1),
@@ -3500,7 +3525,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
              This column does not exist for devices that do not have
              the concept of classification."
-        ::= { cRemoteKeyMaterialTableEntry 6 }
+        ::= { cRemoteKeyMaterialTableEntry 7 }
 
     -- *****************************************************************
     -- Module Conformance Information
@@ -3720,6 +3745,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cAsymKeySubjectAltName,
                   cCertSubAltNameTableCount,
                   cCertSubAltNameTableLastChanged,
+                  cCertSubAltNameIndex,
+                  cCertSubAltNameList,
                   cCertSubAltNameType,
                   cCertSubAltNameValue1,
                   cCertSubAltNameValue2,
@@ -3750,6 +3777,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cCertPathCtrlsCertPolicies,
                   cCertPolicyTableCount,
                   cCertPolicyTableLastChanged,
+                  cCertPolicyIndex,
+                  cCertPolicyInformation,
                   cCertPolicyIdentifier,
                   cCertPolicyQualifierID,
                   cCertPolicyQualifier
@@ -4264,7 +4293,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
 
     CCDMServerEntry  ::= SEQUENCE {
         cCDMServerPriority          Unsigned32,
-        cCDMServerURI               OCTET STRING,
+        cCDMServerURI               SnmpAdminString,
         cCDMServerAdditionalInfo    SnmpAdminString,
         cCDMServerRowStatus         RowStatus
     }
@@ -4286,7 +4315,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         ::= { cCDMServerEntry 1 }
 
     cCDMServerURI  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -4373,21 +4402,30 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         DESCRIPTION
             "A row containing information about a specific cryptographic
             device material (CDM) available for download."
-        INDEX      { cCDMType, cCDMURI }
+        INDEX      { cCDMIndex }
         ::= { cCDMDeliveryTable 1 }
 
     CCDMDeliveryEntry  ::= SEQUENCE {
+        cCDMIndex               Unsigned32,
         cCDMType                INTEGER,
-        cCDMURI                 OCTET STRING,
+        cCDMURI                 SnmpAdminString,
         cCDMPackageSize         Unsigned32,
         cCDMAdditionalInfo      SnmpAdminString,
-        cCDMLastDownloadDate    OCTET STRING,
+        cCDMLastDownloadDate    SnmpAdminString,
         cCDMDeliveryPriority    Unsigned32,
         cCDMDeliveryRequest     INTEGER,
         cCDMDeliveryStatus      INTEGER,
         cCDMDeliveryRowStatus   RowStatus
     }
 
+    cRemoteKeyMaterialIndex OBJECT-TYPE
+        SYNTAX       Unsigned32
+        MAX-ACCESS   read-only
+        STATUS       current
+        DESCRIPTION
+            "A numerical index for CDM entries (ready for retrieval)."
+        ::= { cCDMDeliveryEntry 1 }
+        
     cCDMType  OBJECT-TYPE
         SYNTAX      INTEGER { notification(1), symmetricKey(2),
                               asymmetricKey(3), certificate(4),
@@ -4407,10 +4445,10 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             [cklOrCrl]      = CDM is a compromised key list or
                               certificate revocation list
             [firmware]      = CDM is a firmware package"
-        ::= { cCDMDeliveryEntry 1 }
+        ::= { cCDMDeliveryEntry 2 }
 
     cCDMURI  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(1..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -4424,7 +4462,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             cCDMServerTable)). However, a manager can also populate an
             entry in this table with predetermined knowledge of the CDM
             location."
-        ::= { cCDMDeliveryEntry 2 }
+        ::= { cCDMDeliveryEntry 3 }
 
     cCDMPackageSize  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -4437,7 +4475,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             cryptographic device material list (CDML) or a server's
             product availability response following a query. This column
             does not apply to notifications found in CDMLs."
-        ::= { cCDMDeliveryEntry 3 }
+        ::= { cCDMDeliveryEntry 4 }
 
     cCDMAdditionalInfo  OBJECT-TYPE
         SYNTAX      SnmpAdminString
@@ -4449,10 +4487,10 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             downloaded cryptographic device material list (CDML) or
             manually configured by the manager both at or after row
             creation."
-        ::= { cCDMDeliveryEntry 4 }
+        ::= { cCDMDeliveryEntry 5 }
 
     cCDMLastDownloadDate  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(14))
+        SYNTAX      SnmpAdminString (SIZE(14))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -4474,7 +4512,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
                 a. No indication that device has successfully downloaded
                    the CDM.
                 b. The cCDMType is a notification."
-        ::= { cCDMDeliveryEntry 5 }
+        ::= { cCDMDeliveryEntry 6 }
     
     cCDMDeliveryPriority  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -4486,7 +4524,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             products to be downloaded before others. Lower values have a
             higher priority (e.g., a value of 1 will be processed before
             a value of 2)."
-        ::= { cCDMDeliveryEntry 6 }
+        ::= { cCDMDeliveryEntry 7 }
     
     cCDMDeliveryRequest  OBJECT-TYPE
         SYNTAX     INTEGER { downloadAndInstall(1), downloadAndStore(2),
@@ -4533,7 +4571,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             inconsistentValue exception. The same applies if 'discard'
             is configured while the value cCDMDeliveryStatus is
             'complete'."
-        ::= { cCDMDeliveryEntry 7 }
+        ::= { cCDMDeliveryEntry 8 }
     
     cCDMDeliveryStatus  OBJECT-TYPE
         SYNTAX     INTEGER { complete(1), inProgress(2),
@@ -4569,7 +4607,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             [storeFailed] = This state is reached after a failure
             occurs during the store of the downloaded CDM when
             cCDMDeliveryRequest was configured to 'downloadAndStore'."
-        ::= { cCDMDeliveryEntry 8 }
+        ::= { cCDMDeliveryEntry 9 }
 
     cCDMDeliveryRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
@@ -4587,7 +4625,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             active, and destroy management functions. Support for
             createAndWait, notInService, and notReady management
             functions is optional."
-        ::= { cCDMDeliveryEntry 9 }
+        ::= { cCDMDeliveryEntry 10 }
 
     -- *****************************************************************
     -- Module Conformance Information
@@ -4882,7 +4920,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         cCDMPushDestIndex               Unsigned32,
         cCDMPushDestTransferType        SnmpAdminString,
         cCDMPushDestAddressLocationType INTEGER,
-        cCDMPushDestAddressLocation     OCTET STRING,
+        cCDMPushDestAddressLocation     SnmpAdminString,
         cCDMPushDestTransferTime        DateAndTime,
         cCDMPushDestPackageSelection    SnmpAdminString,
         cCDMPushDestRowStatus           RowStatus
@@ -4893,12 +4931,11 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-            "A numeric index that identifies a unique location in this
-            table."
+            "A numeric index for CDM transfer information entries."
         ::= { cCDMPushDestEntry 1 }
 
     cCDMPushDestTransferType  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(1..32))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -4915,7 +4952,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushDestEntry 3 }
 
     cCDMPushDestAddressLocation  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5017,36 +5054,32 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         DESCRIPTION
             "A row containing information about a package used on a send
             operation."
-        INDEX      { cCDMTransferPkgLabel, cCDMTransferPkgIndex }
+        INDEX      { cCDMTransferPkgIndex }
         ::= { cCDMTransferPkgTable 1 }
     
     CCDMTransferPkgEntry  ::= SEQUENCE {
-        cCDMTransferPkgLabel            SnmpAdminString,
         cCDMTransferPkgIndex            Unsigned32,
+        cCDMTransferPkgLabel            SnmpAdminString,
         cCDMTransferPkgLocatorRowPtr    RowPointer,
         cCDMTransferPkgRowStatus        RowStatus
     }
-    
-    cCDMTransferPkgLabel  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
-        MAX-ACCESS  not-accessible
-        STATUS      current
-        DESCRIPTION
-            "An administrative name that identifies a package within
-            this table. cCDMTransferPkgLabel and cCDMTransferPkgIndex
-            serve as indexes of this table."
-        ::= { cCDMTransferPkgEntry 1 }
     
     cCDMTransferPkgIndex  OBJECT-TYPE
         SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-            "An administrative way of creating a unique row within this
-            table. This value shows the position of a given item within
-            this package designated by cCDMTransferPkgLabel.
-            cCDMTransferPkgLabel and cCDMTransferPkgIndex serve as
-            indexes of this table."
+            "A numerical index for a single CDM, for a given transfer
+             package."
+        ::= { cCDMTransferPkgEntry 1 }
+
+    cCDMTransferPkgLabel  OBJECT-TYPE
+        SYNTAX      SnmpAdminString
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "An administrative name that identifies a package (a logical
+            grouping of single CDM entries) within this table."
         ::= { cCDMTransferPkgEntry 2 }
     
     cCDMTransferPkgLocatorRowPtr  OBJECT-TYPE
@@ -5125,39 +5158,43 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         DESCRIPTION
             "A row containing information about an authorized sender
             that this receiving device will accept."
-        INDEX      { cCDMPushSrcSenderName, cCDMPushSrcTransferType }
+        INDEX      { cCDMPushSrcIndex }
         ::= { cCDMPushSrcTable 1 }
 
     CCDMPushSrcEntry  ::= SEQUENCE {
+        cCDMPushSrcIndex            Unsigned32,
         cCDMPushSrcSenderName       SnmpAdminString,
         cCDMPushSrcTransferType     SnmpAdminString,
         cCDMPushSrcAddrLocationType INTEGER,
-        cCDMPushSrcAddrLocation     OCTET STRING,
+        cCDMPushSrcAddrLocation     SnmpAdminString,
         cCDMPushSrcRowStatus        RowStatus
     }
 
-    cCDMPushSrcSenderName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+    cCDMPushSrcIndex  OBJECT-TYPE
+        SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-            "An administrative string for an authorized sender.
-            cCDMPushSrcSenderName and cCDMPushSrcTransferType serve as
-            indexes of this table."
+            "A numerical index for an authorized sender."
         ::= { cCDMPushSrcEntry 1 }
 
+    cCDMPushSrcSenderName  OBJECT-TYPE
+        SYNTAX      SnmpAdminString
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "An administrative string for an authorized sender."
+        ::= { cCDMPushSrcEntry 2 }
+
     cCDMPushSrcTransferType  OBJECT-TYPE
-        SYNTAX      SnmpAdminString (SIZE(1..32))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "Analogous to cCDMPushDestTransferType. The transfer
             mechanism or protocol used by the receiver to receive the
-            Cryptographic Device Material (CDM) transfer.
-
-            cCDMPushSrcSenderName and cCDMPushSrcTransferType serve as
-            indexes of this table."
-        ::= { cCDMPushSrcEntry 2 }
+            Cryptographic Device Material (CDM) transfer."
+        ::= { cCDMPushSrcEntry 3 }
 
     cCDMPushSrcAddrLocationType  OBJECT-TYPE
         SYNTAX      INTEGER { ipv4(1), ipv6(2), uri(3), other(4) }
@@ -5166,15 +5203,15 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         DESCRIPTION
             "Enumeration indicating the type of address location
             (values: ipv4, ipv6 or uri)."
-        ::= { cCDMPushSrcEntry 3 }
+        ::= { cCDMPushSrcEntry 4 }
 
     cCDMPushSrcAddrLocation  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "Location of the authorized sender."
-        ::= { cCDMPushSrcEntry 4 }
+        ::= { cCDMPushSrcEntry 5 }
 
     cCDMPushSrcRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
@@ -5192,7 +5229,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             active, and destroy management functions. Support for
             createAndWait, notInService, and notReady management
             functions is optional."
-        ::= { cCDMPushSrcEntry 5 }
+        ::= { cCDMPushSrcEntry 6 }
 
     -- *****************************************************************
     -- Module Conformance Information
@@ -5434,7 +5471,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
     CSecPolicyRuleEntry  ::= SEQUENCE {
         cSecPolicyRulePriorityID        Unsigned32,
-        cSecPolicyRuleDescription       OCTET STRING,
+        cSecPolicyRuleDescription       SnmpAdminString,
         cSecPolicyRuleType              INTEGER,
         cSecPolicyRuleFilterReference   SnmpAdminString,
         cSecPolicyRuleAction            INTEGER,
@@ -5449,17 +5486,16 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             "Local unique index that identifies the priority at which
             this Security Policy rule is applied. Lower values have a
             higher priority (e.g., a value of 1 will be processed before
-            a value of 2). This column is the primary index to the
-            cSecPolicyRuleTable."
+            a value of 2)."
         ::= { cSecPolicyRuleEntry 1 }
 
     cSecPolicyRuleDescription  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "An administrative string describing the Security Policy
-            rule. Note, this is a free form OCTET STRING that provides
+            rule. Note, this is a free form SnmpAdminString that provides
             the user a store for any form of description/documentation
             for the given entry."
         ::= { cSecPolicyRuleEntry 2 }
@@ -5497,7 +5533,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             "This object indicates what action the ECU should take on
             matching a data traffic flow against a filter (as defined by
             cSecPolicyRuleFilterReference). The value of this column can
-            take one of four enumeration values.
+            take one of five enumeration values.
 
             [1] protect: The 'protect' enumeration value indicates that
             the data traffic flow should be protected by a Secure
@@ -5735,15 +5771,15 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
     CSecConEntry  ::= SEQUENCE {
         cSecConTableID              Unsigned32,
-        cSecConType                 OCTET STRING,
-        cSecConDataPlaneID          OCTET STRING,
+        cSecConType                 SnmpAdminString,
+        cSecConDataPlaneID          SnmpAdminString,
         cSecConDirection            INTEGER,
-        cSecConKeyReference         OCTET STRING,
-        cSecConCryptographicSuite   OCTET STRING,
+        cSecConKeyReference         SnmpAdminString,
+        cSecConCryptographicSuite   SnmpAdminString,
         cSecConEstablishmentTime    DateAndTime,
-        cSecConStatus               OCTET STRING,
+        cSecConStatus               SnmpAdminString,
         cSecConRowStatus            RowStatus,
-        cSecConRemoteKeyReference   OCTET STRING
+        cSecConRemoteKeyReference   SnmpAdminString
     }
 
     cSecConTableID  OBJECT-TYPE
@@ -5751,12 +5787,11 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "Local unique index that identifies a Secure Connection.
-            This column is the primary index to the cSecConTable."
+            "Local unique index that identifies a Secure Connection."
         ::= { cSecConEntry 1 }
 
     cSecConType  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5771,14 +5806,14 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 2 }
 
     cSecConDataPlaneID  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "The unique identifier associated with the Secure
             Connection, based on the Secure Connection protocol.
 
-            Note, this is a free form OCTET STRING column where
+            Note, this is a free form SnmpAdminString column where
             meaningful values/format are defined per Secure Connection
             protocol type basis. For instance, in an IPsec context
             (i.e., cSecConType value is set to 'ipsec'), this column
@@ -5807,7 +5842,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 4 }
 
     cSecConKeyReference  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(0..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5821,13 +5856,13 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 5 }
 
     cSecConCryptographicSuite  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "The set of cryptographic attributes (e.g. Encryption
             Algorithm, Integrity Algorithm) respective to the Secure
-            Connection. Note, this is a free form OCTET STRING column,
+            Connection. Note, this is a free form SnmpAdminString column,
             meaning implementations may utilize a standardized
             definition of string values that describe a set of
             cryptographic suites or use a proprietary definition of
@@ -5855,12 +5890,12 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 7 }
 
     cSecConStatus  OBJECT-TYPE
-        SYNTAX      OCTET STRING
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "Column that provides the current status of the Secure
-            Connection. Note, this is a free form OCTET STRING column
+            Connection. Note, this is a free form SnmpAdminString column
             where meaningful values are defined per Secure Connection
             protocol type basis (i.e., as defined by the cSecConType
             value) or per implementation basis.
@@ -5891,7 +5926,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 9 }
 
     cSecConRemoteKeyReference  OBJECT-TYPE
-        SYNTAX      OCTET STRING (SIZE(0..255))
+        SYNTAX      SnmpAdminString
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION 
@@ -5995,9 +6030,9 @@ There are a number of management objects defined in this MIB module with a MAX-A
 
 Some of the readable objects in this MIB module (i.e., objects with a MAX-ACCESS other than not-accessible) may be considered sensitive or vulnerable in some network environments.  It is thus important to control even GET and/or NOTIFY access to these objects and possibly to even encrypt the values of these objects when sending them over the network via SNMP.  The following tables and objects are sensitive/vulnerable because unauthorized access would disclose device configuration information:
 
-- From the Device Information MIB module: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTableLastChanged, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTableLastChanged, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
+- From the Device Information MIB module: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTableLastChanged, cDeviceComponentIndex, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTableLastChanged, cFirmwareIndex, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
 
-- From the Key Management Information MIB module: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTableLastChanged, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
+- From the Key Management Information MIB module: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameIndex, cCertSubAltNameList, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIndex, cCertPolicyInformation, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTableLastChanged, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
 
 - From the Key Transfer Pull MIB module: cCDMLDeliveryStatus, cCDMServerTableCount, cCDMServerTableLastChanged, cCDMDeliveryTableCount, cCDMDeliveryTableLastChanged, cCDMType, cCDMURI, cCDMPackageSize, cCDMLastDownloadDate, and cCDMDeliveryStatus.
 
