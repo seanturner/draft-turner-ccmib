@@ -349,7 +349,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
-        DateAndTime, TruthValue, TimeStamp, RowStatus
+        DateAndTime, TruthValue, RowStatus
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccDeviceInfoMIB  MODULE-IDENTITY
@@ -736,7 +736,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceComponentVersInfo 1 }
 
     cDeviceComponentVersTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -865,7 +865,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cBatteryInfo 1 }
 
     cBatteryInfoTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
@@ -977,7 +977,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cFirmwareInfo 1 }
 
     cFirmwareInformationTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
@@ -1304,12 +1304,12 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ccKeyManagement
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 6.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY
+        MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         RowPointer, RowStatus, DateAndTime,
-        TruthValue, TimeStamp
+        TruthValue
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
@@ -1788,7 +1788,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cSymmetricKeyInfo 1 }
 
     cSymmetricKeyTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2057,7 +2057,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyInfo 1 }
 
     cAsymKeyTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2431,7 +2431,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cTrustAnchorInfo 1 }
 
     cTrustAnchorTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2597,7 +2597,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCKLInfo 1 }
 
     cCKLLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2752,7 +2752,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCDMStoreInfo 1 }
 
     cCDMStoreTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2922,7 +2922,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertSubAltNameInfo 1 }
     
     cCertSubAltNameTableLastChanged OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3067,7 +3067,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPathCtrlsInfo 1 }
 
     cCertPathCtrlsTableLastChanged OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3241,7 +3241,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPolicyInfo 1 }
 
     cCertPolicyTableLastChanged OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3347,7 +3347,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cPolicyMappingInfo 1 }
 
     cPolicyMappingTableLastChanged OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3441,7 +3441,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cNameConstraintInfo 1 }
 
     cNameConstraintTableLastChanged OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3522,7 +3522,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cRemoteKeyMaterialInfo 1 }
 
     cRemoteKeyMaterialTableLastChanged OBJECT-TYPE
-        SYNTAX       TimeStamp
+        SYNTAX       TimeTicks
         MAX-ACCESS   read-only
         STATUS       current
         DESCRIPTION
@@ -4121,11 +4121,11 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY
+        MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
-        RowStatus, TimeStamp
+        RowStatus
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccKeyTransferPullMIB  MODULE-IDENTITY
@@ -4397,7 +4397,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         ::= { cCDMServerInfo 1 }
 
     cCDMServerTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -4511,7 +4511,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         ::= { cCDMDeliveryInfo 1 }
 
     cCDMDeliveryTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -4876,12 +4876,11 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ccKeyTransferPush
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 6.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY
+        MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
-        RowPointer, RowStatus, DateAndTime,
-        TimeStamp
+        RowPointer, RowStatus, DateAndTime     
             FROM SNMPv2-TC                             -- FROM RFC 2579
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
@@ -5042,7 +5041,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushDestInfo 1 }
 
     cCDMPushDestTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -5182,7 +5181,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMTransferPkgInfo 1 }
     
     cCDMTransferPkgTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -5285,7 +5284,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushSrcInfo 1 }
 
     cCDMPushSrcTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -5510,14 +5509,14 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ccSecurePolicyInfo
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 6.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY
+        MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                           -- FROM RFC 2580
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
-        RowStatus, TimeStamp
+        RowStatus
             FROM SNMPv2-TC;                            -- FROM RFC 2579
 
     ccSecurePolicyInfoMIB  MODULE-IDENTITY
@@ -5598,7 +5597,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecPolicyRuleInfo 1 }
 
     cSecPolicyRuleTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -5812,12 +5811,12 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ccSecureConnectionInfo
             FROM CC-FEATURE-HIERARCHY-MIB             -- FROM Sec 6.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY
+        MODULE-IDENTITY, TimeTicks
             FROM SNMPv2-SMI                           -- FROM RFC 2578
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                          -- FROM RFC 2580
-        RowStatus, DateAndTime, TimeStamp
+        RowStatus, DateAndTime
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
     ccSecureConnectionInfoMIB  MODULE-IDENTITY
@@ -5908,7 +5907,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecureConnectionInfo 1 }
 
     cSecConTableLastChanged  OBJECT-TYPE
-        SYNTAX      TimeStamp
+        SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
