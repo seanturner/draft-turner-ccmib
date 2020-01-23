@@ -1719,8 +1719,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-            "An inherent identification of the symmetric key and the
-            primary index to the cSymmetricKeyTable.
+            "An inherent identification of the symmetric key.
 
             This MIB does not provide any additional requirements on
             developing the fingerprint. Implementations are cautioned to
@@ -1999,8 +1998,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-             "An inherent identification of the asymmetric key and the
-             primary index to the cAsymKeyTable."
+             "An inherent identification of the asymmetric key."
         ::= { cAsymKeyEntry 1 }
 
     cAsymKeyFriendlyName  OBJECT-TYPE
@@ -2362,8 +2360,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "An inherent identification of the trust anchor and the
-            primary index to the cTrustAnchorTable."
+            "An inherent identification of the trust anchor."
         ::= { cTrustAnchorEntry 1 }
 
     cTrustAnchorFormatType  OBJECT-TYPE
@@ -3000,8 +2997,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
              "Identifies a trust anchor in the cTrustAnchorTable or a
-             certificate in the cAsymKeyTable. This column is the
-             primary index to the cCertPathCtrlsTable."
+             certificate in the cAsymKeyTable."
         ::= {cCertPathCtrlsEntry 1}
 
     cCertPathCtrlsCertificate  OBJECT-TYPE
@@ -5490,8 +5486,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
             "Local unique index that identifies the priority at which
             this Security Policy rule is applied. Lower values have a
             higher priority (e.g., a value of 1 will be processed before
-            a value of 2). This column is the primary index to the
-            cSecPolicyRuleTable."
+            a value of 2)."
         ::= { cSecPolicyRuleEntry 1 }
 
     cSecPolicyRuleDescription  OBJECT-TYPE
@@ -5792,8 +5787,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
-            "Local unique index that identifies a Secure Connection.
-            This column is the primary index to the cSecConTable."
+            "Local unique index that identifies a Secure Connection."
         ::= { cSecConEntry 1 }
 
     cSecConType  OBJECT-TYPE
