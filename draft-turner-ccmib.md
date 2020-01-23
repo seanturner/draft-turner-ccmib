@@ -257,7 +257,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
         REVISION      "201609302154Z"
     -- RFC EDITOR: Please update REVISION to RFC publication date.    
     -- RFC EDITOR: Please update XXXX with the assigned RFC number.
-        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5.1. Published as RFC xxxx."
         ::= { ccmib 3 }
 
     ccmib    OBJECT IDENTIFIER ::= { enterprises 34493 }
@@ -310,7 +310,7 @@ This MIB module makes reference to the following document: {{RFC2578}}.
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
     -- RFC EDITOR: Please update REVISION to RFC publication date.    
-        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5.1. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccAssignmentsMIB 1 }
 
@@ -377,7 +377,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
     -- RFC EDITOR: Please update REVISION to RFC publication date.    
-        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5.1. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccDeviceInfo 1 }
 
@@ -1341,7 +1341,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
     -- RFC EDITOR: Please update REVISION to RFC publication date.    
-        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5.1. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyManagement 1 }
 
@@ -4143,7 +4143,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
     -- RFC EDITOR: Please update REVISION to RFC publication date.    
-        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5.1. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyTransferPull 1 }
 
@@ -4901,7 +4901,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
     -- RFC EDITOR: Please update REVISION to RFC publication date.    
-        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5.1. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccKeyTransferPush 1 }
 
@@ -5534,7 +5534,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
     -- RFC EDITOR: Please update REVISION to RFC publication date.    
-        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5.1. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccSecurePolicyInfo 1 }
 
@@ -5834,7 +5834,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
     -- RFC Ed.: RFC-editor please fill in xxxx.
         REVISION      "201609302154Z"
     -- RFC EDITOR: Please update REVISION to RFC publication date.    
-        DESCRIPTION   "CC MIB 1.0.5 FINAL. Published as RFC xxxx."
+        DESCRIPTION   "CC MIB 1.0.5.1. Published as RFC xxxx."
     -- RFC Ed.: RFC-editor please fill in xxxx.
         ::= { ccSecureConnectionInfo 1 }
 
