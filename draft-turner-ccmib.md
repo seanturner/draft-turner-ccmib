@@ -424,7 +424,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 2 }
 
     cSystemInitialLoadParameters  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -439,7 +439,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 3 }
 
     cSecurityLevel  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -451,7 +451,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 4 }
 
     cElectronicSerialNumber  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -524,7 +524,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 9 }
     
     cVendorName OBJECT-TYPE
-        SYNTAX      SnmpAdminString 
+        SYNTAX      SnmpAdminString (SIZE(0..32))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -536,7 +536,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 10 }
     
     cModelIdentifier OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -546,7 +546,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceInfoScalars 11 }
     
     cHardwareVersionNumber OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..16))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -789,7 +789,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceComponentVersEntry 1 }
 
     cDeviceComponentName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString 
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -808,7 +808,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceComponentVersEntry 2 }
 
     cDeviceComponentVersion  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..16))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -843,7 +843,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cDeviceComponentVersEntry 4 }
 
     cDeviceComponentDescription OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS read-write
         STATUS      current
         DESCRIPTION
@@ -1032,7 +1032,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cFirmwareInformationEntry 1 }
 
     cFirmwareName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
@@ -1040,7 +1040,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cFirmwareInformationEntry 2 }
 
     cFirmwareVersion  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..16))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
@@ -1050,7 +1050,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         ::= { cFirmwareInformationEntry 3 }
 
     cFirmwareSource  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION 
@@ -1911,7 +1911,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cSymmetricKeyEntry 2 }
     
     cSymKeyID  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..128))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -1924,7 +1924,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cSymmetricKeyEntry 3 }
     
     cSymKeyIssuer  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -1980,7 +1980,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cSymmetricKeyEntry 8 }
     
     cSymKeyFriendlyName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -2006,7 +2006,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cSymmetricKeyEntry 10 }
     
     cSymKeySource  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -2123,7 +2123,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 1 }
 
     cAsymKeyFriendlyName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2132,7 +2132,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 2 }
 
     cAsymKeySerialNumber  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2146,7 +2146,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 3 }
 
     cAsymKeyIssuer  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2159,7 +2159,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 4 }
 
     cAsymKeySignatureAlgorithm  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..32))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2175,7 +2175,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 5 }
 
     cAsymKeyPublicKeyAlgorithm  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..32))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2228,7 +2228,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 9 }
 
     cAsymKeySubject  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2262,7 +2262,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 11 }
 
     cAsymKeySubjectAltName OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2330,7 +2330,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 14 }
 
     cAsymKeySource  OBJECT-TYPE
-        SYNTAX      SnmpAdminString 
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2390,7 +2390,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 18 }
 
     cAsymKeyType  OBJECT-TYPE
-        SYNTAX     SnmpAdminString
+        SYNTAX     SnmpAdminString (SIZE(0..32))
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -2498,7 +2498,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cTrustAnchorEntry 2 }
 
     cTrustAnchorName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2524,7 +2524,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cTrustAnchorEntry 4 }
 
     cTrustAnchorKeyIdentifier  OBJECT-TYPE
-        SYNTAX      SnmpAdminString 
+        SYNTAX      SnmpAdminString (SIZE(0..128))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2532,7 +2532,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cTrustAnchorEntry 5 }
 
     cTrustAnchorPublicKeyAlgorithm  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..32))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2577,7 +2577,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cTrustAnchorEntry 8 }
 
     cTrustAnchorVersion OBJECT-TYPE
-        SYNTAX     SnmpAdminString
+        SYNTAX     SnmpAdminString (SIZE(0..16))
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -2653,7 +2653,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCKLEntry 1 }
 
     cCKLIssuer  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2669,7 +2669,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCKLEntry 2 }
 
     cCKLSerialNumber  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..16))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2839,7 +2839,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCDMStoreEntry 2 }
 
     cCDMStoreSource  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2850,7 +2850,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCDMStoreEntry 3 }
 
     cCDMStoreID  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..128))
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2863,7 +2863,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCDMStoreEntry 4 }
 
     cCDMStoreFriendlyName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-write
         STATUS      current
         DESCRIPTION
@@ -2973,7 +2973,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertSubAltNameTableEntry 1 }
         
     cCertSubAltNameList OBJECT-TYPE
-        SYNTAX     SnmpAdminString
+        SYNTAX     SnmpAdminString (SIZE(0..64))
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -2999,7 +2999,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertSubAltNameTableEntry 3 }
     
     cCertSubAltNameValue1 OBJECT-TYPE
-        SYNTAX     SnmpAdminString
+        SYNTAX     SnmpAdminString (SIZE(0..64))
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -3016,7 +3016,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertSubAltNameTableEntry 4 }
     
     cCertSubAltNameValue2 OBJECT-TYPE
-        SYNTAX     SnmpAdminString
+        SYNTAX     SnmpAdminString (SIZE(0..64))
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -3132,7 +3132,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPathCtrlsEntry 2 }
 
     cCertPathCtrlsCertPolicies  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3145,7 +3145,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPathCtrlsEntry 3 }
 
     cCertPathCtrlsPolicyMappings  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3189,7 +3189,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPathCtrlsEntry 5 }
 
     cCertPathCtrlsNamesPermitted  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3203,7 +3203,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPathCtrlsEntry 6 }
 
     cCertPathCtrlsNamesExcluded  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3296,7 +3296,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPolicyEntry 1 }
 
     cCertPolicyInformation  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3326,7 +3326,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCertPolicyEntry 4 }
 
     cCertPolicyQualifier  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3400,7 +3400,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cPolicyMappingEntry 1 }
             
     cPolicyMappingGroup  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3491,7 +3491,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cNameConstraintEntry 1 }
 
     cNameConstraintGenSubtree  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3501,7 +3501,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cNameConstraintEntry 2 }
 
     cNameConstraintBaseName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -3576,7 +3576,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cRemoteKeyMaterialTableEntry 1 }
 
     cRemoteKeyMaterialID OBJECT-TYPE
-        SYNTAX       SnmpAdminString
+        SYNTAX       SnmpAdminString (SIZE(0..128))
         MAX-ACCESS   read-only
         STATUS       current
         DESCRIPTION
@@ -3589,7 +3589,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cRemoteKeyMaterialTableEntry 2 }
 
     cRemoteKeyMatFriendlyName OBJECT-TYPE
-        SYNTAX       SnmpAdminString
+        SYNTAX       SnmpAdminString (SIZE(0..64))
         MAX-ACCESS   read-write
         STATUS       current
         DESCRIPTION
@@ -3598,7 +3598,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cRemoteKeyMaterialTableEntry 3 }
 
     cRemoteKeyMatSerialNumber OBJECT-TYPE
-        SYNTAX       SnmpAdminString
+        SYNTAX       SnmpAdminString (SIZE(0..64))
         MAX-ACCESS   read-only
         STATUS       current
         DESCRIPTION
@@ -3608,7 +3608,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cRemoteKeyMaterialTableEntry 4 }
 
     cRemoteKeyMaterialKeyType OBJECT-TYPE
-        SYNTAX       SnmpAdminString
+        SYNTAX       SnmpAdminString (SIZE(0..64))
         MAX-ACCESS   read-only
         STATUS       current
         DESCRIPTION
@@ -4458,7 +4458,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         ::= { cCDMServerEntry 1 }
 
     cCDMServerURI  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -4471,7 +4471,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         ::= { cCDMServerEntry 2 }
 
     cCDMServerAdditionalInfo  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -4591,7 +4591,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         ::= { cCDMDeliveryEntry 2 }
 
     cCDMURI  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -4621,7 +4621,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         ::= { cCDMDeliveryEntry 4 }
 
     cCDMAdditionalInfo  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5095,7 +5095,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushDestEntry 1 }
 
     cCDMPushDestTransferType  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5112,7 +5112,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushDestEntry 3 }
 
     cCDMPushDestAddressLocation  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5140,7 +5140,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushDestEntry 5 }
 
     cCDMPushDestPackageSelection  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5234,7 +5234,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMTransferPkgEntry 1 }
 
     cCDMTransferPkgLabel  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5339,7 +5339,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushSrcEntry 1 }
 
     cCDMPushSrcSenderName  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5347,7 +5347,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushSrcEntry 2 }
 
     cCDMPushSrcTransferType  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5366,7 +5366,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         ::= { cCDMPushSrcEntry 4 }
 
     cCDMPushSrcAddrLocation  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5655,7 +5655,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecPolicyRuleEntry 1 }
 
     cSecPolicyRuleDescription  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..255))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5678,7 +5678,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecPolicyRuleEntry 3 }
 
     cSecPolicyRuleFilterReference  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5965,7 +5965,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 1 }
 
     cSecConType  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -5980,7 +5980,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 2 }
 
     cSecConDataPlaneID  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..128))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -6016,7 +6016,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 4 }
 
     cSecConKeyReference  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -6030,7 +6030,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 5 }
 
     cSecConCryptographicSuite  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..32))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -6064,7 +6064,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 7 }
 
     cSecConStatus  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
@@ -6100,7 +6100,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecConEntry 9 }
 
     cSecConRemoteKeyReference  OBJECT-TYPE
-        SYNTAX      SnmpAdminString
+        SYNTAX      SnmpAdminString (SIZE(0..64))
         MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION 
