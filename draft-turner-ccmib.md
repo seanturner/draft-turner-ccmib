@@ -735,7 +735,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             "The number of rows in the cDeviceComponentVersTable."
         ::= { cDeviceComponentVersInfo 1 }
 
-    cDeviceComponentVersTableLastChanged  OBJECT-TYPE
+    cDeviceComponentVersTbleLstChngd  OBJECT-TYPE
         SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
@@ -976,7 +976,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             "The number of rows in the cFirmwareInformationTable."
         ::= { cFirmwareInfo 1 }
 
-    cFirmwareInformationTableLastChanged  OBJECT-TYPE
+    cFirmwareInformationTbleLstChngd  OBJECT-TYPE
         SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
@@ -1061,7 +1061,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
            received using a Cryptographic Device Material server, the
            exact URI that was used to retrieve the firmware package
            would be populated in this column."
-        ::= { cFirmwareInformationEntry 3 }
+        ::= { cFirmwareInformationEntry 4 }
 
     cFirmwareRunning  OBJECT-TYPE
         SYNTAX      TruthValue
@@ -1078,7 +1078,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
 
     cFirmwareRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
-        MAX-ACCESS  read-write
+        MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION 
             "The status of the row, by which old entries may be deleted
@@ -1086,7 +1086,9 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
 
             At a minimum, implementations must support destroy
             management functions.  Support for active, notInService,
-            and notReady management functions is optional."
+            and notReady management functions is optional. 
+            Implementations must not support createAndWait and 
+            createAndGo management functions for this object."
         ::= {cFirmwareInformationEntry 6}
 
     -- *****************************************************************
@@ -1198,8 +1200,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
     cDeviceInfoComponentGroup OBJECT-GROUP
         OBJECTS {
                     cDeviceComponentVersTableCount,
-                    cDeviceComponentVersTableLastChanged,
-                    cDeviceComponentIndex,
+                    cDeviceComponentVersTbleLstChngd,
                     cDeviceComponentName,
                     cDeviceComponentVersion,
                     cDeviceComponentOpStatus,
@@ -1228,8 +1229,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
     cDeviceInfoFirmwareGroup OBJECT-GROUP
          OBJECTS {
                      cFirmwareInformationTableCount,
-                     cFirmwareInformationTableLastChanged,
-                     cFirmwareIndex,
+                     cFirmwareInformationTbleLstChngd,
                      cFirmwareName,
                      cFirmwareVersion,
                      cFirmwareSource,
@@ -1304,7 +1304,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ccKeyManagement
             FROM CC-FEATURE-HIERARCHY-MIB              -- FROM Sec 6.2
         OBJECT-TYPE, Unsigned32, NOTIFICATION-TYPE,
-        MODULE-IDENTITY, TimeTicks
+        MODULE-IDENTITY, TimeTicks, Integer32
             FROM SNMPv2-SMI                            -- FROM RFC 2578
         SnmpAdminString
             FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
@@ -1666,15 +1666,9 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementNotify 6 }
 
     cCKLLoadSuccess  NOTIFICATION-TYPE
-        OBJECTS     { 
-                        cCKLIndex,
-                        cCKLIssuer
-                    }
         STATUS      current
         DESCRIPTION
-            "An attempt to load the device with CKL, identified by
-            cCKLIndex and cCKLIssuer (indexes to the cCKLTable), has
-            succeeded.
+            "An attempt to load the device with CKL has succeeded.
             
             At the device level, the sending of notifications is 
             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
@@ -1692,15 +1686,10 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementNotify 8 }
 
     cCDMAdded  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cCDMStoreIndex,
-                        cCDMStoreType
-                    }
         STATUS      current
         DESCRIPTION
             "A new cryptographic device material (CDM) entry has been
-            added to the cCDMStoreTable, as identified cCDMStoreIndex
-            and cCDMStoreType.
+            added to the cCDMStoreTable.
             
             At the device level, the sending of notifications is 
             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
@@ -1708,16 +1697,10 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementNotify 9 }
 
     cCDMDeleted  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cCDMStoreIndex,
-                        cCDMStoreType,
-                        cCDMStoreFriendlyName
-                    }
         STATUS      current
         DESCRIPTION
             "A cryptographic device material (CDM) entry has been
-            deleted from the cCDMStoreTable, as identified
-            cCDMStoreIndex, cCDMStoreType and cCDMStoreFriendlyName.
+            deleted from the cCDMStoreTable. 
             
             At the device level, the sending of notifications is 
             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
@@ -1725,16 +1708,9 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementNotify 10 }
 
     cTrustAnchorAdded  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cTrustAnchorFingerprint,
-                        cTrustAnchorFormatType,
-                        cTrustAnchorUsageType
-                    }
         STATUS      current
         DESCRIPTION
-            "A trust anchor has been added to the cTrustAnchorTable, as
-            identified by cTrustAnchorFingerprint,
-            cTrustAnchorFormatType, and cTrustAnchorUsageType.
+            "A trust anchor has been added to the cTrustAnchorTable. 
             
             At the device level, the sending of notifications is 
             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
@@ -1742,16 +1718,9 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementNotify 11 }
 
     cTrustAnchorUpdated  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cTrustAnchorFingerprint,
-                        cTrustAnchorFormatType,
-                        cTrustAnchorUsageType
-                    }
         STATUS      current
         DESCRIPTION
-            "A trust anchor has been updated in the cTrustAnchorTable,
-            as identified by cTrustAnchorFingerprint,
-            cTrustAnchorFormatType, and cTrustAnchorUsageType.
+            "A trust anchor has been updated in the cTrustAnchorTable.
             
             At the device level, the sending of notifications is 
             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
@@ -1759,16 +1728,9 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementNotify 12 }
 
     cTrustAnchorRemoved  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cTrustAnchorFingerprint,
-                        cTrustAnchorFormatType,
-                        cTrustAnchorUsageType
-                    }
         STATUS      current
         DESCRIPTION
-            "A trust anchor has been removed from the cTrustAnchorTable,
-            as identified by cTrustAnchorFingerprint,
-            cTrustAnchorFormatType, and cTrustAnchorUsageType.
+            "A trust anchor has been removed from the cTrustAnchorTable.
             
             At the device level, the sending of notifications is 
             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
@@ -1856,7 +1818,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                            sharedSecret(11) }
         MAX-ACCESS  read-create
         STATUS      current
-        REFERENCE   "RFC 6030 - Section 5."
         DESCRIPTION
             "The intended usage for the key:  One Time Password (OTP),
             Challenge/Response (CR), Unlock, Encrypt, Decrypt,
@@ -1909,6 +1870,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             0000 0000 0100 0000 = Derive
             0000 0000 0010 0000 = Generate
             0000 0000 0001 0000 = SharedSecret"
+        REFERENCE   "RFC 6030 - Section 5."
         ::= { cSymmetricKeyEntry 2 }
     
     cSymKeyID  OBJECT-TYPE
@@ -2109,7 +2071,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cAsymKeyClassification      BITS,
         cAsymKeySource              SnmpAdminString,
         cAsymKeyRowStatus           RowStatus,
-        cAsymKeyVersion             INTEGER,
+        cAsymKeyVersion             Integer32,
         cAsymKeyRekey               TruthValue,
         cAsymKeyType                SnmpAdminString,
         cAsymKeyAutoRekeyEnable     TruthValue
@@ -2117,7 +2079,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cAsymKeyFingerprint  OBJECT-TYPE
         SYNTAX      SnmpTLSFingerprint
-        MAX-ACCESS  read-only
+        MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
              "An inherent identification of the asymmetric key."
@@ -2287,7 +2249,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                            decipherOnly(9) }
         MAX-ACCESS  read-write
         STATUS      current
-        REFERENCE   "RFC 5280 - Section 4.2.1.3."
         DESCRIPTION
              "Provides the intended type of usage for the Asymmetric
              Key. The following types are supported (defined in Section
@@ -2310,6 +2271,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              Devices using asymmetric key material not adhering to RFC
              5280 (X.509 format) may still use an applicable value for
              the Usage, or may use 'other'."
+        REFERENCE   "RFC 5280 - Section 4.2.1.3."
         ::= { cAsymKeyEntry 13 }
 
     cAsymKeyClassification  OBJECT-TYPE
@@ -2346,7 +2308,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cAsymKeyRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
-        MAX-ACCESS  read-write
+        MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
              "The status of this row by which existing entries may be
@@ -2365,7 +2327,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cAsymKeyEntry 16 }
 
     cAsymKeyVersion  OBJECT-TYPE
-        SYNTAX     INTEGER
+        SYNTAX     Integer32
         MAX-ACCESS read-only
         STATUS     current
         DESCRIPTION
@@ -2480,7 +2442,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cTrustAnchorFingerprint  OBJECT-TYPE
         SYNTAX      SnmpTLSFingerprint
-        MAX-ACCESS  read-only
+        MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "An inherent identification of the trust anchor."
@@ -2559,7 +2521,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cTrustAnchorRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
-        MAX-ACCESS  read-write
+        MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "The status of this row by which existing entries may be
@@ -2642,13 +2604,13 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cCKLIssueDate       DateAndTime,
         cCKLNextUpdate      DateAndTime,
         cCKLRowStatus       RowStatus,
-        cCKLVersion         INTEGER,
+        cCKLVersion         Integer32,
         cCKLLastUpdate      DateAndTime
     }
 
     cCKLIndex  OBJECT-TYPE
         SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
+        MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "A numerical index for Compromised Key List (CKL) entries."
@@ -2707,7 +2669,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cCKLRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
-        MAX-ACCESS  read-write
+        MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "The status of this row by which existing entries may be
@@ -2721,7 +2683,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cCKLEntry 6 }
 
     cCKLVersion  OBJECT-TYPE
-        SYNTAX      INTEGER
+        SYNTAX      Integer32
         MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
@@ -2803,7 +2765,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cCDMStoreIndex  OBJECT-TYPE
         SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
+        MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "A numerical index for CDM entries."
@@ -2898,7 +2860,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cCDMStoreRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
-        MAX-ACCESS  read-write
+        MAX-ACCESS  read-create
         STATUS      current
         DESCRIPTION
             "The status of this row by which existing entries may be
@@ -2992,19 +2954,18 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                              registeredID(8) }
         MAX-ACCESS read-only
         STATUS     current
-        REFERENCE  "RFC 5280 - Section 4.2.1.6."
         DESCRIPTION
             "The type of the Subject Alternative Name as defined in RFC
             5280, Section 4.2.1.6. Specifically, the value of this
             object determines the format of cCertSubAltNameValue1 and
             cCertSubAltNameValue2."
+        REFERENCE  "RFC 5280 - Section 4.2.1.6."
         ::= { cCertSubAltNameTableEntry 3 }
     
     cCertSubAltNameValue1 OBJECT-TYPE
         SYNTAX     SnmpAdminString (SIZE(0..64))
         MAX-ACCESS read-only
         STATUS     current
-        REFERENCE  "RFC 5280 - Section 4.2.1.6."
         DESCRIPTION
             "The main value of the Subject Alternative Name. The format
             of the value must match its Type as defined in RFC 5280,
@@ -3016,13 +2977,13 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             ediPartyName(5), this column provides the value of the
             'partyName'. For all other types, this column provides the
             value as defined in RFC 5280, Section 4.2.1.6."
+        REFERENCE  "RFC 5280 - Section 4.2.1.6."
         ::= { cCertSubAltNameTableEntry 4 }
     
     cCertSubAltNameValue2 OBJECT-TYPE
         SYNTAX     SnmpAdminString (SIZE(0..64))
         MAX-ACCESS read-only
         STATUS     current
-        REFERENCE  "RFC 5280 - Section 4.2.1.6."
         DESCRIPTION
             "This column is a supplement to the main value
             cCertSubAltNameValue1 and may only be used when the
@@ -3041,6 +3002,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             alternate names is provided by allowing multiple rows of the
             same cCertSubAltNameType and cCertSubAltNameList but with a
             unique cCertSubAltNameIndex."
+        REFERENCE  "RFC 5280 - Section 4.2.1.6."
         ::= { cCertSubAltNameTableEntry 5 }
 
     -- *****************************************************************
@@ -3309,10 +3271,10 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         SYNTAX      INTEGER { cpsPointer(0), userNotice(1) }
         MAX-ACCESS  read-only
         STATUS      current
-        REFERENCE  "RFC 5280 - Section 4.2.1.4."
         DESCRIPTION
             "Indicates the type of qualifier per RFC 5280,
             Section 4.2.1.4."
+        REFERENCE  "RFC 5280 - Section 4.2.1.4."
         ::= { cCertPolicyEntry 4 }
 
     cCertPolicyQualifier  OBJECT-TYPE
@@ -3511,7 +3473,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "The number of rows in the cRemoteKeyMaterialTable."
         ::= { cRemoteKeyMaterialInfo 1 }
 
-    cRemoteKeyMaterialTableLastChanged OBJECT-TYPE
+    cRemoteKeyMaterialTbleLstChngd OBJECT-TYPE
         SYNTAX       TimeTicks
         MAX-ACCESS   read-only
         STATUS       current
@@ -3559,7 +3521,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
     cRemoteKeyMaterialIndex OBJECT-TYPE
         SYNTAX       Unsigned32
-        MAX-ACCESS   read-only
+        MAX-ACCESS   not-accessible
         STATUS       current
         DESCRIPTION
             "A numerical index for remote key material entries."
@@ -3655,6 +3617,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         MODULE
         MANDATORY-GROUPS { cKeyManSymKeyGroup, cKeyManRemoteKeyGroup }
 
+        GROUP cGenerateKeyGroup
+        DESCRIPTION
+            "This symmetric key generation scalar group is optional
+            for implementation."
+
         GROUP cKeyManSymKeyNotifyScalars
         DESCRIPTION
             "This symmetric key notification scalar group is optional
@@ -3697,6 +3664,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         GROUP cKeyManTrustAnchorGroup
         DESCRIPTION
             "Trust Anchor group is optional for implementation."
+
+        GROUP cGenerateKeyGroup
+        DESCRIPTION
+            "This asymmetric key generation scalar group is optional
+            for implementation."
 
         GROUP cKeyManAsymKeyNotifyScalars
         DESCRIPTION
@@ -3825,7 +3797,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cZeroizeAsymKeyTable,
                   cAsymKeyTableCount,
                   cAsymKeyTableLastChanged,
-                  cAsymKeyFingerprint,
                   cAsymKeyFriendlyName,
                   cAsymKeySerialNumber,
                   cAsymKeyIssuer,
@@ -3856,12 +3827,10 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cAsymKeySubjectAltName,
                   cCertSubAltNameTableCount,
                   cCertSubAltNameTableLastChanged,
-                  cCertSubAltNameIndex,
                   cCertSubAltNameList,
                   cCertSubAltNameType,
                   cCertSubAltNameValue1,
-                  cCertSubAltNameValue2,
-                  cCertSubAltNameRowStatus
+                  cCertSubAltNameValue2
                 }
         STATUS current
         DESCRIPTION
@@ -3888,7 +3857,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cCertPathCtrlsCertPolicies,
                   cCertPolicyTableCount,
                   cCertPolicyTableLastChanged,
-                  cCertPolicyIndex,
                   cCertPolicyInformation,
                   cCertPolicyIdentifier,
                   cCertPolicyQualifierID,
@@ -3905,6 +3873,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cCertPathCtrlsPolicyMappings,
                   cPolicyMappingTableCount,
                   cPolicyMappingTableLastChanged,
+                  cPolicyMappingGroup,
                   cPolicyMappingSubjectPolicy,
                   cPolicyMappingIssuerPolicy
                 }
@@ -3920,6 +3889,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cCertPathCtrlsNamesExcluded,
                   cNameConstraintTableCount,
                   cNameConstraintTableLastChanged,
+                  cNameConstraintGenSubtree, 
                   cNameConstraintBaseName
                 }
         STATUS current
@@ -3934,7 +3904,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cZeroizeTrustAnchorTable,
                   cTrustAnchorTableCount,
                   cTrustAnchorTableLastChanged,
-                  cTrustAnchorFingerprint,
                   cTrustAnchorFormatType,
                   cTrustAnchorName,
                   cTrustAnchorUsageType,
@@ -3954,7 +3923,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         OBJECTS {
                   cCKLTableCount,
                   cCKLLastChanged,
-                  cCKLIndex,
                   cCKLIssuer,
                   cCKLSerialNumber,
                   cCKLIssueDate,
@@ -3975,7 +3943,6 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cZeroizeCDMStoreTable,
                   cCDMStoreTableCount,
                   cCDMStoreTableLastChanged,
-                  cCDMStoreIndex,
                   cCDMStoreType,
                   cCDMStoreSource,
                   cCDMStoreID,
@@ -4080,7 +4047,8 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     cKeyManRemoteKeyGroup OBJECT-GROUP
         OBJECTS {
                    cRemoteKeyMaterialTableCount,
-                   cRemoteKeyMaterialTableLastChanged,
+                   cRemoteKeyMaterialTbleLstChngd,
+                   cRemoteKeyMaterialID, 
                    cRemoteKeyMatFriendlyName,
                    cRemoteKeyMatSerialNumber,
                    cRemoteKeyMaterialKeyType,
@@ -4092,6 +4060,16 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "This group is composed of objects related to remote key
             information."
         ::= { cKeyManagementGroups 18 }
+
+    cGenerateKeyGroup OBJECT-GROUP
+        OBJECTS {
+                   cGenerateKeyType,
+                   cGenerateKey
+                }
+        STATUS current
+        DESCRIPTION
+            "This group is composed of objects related to key generation."
+        ::= { cKeyManagementGroups 19 }
 
     END
 ~~~~
@@ -4551,9 +4529,9 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
         cCDMDeliveryRowStatus   RowStatus
     }
 
-    cRemoteKeyMaterialIndex OBJECT-TYPE
+    cCDMIndex  OBJECT-TYPE
         SYNTAX       Unsigned32
-        MAX-ACCESS   read-only
+        MAX-ACCESS   not-accessible
         STATUS       current
         DESCRIPTION
             "A numerical index for CDM entries (ready for retrieval)."
@@ -4780,7 +4758,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
                            cKeyTransferPullDeliveryGroup
                          }
 
-        GROUP cKeyTransferPullDeliveryNotifyGroup
+        GROUP cKeyTransferPullDeliveryNtfyGrp
         DESCRIPTION
             "This notification group is optional for implementation."
 
@@ -4838,7 +4816,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             information."
         ::= { cKeyTransferPullGroups 2 }
 
-    cKeyTransferPullDeliveryNotifyGroup NOTIFICATION-GROUP
+    cKeyTransferPullDeliveryNtfyGrp NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cCDMLPullReceiveSuccess,
                         cCDMLPullReceiveFailed,
@@ -5397,7 +5375,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         MODULE
         MANDATORY-GROUPS { cKeyTransferPushSenderGroup }
 
-        GROUP cKeyTransferPushSenderNotifyGroup
+        GROUP cKeyTransferPushSenderNtfyGrp
         DESCRIPTION
             "This notification group is optional for implementation."
 
@@ -5412,14 +5390,14 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             "Implementation of this object is optional."
         ::= { cKeyTransferPushCompliances  1 }
 
-    cKeyTransferPushReceiverCompliance MODULE-COMPLIANCE
+    cKeyTransferPushRecCompliance MODULE-COMPLIANCE
         STATUS    current
         DESCRIPTION
             "Compliance levels for receiver information."
         MODULE
         MANDATORY-GROUPS { cKeyTransferPushReceiverGroup }
     
-        GROUP cKeyTransferPushReceiverNotifyGroup
+        GROUP cKeyTransferPushReceiverNtfyGrp
         DESCRIPTION
             "This notification group is optional for implementation."
         ::= { cKeyTransferPushCompliances  2 }
@@ -5438,6 +5416,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
                   cCDMPushDestRowStatus,
                   cCDMTransferPkgTableCount,
                   cCDMTransferPkgTableLastChanged,
+                  cCDMTransferPkgLabel,
                   cCDMTransferPkgLocatorRowPtr,
                   cCDMTransferPkgRowStatus
                 }
@@ -5451,6 +5430,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         OBJECTS {
                   cCDMPushSrcTableCount,
                   cCDMPushSrcTableLastChanged,
+                  cCDMPushSrcSenderName,
                   cCDMPushSrcTransferType,
                   cCDMPushSrcAddrLocationType,
                   cCDMPushSrcAddrLocation,
@@ -5462,7 +5442,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             information."
         ::= { cKeyTransferPushGroups 2 }
 
-    cKeyTransferPushSenderNotifyGroup NOTIFICATION-GROUP
+    cKeyTransferPushSenderNtfyGrp NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cCDMPushSendSuccess,
                         cCDMPushSendFail
@@ -5473,7 +5453,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             information."
         ::= { cKeyTransferPushGroups 3 }
 
-    cKeyTransferPushReceiverNotifyGroup NOTIFICATION-GROUP
+    cKeyTransferPushReceiverNtfyGrp NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cCDMPushReceiveSuccess,
                         cCDMPushReceiveFail
@@ -5560,14 +5540,10 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
     -- *****************************************************************
 
     cSecPolicyChanged  NOTIFICATION-TYPE
-        OBJECTS     {
-                        cSecPolicyRulePriorityID,
-                        cSecPolicyRuleDescription
-                    }
         STATUS      current
         DESCRIPTION
-            "A notification indicating that an existent Security Policy
-            entry in the cSecPolicyRuleTable in has changed.
+            "A notification indicating that an the cSecPolicyRuleTable 
+            has changed.
             
             At the device level, the sending of notifications is 
             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
@@ -5634,7 +5610,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
     cSecPolicyRulePriorityID  OBJECT-TYPE
         SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
+        MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "Local unique index that identifies the priority at which
@@ -5763,7 +5739,6 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         OBJECTS {
                     cSecPolicyRuleTableCount,
                     cSecPolicyRuleTableLastChanged,
-                    cSecPolicyRulePriorityID,
                     cSecPolicyRuleDescription,
                     cSecPolicyRuleType,
                     cSecPolicyRuleFilterReference,
@@ -5806,6 +5781,8 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         MODULE-COMPLIANCE, OBJECT-GROUP,
         NOTIFICATION-GROUP
             FROM SNMPv2-CONF                          -- FROM RFC 2580
+        SnmpAdminString
+            FROM SNMP-FRAMEWORK-MIB                    -- FROM RFC 3411
         RowStatus, DateAndTime
             FROM SNMPv2-TC;                           -- FROM RFC 2579
 
@@ -5861,7 +5838,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
     -- *****************************************************************
 
     cSecConnectionEstablished  NOTIFICATION-TYPE
-        OBJECTS     { cSecConTableID }
+        OBJECTS     { cSecConDataPlaneID }
         STATUS      current
         DESCRIPTION
             "A notification indicating that a new Secure Connection was
@@ -5873,7 +5850,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         ::= { cSecureConnectionInfoNotify 1 }
 
     cSecConnectionDeleted  NOTIFICATION-TYPE
-        OBJECTS     { cSecConTableID }
+        OBJECTS     { cSecConDataPlaneID }
         STATUS      current
         DESCRIPTION
             "A notification indicating that an existent Secure
@@ -5947,7 +5924,7 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
 
     cSecConTableID  OBJECT-TYPE
         SYNTAX      Unsigned32
-        MAX-ACCESS  read-only
+        MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
             "Local unique index that identifies a Secure Connection."
@@ -6134,7 +6111,6 @@ This module makes reference to: {{cc-fh}}, {{RFC2578}}, {{RFC2579}}, {{RFC2580}}
         OBJECTS {
                     cSecConTableCount,
                     cSecConTableLastChanged,
-                    cSecConTableID,
                     cSecConType,
                     cSecConDataPlaneID,
                     cSecConDirection,
@@ -6181,7 +6157,7 @@ There are a number of management objects defined in this MIB module with a MAX-A
 
 - From the Device Information MIB module: cSystemDate, cSystemInitialLoadParameters, cSecurityLevel, cResetDevice, cSanitizeDevice, cRenderInoperable, cDeviceComponentOpStatus, cDeviceComponentDescription, cBatteryLowThreshold, cFirmwareRunning, and cFirmwareRowStatus,
 
-- From the Key Management Information MIB module: cZeroizeAllKeys, cZeroizeSymmetricKeyTable, cZeroizeAsymKeyTable, cZeroizeTrustAnchorTable, cZeroizeCDMStoreTable, cKeyMaterialTableOID, cSymKeyGlobalExpiryWarning, cAsymKeyGlobalExpiryWarning, cGenerateKeyType, cGenerateKey, cSymKeyUsage, cSymKeyID, cSymKeyIssuer, cSymKeyEffectiveDate, cSymKeyExpirationDate, cSymKeyExpiryWarning, cSymKeyNumberOfTransactions, cSymKeyFriendlyName, cSymKeySource, cSymKeyRowStatus, AsymKeyFriendlyName, cAsymKeyEffectiveDate, cAsymKeyExpiryWarning, cAsymKeySubjectAltName, cAsymKeyUsage, cAsymKeySource, cAsymKeyRowStatus, cAsymKeyRekey, cAsymKeyAutoRekeyEnable, cTrustAnchorRowStatus, cCKLRowStatus, cCDMStoreID, cCDMStoreFriendlyName, cCDMStoreControl, cCDMStoreRowStatus, cCertSubAltNameRowStatus, and cRemoteKeyMatFriendlyName.
+- From the Key Management Information MIB module: cZeroizeAllKeys, cZeroizeSymmetricKeyTable, cZeroizeAsymKeyTable, cZeroizeTrustAnchorTable, cZeroizeCDMStoreTable, cKeyMaterialTableOID, cSymKeyGlobalExpiryWarning, cAsymKeyGlobalExpiryWarning, cGenerateKeyType, cGenerateKey, cSymKeyUsage, cSymKeyID, cSymKeyIssuer, cSymKeyEffectiveDate, cSymKeyExpirationDate, cSymKeyExpiryWarning, cSymKeyNumberOfTransactions, cSymKeyFriendlyName, cSymKeySource, cSymKeyRowStatus, AsymKeyFriendlyName, cAsymKeyEffectiveDate, cAsymKeyExpiryWarning, cAsymKeySubjectAltName, cAsymKeyUsage, cAsymKeySource, cAsymKeyRowStatus, cAsymKeyRekey, cAsymKeyAutoRekeyEnable, cTrustAnchorRowStatus, cCKLRowStatus, cCDMStoreID, cCDMStoreFriendlyName, cCDMStoreControl, cCDMStoreRowStatus, and cRemoteKeyMatFriendlyName.
 
 - From the Key Transfer Pull MIB module: cCDMServerRetryDelay, cCDMServerRetryMaxAttempts, cCDMPullRetrievalPriorities, cCDMLDeliveryRequest, cCDMServerURI, cCDMServerAdditionalInfo, cCDMServerRowStatus, cCDMAdditionalInfo, cCDMDeliveryPriority, cCDMDeliveryRequest, and cCDMDeliveryRowStatus.
 
@@ -6193,9 +6169,9 @@ There are a number of management objects defined in this MIB module with a MAX-A
 
 Some of the readable objects in this MIB module (i.e., objects with a MAX-ACCESS other than not-accessible) may be considered sensitive or vulnerable in some network environments.  It is thus important to control even GET and/or NOTIFY access to these objects and possibly to even encrypt the values of these objects when sending them over the network via SNMP.  The following tables and objects are sensitive/vulnerable because unauthorized access would disclose device configuration information:
 
-- From the Device Information MIB module: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTableLastChanged, cDeviceComponentIndex, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTableLastChanged, cFirmwareIndex, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
+- From the Device Information MIB module: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTbleLstChngd, cDeviceComponentIndex, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTbleLstChngd, cFirmwareIndex, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
 
-- From the Key Management Information MIB module: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameIndex, cCertSubAltNameList, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIndex, cCertPolicyInformation, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTableLastChanged, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
+- From the Key Management Information MIB module: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameIndex, cCertSubAltNameList, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIndex, cCertPolicyInformation, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTbleLstChngd, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
 
 - From the Key Transfer Pull MIB module: cCDMLDeliveryStatus, cCDMServerTableCount, cCDMServerTableLastChanged, cCDMDeliveryTableCount, cCDMDeliveryTableLastChanged, cCDMType, cCDMURI, cCDMPackageSize, cCDMLastDownloadDate, and cCDMDeliveryStatus.
 
