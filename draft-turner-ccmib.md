@@ -735,7 +735,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             "The number of rows in the cDeviceComponentVersTable."
         ::= { cDeviceComponentVersInfo 1 }
 
-    cDeviceComponentVersTbleLstChngd  OBJECT-TYPE
+    cDeviceCompVersTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
@@ -976,7 +976,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
             "The number of rows in the cFirmwareInformationTable."
         ::= { cFirmwareInfo 1 }
 
-    cFirmwareInformationTbleLstChngd  OBJECT-TYPE
+    cFirmwareInfoTableLastChanged  OBJECT-TYPE
         SYNTAX      TimeTicks
         MAX-ACCESS  read-only
         STATUS      current
@@ -1200,7 +1200,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
     cDeviceInfoComponentGroup OBJECT-GROUP
         OBJECTS {
                     cDeviceComponentVersTableCount,
-                    cDeviceComponentVersTbleLstChngd,
+                    cDeviceCompVersTableLastChanged,
                     cDeviceComponentName,
                     cDeviceComponentVersion,
                     cDeviceComponentOpStatus,
@@ -1229,7 +1229,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
     cDeviceInfoFirmwareGroup OBJECT-GROUP
          OBJECTS {
                      cFirmwareInformationTableCount,
-                     cFirmwareInformationTbleLstChngd,
+                     cFirmwareInfoTableLastChanged,
                      cFirmwareName,
                      cFirmwareVersion,
                      cFirmwareSource,
@@ -3523,7 +3523,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "The number of rows in the cRemoteKeyMaterialTable."
         ::= { cRemoteKeyMaterialInfo 1 }
 
-    cRemoteKeyMaterialTbleLstChngd OBJECT-TYPE
+    cRemoteKeyMatTableLastChanged OBJECT-TYPE
         SYNTAX       TimeTicks
         MAX-ACCESS   read-only
         STATUS       current
@@ -4101,7 +4101,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
     cKeyManRemoteKeyGroup OBJECT-GROUP
         OBJECTS {
                    cRemoteKeyMaterialTableCount,
-                   cRemoteKeyMaterialTbleLstChngd,
+                   cRemoteKeyMatTableLastChanged,
                    cRemoteKeyMaterialID, 
                    cRemoteKeyMatFriendlyName,
                    cRemoteKeyMatSerialNumber,
@@ -4812,7 +4812,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
                            cKeyTransferPullDeliveryGroup
                          }
 
-        GROUP cKeyTransferPullDeliveryNtfyGrp
+        GROUP cKeyTransferPullDelivNotifyGroup
         DESCRIPTION
             "This notification group is optional for implementation."
 
@@ -4870,7 +4870,7 @@ This MIB module makes reference to the following documents: {{RFC2578}}, {{RFC25
             information."
         ::= { cKeyTransferPullGroups 2 }
 
-    cKeyTransferPullDeliveryNtfyGrp NOTIFICATION-GROUP
+    cKeyTransferPullDelivNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cCDMLPullReceiveSuccess,
                         cCDMLPullReceiveFailed,
@@ -5429,7 +5429,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         MODULE
         MANDATORY-GROUPS { cKeyTransferPushSenderGroup }
 
-        GROUP cKeyTransferPushSenderNtfyGrp
+        GROUP cKeyTrnsfrPshSndrNotifyGroup
         DESCRIPTION
             "This notification group is optional for implementation."
 
@@ -5451,7 +5451,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
         MODULE
         MANDATORY-GROUPS { cKeyTransferPushReceiverGroup }
     
-        GROUP cKeyTransferPushReceiverNtfyGrp
+        GROUP cKeyTransferPushRecvNotifyGroup
         DESCRIPTION
             "This notification group is optional for implementation."
         ::= { cKeyTransferPushCompliances  2 }
@@ -5496,7 +5496,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             information."
         ::= { cKeyTransferPushGroups 2 }
 
-    cKeyTransferPushSenderNtfyGrp NOTIFICATION-GROUP
+    cKeyTrnsfrPshSndrNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cCDMPushSendSuccess,
                         cCDMPushSendFail
@@ -5507,7 +5507,7 @@ This MIB module makes reference to following documents: {{RFC2578}}, {{RFC2579}}
             information."
         ::= { cKeyTransferPushGroups 3 }
 
-    cKeyTransferPushReceiverNtfyGrp NOTIFICATION-GROUP
+    cKeyTransferPushRecvNotifyGroup NOTIFICATION-GROUP
         NOTIFICATIONS {
                         cCDMPushReceiveSuccess,
                         cCDMPushReceiveFail
@@ -6223,9 +6223,9 @@ There are a number of management objects defined in this MIB module with a MAX-A
 
 Some of the readable objects in this MIB module (i.e., objects with a MAX-ACCESS other than not-accessible) may be considered sensitive or vulnerable in some network environments.  It is thus important to control even GET and/or NOTIFY access to these objects and possibly to even encrypt the values of these objects when sending them over the network via SNMP.  The following tables and objects are sensitive/vulnerable because unauthorized access would disclose device configuration information:
 
-- From the Device Information MIB module: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceComponentVersTbleLstChngd, cDeviceComponentIndex, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInformationTbleLstChngd, cFirmwareIndex, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
+- From the Device Information MIB module: cSystemUpTime, cElectronicSerialNumber, cLastChanged, cVendorName, cModelIdentifier, cHardwareVersionNumber, cDeviceComponentVersTableCount, cDeviceCompVersTableLastChanged, cDeviceComponentIndex, cDeviceComponentName, DeviceComponentVersion, cBatteryInfoTableCount, cBatteryInfoTableLastChanged, cBatteryType, cBatteryOpStatus, cFirmwareInformationTableCount, cFirmwareInfoTableLastChanged, cFirmwareIndex, cFirmwareName, cFirmwareVersion, and cFirmwareSource.
 
-- From the Key Management Information MIB module: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameIndex, cCertSubAltNameList, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIndex, cCertPolicyInformation, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMaterialTbleLstChngd, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
+- From the Key Management Information MIB module: cKeyMaterialFingerprint, cSymmetricKeyTableCount, cSymmetricKeyTableLastChanged, cAsymKeyTableCount, cAsymKeyTableLastChanged, cAsymKeyFingerprint, cAsymKeySerialNumber, cAsymKeyIssuer, cAsymKeySignatureAlgorithm, cAsymKeyPublicKeyAlgorithm, cAsymKeyExpirationDate, cAsymKeySubject, cAsymKeySubjectType, cAsymKeyClassification, cAsymKeyVersion, cAsymKeyType, cTrustAnchorTableCount, cTrustAnchorTableLastChanged, cTrustAnchorFingerprint, cTrustAnchorFormatType, cTrustAnchorName, cTrustAnchorUsageType, cTrustAnchorKeyIdentifier, cTrustAnchorPublicKeyAlgorithm, cTrustAnchorContingencyAvail, cTrustAnchorVersion, cCKLTableCount, cCKLLastChanged, cCKLIndex, cCKLIssuer, cCKLSerialNumber, cCKLIssueDate, cCKLNextUpdate, cCKLVersion, cCKLLastUpdate, cCDMStoreTableCount, cCDMStoreTableLastChanged, cCDMStoreIndex, cCDMStoreType, cCDMStoreSource, cCertSubAltNameTableCount, cCertSubAltNameTableLastChanged, cCertSubAltNameIndex, cCertSubAltNameList, cCertSubAltNameType, cCertSubAltNameValue1, cCertSubAltNameValue2, cCertPathCtrlsTableCount, cCertPathCtrlsTableLastChanged, cCertPathCtrlsCertificate, cCertPathCtrlsCertPolicies, cCertPathCtrlsPolicyMappings, cCertPathCtrlsPolicyFlags, cCertPathCtrlsNamesPermitted, CertPathCtrlsNamesExcluded, cCertPathCtrlsMaxPathLength, cCertPolicyTableCount, cCertPolicyTableLastChanged, cCertPolicyIndex, cCertPolicyInformation, cCertPolicyIdentifier, cCertPolicyQualifierID, cCertPolicyQualifier, cPolicyMappingTableCount, cPolicyMappingTableLastChanged, cPolicyMappingSubjectPolicy, cPolicyMappingIssuerPolicy, cNameConstraintTableCount, cNameConstraintTableLastChanged, cNameConstraintBaseName, cRemoteKeyMaterialTableCount, cRemoteKeyMatTableLastChanged, cRemoteKeyMatSerialNumber, cRemoteKeyMaterialKeyType, cRemoteKeyMatExpirationDate, and cRemoteKeyMatClassification.
 
 - From the Key Transfer Pull MIB module: cCDMLDeliveryStatus, cCDMServerTableCount, cCDMServerTableLastChanged, cCDMDeliveryTableCount, cCDMDeliveryTableLastChanged, cCDMType, cCDMURI, cCDMPackageSize, cCDMLastDownloadDate, and cCDMDeliveryStatus.
 
