@@ -1708,9 +1708,16 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementNotify 10 }
 
     cTrustAnchorAdded  NOTIFICATION-TYPE
+        OBJECTS     {
+                        cTrustAnchorFingerprint,
+                        cTrustAnchorFormatType,
+                        cTrustAnchorUsageType
+                    }
         STATUS      current
         DESCRIPTION
-            "A trust anchor has been added to the cTrustAnchorTable. 
+            "A trust anchor has been added to the cTrustAnchorTable, as
+            identified by cTrustAnchorFingerprint, cTrustAnchorFormatType, and 
+            cTrustAnchorUsageType.
             
             At the device level, the sending of notifications is 
             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
@@ -1718,9 +1725,17 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         ::= { cKeyManagementNotify 11 }
 
     cTrustAnchorUpdated  NOTIFICATION-TYPE
+        OBJECTS     {
+                        cTrustAnchorFingerprint,
+                        cTrustAnchorFormatType,
+                        cTrustAnchorUsageType
+                    }
+
         STATUS      current
         DESCRIPTION
-            "A trust anchor has been updated in the cTrustAnchorTable.
+            "A trust anchor has been updated in the cTrustAnchorTable, as
+            identified by cTrustAnchorFingerprint, cTrustAnchorFormatType, and 
+            cTrustAnchorUsageType.
             
             At the device level, the sending of notifications is 
             controlled by CC-DEVICE-INFO-MIB scalars: cSendNotifications
@@ -1779,10 +1794,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "A row containing information about a Symmetric Key."
-        INDEX      { cSymKeyFingerprint }
+        INDEX      { cSymKeyIndex }
         ::= { cSymmetricKeyTable 1 }
     
     CSymmetricKeyEntry  ::= SEQUENCE {
+        cSymKeyIndex                Unsigned32,
         cSymKeyFingerprint          SnmpTLSFingerprint,
         cSymKeyUsage                BITS,
         cSymKeyID                   SnmpAdminString,
@@ -1796,10 +1812,18 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cSymKeySource               SnmpAdminString,
         cSymKeyRowStatus            RowStatus
     }
-    
+
+     cSymKeyIndex  OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A numerical index for symmetric key entries."
+        ::= { cSymmetricKeyEntry 1 }
+   
     cSymKeyFingerprint  OBJECT-TYPE
         SYNTAX      SnmpTLSFingerprint
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
             "An inherent identification of the symmetric key.
@@ -1808,7 +1832,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             developing the fingerprint. Implementations are cautioned to
             develop the hash in a manner that does not compromise the
             security of the key material."
-        ::= { cSymmetricKeyEntry 1 }
+        ::= { cSymmetricKeyEntry 2 }
     
     cSymKeyUsage  OBJECT-TYPE
         SYNTAX      BITS { oneTimePassword(0), challengeResponse(1),
@@ -1871,7 +1895,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             0000 0000 0010 0000 = Generate
             0000 0000 0001 0000 = SharedSecret"
         REFERENCE   "RFC 6030 - Section 5."
-        ::= { cSymmetricKeyEntry 2 }
+        ::= { cSymmetricKeyEntry 3 }
     
     cSymKeyID  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..128))
@@ -1884,7 +1908,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             identifier derived from a tag or other key wrapper. This
             object differs from cSymKeyFriendlyName which is a
             user-defined ID."
-        ::= { cSymmetricKeyEntry 3 }
+        ::= { cSymmetricKeyEntry 4 }
     
     cSymKeyIssuer  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -1893,7 +1917,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "Represents the name of the entity which issued the key. Use
             a distinguished name (DN) when one is available."
-        ::= { cSymmetricKeyEntry 4 }
+        ::= { cSymmetricKeyEntry 5 }
     
     cSymKeyEffectiveDate  OBJECT-TYPE
         SYNTAX      DateAndTime
@@ -1901,7 +1925,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "The effective date of the key."
-        ::= { cSymmetricKeyEntry 5 }
+        ::= { cSymmetricKeyEntry 6 }
     
     cSymKeyExpirationDate  OBJECT-TYPE
         SYNTAX      DateAndTime
@@ -1909,7 +1933,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "The expiration date of the key."
-        ::= { cSymmetricKeyEntry 6 }
+        ::= { cSymmetricKeyEntry 7 }
     
     cSymKeyExpiryWarning  OBJECT-TYPE
         SYNTAX      Unsigned32(0..90)
@@ -1925,7 +1949,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             cSymKeyGlobalExpiryWarning will be ignored. The value of
             cSymKeyGlobalExpiryWarning will only be used if this column
             is not populated, populated with 0, or not implemented."
-        ::= { cSymmetricKeyEntry 7 }
+        ::= { cSymmetricKeyEntry 8 }
     
     cSymKeyNumberOfTransactions  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -1940,7 +1964,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             When this number is reached, implementations supporting this
             object should stop using this key and send a
             cKeyMaterialExpired notification."
-        ::= { cSymmetricKeyEntry 8 }
+        ::= { cSymmetricKeyEntry 9 }
     
     cSymKeyFriendlyName  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -1949,7 +1973,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A human readable label of the key for easier reference. It
             is used only for helpful or informational purposes."
-        ::= { cSymmetricKeyEntry 9 }
+        ::= { cSymmetricKeyEntry 10 }
     
     cSymKeyClassification  OBJECT-TYPE
         SYNTAX      BITS { unclassified(0), restricted(1),
@@ -1966,7 +1990,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             0000 1000 = topSecret
             This column does not exist for devices that do not have the
             concept of classification."
-        ::= { cSymmetricKeyEntry 10 }
+        ::= { cSymmetricKeyEntry 11 }
     
     cSymKeySource  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..255))
@@ -1982,7 +2006,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             column should begin with the word FILL followed by the fill
             protocol. If the source is unknown, this column should not
             be populated or be set to an empty string, ''."
-        ::= { cSymmetricKeyEntry 11 }
+        ::= { cSymmetricKeyEntry 12 }
     
     cSymKeyRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
@@ -2005,7 +2029,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             createAndWait and createAndGo management functions for this
             object if the symmetric key material can be manually entered
             by the manager."
-        ::= { cSymmetricKeyEntry 12 }
+        ::= { cSymmetricKeyEntry 13 }
 
     -- *****************************************************************
     -- CC MIB cAsymKeyTable
@@ -2051,10 +2075,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
              "A row containing information about an Asymmetric Key or
              Certificate."
-        INDEX      { cAsymKeyFingerprint }
+        INDEX      { cAsymKeyIndex }
         ::= { cAsymKeyTable 1 }
 
     CAsymKeyEntry  ::= SEQUENCE {
+        cAsymKeyIndex               Unsigned32,
         cAsymKeyFingerprint         SnmpTLSFingerprint,
         cAsymKeyFriendlyName        SnmpAdminString,
         cAsymKeySerialNumber        SnmpAdminString,
@@ -2077,13 +2102,21 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cAsymKeyAutoRekeyEnable     TruthValue
     }
 
-    cAsymKeyFingerprint  OBJECT-TYPE
-        SYNTAX      SnmpTLSFingerprint
+    cAsymKeyIndex  OBJECT-TYPE
+        SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-             "An inherent identification of the asymmetric key."
+            "A numerical index for asymmetric key entries."
         ::= { cAsymKeyEntry 1 }
+
+    cAsymKeyFingerprint  OBJECT-TYPE
+        SYNTAX      SnmpTLSFingerprint
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "An inherent identification of the asymmetric key."
+        ::= { cAsymKeyEntry 2 }
 
     cAsymKeyFriendlyName  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -2092,7 +2125,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
              "A human readable label of the key for easier reference. It
              is used only for helpful or informational purposes."
-        ::= { cAsymKeyEntry 2 }
+        ::= { cAsymKeyEntry 3 }
 
     cAsymKeySerialNumber  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -2106,7 +2139,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              '4.1.2.2. Serial Number' of RFC 5280. Other types of Key
              Material may have different serial number format as defined
              by the issuer (e.g., a Key Material ID)."
-        ::= { cAsymKeyEntry 3 }
+        ::= { cAsymKeyEntry 4 }
 
     cAsymKeyIssuer  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -2119,7 +2152,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              Certificate (PKC). Other issuers shall be defined by the
              class of device and will reference the Key Management
              System that delivers the key material for that device."
-        ::= { cAsymKeyEntry 4 }
+        ::= { cAsymKeyEntry 5 }
 
     cAsymKeySignatureAlgorithm  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..32))
@@ -2135,7 +2168,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              implementations may utilize a standardized definition of
              string values or use a proprietary definition of string
              values for supported signature algorithms."
-        ::= { cAsymKeyEntry 5 }
+        ::= { cAsymKeyEntry 6 }
 
     cAsymKeyPublicKeyAlgorithm  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..32))
@@ -2150,7 +2183,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              implementations may utilize a standardized definition of
              string values or use a proprietary definition of string
              values for supported public key algorithms."
-        ::= { cAsymKeyEntry 6 }
+        ::= { cAsymKeyEntry 7 }
 
     cAsymKeyEffectiveDate  OBJECT-TYPE
         SYNTAX      DateAndTime
@@ -2161,7 +2194,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              Key begins. This column must not exist when the key
              material does not have an inherent and associated effective
              date."
-        ::= { cAsymKeyEntry 7 }
+        ::= { cAsymKeyEntry 8 }
 
     cAsymKeyExpirationDate  OBJECT-TYPE
         SYNTAX      DateAndTime
@@ -2171,7 +2204,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              "The date on which the validity period of the Asymmetric
              Key ends. This column must not exist when the key material
              does not have an inherent and associated expiration date."
-        ::= { cAsymKeyEntry 8 }
+        ::= { cAsymKeyEntry 9 }
 
     cAsymKeyExpiryWarning  OBJECT-TYPE
         SYNTAX      Unsigned32(0..90)
@@ -2188,7 +2221,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              cAsymKeyGlobalExpiryWarning will only be used if this
              column is not populated, populated with 0, or not
              implemented."
-        ::= { cAsymKeyEntry 9 }
+        ::= { cAsymKeyEntry 10 }
 
     cAsymKeySubject  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -2200,7 +2233,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              For non-X.509 based key material, or when this object does
              not apply for the key material, this column will not
              exist."
-        ::= { cAsymKeyEntry 10 }
+        ::= { cAsymKeyEntry 11 }
 
     cAsymKeySubjectType  OBJECT-TYPE
         SYNTAX      BITS { other(0), certificationAuthority(1),
@@ -2222,7 +2255,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              For non-X.509 based key material, or when this object does
              not apply for the key material, this column will not
              exist."
-        ::= { cAsymKeyEntry 11 }
+        ::= { cAsymKeyEntry 12 }
 
     cAsymKeySubjectAltName OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -2239,7 +2272,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              For non-X.509 based key material, or when this object does
              not apply for the key material, this column will not
              exist."
-        ::= { cAsymKeyEntry 12 }
+        ::= { cAsymKeyEntry 13 }
 
     cAsymKeyUsage  OBJECT-TYPE
         SYNTAX      BITS { other(0), digitalSignature(1),
@@ -2272,7 +2305,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              5280 (X.509 format) may still use an applicable value for
              the Usage, or may use 'other'."
         REFERENCE   "RFC 5280 - Section 4.2.1.3."
-        ::= { cAsymKeyEntry 13 }
+        ::= { cAsymKeyEntry 14 }
 
     cAsymKeyClassification  OBJECT-TYPE
         SYNTAX      BITS { unclassified(0), restricted(1),
@@ -2291,7 +2324,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
              This column does not exist for devices that do not have the
              concept of classification."
-        ::= { cAsymKeyEntry 14 }
+        ::= { cAsymKeyEntry 15 }
 
     cAsymKeySource  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..255))
@@ -2304,7 +2337,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              locally then this column should begin with the word FILL
              followed by the fill protocol. If the source is unknown,
              this column should be blank."
-        ::= { cAsymKeyEntry 15 }
+        ::= { cAsymKeyEntry 16 }
 
     cAsymKeyRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
@@ -2324,7 +2357,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
              notReady management functions is optional. Implementations
              must not support createAndWait and createAndGo management
              functions for this object."
-        ::= { cAsymKeyEntry 16 }
+        ::= { cAsymKeyEntry 17 }
 
     cAsymKeyVersion  OBJECT-TYPE
         SYNTAX     Integer32
@@ -2337,7 +2370,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
             When this object does not apply for the key material, this
             column will not exist."
-        ::= { cAsymKeyEntry 17 }
+        ::= { cAsymKeyEntry 18 }
 
     cAsymKeyRekey  OBJECT-TYPE
         SYNTAX     TruthValue
@@ -2351,7 +2384,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
             Note after being set to true, an agent should reset this
             object to false once the rekey operation has completed."
-        ::= { cAsymKeyEntry 18 }
+        ::= { cAsymKeyEntry 19 }
 
     cAsymKeyType  OBJECT-TYPE
         SYNTAX     SnmpAdminString (SIZE(0..32))
@@ -2365,7 +2398,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             values that apply to their specific nomenclature supported.
             If no such nomenclature exists, this column should not be
             populated or be set to an empty string (i.e., '')."
-        ::= { cAsymKeyEntry 19 }
+        ::= { cAsymKeyEntry 20 }
 
     cAsymKeyAutoRekeyEnable OBJECT-TYPE
         SYNTAX     TruthValue
@@ -2379,7 +2412,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
             This column is optional to support."
         DEFVAL     { false }
-    ::= { cAsymKeyEntry 20 }
+    ::= { cAsymKeyEntry 21 }
 
 
     -- *****************************************************************
@@ -2425,10 +2458,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A row containing information about a Trust Anchor (TA) that
             has been loaded into the device."
-        INDEX      { cTrustAnchorFingerprint }
+        INDEX      { cTrustAnchorIndex }
         ::= { cTrustAnchorTable 1 }
 
     CTrustAnchorEntry  ::= SEQUENCE {
+        cTrustAnchorIndex               Unsigned32,
         cTrustAnchorFingerprint         SnmpTLSFingerprint,
         cTrustAnchorFormatType          INTEGER,
         cTrustAnchorName                SnmpAdminString,
@@ -2439,14 +2473,21 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cTrustAnchorRowStatus           RowStatus,
         cTrustAnchorVersion             SnmpAdminString
     }
-
-    cTrustAnchorFingerprint  OBJECT-TYPE
-        SYNTAX      SnmpTLSFingerprint
+    cTrustAnchorIndex  OBJECT-TYPE
+        SYNTAX      Unsigned32
         MAX-ACCESS  not-accessible
         STATUS      current
         DESCRIPTION
-            "An inherent identification of the trust anchor."
+            "A numerical index for trust anchor entries."
         ::= { cTrustAnchorEntry 1 }
+
+    cTrustAnchorFingerprint  OBJECT-TYPE
+        SYNTAX      SnmpTLSFingerprint
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "An inherent identification of the trust anchor."
+        ::= { cTrustAnchorEntry 2 }
 
     cTrustAnchorFormatType  OBJECT-TYPE
         SYNTAX      INTEGER { x509v3(1), trustAnchorFormat(2),
@@ -2459,7 +2500,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             [1] x509v3: X.509v3 certificate per RFC 5280.
             [2] trustAnchorFormat: Trust Anchor Format per RFC 5914.
             [3] tbsCertificate: To Be Signed Certificate per RFC 5280."
-        ::= { cTrustAnchorEntry 2 }
+        ::= { cTrustAnchorEntry 3 }
 
     cTrustAnchorName  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -2475,7 +2516,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             structure defined in RFC 5914, which is a human-readable
             name for the trust anchor. Otherwise, this column should be
             blank."
-        ::= { cTrustAnchorEntry 3 }
+        ::= { cTrustAnchorEntry 4 }
 
     cTrustAnchorUsageType  OBJECT-TYPE
         SYNTAX      INTEGER { other(1), apex(2), management(3),
@@ -2485,7 +2526,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "The usage type for the Trust Anchor (TA). Note, crl(6) also
             applies to compromised key lists."
-        ::= { cTrustAnchorEntry 4 }
+        ::= { cTrustAnchorEntry 5 }
 
     cTrustAnchorKeyIdentifier  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..128))
@@ -2493,7 +2534,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS      current
         DESCRIPTION
             "The identifier of the Trust Anchor's (TA's) public key."
-        ::= { cTrustAnchorEntry 5 }
+        ::= { cTrustAnchorEntry 6 }
 
     cTrustAnchorPublicKeyAlgorithm  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..32))
@@ -2507,7 +2548,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             implementations may utilize a standardized definition of
             string values or use a proprietary definition of string
             values for supported public key algorithms."
-        ::= { cTrustAnchorEntry 6 }
+        ::= { cTrustAnchorEntry 7 }
 
     cTrustAnchorContingencyAvail  OBJECT-TYPE
         SYNTAX      TruthValue
@@ -2517,7 +2558,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "An indication of the availability of a contingency key for
             an Apex Trust Anchor. When set to 'True', a contingency key
             is available."
-        ::= { cTrustAnchorEntry 7 }
+        ::= { cTrustAnchorEntry 8 }
 
     cTrustAnchorRowStatus  OBJECT-TYPE
         SYNTAX      RowStatus
@@ -2538,7 +2579,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
             Some implementations may restrict the deletion of Trust
             Anchors to specific protocols (e.g., TAMP)."
-        ::= { cTrustAnchorEntry 8 }
+        ::= { cTrustAnchorEntry 9 }
 
     cTrustAnchorVersion OBJECT-TYPE
         SYNTAX     SnmpAdminString (SIZE(0..16))
@@ -2546,7 +2587,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         STATUS     current
         DESCRIPTION
             "The version of the Trust Anchor."
-        ::= { cTrustAnchorEntry 9 }
+        ::= { cTrustAnchorEntry 10 }
 
     -- *****************************************************************
     -- CC MIB cCKLTable
@@ -3049,10 +3090,11 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         DESCRIPTION
             "A row containing information about certificate path
             controls and constraints."
-        INDEX  { cCertPathCtrlsKeyFingerprint }
+        INDEX  { cCertPathCtrlsIndex }
         ::= { cCertPathCtrlsTable 1 }
 
     CCertPathCtrlsEntry ::= SEQUENCE {
+        cCertPathCtrlsIndex             Unsigned32,
         cCertPathCtrlsKeyFingerprint    SnmpTLSFingerprint,
         cCertPathCtrlsCertificate       RowPointer,
         cCertPathCtrlsCertPolicies      SnmpAdminString,
@@ -3063,14 +3105,22 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         cCertPathCtrlsMaxPathLength     Unsigned32
     }
 
+    cCertPathCtrlsIndex OBJECT-TYPE
+        SYNTAX      Unsigned32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A numerical index for certificate path control entries."
+        ::= {cCertPathCtrlsEntry 1}
+
     cCertPathCtrlsKeyFingerprint  OBJECT-TYPE
         SYNTAX      SnmpTLSFingerprint
-        MAX-ACCESS  not-accessible
+        MAX-ACCESS  read-only
         STATUS      current
         DESCRIPTION
              "Identifies a trust anchor in the cTrustAnchorTable or a
              certificate in the cAsymKeyTable."
-        ::= {cCertPathCtrlsEntry 1}
+        ::= {cCertPathCtrlsEntry 2}
 
     cCertPathCtrlsCertificate  OBJECT-TYPE
         SYNTAX      RowPointer
@@ -3080,7 +3130,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "Optional reference to an X.509 certificate defined in the
             cAsymKeyTable to assist with certification path development
             and validation."
-        ::= { cCertPathCtrlsEntry 2 }
+        ::= { cCertPathCtrlsEntry 3 }
 
     cCertPathCtrlsCertPolicies  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -3093,7 +3143,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
             When this object does not apply for the key material, this
             column will not exist."
-        ::= { cCertPathCtrlsEntry 3 }
+        ::= { cCertPathCtrlsEntry 4 }
 
     cCertPathCtrlsPolicyMappings  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -3109,7 +3159,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
             For non-X.509 based key material, or when this object does
             not apply for the key material, this column will not exist."
-        ::= { cCertPathCtrlsEntry 4 }
+        ::= { cCertPathCtrlsEntry 5 }
 
     cCertPathCtrlsPolicyFlags  OBJECT-TYPE
         SYNTAX      BITS { inhibitPolicyMapping(0),
@@ -3137,7 +3187,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             1000 = inhibitPolicyMapping
             0100 = requireExplicitPolicy
             0010 = inhibitAnyPolicy"
-        ::= { cCertPathCtrlsEntry 5 }
+        ::= { cCertPathCtrlsEntry 6 }
 
     cCertPathCtrlsNamesPermitted  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -3151,7 +3201,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
             When this object does not apply for the key material, this
             column will not exist."
-        ::= { cCertPathCtrlsEntry 6 }
+        ::= { cCertPathCtrlsEntry 7 }
 
     cCertPathCtrlsNamesExcluded  OBJECT-TYPE
         SYNTAX      SnmpAdminString (SIZE(0..64))
@@ -3167,7 +3217,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
 
             When this object does not apply for the key material, this
             column will not exist."
-        ::= { cCertPathCtrlsEntry 7 }
+        ::= { cCertPathCtrlsEntry 8 }
 
     cCertPathCtrlsMaxPathLength  OBJECT-TYPE
         SYNTAX      Unsigned32
@@ -3177,7 +3227,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
             "Optional indication of the maximum number of
             non-self-issued intermediate certificates that may follow
             this certificate in a valid certification path."
-        ::= { cCertPathCtrlsEntry 8 }
+        ::= { cCertPathCtrlsEntry 9 }
 
     -- *****************************************************************
     -- CC MIB cCertPolicyTable
@@ -3773,6 +3823,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cZeroizeSymmetricKeyTable,
                   cSymmetricKeyTableCount,
                   cSymmetricKeyTableLastChanged,
+                  cSymKeyFingerprint,
                   cSymKeyUsage,
                   cSymKeyID,
                   cSymKeyIssuer,
@@ -3797,6 +3848,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cZeroizeAsymKeyTable,
                   cAsymKeyTableCount,
                   cAsymKeyTableLastChanged,
+                  cAsymKeyFingerprint,
                   cAsymKeyFriendlyName,
                   cAsymKeySerialNumber,
                   cAsymKeyIssuer,
@@ -3842,6 +3894,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
         OBJECTS {
                   cCertPathCtrlsTableCount,
                   cCertPathCtrlsTableLastChanged,
+                  cCertPathCtrlsKeyFingerprint,
                   cCertPathCtrlsCertificate,
                   cCertPathCtrlsPolicyFlags,
                   cCertPathCtrlsMaxPathLength
@@ -3904,6 +3957,7 @@ This MIB module makes references to the following documents: {{RFC2578}}, {{RFC2
                   cZeroizeTrustAnchorTable,
                   cTrustAnchorTableCount,
                   cTrustAnchorTableLastChanged,
+                  cTrustAnchorFingerprint,
                   cTrustAnchorFormatType,
                   cTrustAnchorName,
                   cTrustAnchorUsageType,
