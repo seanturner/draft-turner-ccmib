@@ -1246,8 +1246,7 @@ This MIB module makes reference to the following documents: {{?RFC1213}}, {{RFC2
         NOTIFICATIONS {
                         cResetDeviceInitialized,
                         cSanitizeDeviceInitialized,
-                        cTamperEventIndicated,
-                        cSanitizeDeviceInitialized
+                        cTamperEventIndicated
                       }
         STATUS current
         DESCRIPTION
